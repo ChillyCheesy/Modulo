@@ -24,13 +24,29 @@ commands:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies-
+  save_front:
+    description: Save the front build.
+    steps:
+      - persist_to_workspace:
+          root: ./hometracker-ui
+          paths:
+            - node_modules
+            - dist
+
+  restore_front:
+    description: Restore the front build.
+    steps:
+      - attach_workspace:
+          at: ./server/build
   save_build:
     description: Save the app build.
     steps:
       - persist_to_workspace:
-          root: ./server/build
+          root: ./hometracker-ui
           paths:
-            - libs
+            - node_modules
+            - dist
+
   restore_build:
     description: Restore the app build.
     steps:
@@ -38,10 +54,20 @@ commands:
           at: ./server/build
 
 jobs:
+  front:
+    executor: gradle-executor
+    steps:
+      - checkout_and_restor_gradle_cache
+      - run:
+          name: Build front.
+          command: gradle assemble
+      - save_front
+
   test:
     executor: gradle-executor
     steps:
       - checkout_and_restore_gradle_cache
+      - restore_front
       - run:
           name: Run tests.
           command: gradle test
@@ -50,6 +76,7 @@ jobs:
     executor: gradle-executor
     steps:
       - checkout_and_restore_gradle_cache
+      - restore_front
       - run:
           name: Run build.
           command: gradle bootJar
@@ -61,9 +88,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "f2:c4:49:ac:fb:94:0e:e8:f2:14:77:a7:18:7f:dc:14"
-      - run:
-          name: Fix host authenticity for production server.
-          command: ssh-keyscan $SERVER_HOST >> ~/.ssh/known_hosts
       - checkout
       - restore_build
       - run:
@@ -74,8 +98,13 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - test
-      - build
+      - front
+      - test:
+          requires:
+            - front
+      - build:
+          requires:
+            - front
       - deploy:
           requires:
             - test
