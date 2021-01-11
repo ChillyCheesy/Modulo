@@ -6,7 +6,7 @@ executors:
       - image: circleci/openjdk:11-jdk
   basic:
     docker:
-      - image: ubuntu
+      - image: debian
 
 commands:
   save_gradle_cache:
