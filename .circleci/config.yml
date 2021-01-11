@@ -49,7 +49,7 @@ jobs:
       - checkout_and_restore_gradle_cache
       - run:
           name: Run tests.
-          command: ./gradlew test
+          command: gradle test
 
   build:
     executor: gradle-executor
@@ -57,7 +57,7 @@ jobs:
       - checkout_and_restore_gradle_cache
       - run:
           name: Run build.
-          command: ./gradlew bootJar
+          command: gradle bootJar
       - save_build
 
   deploy:
@@ -82,7 +82,7 @@ workflows:
           requires:
             - test
             - build
-          filter:
+          filters:
             branches:
               only:
                 - master
