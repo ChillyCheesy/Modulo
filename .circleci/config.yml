@@ -36,11 +36,6 @@ commands:
     steps:
       - attach_workspace:
           at: ./server/build
-      - run:
-          name: Deploy lib.
-          command: |
-            mv workspace/* ./
-            rm -rf workspace
 
 jobs:
   test:
