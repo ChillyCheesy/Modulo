@@ -1,0 +1,25 @@
+plugins {
+    id 'java'
+}
+
+sourceCompatibility = 11
+
+dependencies {
+    implementation project(":hometracker")
+
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.+'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.4.2'
+    testCompile 'org.mockito:mockito-core:2.+'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileJava.options.encoding = 'UTF-8'
+
+task deploy(type: Copy) {
+    dependsOn jar
+    from './build/libs/'
+    into '../server/modules/'
+}

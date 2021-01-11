@@ -1,0 +1,6 @@
+name: Hello
+version: 1.0.0
+authors:
+  - "Owl-e"
+main: fr.owle.hello.HelloModule
+mainPageName: hello

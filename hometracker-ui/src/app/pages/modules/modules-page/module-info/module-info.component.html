@@ -1,0 +1,22 @@
+<mat-card>
+    <mat-card-content>
+        <h1>{{ module.name }}</h1>
+        <p>Version : {{ module.version }}</p>
+        <h3>Authors</h3>
+        <ul>
+            <li *ngFor="let author of module.authors">{{ author }}</li>
+        </ul>
+        <h3>Dependencies</h3>
+        <ul>
+            <li *ngFor="let dependence of module.dependencies">{{ dependence }}</li>
+        </ul>
+        <h3>Soft Dependencies</h3>
+        <ul>
+            <li *ngFor="let softDependence of module.softDependencies">{{ softDependence }}</li>
+        </ul>
+        <h3>Pages</h3>
+        <ul>
+            <li *ngFor="let page of modulePages | async"><button mat-button (click)="open(module, page)">{{ page }}</button></li>
+        </ul>
+    </mat-card-content>
+</mat-card>

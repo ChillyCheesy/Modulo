@@ -1,0 +1,52 @@
+@import '~@angular/material/theming';
+@include mat-core();
+$hometracker-ui-primary: mat-palette($mat-indigo);
+$hometracker-ui-accent: mat-palette($mat-pink, A200, A100, A400);
+
+$hometracker-ui-warn: mat-palette($mat-red);
+
+$hometracker-ui-theme: mat-light-theme((
+  color: (
+    primary: $hometracker-ui-primary,
+    accent: $hometracker-ui-accent,
+    warn: $hometracker-ui-warn,
+  )
+));
+
+
+@include angular-material-theme($hometracker-ui-theme);
+@import "../node_modules/bootstrap/scss/bootstrap-grid";
+
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: rgba($color: #F1F1F1, $alpha: 1.0);
+}
+
+body::after {
+  content: "";
+  background-image: url("https://cdn-media.planete-starwars.com/news/63267-maxresdefault-169-lg.jpg?w=768");
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+
+  animation-name: jarjar;
+  animation-duration: 60s;
+}
+
+@keyframes jarjar {
+  from {
+    opacity: 0%;
+  }
+  to {
+    opacity: 100%;
+  }
+}
