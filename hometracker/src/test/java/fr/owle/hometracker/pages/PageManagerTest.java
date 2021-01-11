@@ -14,9 +14,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PageManagerTest {
 
-    static class PageMock1 implements Page { }
+    class PageMock1 implements Page { }
     @Index("mock")
-    static class PageMock2 implements Page { }
+    class PageMock2 implements Page { }
 
     private PageManager pageManager;
     private Page page1, page2;
@@ -27,6 +27,8 @@ public class PageManagerTest {
         pageManager = mock(PageManager.class);
         page1 = mock(Page.class);
         page2 = mock(Page.class);
+        module1 = mock(HTModule.class);
+        module2 = mock(HTModule.class);
         final Map<HTModule, Page> pages = new HashMap<>();
         pages.put(module1, page1);
         pages.put(module1, page2);
@@ -45,7 +47,7 @@ public class PageManagerTest {
         when(pageManager.getIndexByPage(eq(page1))).thenReturn("page1");
         when(pageManager.getIndexByPage(eq(page2))).thenReturn("page2");
 
-        when(pageManager.getModulePages(eq(module1))).thenReturn(new ArrayList<>(Arrays.asList(page1, page2)));
+        when(pageManager.getModulePages(any())).thenReturn(new ArrayList<>(Arrays.asList(page1, page2)));
         when(pageManager.getPage(any(), anyString())).thenCallRealMethod();
 
         assertEquals(page1, pageManager.getPage(module1, "page1"));
@@ -84,6 +86,7 @@ public class PageManagerTest {
 
     @Test
     public final void getIndexByNameTest() throws PageMissingIndexAnnotationException {
+        when(pageManager.getIndexByPage(any(Page.class))).thenCallRealMethod();
         assertThrows(PageMissingIndexAnnotationException.class, () -> pageManager.getIndexByPage(new PageMock1()));
         assertEquals("mock", pageManager.getIndexByPage(new PageMock2()));
     }
