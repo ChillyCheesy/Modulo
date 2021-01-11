@@ -1,20 +1,88 @@
-version: 2
-jobs:
-  build:
+version: 2.1
+
+executors:
+  gradle-executor:
     docker:
       - image: circleci/openjdk:11-jdk
-    working_directory: ~/repo
-    environment:
-      JVM_OPTS: -Xmx3200m
-      TERM: dumb
+  basic:
+    docker:
+      - image: ubuntu
+
+commands:
+  save_gradle_cache:
+    description: Save gradle cache.
+    steps:
+      - save_cache:
+          key: v1-dependencies-{{ checksum "build.gradle" }}
+          paths:
+            - ~/.gradle
+  checkout_and_restore_gradle_cache:
+    description: Restore gradle cache after a checkout.
     steps:
       - checkout
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies-
-      - run: gradle bootJar
-      - save_cache:
-          paths:
-            - ~/.gradle
-          key: v1-dependencies-{{ checksum "build.gradle" }}
+  save_build:
+    description: Save the app build.
+    steps:
+      - persist_to_workspace:
+          root: ./build
+          path:
+            - ./server/build/libs
+  restore_build:
+    description: Restore the app build.
+    steps:
+      - attach_workspace:
+          at: ./build
+      - run:
+          name: Deploy lib.
+          command: |
+            mv workspace/* ./
+            rm -rf workspace
+
+jobs:
+  test:
+    executor: gradle-executor
+    steps:
+      - checkout_and_restore_gradle_cache
+      - run:
+          name: Run tests.
+          command: ./gradlew test
+
+  build:
+    executor: gradle-executor
+    steps:
+      - checkout_and_restore_gradle_cache
+      - run:
+          name: Run build.
+          command: ./gradlew bootJar
+      - save_build
+
+  deploy:
+    executor: basic
+    steps:
+      - checkout
+      - restore_build
+      - run:
+          name: Push to server.
+          command: |
+            ls
+            pwd
+            ls ./server/build/libs
+
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - test
+      - build
+      - deploy:
+          requires:
+            - test
+            - build
+          filter:
+            branches:
+              only:
+                - master
