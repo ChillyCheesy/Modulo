@@ -28,14 +28,14 @@ commands:
     description: Save the app build.
     steps:
       - persist_to_workspace:
-          root: ./build
+          root: ./workspace
           paths:
             - ./server/build/libs
   restore_build:
     description: Restore the app build.
     steps:
       - attach_workspace:
-          at: ./build
+          at: ./workspace
       - run:
           name: Deploy lib.
           command: |
@@ -85,4 +85,4 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - main
