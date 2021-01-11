@@ -29,7 +29,7 @@ commands:
     steps:
       - persist_to_workspace:
           root: ./build
-          path:
+          paths:
             - ./server/build/libs
   restore_build:
     description: Restore the app build.
