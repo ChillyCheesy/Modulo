@@ -63,7 +63,7 @@ jobs:
       - run:
           name: Push to server.
           command: |
-            scp -r server/build/libs/*.jar $SERVER_IP:$SERVER_LOCATION
+            scp -o "StrictHostKeyChecking no" -r server/build/libs/*.jar $SERVER_IP:$SERVER_LOCATION
 
 workflows:
   version: 2
