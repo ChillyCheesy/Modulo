@@ -24,15 +24,28 @@ commands:
           keys:
             - v1-dependencies-{{ checksum "build.gradle" }}
             - v1-dependencies-
-
-  save_build:
-    description: Save the app build.
+  save_front:
+    description: Save the front build.
     steps:
       - persist_to_workspace:
           root: ./hometracker-ui
           paths:
             - node_modules
             - dist
+
+  restore_front:
+    description: Restore the front build.
+    steps:
+      - attach_workspace:
+          at: ./hometracker-ui
+
+  save_build:
+    description: Save the app build.
+    steps:
+      - persist_to_workspace:
+          root: ./server/build
+          paths:
+            - libs
 
   restore_build:
     description: Restore the app build.
@@ -41,10 +54,20 @@ commands:
           at: ./server/build
 
 jobs:
+  front:
+    executor: gradle-executor
+    steps:
+      - checkout_and_restore_gradle_cache
+      - run:
+          name: Build front.
+          command: gradle assemble
+      - save_front
+
   test:
     executor: gradle-executor
     steps:
       - checkout_and_restore_gradle_cache
+      - restore_front
       - run:
           name: Run tests.
           command: gradle test
@@ -53,6 +76,7 @@ jobs:
     executor: gradle-executor
     steps:
       - checkout_and_restore_gradle_cache
+      - restore_front
       - run:
           name: Run build.
           command: gradle bootJar
@@ -69,19 +93,19 @@ jobs:
       - run:
           name: Push to server.
           command: |
-            ls
-            pwd
-            ls server
-            ls server/build
-            ls server/build/libs
             scp -o "StrictHostKeyChecking no" -r ./server/build/libs/*.jar $SERVER_USER@$SERVER_HOST:$SERVER_LOCATION
 
 workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - test
-      - build
+      - front
+      - test:
+          requires:
+            - front
+      - build:
+          requires:
+            - front
       - deploy:
           requires:
             - test
