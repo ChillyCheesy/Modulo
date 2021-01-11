@@ -61,7 +61,7 @@ jobs:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - $FINGER_PRINT
+            - "f2:c4:49:ac:fb:94:0e:e8:f2:14:77:a7:18:7f:dc:14"
       - restore_build
       - run:
           name: Push to server.
