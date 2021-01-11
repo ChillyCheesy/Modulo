@@ -57,7 +57,7 @@ jobs:
   front:
     executor: gradle-executor
     steps:
-      - checkout_and_restor_gradle_cache
+      - checkout_and_restore_gradle_cache
       - run:
           name: Build front.
           command: gradle assemble
