@@ -6,7 +6,7 @@ executors:
       - image: circleci/openjdk:11-jdk
   basic:
     docker:
-      - image: debian
+      - image: kroniak/ssh-client
 
 commands:
   save_gradle_cache:
