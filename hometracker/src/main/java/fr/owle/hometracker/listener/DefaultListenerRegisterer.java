@@ -2,8 +2,6 @@ package fr.owle.hometracker.listener;
 
 import fr.owle.hometracker.HTAPI;
 import fr.owle.hometracker.events.EventManager;
-import fr.owle.hometracker.pages.Page;
-import fr.owle.hometracker.pages.PageManager;
 
 /**
  * DefaultListenerRegister register basic {@link fr.owle.hometracker.utils.Listener} for the {@link HTAPI}.
@@ -11,7 +9,7 @@ import fr.owle.hometracker.pages.PageManager;
  */
 public class DefaultListenerRegisterer {
 
-    private EventManager eventManager;
+    private final EventManager eventManager;
 
     public DefaultListenerRegisterer(EventManager eventManager) {
         this.eventManager = eventManager;
