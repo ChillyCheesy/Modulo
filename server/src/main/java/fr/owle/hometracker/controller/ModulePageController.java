@@ -7,6 +7,7 @@ import fr.owle.hometracker.utils.exception.PageMissingIndexAnnotationException;
 import fr.owle.hometracker.utils.exception.PageNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Base64;
@@ -55,5 +56,13 @@ public class ModulePageController {
         final String param = request.getQueryString();
         final DeleteRequestEvent deleteRequestEvent = new DeleteRequestEvent(module, page, path, param, body);
         return Base64.getDecoder().decode(pagesService.readContent(deleteRequestEvent));
+    }
+
+    @GetMapping("/")
+    public RedirectView redirectView() {
+        final RedirectView redirectView = new RedirectView();
+        redirectView.setContextRelative(true);
+        redirectView.setUrl("/HomeTracker/ui");
+        return redirectView;
     }
 }

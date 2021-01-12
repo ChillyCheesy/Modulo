@@ -32,13 +32,11 @@ commands:
           paths:
             - node_modules
             - dist
-
   restore_front:
     description: Restore the front build.
     steps:
       - attach_workspace:
           at: ./hometracker-ui
-
   save_build:
     description: Save the app build.
     steps:
@@ -46,7 +44,6 @@ commands:
           root: ./server/build
           paths:
             - libs
-
   restore_build:
     description: Restore the app build.
     steps:
@@ -62,7 +59,6 @@ jobs:
           name: Build front.
           command: gradle assemble
       - save_front
-
   test:
     executor: gradle-executor
     steps:
@@ -71,7 +67,6 @@ jobs:
       - run:
           name: Run tests.
           command: gradle test
-
   build:
     executor: gradle-executor
     steps:
@@ -81,7 +76,6 @@ jobs:
           name: Run build.
           command: gradle bootJar
       - save_build
-
   deploy:
     executor: basic
     steps:

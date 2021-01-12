@@ -6,7 +6,7 @@ buildscript  {
 
 allprojects {
 
-    version = 'BINKS-1.0.0'
+    version = 'BINKS-1.0.1'
     group = 'fr.owle'
 
     repositories {
