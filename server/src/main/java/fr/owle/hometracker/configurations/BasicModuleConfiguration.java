@@ -29,7 +29,7 @@ public class BasicModuleConfiguration {
 
     @Bean
     public HTAPI htapi() throws IOException {
-        final File homeTracker = inputStreamToFile(getClass().getClassLoader().getResourceAsStream("api/HomeTracker-BINKS-1.0.1.jar"), "hometracker", ".jar");
+        final File homeTracker = inputStreamToFile(getClass().getClassLoader().getResourceAsStream("api/HomeTracker-BINKS-1.0.0.jar"), "hometracker", ".jar");
         final HTAPI htapi = (HTAPI) ModuleBuilder.build(homeTracker, new LaunchedURLClassLoader(new URL[]{homeTracker.toURI().toURL()}, getClass().getClassLoader()));
         homeTracker.deleteOnExit();
         return htapi;
