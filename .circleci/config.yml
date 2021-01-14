@@ -97,7 +97,7 @@ jobs:
       - run:
           name: Publish API.
           command: |
-            gradle bootJar
+            gradle bintrayUpload
 workflows:
   version: 2
   build_and_deploy:
