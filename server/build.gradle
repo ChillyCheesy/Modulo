@@ -4,7 +4,7 @@ plugins {
     id 'java'
 }
 
-archivesBaseName = 'HomeTrackerServer'
+archivesBaseName = 'hometracker-server'
 sourceCompatibility = 11
 
 dependencies {
