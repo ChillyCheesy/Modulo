@@ -18,7 +18,7 @@ import java.util.Objects;
 @Component
 public class ModuleService {
 
-    public static final String MODULE_FILE = "./modules";
+    public static final String MODULES_FILE = "./modules";
 
     @Autowired
     private HTAPI htapi;
@@ -33,8 +33,8 @@ public class ModuleService {
     private ModuleManager moduleManager;
 
     public void loadModules() {
-        final File modules = new File(MODULE_FILE);
-        assert modules.exists() || modules.mkdirs();
+        final File modules = new File(MODULES_FILE);
+        modules.mkdirs();
         loader.loadModules(htapi);
         Arrays.stream(Objects.requireNonNull(modules.listFiles())).forEach(file -> {
             try {
@@ -42,6 +42,7 @@ public class ModuleService {
             } catch (IOException e) {
                 final String message = e.getMessage();
                 logger.error(HTAPI.getHTAPI(), message);
+                e.printStackTrace();
             }
         });
         logger.info(HTAPI.getHTAPI(), "-- Prepare to start modules. --");

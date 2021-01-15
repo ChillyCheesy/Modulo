@@ -109,8 +109,9 @@ jobs:
       - run:
           name: Publish SERVER
           command: |
-            version=$(cat gradle.properties | grep 'hometracker_version' | cut -f 2 -d '=')
-            curl -T "server/build/libs/hometracker-server-$version.jar" -u$BINTRAY_USER:$BINTRAY_API_KEY "https://api.bintray.com/content/hometracker/java/hometracker-server/$version/"
+            version=$(cat gradle.properties | grep 'hometracker_version' | head -n 1 | cut -f 2 -d '=')
+            curl -X PUT -T server/build/libs/hometracker-server-$version.jar -u$BINTRAY_USER:$BINTRAY_API_KEY https://api.bintray.com/content/hometracker/software/hometracker-server/$version/hometracker-server/$version/hometracker-server-$version.jar?publish=1
+
 workflows:
   version: 2
   build_and_deploy:

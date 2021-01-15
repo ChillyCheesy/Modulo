@@ -55,6 +55,7 @@ public class ModuleBuilder {
                 IllegalAccessException | InvocationTargetException | InstantiationException |
                 InvalidModuleConfigurationException e) {
             HTAPI.getLogger().error(HTAPI.getHTAPI(), e.getMessage());
+            e.printStackTrace();
         }
         return null;
     }
