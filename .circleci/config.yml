@@ -4,6 +4,9 @@ executors:
   gradle-executor:
     docker:
       - image: circleci/openjdk:11-jdk
+  curl-executor:
+    docker:
+      - image: curlimages/curl
   basic:
     docker:
       - image: kroniak/ssh-client
@@ -99,7 +102,7 @@ jobs:
           command: |
             gradle bintrayUpload
   publish-server:
-    executor: basic
+    executor: curl-executor
     steps:
       - checkout
       - restore_build
@@ -107,7 +110,7 @@ jobs:
           name: Publish SERVER
           command: |
             version=$(cat gradle.properties | grep 'hometracker_version' | cut -f 2 -d '=')
-            curl -T server/build/libs/hometracker-server-*.jar -u$BINTRAY_USER:$BINTRAY_API_KEY https://api.bintray.com/content/hometracker/java/hometracker-server/$version/
+            curl -T "server/build/libs/hometracker-server-$version.jar" -u$BINTRAY_USER:$BINTRAY_API_KEY "https://api.bintray.com/content/hometracker/java/hometracker-server/$version/"
 workflows:
   version: 2
   build_and_deploy:
