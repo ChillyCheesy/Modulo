@@ -1,5 +1,4 @@
 plugins {
-    id 'com.jfrog.bintray' version '1.8.5'
     id 'org.springframework.boot' version '2.4.0'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'java'
@@ -21,24 +20,6 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-bintray {
-    user = project.hasProperty('bintrayUser') ? project.property('bintrayUser') : System.getenv('BINTRAY_USER')
-    key = project.hasProperty('bintrayApiKey') ? project.property('bintrayApiKey') : System.getenv('BINTRAY_API_KEY')
-    publications = ['archives']
-    publish = true
-    pkg {
-        repo = 'java'
-        name = project.archivesBaseName
-        userOrg = 'hometracker'
-        licenses  = ['Apache-2.0']
-        vcsUrl = 'https://github.com/Owl-e/HomeTracker.git'
-        version {
-            name = project.version
-            released = new Date()
-        }
-    }
 }
 
 task cleanAPI(type: Delete) {

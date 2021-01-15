@@ -97,17 +97,7 @@ jobs:
       - run:
           name: Publish API.
           command: |
-            gradle :hometracker:bintrayUpload
-  publish-server:
-    executor: gradle-executor
-    steps:
-      - checkout_and_restore_gradle_cache
-      - restore_front
-      - restore_build
-      - run:
-          name: Publish API.
-          command: |
-            gradle :server:bintrayUpload
+            gradle bintrayUpload
 workflows:
   version: 2
   build_and_deploy:
@@ -120,14 +110,6 @@ workflows:
           requires:
             - front
       - publish-api:
-          requires:
-            - test
-            - build
-          filters:
-            branches:
-              only:
-                - main
-      - publish-server:
           requires:
             - test
             - build
