@@ -6,7 +6,7 @@ buildscript  {
 
 allprojects {
 
-    version = 'BINKS-1.0.0'
+    version = hometracker_version
     group = 'fr.owle'
 
     repositories {

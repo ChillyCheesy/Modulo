@@ -85,7 +85,7 @@ jobs:
           fingerprints:
             - "f2:c4:49:ac:fb:94:0e:e8:f2:14:77:a7:18:7f:dc:14"
       - run:
-          name: Push to server.
+          name: Push Server to server.
           command: |
             scp -o "StrictHostKeyChecking no" -r ./server/build/libs/*.jar $SERVER_USER@$SERVER_HOST:$SERVER_LOCATION
   publish-api:
@@ -98,6 +98,16 @@ jobs:
           name: Publish API.
           command: |
             gradle bintrayUpload
+  publish-server:
+    executor: basic
+    steps:
+      - checkout
+      - restore_build
+      - run:
+          name: Publish SERVER
+          command: |
+            version=$(cat gradle.properties | grep 'hometracker_version' | cut -f 2 -d '=')
+            curl -T server/build/libs/hometracker-server-*.jar -u$BINTRAY_USER:$BINTRAY_API_KEY https://api.bintray.com/content/hometracker/java/hometracker-server/$version/
 workflows:
   version: 2
   build_and_deploy:
@@ -110,6 +120,14 @@ workflows:
           requires:
             - front
       - publish-api:
+          requires:
+            - test
+            - build
+          filters:
+            branches:
+              only:
+                - main
+      - publish-server:
           requires:
             - test
             - build
