@@ -124,6 +124,7 @@ workflows:
           requires:
             - front
       - publish-api:
+          context: Bintray
           requires:
             - test
             - build
@@ -132,6 +133,7 @@ workflows:
               only:
                 - main
       - publish-server:
+          context: Bintray
           requires:
             - test
             - build
