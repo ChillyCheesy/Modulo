@@ -1,2 +1,3 @@
 src/main/resources/api
+src/main/resources/module.yml
 gradle.properties

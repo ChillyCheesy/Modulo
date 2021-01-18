@@ -4,25 +4,31 @@ import fr.owle.hometracker.HTAPI;
 import fr.owle.hometracker.event.OnLoadEvent;
 import fr.owle.hometracker.event.OnStartEvent;
 import fr.owle.hometracker.event.OnStopEvent;
+import fr.owle.hometracker.events.Event;
 import fr.owle.hometracker.events.EventHandler;
+import fr.owle.hometracker.modules.HTModule;
 import fr.owle.hometracker.utils.Listener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class StatusListener implements Listener {
 
-    @EventHandler(-1)
+    @EventHandler(Event.MISERABLE)
     public void onStart(OnStartEvent e){
-        HTAPI.getLogger().info(HTAPI.getHTAPI(), "Module \"" + e.getModule().getName() + "\" is starting.");
+        final HTModule module = e.getModule();
+        HTAPI.getLogger().info(HTAPI.getHTAPI(), "Module \"" + module.getName() + "\" version \"" + module.getVersion() + "\" is starting.");
     }
 
-    @EventHandler(-1)
+    @EventHandler(Event.MISERABLE)
     public void onStop(OnStopEvent e){
-        HTAPI.getLogger().info(HTAPI.getHTAPI(), "Module \"" + e.getModule().getName() + "\" is stopping.");
+        final HTModule module = e.getModule();
+        HTAPI.getLogger().info(HTAPI.getHTAPI(), "Module \"" + module.getName() + "\" version \"" + module.getVersion() + "\" is stopping.");
     }
 
-    @EventHandler(-1)
+    @EventHandler(Event.MISERABLE)
     public void onLoad(OnLoadEvent e){
-        HTAPI.getLogger().info(HTAPI.getHTAPI(), "Module \"" + e.getModule().getName() + "\" is loading.");
+        final HTModule module = e.getModule();
+        HTAPI.getLogger().info(HTAPI.getHTAPI(), "Module \"" + module.getName() + "\" version \"" + module.getVersion() + "\" is loading.");
     }
+
 }

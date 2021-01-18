@@ -4,8 +4,16 @@ plugins {
     id 'java'
 }
 
+
 archivesBaseName = 'hometracker-server'
 sourceCompatibility = 11
+
+
+module {
+    moduleName = 'Server'
+    authors = ['Owle']
+    target = "server/${target}"
+}
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'

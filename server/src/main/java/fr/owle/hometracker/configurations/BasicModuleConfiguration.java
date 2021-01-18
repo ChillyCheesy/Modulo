@@ -33,7 +33,7 @@ public class BasicModuleConfiguration {
     }
 
     private HTModuleConfig getModuleConfig() throws IOException {
-        final File file = inputStreamToFile(getClass().getClassLoader().getResourceAsStream("module-server.yml"), "module", "server.yml");
+        final File file = inputStreamToFile(getClass().getClassLoader().getResourceAsStream("module.yml"), "module", "server.yml");
         final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
         return mapper.readValue(file, HTModuleConfig.class);
