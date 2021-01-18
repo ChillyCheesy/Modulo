@@ -1,5 +1,0 @@
-name: 'HomeTracker'
-version: 'BINKS-1.0.0'
-authors: ['Owl-e']
-main: 'fr.owle.hometracker.HTAPI'
-mainPageName: 'ui'

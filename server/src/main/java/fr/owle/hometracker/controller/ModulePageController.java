@@ -1,6 +1,8 @@
 package fr.owle.hometracker.controller;
 
 import fr.owle.hometracker.event.*;
+import fr.owle.hometracker.modules.HTModule;
+import fr.owle.hometracker.modules.ModuleManager;
 import fr.owle.hometracker.services.PagesService;
 import fr.owle.hometracker.utils.exception.HTModuleNotFoundException;
 import fr.owle.hometracker.utils.exception.PageMissingIndexAnnotationException;
@@ -17,6 +19,9 @@ public class ModulePageController {
 
     @Autowired
     private PagesService pagesService;
+
+    @Autowired
+    private ModuleManager moduleManager;
 
     @GetMapping("/{module}/{page}/**")
     public byte[] getRequest(@PathVariable String module, @PathVariable String page, @RequestBody(required = false) String body, HttpServletRequest request) throws PageNotFoundException, PageMissingIndexAnnotationException, HTModuleNotFoundException {
@@ -57,12 +62,22 @@ public class ModulePageController {
         final DeleteRequestEvent deleteRequestEvent = new DeleteRequestEvent(module, page, path, param, body);
         return Base64.getDecoder().decode(pagesService.readContent(deleteRequestEvent));
     }
+    
+    @GetMapping(path = {"/{module}", "/{module}/"})
+    public RedirectView redirectToMainPage(@PathVariable String module) throws HTModuleNotFoundException {
+        final HTModule htModule = moduleManager.getModule(module);
+        final RedirectView redirectView = new RedirectView();
+        final String url = "/" + module + "/" + htModule.getMainPage();
+        redirectView.setContextRelative(true);
+        redirectView.setUrl(url);
+        return redirectView;
+    }
 
     @GetMapping("/")
     public RedirectView redirectView() {
         final RedirectView redirectView = new RedirectView();
         redirectView.setContextRelative(true);
-        redirectView.setUrl("/HomeTracker/ui");
+        redirectView.setUrl("/HomeTracker");
         return redirectView;
     }
 }

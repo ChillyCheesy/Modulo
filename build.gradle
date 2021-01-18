@@ -1,8 +1,14 @@
-buildscript  {
+buildscript {
     repositories {
-        mavenCentral()
+        maven {
+            url  'https://dl.bintray.com/hometracker/java'
+        }
+        dependencies {
+            classpath 'fr.owle:hometracker-application:1.0.1'
+        }
     }
 }
+
 
 allprojects {
 
@@ -17,7 +23,11 @@ allprojects {
 }
 
 project(':hometracker') {
-    apply plugin: 'java-library'
+    apply plugin: 'hometracker-application'
+}
+
+project(':server') {
+    apply plugin: 'hometracker-application'
 }
 
 task clean {
