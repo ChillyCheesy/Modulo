@@ -1,7 +1,9 @@
 @import '~@angular/material/theming';
 @include mat-core();
-$hometracker-ui-primary: mat-palette($mat-indigo);
-$hometracker-ui-accent: mat-palette($mat-pink, A200, A100, A400);
+$hometracker-ui-primary: mat-palette($mat-blue, 300);
+$hometracker-ui-accent: mat-palette($mat-lime, 800);
+$hometracker-ui-text-color: mat-palette($mat-grey, 800);
+$hometracker-ui-background: mat-palette($mat-grey, 200);
 
 $hometracker-ui-warn: mat-palette($mat-red);
 

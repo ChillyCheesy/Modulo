@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, RouterLinkActive } from '@angular/router';
-import { Observable } from 'rxjs';
 import { HTModule } from 'src/app/core/models/htmodule.model';
 import { ModulesService } from 'src/app/core/services/modules.service';
 import { RedirectService } from 'src/app/core/services/redirect.service';
@@ -13,7 +12,7 @@ import { RedirectService } from 'src/app/core/services/redirect.service';
 export class ModuleInfoComponent implements OnInit {
 
   module: HTModule;
-  modulePages: Observable<string[]>;
+  modulePages: string[];
 
   constructor(
     private modulesService: ModulesService,
@@ -23,7 +22,7 @@ export class ModuleInfoComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const moduleName = this.router.snapshot.paramMap.get('module');
     this.module = await this.modulesService.getModuleByName(moduleName).toPromise();
-    this.modulePages = this.modulesService.getPagesModules(this.module);
+    this.modulePages = await this.modulesService.getPagesModules(this.module).toPromise();
   }
 
   public open(module: HTModule, page: string): void {
