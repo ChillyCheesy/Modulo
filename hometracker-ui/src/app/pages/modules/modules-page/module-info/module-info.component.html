@@ -1,5 +1,5 @@
 <mat-card>
-    <mat-card-content>
+    <mat-card-content *ngIf="module">
         <h1>{{ module.name }}</h1>
         <p>Version : {{ module.version }}</p>
         <h3>Authors</h3>
