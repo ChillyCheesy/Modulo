@@ -28,10 +28,3 @@ assemble.dependsOn 'npm_run_prod'
 
 clean.dependsOn cleanNode
 clean.dependsOn cleanDist
-
-task deployOnHomeTrackerResource(type: Copy) {
-  from "dist/"
-  into "${projectDir.parent}/hometracker/src/main/resources/"
-}
-
-deployOnHomeTrackerResource.dependsOn build

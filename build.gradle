@@ -4,22 +4,19 @@ buildscript {
             url  'https://dl.bintray.com/hometracker/java'
         }
         dependencies {
-            classpath 'fr.owle:hometracker-application:1.0.1'
+            classpath 'fr.owle:hometracker-application:1.0.4'
         }
     }
 }
 
 
 allprojects {
-
-    version = hometracker_version
+    version = hometracker_version as Object
     group = 'fr.owle'
-
     repositories {
         mavenCentral()
         jcenter()
     }
-
 }
 
 project(':hometracker') {

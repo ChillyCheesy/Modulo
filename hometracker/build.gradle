@@ -12,8 +12,20 @@ module {
     authors = ['Owl-e']
     main = 'fr.owle.hometracker.HTAPI'
     mainPageName = 'ui'
-    target = "hometracker/${target}"
+    target = "${projectDir}/src/main/resources"
 }
+
+gradle.projectsEvaluated {
+    buildModuleConfiguration {
+        fronts.create('ui') {
+            buildTask project(':hometracker-ui').tasks.build
+            from = "${projectDir.parent}/hometracker-ui/dist"
+            into = "${projectDir}/src/main/resources"
+        }
+        buildTask jar
+    }
+}
+
 
 dependencies {
     compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.11.1'
@@ -59,7 +71,7 @@ bintray {
 
 
 task deployOnServerResource(type: Copy) {
-    dependsOn jar
+    dependsOn 'buildModule'
     from "$buildDir/libs/"
     into "${projectDir.parent}/server/src/main/resources/api"
 }
@@ -69,4 +81,3 @@ task cleanUi(type: Delete) {
 }
 
 clean.dependsOn cleanUi
-compileJava.dependsOn ':hometracker-ui:deployOnHomeTrackerResource'

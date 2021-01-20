@@ -4,15 +4,13 @@ plugins {
     id 'java'
 }
 
-
 archivesBaseName = 'hometracker-server'
 sourceCompatibility = 11
-
 
 module {
     moduleName = 'Server'
     authors = ['Owle']
-    target = "server/${target}"
+    target = "${projectDir}/src/main/resources"
 }
 
 dependencies {

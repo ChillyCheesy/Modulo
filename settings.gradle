@@ -1,2 +1,2 @@
 rootProject.name = 'hometracker-server'
-include 'hometracker', 'hometracker-ui', 'server'
+include 'server', 'hometracker', 'hometracker-ui'
