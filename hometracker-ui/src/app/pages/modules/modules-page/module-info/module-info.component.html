@@ -16,7 +16,8 @@
         </ul>
         <h3>Pages</h3>
         <ul>
-            <li *ngFor="let page of modulePages | async"><button mat-button (click)="open(module, page)">{{ page }}</button></li>
+            <li *ngFor="let page of modulePages"><button mat-button (click)="open(module, page)">{{ page }}</button></li>
         </ul>
     </mat-card-content>
 </mat-card>
+<router-outlet></router-outlet>
