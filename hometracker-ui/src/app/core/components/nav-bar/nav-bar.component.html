@@ -1,17 +1,15 @@
-<mat-toolbar color="primary" class="example-toolbar">
+<mat-toolbar color="primary" class="example-toolbar hometracker-theme">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <h1 class="app-name">HomeTracker</h1>
+    <a mat-button class="app-name" [routerLink]="['home']">HomeTracker</a>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav"
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
     <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
         [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
-        <mat-nav-list>
-            <div *ngFor="let module of modules | async">
-                <a mat-list-item (click)="redirectTo(module)">{{ module.name }}</a>
-                <mat-divider></mat-divider>
-            </div>
+        <mat-nav-list class="nav-list" >
+            <app-module-search></app-module-search>
+            <app-modules-tree></app-modules-tree>
         </mat-nav-list>
     </mat-sidenav>
 
