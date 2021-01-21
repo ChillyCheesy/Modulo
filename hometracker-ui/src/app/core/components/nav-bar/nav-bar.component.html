@@ -1,6 +1,7 @@
 <mat-toolbar color="primary" class="example-toolbar hometracker-theme">
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-    <a mat-button class="app-name" [routerLink]="['home']">HomeTracker</a>
+    <a *ngIf="production" mat-button class="app-name" [routerLink]="['home']">HomeTracker</a>
+    <a *ngIf="!production" mat-button class="app-name" [routerLink]="['home']">HomeTracker [Test Server]</a>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav"

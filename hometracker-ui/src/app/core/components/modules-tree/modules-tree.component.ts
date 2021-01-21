@@ -6,6 +6,7 @@ import { from, interval, Observable, Subscription } from 'rxjs';
 import { ModulesService } from '../../services/modules.service';
 import { RedirectService } from '../../services/redirect.service';
 import { HTModule } from '../../models/htmodule.model';
+import { FilteredModulesService } from '../../services/filtered-modules.service';
 
 interface TreeNode {
   parentName?: string;
@@ -26,11 +27,11 @@ export class ModulesTreeComponent implements OnInit, OnDestroy {
     
   hasChild = (_: number, node: TreeNode) => !!node.children && node.children.length > 0;
   
-  constructor(private moduleService: ModulesService, private redirectService: RedirectService) { }
+  constructor(private moduleService: ModulesService, private filteredModulesService: FilteredModulesService, private redirectService: RedirectService) { }
   
   ngOnInit(): void {
-    this.subscription = this.treeNodeFromHTModules(this.moduleService.getFilteredModules()).subscribe(moduleTree => this.onNewTreeNode(moduleTree));
-    this.moduleService.formControl.setValue('');
+    this.subscription = this.treeNodeFromHTModules(this.filteredModulesService.getFilteredModules()).subscribe(moduleTree => this.onNewTreeNode(moduleTree));
+    this.filteredModulesService.formControl.setValue('');
   }
 
   private onNewTreeNode(moduleTree: TreeNode): void {

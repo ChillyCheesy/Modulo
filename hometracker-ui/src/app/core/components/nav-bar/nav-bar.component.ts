@@ -1,10 +1,10 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChange } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HTModule } from '../../models/htmodule.model';
 import { ModulesService } from '../../services/modules.service';
 import { RedirectService } from '../../services/redirect.service';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,6 +15,7 @@ export class NavBarComponent implements OnInit {
   
   mobileQuery: MediaQueryList;
   modules: HTModule[];
+  production = environment.production;
   
   private _mobileQueryListener: () => void;
   
