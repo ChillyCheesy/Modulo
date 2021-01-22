@@ -24,11 +24,11 @@ export class ModulesTreeComponent implements OnInit, OnDestroy {
   modulesTree: TreeNode[] = [];
   dataSource = new ArrayDataSource<TreeNode>(this.modulesTree);
   subscription: Subscription;
-    
+
   hasChild = (_: number, node: TreeNode) => !!node.children && node.children.length > 0;
-  
+
   constructor(private moduleService: ModulesService, private filteredModulesService: FilteredModulesService, private redirectService: RedirectService) { }
-  
+
   ngOnInit(): void {
     this.subscription = this.treeNodeFromHTModules(this.filteredModulesService.getFilteredModules()).subscribe(moduleTree => this.onNewTreeNode(moduleTree));
     this.filteredModulesService.formControl.setValue('');
@@ -40,7 +40,6 @@ export class ModulesTreeComponent implements OnInit, OnDestroy {
   }
 
   private treeNodeFromHTModules(modules: Observable<HTModule[]>): Observable<TreeNode> {
-    console.log(modules);
     return modules.pipe(
       mergeMap(modules => {
         this.modulesTree = [];
@@ -51,7 +50,7 @@ export class ModulesTreeComponent implements OnInit, OnDestroy {
       )}),
     )
   }
-  
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
@@ -61,7 +60,7 @@ export class ModulesTreeComponent implements OnInit, OnDestroy {
   }
 
   redirectToPage(moduleName: string, page: string): void {
-    if(moduleName) {    
+    if(moduleName) {
       this.redirectService.navigateToModuleByName(moduleName, page);
     } else {
       this.redirectToPageInfo(page);
