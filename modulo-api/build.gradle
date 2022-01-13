@@ -1,0 +1,27 @@
+plugins {
+    id 'com.chillycheesy.modulo-application' version '0.0.2'
+}
+
+archivesBaseName = 'modulo-api'
+sourceCompatibility = 11
+
+dependencies {
+    compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.1'
+    // Deprecated
+    compile 'commons-io:commons-io:2.11.0'
+
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+    testCompile 'org.mockito:mockito-core:4.2.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+module {
+    moduleName = 'HomeTracker'
+    version = hometracker_version as Object
+    authors = ['ChillyCheesy']
+    main = 'com.owle.hometracker.HTAPI'
+}
