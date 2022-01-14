@@ -14,6 +14,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.jar.JarFile;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Class that build and load all the {@link Module} in the modules folder.
@@ -40,11 +41,13 @@ public class ModuleLoader {
      * @throws FileIsNotAModuleDirectoryException If the target path was not a module directory.
      * @throws IOException If the file was not a JarFile.
      */
-    public void loadModules(File file) throws FileIsNotAModuleDirectoryException, IOException {
+    public List<Module> loadModules(File file) throws FileIsNotAModuleDirectoryException, IOException {
         if (!file.isDirectory()) throw new FileIsNotAModuleDirectoryException(file);
-        for (File child : Objects.requireNonNull(file.listFiles())) {
-            loadModule(child);
+        final List<Module> loadedModules = new ArrayList<>();
+        for (File jarFile : Objects.requireNonNull(file.listFiles())) {
+            loadedModules.add(this.loadModule(jarFile));
         }
+        return loadedModules;
     }
 
 
@@ -56,18 +59,8 @@ public class ModuleLoader {
      * @throws FileIsNotAModuleDirectoryException If the target path was not a module directory.
      * @throws IOException If the file was not a JarFile.
      */
-    public void loadModules(String filepath) throws FileIsNotAModuleDirectoryException, IOException {
-        loadModules(new File(filepath));
-    }
-
-    /**
-     * Load modules already built.<br>
-     * It will call the load method of the module.
-     *
-     * @param modules The modules you want to load.
-     */
-    public void loadModules(Module...modules) {
-        Arrays.stream(modules).forEach(this::loadModule);
+    public List<Module> loadModules(String filepath) throws FileIsNotAModuleDirectoryException, IOException {
+        return loadModules(new File(filepath));
     }
 
     /**
@@ -76,11 +69,13 @@ public class ModuleLoader {
      *
      * @param module The module you want to load.
      */
-    public void loadModule(Module module) {
+    public Module loadModule(Module module) {
         if (!loadedModules.contains(module)) {
             module.load();
             loadedModules.add(module);
+            return module;
         }
+        return null;
     }
 
     /**
@@ -89,8 +84,8 @@ public class ModuleLoader {
      * @param file The jar file. It should be a module.
      * @throws IOException If the file was not a JarFile.
      */
-    public void loadModule(File file) throws IOException {
-        loadModule(file, URLClassLoader.newInstance(new URL[]{file.toURI().toURL()}));
+    public Module loadModule(File file) throws IOException {
+        return loadModule(file, URLClassLoader.newInstance(new URL[]{file.toURI().toURL()}));
     }
 
     /**
@@ -100,37 +95,45 @@ public class ModuleLoader {
      * @param urlClassLoader The used classLoader.
      * @throws IOException If the file was not a JarFile.
      */
-    public void loadModule(File file, URLClassLoader urlClassLoader) throws IOException {
+    public Module loadModule(File file, URLClassLoader urlClassLoader) throws IOException {
         if (isValid(file)) {
             final Module module = ModuleBuilder.build(file, urlClassLoader);
-            loadModule(module);
+            return loadModule(module);
         }
+        return null;
     }
 
     /**
      * Put and start all loaded modules in the {@link ModuleManager}.
      */
-    public void startModules() {
-        new ArrayList<>(loadedModules).forEach(this::startModule);
+    public List<Module> startModules() throws MissingDependenciesModuleException {
+        return startModules(loadedModules);
     }
 
-    private void startModule(Module module)  {
+    public List<Module> startModules(List<Module> modules) throws MissingDependenciesModuleException {
+        for (Module module : modules)
+            module = startModule(module);
+        return modules;
+    }
+
+    private Module startModule(Module module) throws MissingDependenciesModuleException {
         if (!startedModule.contains(module)) {
             final ModuleManager moduleManager = ModuloAPI.getModule().getModuleManager();
             final List<String> dependencies = module.getDependencies();
             final List<String> softDependencies = module.getSoftDependencies();
-            dependencies.stream().filter(this::containLoadedModuleWithName).map(this::getLoadedModuleByName).filter(Objects::nonNull).forEach(this::startModule);
-            softDependencies.stream().filter(this::containLoadedModuleWithName).map(this::getLoadedModuleByName).filter(Objects::nonNull).forEach(this::startModule);
-            try {
-                if (!startedModule.containsAll(dependencies.stream().map(this::getLoadedModuleByName).collect(Collectors.toList())))
-                    throw new MissingDependenciesModuleException(module, getMissingDependenciesList(dependencies));
-                moduleManager.addModule(module);
-                startedModule.add(module);
-            } catch (MissingDependenciesModuleException e) {
-                final String message = e.getMessage();
-                ModuloAPI.getLogger().error(module, message);
-            }
+            final List<Module> allDependencies = Stream.concat(dependencies.stream(), softDependencies.stream())
+                    .filter(this::containLoadedModuleWithName)
+                    .map(this::getLoadedModuleByName)
+                    .filter(Objects::nonNull)
+                    .collect(Collectors.toList());
+            for (Module dependency : allDependencies) this.startModule(dependency);
+            if (!startedModule.containsAll(dependencies.stream().map(this::getLoadedModuleByName).collect(Collectors.toList())))
+                throw new MissingDependenciesModuleException(module, getMissingDependenciesList(dependencies));
+            moduleManager.addModule(module);
+            startedModule.add(module);
+            return module;
         }
+        return module;
     }
 
     private List<String> getMissingDependenciesList(List<String> dependencies) {

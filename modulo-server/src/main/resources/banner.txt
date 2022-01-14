@@ -4,9 +4,9 @@
   | |\  /| | / .'`\ \/ /'`\' |[  | | |  | |/ .'`\ \
  _| |_\/_| |_| \__. || \__/  | | \_/ |, | || \__. |
 |_____||_____|'.__.'  '.__.;__]'.__.'_/[___]'.__.'
+                                        BINKS-1.0.1
 
            Ooh mooey mooey I love you!
 ---------------------------------------------------
 
-${application.title} ${application.version}
 Powered by Spring Boot ${spring-boot.version}

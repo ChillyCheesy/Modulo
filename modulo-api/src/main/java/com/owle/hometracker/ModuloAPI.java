@@ -1,7 +1,6 @@
 package com.owle.hometracker;
 
 import com.owle.hometracker.events.EventContainer;
-import com.owle.hometracker.modules.HTModuleAdapter;
 import com.owle.hometracker.modules.ModuleContainer;
 import com.owle.hometracker.pages.PageContainer;
 import com.owle.hometracker.signals.SignalContainer;
@@ -13,7 +12,7 @@ import com.owle.hometracker.utils.Log;
  *
  * @author hénouille
  */
-public class ModuloAPI extends HTModuleAdapter {
+public class ModuloAPI {
 
     /**
      * Module section.

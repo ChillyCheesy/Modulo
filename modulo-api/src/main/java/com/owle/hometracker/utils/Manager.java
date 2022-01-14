@@ -24,7 +24,7 @@ public class Manager<T> {
         return true;
     }
 
-    public boolean registerItems(Module module, T...items) {
+    public boolean registerItem(Module module, T... items) {
         boolean success = true;
         for (T item : items)
             if (!registerItem(module, item))
@@ -40,7 +40,7 @@ public class Manager<T> {
         return false;
     }
 
-    public boolean removeItems(Module module, T...items) {
+    public boolean removeItem(Module module, T...items) {
         boolean success = true;
         for (T item : items)
             if (!removeItem(module, item))

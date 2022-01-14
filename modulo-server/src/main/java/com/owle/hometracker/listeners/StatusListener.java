@@ -14,13 +14,13 @@ import org.springframework.stereotype.Component;
 public class StatusListener implements Listener {
 
     @EventHandler(Event.MISERABLE)
-    public void onStart(OnStartEvent e){
+    public void onStart(OnStartEvent e) {
         final Module module = e.getModule();
         ModuloAPI.getLogger().info(module, "Module \"" + module.getName() + "\" version \"" + module.getVersion() + "\" is starting.");
     }
 
     @EventHandler(Event.MISERABLE)
-    public void onStop(OnStopEvent e){
+    public void onStop(OnStopEvent e) {
         final Module module = e.getModule();
         ModuloAPI.getLogger().info(module, "Module \"" + module.getName() + "\" version \"" + module.getVersion() + "\" is stopping.");
     }

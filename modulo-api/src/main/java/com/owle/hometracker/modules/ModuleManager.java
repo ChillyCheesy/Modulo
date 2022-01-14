@@ -146,8 +146,8 @@ public class ModuleManager {
      */
     public void stopModule(Module module){
         module.stop();
-        ModuloAPI.getSignal().getSignalManager().removeAllSignalListener(module);
-        ModuloAPI.getEvent().getEventManager().removeAllEventListener(module);
+        ModuloAPI.getSignal().getSignalManager().removeAllItems(module);
+        ModuloAPI.getEvent().getEventManager().removeAllItems(module);
         ModuloAPI.getPage().getPageManager().removeAllPages(module);
         removeModule(module);
     }

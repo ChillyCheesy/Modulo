@@ -1,54 +1,51 @@
 package com.owle.hometracker.services;
 
-import com.owle.hometracker.ModuloAPI;
+import com.owle.hometracker.modules.Module;
+import com.owle.hometracker.modules.ModuleContainer;
 import com.owle.hometracker.modules.ModuleLoader;
 import com.owle.hometracker.modules.ModuleManager;
 import com.owle.hometracker.utils.Log;
+import com.owle.hometracker.utils.exception.FileIsNotAModuleDirectoryException;
+import com.owle.hometracker.utils.exception.MissingDependenciesModuleException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.loader.LaunchedURLClassLoader;
 import org.springframework.stereotype.Service;
 
-import java.io.*;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.Objects;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ModuleService {
 
     public static final String MODULES_FILE = "./modules";
 
-    @Autowired
-    private ModuloAPI moduloAPI;
+    @Autowired private Log logger;
+    @Autowired private ModuleContainer module;
 
-    @Autowired
-    private ModuleLoader loader;
-
-    @Autowired
-    private Log logger;
-
-    @Autowired
-    private ModuleManager moduleManager;
-
-    public void loadModules() {
-        final File modules = new File(MODULES_FILE);
-        assert modules.mkdirs();
-        loader.loadModules(moduloAPI);
-        Arrays.stream(Objects.requireNonNull(modules.listFiles())).forEach(file -> {
-            try {
-                loader.loadModule(file, new LaunchedURLClassLoader(new URL[]{file.toURI().toURL()}, getClass().getClassLoader()));
-            } catch (IOException e) {
-                final String message = e.getMessage();
-                logger.error(null, message);
-                e.printStackTrace();
-            }
-        });
-        logger.info(null, "-- Prepare to start modules. --");
+    public void loadAndStartModule(Module module) throws MissingDependenciesModuleException {
+        final ModuleLoader loader = this.module.getModuleLoader();
+        loader.loadModule(module);
         loader.startModules();
     }
 
+    public List<Module> loadModules() throws IOException, FileIsNotAModuleDirectoryException {
+        final File modules = new File(MODULES_FILE);
+        if (modules.mkdirs()) {
+            final ModuleLoader loader = module.getModuleLoader();
+            return loader.loadModules(modules);
+        }
+        return new ArrayList<>();
+    }
+
+    public List<Module> startModules(List<Module> modules) throws MissingDependenciesModuleException {
+        final ModuleLoader loader = module.getModuleLoader();
+        return loader.startModules(modules);
+    }
+
     public void stopModules() {
-        moduleManager.stopAllModules();
+        final ModuleManager manager = module.getModuleManager();
+        manager.stopAllModules();
     }
 
 }

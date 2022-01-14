@@ -1,5 +1,5 @@
 plugins {
-    id 'com.chillycheesy.modulo-application' version '0.0.2'
+    id 'java-library'
 }
 
 archivesBaseName = 'modulo-api'
@@ -17,11 +17,4 @@ dependencies {
 
 test {
     useJUnitPlatform()
-}
-
-module {
-    moduleName = 'HomeTracker'
-    version = hometracker_version as Object
-    authors = ['ChillyCheesy']
-    main = 'com.owle.hometracker.HTAPI'
 }

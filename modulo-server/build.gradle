@@ -23,8 +23,17 @@ test {
 }
 
 module {
-    moduleName = 'Server'
+    moduleName = hometracker_modulename as Object
     version = hometracker_version as Object
     authors = ['ChillyCheesy']
     main = 'com.owle.hometracker.ServerModule'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Implementation-Title':   hometracker_modulename as Object,
+                'Implementation-Version': hometracker_version as Object
+        )
+    }
 }
