@@ -19,4 +19,16 @@ public interface Cancelable {
      */
     void setCanceled(boolean cancel);
 
+    /**
+     * Setter for the cancelable action.
+     * @param action The action to execute.
+     */
+    void setAction(CancelableAction action);
+
+    /**
+     * Getter for the cancelable action.
+     * @return The action to execute.
+     */
+    CancelableAction getAction();
+
 }

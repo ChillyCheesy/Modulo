@@ -82,12 +82,16 @@ public abstract class Module {
      * Call the {@link #onLoad()} method
      */
     public void load() {
-        ModuloAPI.getEvent().getEventManager().emitEvent(this, new OnLoadEvent(this));
-        try {
-            this.onLoad();
-        } catch (Exception e) {
-            ModuloAPI.getLogger().error(this, e.getMessage());
-        }
+        final OnLoadEvent onLoadEvent = new OnLoadEvent(this);
+        onLoadEvent.setAction(() -> {
+            try {
+                ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is loading.");
+                this.onLoad();
+            } catch (Exception e) {
+                ModuloAPI.getLogger().error(this, e.getMessage());
+            }
+        });
+        ModuloAPI.getEvent().getEventManager().emitEvent(this, onLoadEvent);
     }
 
     /**
@@ -95,12 +99,17 @@ public abstract class Module {
      * Call the {@link #onStart()} method
      */
     public void start() {
-        ModuloAPI.getEvent().getEventManager().emitEvent(this, new OnStartEvent(this));
-        try {
-            this.onStart();
-        } catch (Exception e) {
-            ModuloAPI.getLogger().error(this, e.getMessage());
-        }
+        final OnStartEvent onStartEvent = new OnStartEvent(this);
+        onStartEvent.setAction(() -> {
+            try {
+                ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is starting.");
+                this.onStart();
+            } catch (Exception e) {
+                ModuloAPI.getLogger().error(this, e.getMessage());
+            }
+        });
+        ModuloAPI.getEvent().getEventManager().emitEvent(this, onStartEvent);
+
     }
 
     /**
@@ -109,12 +118,17 @@ public abstract class Module {
      * Call the {@link #onStop()} method
      */
     public void stop() {
-        ModuloAPI.getEvent().getEventManager().emitEvent(this, new OnStopEvent(this));
-        try {
-            this.onStop();
-        } catch (Exception e) {
-            ModuloAPI.getLogger().error(this, e.getMessage());
-        }
+        final OnStopEvent onStopEvent = new OnStopEvent(this);
+        onStopEvent.setAction(() -> {
+            try {
+                ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is stopping.");
+                this.onStop();
+            } catch (Exception e) {
+                ModuloAPI.getLogger().error(this, e.getMessage());
+            }
+        });
+        ModuloAPI.getEvent().getEventManager().emitEvent(this, onStopEvent);
+
     }
 
     public String getName() {

@@ -1,6 +1,7 @@
 package com.chillycheesy.hometracker.event;
 
 import com.chillycheesy.hometracker.events.Cancelable;
+import com.chillycheesy.hometracker.events.CancelableAction;
 import com.chillycheesy.hometracker.events.Event;
 import com.chillycheesy.hometracker.modules.Module;
 
@@ -18,6 +19,7 @@ import java.util.Objects;
 public abstract class ModuleStatusEvent extends Event implements Cancelable {
 
     private Module module;
+    private CancelableAction action;
     private boolean cancel;
 
     /**
@@ -63,4 +65,13 @@ public abstract class ModuleStatusEvent extends Event implements Cancelable {
         this.cancel = cancel;
     }
 
+    @Override
+    public void setAction(CancelableAction action) {
+        this.action = action;
+    }
+
+    @Override
+    public CancelableAction getAction() {
+        return action;
+    }
 }

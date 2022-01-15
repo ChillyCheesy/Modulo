@@ -1,7 +1,6 @@
 package com.chillycheesy.hometracker.listeners;
 
 import com.chillycheesy.hometracker.event.*;
-import com.owle.hometracker.event.*;
 import com.chillycheesy.hometracker.events.Event;
 import com.chillycheesy.hometracker.events.EventHandler;
 import com.chillycheesy.hometracker.modules.Module;
@@ -15,24 +14,24 @@ public class LogListener implements Listener {
 
     private static final Logger logger = LoggerFactory.getLogger(LogListener.class);
 
-    @EventHandler(Event.CANCELABLE)
+    @EventHandler(Event.MISERABLE)
     public void logDisplay(InfoLogEvent event) {
-        logger.info(format(event));
+        event.setAction(() -> logger.info(format(event)));
     }
 
-    @EventHandler(Event.CANCELABLE)
+    @EventHandler(Event.MISERABLE)
     public void logDisplay(ErrorLogEvent event) {
-        logger.error(format(event));
+        event.setAction(() -> logger.error(format(event)));
     }
 
-    @EventHandler(Event.CANCELABLE)
+    @EventHandler(Event.MISERABLE)
     public void logDisplay(WarnLogEvent event) {
-        logger.warn(format(event));
+        event.setAction(() -> logger.warn(format(event)));
     }
 
-    @EventHandler(Event.CANCELABLE)
+    @EventHandler(Event.MISERABLE)
     public void logDisplay(DebugLogEvent event) {
-        logger.debug(format(event));
+        event.setAction(() -> logger.debug(format(event)));
     }
 
     private String format(LogEvent event) {

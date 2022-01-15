@@ -73,8 +73,8 @@ public class ModuleManager {
      * @throws HTModuleNotFoundException if the module you want is not int the modules manager
      */
     public Module getModule(String name) throws HTModuleNotFoundException {
-        for(Module m : modules)
-            if(m.getName().equals(name))
+        for (Module m : modules)
+            if (m.getName().equals(name))
                 return m;
         throw new HTModuleNotFoundException(name);
     }
@@ -108,11 +108,10 @@ public class ModuleManager {
      */
     public boolean containsModule(String name) {
         try {
-            getModule(name);
+            return getModule(name) != null;
         } catch (HTModuleNotFoundException e) {
             return false;
         }
-        return true;
     }
 
     /**

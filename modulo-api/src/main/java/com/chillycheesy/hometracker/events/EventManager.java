@@ -10,7 +10,10 @@ import com.chillycheesy.hometracker.utils.exception.InvalidParameterEventHandler
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * EventManager make the gesture between {@link Listener} and {@link Event}.
@@ -44,12 +47,12 @@ public class EventManager extends ListenerManager {
         final List<Listener> moduleListeners = super.getAllItems();
         for (Listener listener : moduleListeners) {
             final Set<Method> methods = getCompatibleMethods(event, listener);
-            for (Method method : methods) {
-                if (event instanceof Cancelable && ((Cancelable) event).isCanceled())
-                    break;
+            for (Method method : methods)
                 method.invoke(listener, event);
-            }
         }
+        if (Cancelable.class.isAssignableFrom(event.getClass()) && !((Cancelable) event).isCanceled())
+            ((Cancelable) event).getAction().action();
+
     }
 
     @Override

@@ -15,7 +15,6 @@ public class Event {
     public static final int NEUTRAL = 0;
     public static final int MISERABLE = -1;
 
-    public static final int CANCELABLE = Integer.MIN_VALUE;
 
     /**
      * The emitter module.
