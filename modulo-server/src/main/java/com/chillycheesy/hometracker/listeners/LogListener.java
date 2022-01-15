@@ -14,22 +14,22 @@ public class LogListener implements Listener {
 
     private static final Logger logger = LoggerFactory.getLogger(LogListener.class);
 
-    @EventHandler(Event.MISERABLE)
+    @EventHandler(Event.DIVINE)
     public void logDisplay(InfoLogEvent event) {
         event.setAction(() -> logger.info(format(event)));
     }
 
-    @EventHandler(Event.MISERABLE)
+    @EventHandler(Event.DIVINE)
     public void logDisplay(ErrorLogEvent event) {
         event.setAction(() -> logger.error(format(event)));
     }
 
-    @EventHandler(Event.MISERABLE)
+    @EventHandler(Event.DIVINE)
     public void logDisplay(WarnLogEvent event) {
         event.setAction(() -> logger.warn(format(event)));
     }
 
-    @EventHandler(Event.MISERABLE)
+    @EventHandler(Event.DIVINE)
     public void logDisplay(DebugLogEvent event) {
         event.setAction(() -> logger.debug(format(event)));
     }
