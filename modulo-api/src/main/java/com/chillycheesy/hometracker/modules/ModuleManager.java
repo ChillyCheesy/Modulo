@@ -13,6 +13,7 @@ import java.util.List;
  * Contains and manages all the {@link Module} of <i>HomeTracker</i>
  */
 public class ModuleManager {
+
     private final List<Module> modules;
 
     public ModuleManager(){

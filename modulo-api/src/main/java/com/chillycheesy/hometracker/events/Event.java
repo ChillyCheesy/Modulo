@@ -3,7 +3,7 @@ package com.chillycheesy.hometracker.events;
 import com.chillycheesy.hometracker.modules.Module;
 
 /**
- * An Event can be create, emit and catch by every module.
+ * An Event can be created, emit and catch by every module.
  * Each event contain some information about it.
  * @author henouille
  */

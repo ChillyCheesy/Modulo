@@ -19,7 +19,7 @@ import static org.mockito.Mockito.*;
 public class HTModuleTest {
 
     private Module module;
-    private HTModuleConfig config;
+    private ModuleConfig config;
 
     @BeforeEach
     public final void init() throws NoSuchMethodException, NoSuchFieldException {
@@ -27,7 +27,7 @@ public class HTModuleTest {
         Method load = module.getClass().getDeclaredMethod("onLoad");
         Method start = module.getClass().getDeclaredMethod("onStart");
         Method stop = module.getClass().getDeclaredMethod("onStop");
-        config = new HTModuleConfig("MockModule", "0.0.0", List.of("Owl-e"), new ArrayList<>(), new ArrayList<>(), null, null);
+        config = new ModuleConfig("MockModule", "0.0.0", List.of("Owl-e"), new ArrayList<>(), new ArrayList<>(), null, null);
         FieldSetter.setField(module, Module.class.getDeclaredField("config"), config);
         load.setAccessible(true);
         start.setAccessible(true);
@@ -68,7 +68,7 @@ public class HTModuleTest {
 
     @Test
     public final void setterTest() {
-        final HTModuleConfig newConfig = new HTModuleConfig("Test", "1.0.0", List.of("No","One"), List.of(module.getName()), List.of(module.getName()), "main", "page");
+        final ModuleConfig newConfig = new ModuleConfig("Test", "1.0.0", List.of("No","One"), List.of(module.getName()), List.of(module.getName()), "main", "page");
         final JarFile jar = mock(JarFile.class);
         module.setVersion(newConfig.getVersion());
         module.setName(newConfig.getName());
@@ -91,7 +91,7 @@ public class HTModuleTest {
 
     @Test
     public final void configGetterSetterTest() {
-        HTModuleConfig newConfig = new HTModuleConfig("Test", "1.0.0", List.of("No","One"), List.of(module.getName()), List.of(module.getName()), "main", null);
+        ModuleConfig newConfig = new ModuleConfig("Test", "1.0.0", List.of("No","One"), List.of(module.getName()), List.of(module.getName()), "main", null);
 
         module.setConfig(newConfig);
         assertEquals(newConfig, module.getConfig());
@@ -177,7 +177,7 @@ public class HTModuleTest {
 
             }
         };
-        assertEquals(new HTModuleConfig(), m.getConfig());
+        assertEquals(new ModuleConfig(), m.getConfig());
     }
 
     @Test

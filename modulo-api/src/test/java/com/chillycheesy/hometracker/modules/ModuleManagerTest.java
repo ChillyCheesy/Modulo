@@ -15,13 +15,13 @@ import static org.mockito.Mockito.*;
 public class ModuleManagerTest {
     private ModuleManager manager;
     private Module module1, module2;
-    private HTModuleConfig config1, config2;
+    private ModuleConfig config1, config2;
 
     @BeforeEach
     public final void init() throws NoSuchFieldException {
         manager = new ModuleManager();
-        config1 = new HTModuleConfig("module 1", "0.0.0", List.of("Owl-e"), new ArrayList<>(), new ArrayList<>(), null, null);
-        config2 = new HTModuleConfig("module 2", "0.0.0", List.of("Owl-e"), new ArrayList<>(), new ArrayList<>(), null, null);
+        config1 = new ModuleConfig("module 1", "0.0.0", List.of("Owl-e"), new ArrayList<>(), new ArrayList<>(), null, null);
+        config2 = new ModuleConfig("module 2", "0.0.0", List.of("Owl-e"), new ArrayList<>(), new ArrayList<>(), null, null);
         module1 = mock(Module.class, CALLS_REAL_METHODS);
         FieldSetter.setField(module1, Module.class.getDeclaredField("config"), config1);
         module2 = mock(Module.class, CALLS_REAL_METHODS);

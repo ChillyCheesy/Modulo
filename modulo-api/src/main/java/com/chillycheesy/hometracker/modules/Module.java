@@ -19,7 +19,7 @@ import java.util.jar.JarFile;
  */
 public abstract class Module {
 
-    private HTModuleConfig config;
+    private ModuleConfig config;
     private JarFile jarFile;
 
     /**
@@ -32,7 +32,7 @@ public abstract class Module {
      * @param main             the main file of your jar (example: com.dev.MyAwesomeModule).
      */
     public Module(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main) {
-        this(new HTModuleConfig(name, version, authors, dependencies, softDependencies, main, null));
+        this(new ModuleConfig(name, version, authors, dependencies, softDependencies, main, null));
     }
 
     /**
@@ -46,19 +46,19 @@ public abstract class Module {
      * @param mainPageName     the name of the main page by default it is "index".
      */
     public Module(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main, String mainPageName) {
-        this(new HTModuleConfig(name, version, authors, dependencies, softDependencies, main, mainPageName));
+        this(new ModuleConfig(name, version, authors, dependencies, softDependencies, main, mainPageName));
     }
 
     /**
-     * Init your module by passing the {@link HTModuleConfig} object
+     * Init your module by passing the {@link ModuleConfig} object
      * @param config the configuration of your module
      */
-    public Module(HTModuleConfig config) {
+    public Module(ModuleConfig config) {
         this.config = config;
     }
 
     public Module() {
-        config = new HTModuleConfig();
+        config = new ModuleConfig();
     }
 
     /**
@@ -184,11 +184,11 @@ public abstract class Module {
         config.setMainPageName(mainPage);
     }
 
-    public HTModuleConfig getConfig() {
+    public ModuleConfig getConfig() {
         return config;
     }
 
-    public void setConfig(HTModuleConfig config) {
+    public void setConfig(ModuleConfig config) {
         this.config = config;
     }
 

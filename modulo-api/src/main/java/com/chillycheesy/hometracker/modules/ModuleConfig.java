@@ -8,7 +8,7 @@ import java.util.Objects;
  * Represent the configuration of a module.<br>
  * The attributes are made to be the same you put in your module.xml file (see {@link ModuleBuilder} for details)
  */
-public class HTModuleConfig {
+public class ModuleConfig {
 
     /**
      * The default name of the main page, by defaul it's set to "index"
@@ -35,7 +35,7 @@ public class HTModuleConfig {
      * @param softDependencies the list of modules that your module can use to work with but without being an obligation (your module <b>can</b> load without them)
      * @param main             the main file of your jar (example: com.dev.MyAwesomeModule)
      */
-    public HTModuleConfig(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main, String mainPageName) {
+    public ModuleConfig(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main, String mainPageName) {
         this.name = name;
         this.version = version;
         this.authors = authors;
@@ -45,11 +45,11 @@ public class HTModuleConfig {
         this.mainPageName = mainPageName;
     }
 
-    public HTModuleConfig(HTModuleConfig config) {
+    public ModuleConfig(ModuleConfig config) {
         this(config.getName(), config.getVersion(), config.getAuthors(), config.getDependencies(), config.getSoftDependencies(), config.getMain(), config.getMainPageName());
     }
 
-    public HTModuleConfig() {
+    public ModuleConfig() {
     }
 
     public String getName() {
@@ -120,7 +120,7 @@ public class HTModuleConfig {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        HTModuleConfig that = (HTModuleConfig) o;
+        ModuleConfig that = (ModuleConfig) o;
         return Objects.equals(name, that.name) &&
                 Objects.equals(version, that.version) &&
                 Objects.equals(authors, that.authors) &&

@@ -1,6 +1,6 @@
 package com.chillycheesy.hometracker;
 
-import com.chillycheesy.hometracker.modules.HTModuleConfig;
+import com.chillycheesy.hometracker.modules.ModuleConfig;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.services.ModuleService;
 import com.chillycheesy.hometracker.services.ServerListenerService;
@@ -20,7 +20,7 @@ public class ServerModule extends Module {
     @Autowired private Log logger;
     @Autowired private ModuleService moduleService;
     @Autowired private ServerListenerService serverListenerService;
-    @Autowired private HTModuleConfig serverConfig;
+    @Autowired private ModuleConfig serverConfig;
 
     private List<Module> modules;
 

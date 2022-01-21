@@ -78,11 +78,11 @@ public class ModuleBuilder {
     /**
      * Reads the yml file in the root of the jar passed in parameter
      * @param file the jar file of your {@link Module}
-     * @return a {@link HTModuleConfig}
+     * @return a {@link ModuleConfig}
      * @throws IOException if the file can't be access or read
      * @throws InvalidModuleConfigurationException if the configuration doesn't match the rules described on top of the class
      */
-    public static HTModuleConfig readYml(File file) throws IOException, InvalidModuleConfigurationException {
+    public static ModuleConfig readYml(File file) throws IOException, InvalidModuleConfigurationException {
         final FileInputStream fileInputStream = new FileInputStream(file);
         return readYml(file, fileInputStream);
     }
@@ -91,14 +91,14 @@ public class ModuleBuilder {
      * Reads the yml file in the root of the jar passed in parameter
      * @param file the jar file of your {@link Module}
      * @param inputStream the {@link InputStream} you especially want to use
-     * @return a {@link HTModuleConfig}
+     * @return a {@link ModuleConfig}
      * @throws IOException
      * @throws InvalidModuleConfigurationException
      */
-    public static HTModuleConfig readYml(File file, InputStream inputStream) throws IOException, InvalidModuleConfigurationException {
+    public static ModuleConfig readYml(File file, InputStream inputStream) throws IOException, InvalidModuleConfigurationException {
         final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
-        final HTModuleConfig config = mapper.readValue(inputStream, HTModuleConfig.class);
+        final ModuleConfig config = mapper.readValue(inputStream, ModuleConfig.class);
         checkField(file, config);
         return config;
     }
@@ -118,7 +118,7 @@ public class ModuleBuilder {
      * @param config
      * @throws InvalidModuleConfigurationException
      */
-    private static void checkField(File file, HTModuleConfig config) throws InvalidModuleConfigurationException {
+    private static void checkField(File file, ModuleConfig config) throws InvalidModuleConfigurationException {
         String missingField = "";
         if (config.getMain() == null) missingField += "main ";
         if (config.getAuthors() == null) missingField += "authors ";
@@ -131,7 +131,7 @@ public class ModuleBuilder {
         final JarFile jar = new JarFile(file);
         final JarEntry jarEntry = jar.getJarEntry("module.yml");
         final InputStream is = jar.getInputStream(jarEntry);
-        final HTModuleConfig config = readYml(file, is);
+        final ModuleConfig config = readYml(file, is);
         final Class<?> moduleClass = Class.forName(config.getMain(), true, urlClassLoader);
         final Object object = moduleClass.getConstructor().newInstance();
         final Module module = (Module) object;

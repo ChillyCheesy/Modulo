@@ -40,7 +40,7 @@ public class ModuleBuilderTest {
 
     @Test
     public final void readYmlTest() throws IOException, InvalidModuleConfigurationException {
-        HTModuleConfig config = ModuleBuilder.readYml(configFile);
+        ModuleConfig config = ModuleBuilder.readYml(configFile);
         assertTrue(configFile.exists());
         assertNotNull(config);
         assertEquals("Hello", config.getName());

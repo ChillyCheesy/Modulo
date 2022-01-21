@@ -1,7 +1,7 @@
 package com.chillycheesy.hometracker.page;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.modules.HTModuleConfig;
+import com.chillycheesy.hometracker.modules.ModuleConfig;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.modules.ModuleManager;
 import com.chillycheesy.hometracker.pages.*;
@@ -27,7 +27,7 @@ public class HTModulePageTest {
     private ModuleManager moduleManager;
 
     private Module module1, module2;
-    private HTModuleConfig config1, config2;
+    private ModuleConfig config1, config2;
 
     @BeforeEach
     public final void init() {
@@ -38,8 +38,8 @@ public class HTModulePageTest {
         module1 = mock(Module.class);
         module2 = mock(Module.class);
 
-        config1 = new HTModuleConfig("name1", "version1", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "main1", "page1");
-        config2 = new HTModuleConfig("name2", "version2", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "main2", "page2");
+        config1 = new ModuleConfig("name1", "version1", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "main1", "page1");
+        config2 = new ModuleConfig("name2", "version2", new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), "main2", "page2");
 
         when(module1.getConfig()).thenReturn(config1);
         when(module2.getConfig()).thenReturn(config2);
@@ -146,7 +146,7 @@ public class HTModulePageTest {
 
     @Test
     public final void allModulesConfigTest() {
-        final List<HTModuleConfig> configs = htModulePage.allModulesConfig();
+        final List<ModuleConfig> configs = htModulePage.allModulesConfig();
         assertTrue(configs.contains(config1));
         assertTrue(configs.contains(config2));
     }

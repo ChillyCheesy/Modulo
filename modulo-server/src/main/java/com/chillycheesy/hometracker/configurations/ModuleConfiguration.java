@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.events.EventContainer;
-import com.chillycheesy.hometracker.modules.HTModuleConfig;
+import com.chillycheesy.hometracker.modules.ModuleConfig;
 import com.chillycheesy.hometracker.utils.Log;
 import org.apache.commons.io.IOUtils;
 import org.springframework.context.annotation.Bean;
@@ -41,11 +41,11 @@ public class ModuleConfiguration {
     }
 
     @Bean
-    public HTModuleConfig serverConfig() throws IOException {
+    public ModuleConfig serverConfig() throws IOException {
         final File file = inputStreamToFile(getClass().getClassLoader().getResourceAsStream("module.yml"));
         final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
         mapper.findAndRegisterModules();
-        return mapper.readValue(file, HTModuleConfig.class);
+        return mapper.readValue(file, ModuleConfig.class);
     }
 
     private File inputStreamToFile(InputStream in) throws IOException {

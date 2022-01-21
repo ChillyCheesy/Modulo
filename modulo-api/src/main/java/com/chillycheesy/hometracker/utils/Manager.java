@@ -56,6 +56,15 @@ public class Manager<T> {
         return this.managedItems.get(module);
     }
 
+    public Module getModuleByItem(T item) {
+        for (Module module : managedItems.keySet()) {
+            final List<T> items = managedItems.get(module);
+            if (items.contains(item))
+                return module;
+        }
+        return null;
+    }
+
     public List<T> getAllItems() {
         List<T> list = new ArrayList<>();
         managedItems.forEach((module, item) -> list.addAll(item));

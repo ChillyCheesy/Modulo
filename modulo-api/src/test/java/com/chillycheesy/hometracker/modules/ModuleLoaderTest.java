@@ -19,14 +19,14 @@ public class ModuleLoaderTest {
 
     private ModuleLoader loader;
     private File folder;
-    private HTModuleConfig config1, config2;
+    private ModuleConfig config1, config2;
 
     @BeforeEach
     public final void init() throws URISyntaxException {
         loader = new ModuleLoader();
         folder = new File(Objects.requireNonNull(ModuleLoaderTest.class.getClassLoader().getResource("modules")).toURI().getPath());
-        config1 = new HTModuleConfig("MockModule1", "0.0.0", List.of("Owl-e"), Collections.singletonList("MockModule2"), new ArrayList<>(), null, null);
-        config2 = new HTModuleConfig("MockModule2", "0.0.0", List.of("Owl-e"), new ArrayList<>(), new ArrayList<>(), null, null);
+        config1 = new ModuleConfig("MockModule1", "0.0.0", List.of("Owl-e"), Collections.singletonList("MockModule2"), new ArrayList<>(), null, null);
+        config2 = new ModuleConfig("MockModule2", "0.0.0", List.of("Owl-e"), new ArrayList<>(), new ArrayList<>(), null, null);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class ModuleLoaderTest {
 
     @Test
     public final void startModulesButMissingDependencies() {
-        final HTModuleConfig config = new HTModuleConfig(config1);
+        final ModuleConfig config = new ModuleConfig(config1);
         config.setDependencies(Collections.singletonList("depend-module"));
         final Module module = mock(Module.class, CALLS_REAL_METHODS);
         module.setConfig(config);
