@@ -67,12 +67,13 @@ public class LogEvent extends Event implements Cancelable {
     }
 
     @Override
-    public void setAction(CancelableAction action) {
+    public LogEvent setCancelableAction(CancelableAction action) {
         this.action = action;
+        return this;
     }
 
     @Override
-    public CancelableAction getAction() {
+    public CancelableAction getCancelableAction() {
         return action;
     }
 }

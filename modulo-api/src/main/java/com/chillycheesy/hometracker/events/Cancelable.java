@@ -23,12 +23,12 @@ public interface Cancelable {
      * Setter for the cancelable action.
      * @param action The action to execute.
      */
-    void setAction(CancelableAction action);
+    Cancelable setCancelableAction(CancelableAction action);
 
     /**
      * Getter for the cancelable action.
      * @return The action to execute.
      */
-    CancelableAction getAction();
+    CancelableAction getCancelableAction();
 
 }

@@ -16,22 +16,22 @@ public class LogListener implements Listener {
 
     @EventHandler(Event.DIVINE)
     public void logDisplay(InfoLogEvent event) {
-        event.setAction(() -> logger.info(format(event)));
+        event.setCancelableAction(() -> logger.info(format(event)));
     }
 
     @EventHandler(Event.DIVINE)
     public void logDisplay(ErrorLogEvent event) {
-        event.setAction(() -> logger.error(format(event)));
+        event.setCancelableAction(() -> logger.error(format(event)));
     }
 
     @EventHandler(Event.DIVINE)
     public void logDisplay(WarnLogEvent event) {
-        event.setAction(() -> logger.warn(format(event)));
+        event.setCancelableAction(() -> logger.warn(format(event)));
     }
 
     @EventHandler(Event.DIVINE)
     public void logDisplay(DebugLogEvent event) {
-        event.setAction(() -> logger.debug(format(event)));
+        event.setCancelableAction(() -> logger.debug(format(event)));
     }
 
     private String format(LogEvent event) {

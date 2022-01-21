@@ -82,8 +82,7 @@ public abstract class Module {
      * Call the {@link #onLoad()} method
      */
     public void load() {
-        final OnLoadEvent onLoadEvent = new OnLoadEvent(this);
-        onLoadEvent.setAction(() -> {
+        final OnLoadEvent onLoadEvent = (OnLoadEvent) new OnLoadEvent(this).setCancelableAction(() -> {
             try {
                 ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is loading.");
                 this.onLoad();
@@ -99,8 +98,7 @@ public abstract class Module {
      * Call the {@link #onStart()} method
      */
     public void start() {
-        final OnStartEvent onStartEvent = new OnStartEvent(this);
-        onStartEvent.setAction(() -> {
+        final OnStartEvent onStartEvent = (OnStartEvent) new OnStartEvent(this).setCancelableAction(() -> {
             try {
                 ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is starting.");
                 this.onStart();
@@ -118,8 +116,7 @@ public abstract class Module {
      * Call the {@link #onStop()} method
      */
     public void stop() {
-        final OnStopEvent onStopEvent = new OnStopEvent(this);
-        onStopEvent.setAction(() -> {
+        final OnStopEvent onStopEvent = (OnStopEvent) new OnStopEvent(this).setCancelableAction(() -> {
             try {
                 ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is stopping.");
                 this.onStop();

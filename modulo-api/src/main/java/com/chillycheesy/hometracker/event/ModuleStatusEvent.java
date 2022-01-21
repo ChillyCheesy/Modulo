@@ -66,12 +66,13 @@ public abstract class ModuleStatusEvent extends Event implements Cancelable {
     }
 
     @Override
-    public void setAction(CancelableAction action) {
+    public ModuleStatusEvent setCancelableAction(CancelableAction action) {
         this.action = action;
+        return this;
     }
 
     @Override
-    public CancelableAction getAction() {
+    public CancelableAction getCancelableAction() {
         return action;
     }
 }
