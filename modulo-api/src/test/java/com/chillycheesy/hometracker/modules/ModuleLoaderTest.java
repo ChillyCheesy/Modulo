@@ -5,7 +5,6 @@ import com.chillycheesy.hometracker.utils.exception.FileIsNotAModuleDirectoryExc
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.util.reflection.FieldSetter;
 
 import java.io.File;
 import java.io.IOException;
@@ -17,7 +16,7 @@ import static org.mockito.Mockito.*;
 
 public class ModuleLoaderTest {
 
-    private ModuleLoader loader;
+    /*private ModuleLoader loader;
     private File folder;
     private ModuleConfig config1, config2;
 
@@ -96,6 +95,6 @@ public class ModuleLoaderTest {
     @AfterEach
     public final void afterAll(){
         ModuloAPI.getModule().getModuleManager().removeModule("MockModule1", "MockModule2", "Hello");
-    }
+    }*/
 
 }

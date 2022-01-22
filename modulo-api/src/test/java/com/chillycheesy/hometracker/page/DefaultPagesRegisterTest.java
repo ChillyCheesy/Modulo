@@ -11,7 +11,7 @@ import static org.mockito.Mockito.*;
 
 public class DefaultPagesRegisterTest {
 
-    @Test
+   /* @Test
     public final void registerTest() throws PageMissingIndexAnnotationException, PageNotFoundException {
         final PageManager pageManager = mock(PageManager.class, CALLS_REAL_METHODS);
         final ModuloAPI moduloAPI = mock(ModuloAPI.class);
@@ -26,6 +26,6 @@ public class DefaultPagesRegisterTest {
     public final void registerDefaultPageManagerTest() {
         final DefaultPagesRegisterer defaultPagesRegisterer = new DefaultPagesRegisterer();
         assertEquals(ModuloAPI.getPage().getPageManager(), defaultPagesRegisterer.getPageManager());
-    }
+    }*/
 
 }

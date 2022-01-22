@@ -9,7 +9,7 @@ import static org.mockito.Mockito.*;
 
 public class DefaultListenerRegisterTest {
 
-    @Test
+   /* @Test
     public final void registerTest() {
         final EventManager eventManager = mock(EventManager.class);
         final DefaultListenerRegisterer defaultListenerRegisterer = new DefaultListenerRegisterer(eventManager);
@@ -24,8 +24,7 @@ public class DefaultListenerRegisterTest {
         final DefaultListenerRegisterer defaultListenerRegisterer = new DefaultListenerRegisterer();
         assertEquals(ModuloAPI.getEvent().getEventManager(), defaultListenerRegisterer.getEventManager());
     }
-
-
+*/
 
 
 }

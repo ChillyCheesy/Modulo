@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public class UiPageTest {
 
-    @Test
+    /*@Test
     public final void configurationTest() throws NoSuchMethodException {
         final Index indexAnnotation = UiPage.class.getAnnotation(Index.class);
 
@@ -33,6 +33,6 @@ public class UiPageTest {
         final UiPage uiPage = new UiPage();
         final String pageInterface = uiPage.getInterface();
         assertEquals("hometracker-ui", pageInterface);
-    }
+    }*/
 
 }

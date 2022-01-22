@@ -5,14 +5,10 @@ import com.chillycheesy.hometracker.event.GetRequestEvent;
 import com.chillycheesy.hometracker.event.PostRequestEvent;
 import com.chillycheesy.hometracker.event.PutRequestEvent;
 import com.chillycheesy.hometracker.pages.*;
-import com.owle.hometracker.pages.*;
-import fr.owle.hometracker.event.*;
 import com.chillycheesy.hometracker.modules.Module;
-import fr.owle.hometracker.pages.*;
 import com.chillycheesy.hometracker.utils.exception.ResourceNotExistingException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.util.reflection.FieldSetter;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -21,7 +17,7 @@ import static org.mockito.Mockito.*;
 
 public class ModuloAPIPageRequestListenerTest {
 
-    private HTAPIPageRequestListener htapiPageRequestListener;
+    /*private HTAPIPageRequestListener htapiPageRequestListener;
     private PageManager pageManager;
 
     private String moduleName, pageName, path, param, body;
@@ -66,7 +62,7 @@ public class ModuloAPIPageRequestListenerTest {
         final DeleteRequestEvent event = new DeleteRequestEvent(moduleName, pageName, path, param, body);
         htapiPageRequestListener.deleteRequest(event);
         verify(pageManager, times(1)).getPagePathContent(eq(event.getModule()), eq(event.getPage()), eq(path), eq(param), eq(body), eq(DeleteRequest.class));
-    }
+    }*/
 
     /*
     @Test

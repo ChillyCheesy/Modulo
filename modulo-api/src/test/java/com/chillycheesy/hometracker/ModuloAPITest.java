@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ModuloAPITest {
 
-    @Test
+    /*@Test
     public final void testSingletonGetters() {
         final ModuleContainer moduleContainer = ModuloAPI.getModule();
         final EventContainer eventContainer = ModuloAPI.getEvent();
@@ -24,6 +24,6 @@ public class ModuloAPITest {
         Assertions.assertEquals(signalContainer, ModuloAPI.getSignal());
         Assertions.assertEquals(log, ModuloAPI.getLogger());
         assertEquals(moduloAPI, ModuloAPI.getHTAPI());
-    }
+    }*/
 
 }

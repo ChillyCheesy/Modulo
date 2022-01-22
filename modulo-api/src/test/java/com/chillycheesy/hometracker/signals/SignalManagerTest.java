@@ -7,7 +7,6 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.listener.Listener;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.util.reflection.FieldSetter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +19,7 @@ import static org.mockito.Mockito.mock;
 
 public class SignalManagerTest {
 
-    static class TestSignalListener implements Listener {
+    /*static class TestSignalListener implements Listener {
         @SignalHandler("my-signal")
         public void onTest(Module module, String[] args) { }
     }
@@ -95,6 +94,6 @@ public class SignalManagerTest {
         assertTrue(map.get(module).contains(listener2));
         assertTrue(signalManager.removeSignalListener(module, listener2));
         assertFalse(map.get(module).contains(listener2));
-    }
+    }*/
 
 }

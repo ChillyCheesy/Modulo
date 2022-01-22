@@ -1,5 +1,6 @@
 package com.chillycheesy.hometracker;
 
+import com.chillycheesy.hometracker.commands.CommandContainer;
 import com.chillycheesy.hometracker.modules.ModuleContainer;
 import com.chillycheesy.hometracker.signals.SignalContainer;
 import com.chillycheesy.hometracker.events.EventContainer;
@@ -34,6 +35,11 @@ public class ModuloAPI {
      * Log section.
      */
     private static Log logger;
+
+    /**
+     * Command Section
+     */
+    private static CommandContainer command;
 
     /**
      * Getter for Module logic section.
@@ -78,6 +84,15 @@ public class ModuloAPI {
      */
     public static Log getLogger() {
         return logger = logger == null ? new Log(getEvent()) : logger;
+    }
+
+    /**
+     * Getter for Command logic section.
+     *
+     * @return The Command section.
+     */
+    public static CommandContainer getCommand() {
+        return command = command == null ? new CommandContainer() : command;
     }
 
 }

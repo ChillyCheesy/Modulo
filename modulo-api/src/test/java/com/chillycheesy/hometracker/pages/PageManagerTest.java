@@ -5,7 +5,6 @@ import com.chillycheesy.hometracker.utils.exception.PageMissingIndexAnnotationEx
 import com.chillycheesy.hometracker.utils.exception.PageNotFoundException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.util.reflection.FieldSetter;
 
 import java.util.*;
 
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class PageManagerTest {
 
-    class PageMock1 implements Page { }
+   /* class PageMock1 implements Page { }
     @Index("mock")
     class PageMock2 implements Page { }
 
@@ -97,5 +96,5 @@ public class PageManagerTest {
         pageManager.submitPages(module1, page1);
         assertTrue(pageManager.pageExist(module1, page1));
         assertFalse(pageManager.pageExist(module1, page2));
-    }
+    }*/
 }

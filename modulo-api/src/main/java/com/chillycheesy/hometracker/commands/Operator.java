@@ -1,6 +1,7 @@
 package com.chillycheesy.hometracker.commands;
 
 public class Operator {
+
     public static final int DIVINE = Integer.MAX_VALUE;
     public static final int MAJOR = 2;
     public static final int IMPORTANT = 1;
@@ -8,19 +9,13 @@ public class Operator {
     public static final int MISERABLE = -1;
 
     private int priority;
-    private String name;
     private OperatorListener listener;
 
     public Operator() { }
 
-    public Operator(String name, int priority, OperatorListener listener) {
-        this.name = name;
+    public Operator(int priority, OperatorListener listener) {
         this.priority = priority;
         this.listener = listener;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public int getPriority() {

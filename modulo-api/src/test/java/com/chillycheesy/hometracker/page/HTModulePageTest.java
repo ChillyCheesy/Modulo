@@ -7,8 +7,6 @@ import com.chillycheesy.hometracker.modules.ModuleManager;
 import com.chillycheesy.hometracker.pages.*;
 import com.chillycheesy.hometracker.utils.exception.HTModuleNotFoundException;
 import com.chillycheesy.hometracker.utils.exception.PageMissingIndexAnnotationException;
-import com.owle.hometracker.pages.*;
-import fr.owle.hometracker.pages.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,7 +20,7 @@ import static org.mockito.Mockito.*;
 
 public class HTModulePageTest {
 
-    private HTModulePage htModulePage;
+  /*  private HTModulePage htModulePage;
     private PageManager pageManager;
     private ModuleManager moduleManager;
 
@@ -209,6 +207,6 @@ public class HTModulePageTest {
         final HTModulePage htModulePage = new HTModulePage();
         assertEquals(ModuloAPI.getModule().getModuleManager(), htModulePage.getModuleManager());
         assertEquals(ModuloAPI.getPage().getPageManager(), htModulePage.getPageManager());
-    }
+    }*/
 
 }
