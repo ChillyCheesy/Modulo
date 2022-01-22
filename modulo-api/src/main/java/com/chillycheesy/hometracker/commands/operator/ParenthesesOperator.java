@@ -3,11 +3,10 @@ package com.chillycheesy.hometracker.commands.operator;
 import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.*;
 
-
 public class ParenthesesOperator extends Operator implements OperatorListener {
 
     public ParenthesesOperator() {
-        super();
+        super(Operator.DIVINE, null);
         super.setListener(this);
     }
 
@@ -25,18 +24,16 @@ public class ParenthesesOperator extends Operator implements OperatorListener {
     public Operation findOperatorMatch(CommandFlux flux) {
         if (flux != null) {
             final String content = flux.getContent();
-            int start = content.indexOf('('), open = 0;
+            int start = content.indexOf('('), open = 1;
             if (start > -1 && start < content.length() - 1) {
-                for (int i = start ; i < content.length() ; ++i) {
+                for (int i = start + 1 ; i < content.length() ; ++i) {
                     char c = content.charAt(i);
                     if (c == '(') ++open;
                     else if (c == ')') --open;
-                    if (open == 0 && i > start)
-                        return createOperation(content, start, i);
+                    if (open == 0) return createOperation(content, start, i);
                 }
             }
         }
-
         return null;
     }
 
