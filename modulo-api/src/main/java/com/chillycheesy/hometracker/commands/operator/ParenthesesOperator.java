@@ -2,13 +2,10 @@ package com.chillycheesy.hometracker.commands.operator;
 
 import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.*;
+import com.chillycheesy.hometracker.utils.Priority;
 
-public class ParenthesesOperator extends Operator implements OperatorListener {
-
-    public ParenthesesOperator() {
-        super(Operator.DIVINE, null);
-        super.setListener(this);
-    }
+@Operator(Priority.DIVINE)
+public class ParenthesesOperator implements OperatorListener, OperatorFinder {
 
     @Override
     public CommandFlux onOperate(CommandFlux left, CommandFlux center, CommandFlux right) {

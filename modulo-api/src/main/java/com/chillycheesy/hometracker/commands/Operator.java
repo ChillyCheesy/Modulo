@@ -2,14 +2,9 @@ package com.chillycheesy.hometracker.commands;
 
 public class Operator {
 
-    public static final int DIVINE = Integer.MAX_VALUE;
-    public static final int MAJOR = 2;
-    public static final int IMPORTANT = 1;
-    public static final int NEUTRAL = 0;
-    public static final int MISERABLE = -1;
-
     private int priority;
     private OperatorListener listener;
+    private OperatorFinder finder;
 
     public Operator() { }
 
@@ -24,6 +19,14 @@ public class Operator {
 
     public void setPriority(int priority) {
         this.priority = priority;
+    }
+
+    public OperatorFinder getFinder() {
+        return finder;
+    }
+
+    public void setFinder(OperatorFinder finder) {
+        this.finder = finder;
     }
 
     public OperatorListener getListener() {

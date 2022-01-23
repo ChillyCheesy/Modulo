@@ -6,11 +6,11 @@ public class CommandContainer {
     private OperatorManager operatorManager;
 
     public CommandManager getCommandManager() {
-        return commandManager == null ? new CommandManager(getOperatorManager()) : commandManager;
+        return commandManager = commandManager == null ? new CommandManager(getOperatorManager()) : commandManager;
     }
 
     public OperatorManager getOperatorManager() {
-        return operatorManager == null ? new OperatorManager() : operatorManager;
+        return operatorManager = operatorManager == null ? new OperatorManager() : operatorManager;
     }
 
 }

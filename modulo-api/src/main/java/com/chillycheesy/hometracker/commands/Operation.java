@@ -1,11 +1,18 @@
 package com.chillycheesy.hometracker.commands;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Operation {
 
     private OperatorListener listener;
     private CommandFlux left, center, right;
 
     public Operation() { }
+
+    public Operation(CommandFlux left, CommandFlux center, CommandFlux right) {
+        this(left, center, right, null);
+    }
 
     public Operation(CommandFlux left, CommandFlux center, CommandFlux right, OperatorListener listener) {
         this.left = left;
@@ -48,5 +55,23 @@ public class Operation {
 
     public OperatorListener getListener() {
         return listener;
+    }
+
+    public static Operation buildFormRegex(CommandFlux flux, String regex, OperatorListener listener) {
+        final Pattern pattern = Pattern.compile(regex);
+        final Matcher matcher = pattern.matcher(flux.getContent());
+        if (matcher.find()) {
+            final String content = flux.getContent();
+            final int startContent = 0, start = matcher.start(), end = matcher.end(), endContent = content.length();
+            final CommandFlux left = new CommandFlux(content.substring(startContent, start).trim());
+            final CommandFlux center = new CommandFlux(content.substring(start, end).trim());
+            final CommandFlux right = new CommandFlux(content.substring(end, endContent).trim());
+            return new Operation(left, center, right, listener);
+        }
+        return null;
+    }
+
+    public static Operation buildFormRegex(CommandFlux flux, String regex) {
+        return buildFormRegex(flux, regex, null);
     }
 }

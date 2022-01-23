@@ -29,4 +29,12 @@ public class CommandFlux {
     public boolean isSuccess() {
         return success;
     }
+
+    @Override
+    public String toString() {
+        return "CommandFlux{" +
+                "content='" + content + '\'' +
+                ", success=" + success +
+                '}';
+    }
 }

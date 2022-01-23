@@ -2,8 +2,8 @@ package com.chillycheesy.hometracker;
 
 import com.chillycheesy.hometracker.modules.ModuleConfig;
 import com.chillycheesy.hometracker.modules.Module;
-import com.chillycheesy.hometracker.services.ModuleService;
-import com.chillycheesy.hometracker.services.ServerListenerService;
+import com.chillycheesy.hometracker.listeners.services.ModuleService;
+import com.chillycheesy.hometracker.listeners.services.ServerListenerService;
 import com.chillycheesy.hometracker.utils.Log;
 import com.chillycheesy.hometracker.utils.exception.FileIsNotAModuleDirectoryException;
 import com.chillycheesy.hometracker.utils.exception.MissingDependenciesModuleException;
