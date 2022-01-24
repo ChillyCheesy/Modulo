@@ -1,4 +1,6 @@
-package com.chillycheesy.hometracker.commands;
+package com.chillycheesy.hometracker.commands.operator;
+
+import com.chillycheesy.hometracker.commands.CommandFlux;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -69,9 +71,5 @@ public class Operation {
             return new Operation(left, center, right, listener);
         }
         return null;
-    }
-
-    public static Operation buildFormRegex(CommandFlux flux, String regex) {
-        return buildFormRegex(flux, regex, null);
     }
 }

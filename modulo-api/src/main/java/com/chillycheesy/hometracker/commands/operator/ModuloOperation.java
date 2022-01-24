@@ -2,7 +2,6 @@ package com.chillycheesy.hometracker.commands.operator;
 
 import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.commands.NumberOperator;
-import com.chillycheesy.hometracker.commands.OperatorListener;
 import com.chillycheesy.hometracker.utils.Priority;
 
 @Operator(Priority.MAJOR)

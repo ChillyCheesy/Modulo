@@ -1,6 +1,7 @@
 package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
+import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.ParenthesesOperator;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;

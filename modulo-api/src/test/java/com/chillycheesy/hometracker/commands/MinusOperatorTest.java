@@ -2,6 +2,7 @@ package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.operator.MinusOperator;
+import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.ParenthesesOperator;
 import com.chillycheesy.hometracker.commands.operator.PlusOperator;
 import org.junit.jupiter.api.BeforeEach;

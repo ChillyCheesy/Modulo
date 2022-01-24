@@ -1,5 +1,6 @@
 package com.chillycheesy.hometracker.commands;
 
+import com.chillycheesy.hometracker.commands.operator.OperatorListener;
 import com.chillycheesy.hometracker.utils.Function2;
 
 public abstract class BooleanOperator implements OperatorListener {
@@ -10,7 +11,7 @@ public abstract class BooleanOperator implements OperatorListener {
         final boolean leftBoolean = Boolean.parseBoolean(FluxBuilder.extractFromFlux(left, BOOLEAN_REGEX + "$"));
         final boolean rightBoolean = Boolean.parseBoolean(FluxBuilder.extractFromFlux(right, "^" + BOOLEAN_REGEX));
         final CommandFlux flux = FluxBuilder.combine(left, center, right);
-        flux.setContent(flux.getContent().replaceFirst(BOOLEAN_REGEX + " *\n* *" + operator + " *\n* *" + BOOLEAN_REGEX,
+        flux.setContent(flux.getContent().replaceFirst(BOOLEAN_REGEX + "\\s*" + operator + "\\s*" + BOOLEAN_REGEX,
                 operation.apply(leftBoolean, rightBoolean) + ""));
         return flux;
     }

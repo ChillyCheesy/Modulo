@@ -1,13 +1,11 @@
-package com.chillycheesy.hometracker.commands;
-
-import com.chillycheesy.hometracker.commands.operator.OperatorFindByRegex;
+package com.chillycheesy.hometracker.commands.operator;
 
 import java.lang.annotation.Annotation;
 
 public class OperatorBuilder {
 
-    public static <T> Operator build(T operatorInterface) {
-        final Operator operator = new Operator();
+    public static <T> com.chillycheesy.hometracker.commands.Operator build(T operatorInterface) {
+        final com.chillycheesy.hometracker.commands.Operator operator = new com.chillycheesy.hometracker.commands.Operator();
         final Annotation[] annotations = operatorInterface.getClass().getDeclaredAnnotations();
         final OperatorBuilder builder = new OperatorBuilder();
         for (Annotation annotation : annotations) {
@@ -23,19 +21,19 @@ public class OperatorBuilder {
         return operator;
     }
 
-    private void applyOperator(Operator operator, com.chillycheesy.hometracker.commands.operator.Operator annotation) {
+    private void applyOperator(com.chillycheesy.hometracker.commands.Operator operator, com.chillycheesy.hometracker.commands.operator.Operator annotation) {
         operator.setPriority(annotation.value());
     }
 
-    private void applyOperatorFindByRegex(Operator operator, OperatorFindByRegex operatorFindByRegex) {
+    private void applyOperatorFindByRegex(com.chillycheesy.hometracker.commands.Operator operator, OperatorFindByRegex operatorFindByRegex) {
         operator.setFinder((flux) -> Operation.buildFormRegex(flux, operatorFindByRegex.value(), operator.getListener()));
     }
 
-    private void selfOperatorListener(Operator operator, OperatorListener operatorInterface) {
+    private void selfOperatorListener(com.chillycheesy.hometracker.commands.Operator operator, OperatorListener operatorInterface) {
         operator.setListener(operatorInterface);
     }
 
-    private void selfOperatorFinder(Operator operator, OperatorFinder operatorInterface) {
+    private void selfOperatorFinder(com.chillycheesy.hometracker.commands.Operator operator, OperatorFinder operatorInterface) {
         operator.setFinder(operatorInterface);
     }
 

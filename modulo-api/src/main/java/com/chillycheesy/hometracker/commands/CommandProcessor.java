@@ -1,5 +1,9 @@
 package com.chillycheesy.hometracker.commands;
 
+import com.chillycheesy.hometracker.commands.operator.OperatorManager;
+
+import java.util.regex.Pattern;
+
 public class CommandProcessor {
 
     private CommandManager commandManager;
@@ -11,7 +15,13 @@ public class CommandProcessor {
     }
 
     public CommandFlux execute(CommandFlux flux) {
-        return operatorManager.applyOperators(flux);
+        return processCommands(operatorManager.applyOperators(flux));
+    }
+
+    private CommandFlux processCommands(CommandFlux flux) {
+        final String content = flux.getContent();
+        final Pattern pattern = Pattern.compile("\\S+|\".\"");
+        return flux;
     }
 
     public CommandManager getCommandManager() {

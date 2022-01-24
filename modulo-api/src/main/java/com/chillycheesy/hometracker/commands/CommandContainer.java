@@ -1,5 +1,7 @@
 package com.chillycheesy.hometracker.commands;
 
+import com.chillycheesy.hometracker.commands.operator.OperatorManager;
+
 public class CommandContainer {
 
     private CommandManager commandManager;

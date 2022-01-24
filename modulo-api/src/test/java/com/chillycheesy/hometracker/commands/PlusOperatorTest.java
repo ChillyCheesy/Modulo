@@ -1,6 +1,7 @@
 package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
+import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.ParenthesesOperator;
 import com.chillycheesy.hometracker.commands.operator.PlusOperator;
 import org.junit.jupiter.api.BeforeEach;
@@ -66,7 +67,7 @@ public class PlusOperatorTest {
     public final void applyWithNegativeAddition() {
         final String line = "I Love -5.5 + 1.1 + 24 ewoks";
         final CommandFlux flux = commandManager.applyCommand(line);
-        assertEquals("I Love 25.1 ewoks", flux.getContent());
+        assertEquals("I Love 19.6 ewoks", flux.getContent());
     }
 
     @Test

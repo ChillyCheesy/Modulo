@@ -1,5 +1,8 @@
 package com.chillycheesy.hometracker.commands;
 
+import com.chillycheesy.hometracker.commands.operator.OperatorFinder;
+import com.chillycheesy.hometracker.commands.operator.OperatorListener;
+
 public class Operator {
 
     private int priority;

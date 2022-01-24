@@ -2,8 +2,6 @@ package com.chillycheesy.hometracker.commands.operator;
 
 import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.commands.NumberOperator;
-import com.chillycheesy.hometracker.commands.Operation;
-import com.chillycheesy.hometracker.commands.OperatorFinder;
 import com.chillycheesy.hometracker.utils.Priority;
 
 import java.util.regex.Matcher;
@@ -23,7 +21,7 @@ public class MinusOperator extends NumberOperator implements OperatorFinder {
 
     @Override
     public Operation findOperatorMatch(CommandFlux flux) {
-        final Pattern pattern = Pattern.compile("\\d+\\.?\\d* *\n* *\n* *-");
+        final Pattern pattern = Pattern.compile("\\d+\\.?\\d*\\s*-");
         final Matcher matcher = pattern.matcher(flux.getContent());
         if (matcher.find()) {
             final String content = flux.getContent();

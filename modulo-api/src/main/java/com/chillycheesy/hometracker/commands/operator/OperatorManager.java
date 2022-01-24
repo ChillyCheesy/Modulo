@@ -1,14 +1,16 @@
-package com.chillycheesy.hometracker.commands;
+package com.chillycheesy.hometracker.commands.operator;
 
+import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.Operator;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Manager;
 
 import java.util.List;
 
-public class OperatorManager extends Manager<Operator> {
+public class OperatorManager extends Manager<com.chillycheesy.hometracker.commands.Operator> {
 
     public boolean registerItemToBuild(Module module, Object item) {
-        final Operator operator = OperatorBuilder.build(item);
+        final com.chillycheesy.hometracker.commands.Operator operator = OperatorBuilder.build(item);
         return super.registerItem(module, operator);
     }
 
@@ -21,7 +23,7 @@ public class OperatorManager extends Manager<Operator> {
     }
 
     public CommandFlux applyOperators(CommandFlux flux) {
-        for (Operator operator : getSortedOperators()) {
+        for (com.chillycheesy.hometracker.commands.Operator operator : getSortedOperators()) {
             final OperatorFinder finder = operator.getFinder();
             final Operation operation = finder.findOperatorMatch(flux);
             if (operation != null)
@@ -30,14 +32,14 @@ public class OperatorManager extends Manager<Operator> {
         return flux;
     }
 
-    private CommandFlux applyOperator(Operator operator, Operation operation) {
+    private CommandFlux applyOperator(com.chillycheesy.hometracker.commands.Operator operator, Operation operation) {
         final CommandFlux flux = operation.apply();
         final OperatorFinder finder = operator.getFinder();
         final Operation newOperation = finder.findOperatorMatch(flux);
         return newOperation != null ? applyOperator(operator, newOperation) : flux;
     }
 
-    private List<Operator> getSortedOperators() {
+    private List<com.chillycheesy.hometracker.commands.Operator> getSortedOperators() {
         final List<Operator> sortedEntries = super.getAllItems();
         sortedEntries.sort((e1, e2) -> e2.getPriority() - e1.getPriority());
         return sortedEntries;
