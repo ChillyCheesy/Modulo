@@ -1,6 +1,7 @@
 package com.chillycheesy.hometracker.commands.operator;
 
 import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.modules.Module;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,8 +24,8 @@ public class Operation {
         this.listener = listener;
     }
 
-    public CommandFlux apply() {
-        return listener.onOperate(left, center, right);
+    public CommandFlux apply(Module caller) {
+        return listener.onOperate(caller, left, center, right);
     }
 
     public void setCenter(CommandFlux center) {

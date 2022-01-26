@@ -2,19 +2,20 @@ package com.chillycheesy.hometracker.commands.operator;
 
 import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.*;
+import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
 @Operator(Priority.DIVINE)
 public class ParenthesesOperator implements OperatorListener, OperatorFinder {
 
     @Override
-    public CommandFlux onOperate(CommandFlux left, CommandFlux center, CommandFlux right) {
+    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) {
         final String content = center.getContent().replaceAll("^\\(|\\)$", "");
         center.setContent(content);
         final CommandContainer commandContainer = ModuloAPI.getCommand();
         final CommandManager manager = commandContainer.getCommandManager();
         final CommandProcessor processor = manager.getProcessor();
-        return FluxBuilder.combine(left, processor.execute(center), right);
+        return FluxBuilder.combine(left, processor.execute(module, center), right);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.chillycheesy.hometracker.commands.operator;
 
 import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.commands.NumberOperator;
+import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
 import java.util.regex.Matcher;
@@ -11,7 +12,7 @@ import java.util.regex.Pattern;
 public class MinusOperator extends NumberOperator implements OperatorFinder {
 
     @Override
-    public CommandFlux onOperate(CommandFlux left, CommandFlux center, CommandFlux right) {
+    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) {
         return super.applyOperation(left, center, right, "-", this::minus);
     }
 

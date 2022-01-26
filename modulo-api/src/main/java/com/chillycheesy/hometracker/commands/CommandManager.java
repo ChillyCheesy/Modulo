@@ -1,6 +1,7 @@
 package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
+import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Manager;
 
 public class CommandManager extends Manager<Command> {
@@ -12,9 +13,22 @@ public class CommandManager extends Manager<Command> {
         processor = new CommandProcessor(this, operatorManager);
     }
 
-    public CommandFlux applyCommand(String line) {
+    public CommandFlux applyCommand(Module caller, String line) {
         final CommandFlux flux = new CommandFlux(line);
-        return processor.execute(flux);
+        return processor.execute(caller, flux);
+    }
+
+    public CommandFlux applyCommand(String line) {
+        return applyCommand(null, line);
+    }
+
+    public Command getCommandByLabel(String label) {
+        for (Command command : super.getAllItems()) {
+            if (command.getLabel().equalsIgnoreCase(label)) {
+                return command;
+            }
+        }
+        return null;
     }
 
     public CommandProcessor getProcessor() {

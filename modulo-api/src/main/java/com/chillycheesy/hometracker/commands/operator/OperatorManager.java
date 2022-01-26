@@ -22,21 +22,21 @@ public class OperatorManager extends Manager<com.chillycheesy.hometracker.comman
         return success;
     }
 
-    public CommandFlux applyOperators(CommandFlux flux) {
+    public CommandFlux applyOperators(Module caller, CommandFlux flux) {
         for (com.chillycheesy.hometracker.commands.Operator operator : getSortedOperators()) {
             final OperatorFinder finder = operator.getFinder();
             final Operation operation = finder.findOperatorMatch(flux);
             if (operation != null)
-                flux = applyOperator(operator, operation);
+                flux = applyOperator(caller, operator, operation);
         }
         return flux;
     }
 
-    private CommandFlux applyOperator(com.chillycheesy.hometracker.commands.Operator operator, Operation operation) {
-        final CommandFlux flux = operation.apply();
+    private CommandFlux applyOperator(Module caller, com.chillycheesy.hometracker.commands.Operator operator, Operation operation) {
+        final CommandFlux flux = operation.apply(caller);
         final OperatorFinder finder = operator.getFinder();
         final Operation newOperation = finder.findOperatorMatch(flux);
-        return newOperation != null ? applyOperator(operator, newOperation) : flux;
+        return newOperation != null ? applyOperator(caller, operator, newOperation) : flux;
     }
 
     private List<com.chillycheesy.hometracker.commands.Operator> getSortedOperators() {
