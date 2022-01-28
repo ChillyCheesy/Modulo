@@ -4,6 +4,8 @@ import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.modules.Module;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -19,19 +21,21 @@ public class CommandProcessor {
     }
 
     public CommandFlux execute(Module caller, CommandFlux flux) {
-        return processCommands(
-                caller, operatorManager.applyOperators(caller, flux));
+        return processCommands(caller, operatorManager.applyOperators(caller, flux));
     }
 
     private CommandFlux processCommands(Module caller, CommandFlux flux) {
         final String content = flux.getContent();
-        final Pattern pattern = Pattern.compile("\"([^\"]*)\"|[\\S]+");
+        final Pattern pattern = Pattern.compile("\"(.*?)[^\\\\]\"|\\S+");
         final Matcher matcher = pattern.matcher(content);
-
-        /* final String[] matches = (String[]) matcher.results().map(MatchResult::group).map(group -> group.replaceAll("^\"|\"$", "")).toArray();
+        /*
+        final String[] matches = (String[]) matcher.results()
+                .map(MatchResult::group)
+                .filter(Objects::nonNull)
+                .map(group -> group.replaceAll("^\"|\"$", "")).toArray();
         if (matches.length > 0) {
-            final String label = matches[0];
-            final String[] args = Arrays.copyOfRange(matches, 1, matches.length);
+            final String label = (String) matches[0];
+            final String[] args = (matches.length > 1 ? Arrays.copyOfRange(matches, 1, matches.length) : List.of());
             final Command command = commandManager.getCommandByLabel(label);
             command.getCommandListener().onCommand(caller, label, args, flux);
         }*/

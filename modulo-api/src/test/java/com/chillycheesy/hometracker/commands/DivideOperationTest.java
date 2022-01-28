@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DivideOperationTest {
 
-    private CommandManager commandManager;
+    private OperatorManager operatorManager;
 
     @BeforeEach
     public final void beforeEach() {
-        final OperatorManager operatorManager = ModuloAPI.getCommand().getOperatorManager();
+        operatorManager = ModuloAPI.getCommand().getOperatorManager();
         operatorManager.registerItemToBuild(null,
                 new ParenthesesOperator(),
                 new PlusOperator(),
@@ -23,13 +23,19 @@ public class DivideOperationTest {
                 new MultiplicationOperator(),
                 new DivideOperator()
         );
-        commandManager = ModuloAPI.getCommand().getCommandManager();
     }
 
     @Test
     public final void applyWithNoDivision() {
         final String line = "I Love 5 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals(line, flux.getContent());
+    }
+
+    @Test
+    public final void applyWithSkipDivision() {
+        final String line = "I Love 5 \\/ ewoks";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
@@ -49,35 +55,35 @@ public class DivideOperationTest {
             "I Love 3/  \n  3 ewoks",
     })
     public final void applyWithSimpleDivision(String line) {
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 1.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithDoubleDivision() {
         final String line = "I Love 5.5 / 1.1 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 5.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithPriority() {
         final String line = "I Love 5 + 3 / 3 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 6.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithParenthesesDivision() {
         final String line = "I Love 5 / (2 + 3) ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 1.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithNegativeDivision() {
         final String line = "I Love -1 / 10 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love -0.1 ewoks", flux.getContent());
     }
 

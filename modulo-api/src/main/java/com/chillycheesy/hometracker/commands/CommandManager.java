@@ -14,7 +14,7 @@ public class CommandManager extends Manager<Command> {
     }
 
     public CommandFlux applyCommand(Module caller, String line) {
-        final CommandFlux flux = new CommandFlux(line);
+        final CommandFlux flux = FluxBuilder.create(line);
         return processor.execute(caller, flux);
     }
 

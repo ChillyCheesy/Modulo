@@ -22,7 +22,7 @@ public class MinusOperator extends NumberOperator implements OperatorFinder {
 
     @Override
     public Operation findOperatorMatch(CommandFlux flux) {
-        final Pattern pattern = Pattern.compile("\\d+\\.?\\d*\\s*-");
+        final Pattern pattern = Pattern.compile("\\d+\\.?\\d*\\s*(?<!\\\\)-");
         final Matcher matcher = pattern.matcher(flux.getContent());
         if (matcher.find()) {
             final String content = flux.getContent();

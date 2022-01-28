@@ -26,7 +26,10 @@ public class FluxBuilder {
     }
 
     public static CommandFlux empty() {
-        return new CommandFlux("");
+        return create("");
     }
 
+    public static CommandFlux create(String content) {
+        return new CommandFlux(content);
+    }
 }

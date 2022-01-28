@@ -1,70 +1,41 @@
 package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.operator.OperatorManager;
-import com.chillycheesy.hometracker.commands.operator.ParenthesesOperator;
-import static org.junit.jupiter.api.Assertions.*;
+import com.chillycheesy.hometracker.commands.operator.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class ParenthesesOperatorTest {
 
-    private CommandManager commandManager;
+    private OperatorManager operatorManager;
 
     @BeforeEach
     public final void beforeEach() {
-        final OperatorManager operatorManager = ModuloAPI.getCommand().getOperatorManager();
-        commandManager = ModuloAPI.getCommand().getCommandManager();
-        operatorManager.registerItemToBuild(null, new ParenthesesOperator());
+        operatorManager = ModuloAPI.getCommand().getOperatorManager();
+        operatorManager.registerItemToBuild(null,  new ParenthesesOperator());
     }
 
     @Test
-    public final void applyWithNoParentheses() {
-        final String line = "I Love ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
-        assertEquals(line, flux.getContent());
-    }
-
-    @Test
-    public final void applyWithSimpleParentheses() {
-        final String line = "I Love (ewoks)";
-        final CommandFlux flux = commandManager.applyCommand(line);
+    public final void testParentheses() {
+        final String line = "I (Love ewoks)";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love ewoks", flux.getContent());
     }
 
     @Test
-    public final void applyWithDoubleParentheses() {
-        final String line = "(I Love) (ewoks)";
-        final CommandFlux flux = commandManager.applyCommand(line);
-        assertEquals("I Love ewoks", flux.getContent());
+    public final void testSkipParentheses() {
+        final String line = "I \\(Love ewoks)";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I \\(Love ewoks)", flux.getContent());
     }
 
     @Test
-    public final void applyWithSubParentheses() {
-        final String line = "(I Lo(v(e))) ((ew)oks)";
-        final CommandFlux flux = commandManager.applyCommand(line);
-        assertEquals("I Love ewoks", flux.getContent());
-    }
-
-    @Test
-    public final void applyWithUncloseParentheses() {
-        final String line = "(I Lo(v(e ((ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
-        assertEquals("(I Lo(v(e ((ewoks", flux.getContent());
-    }
-
-    @Test
-    public final void applyWithUnOpenParentheses() {
-        final String line = "(I Lo(v(e ((ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
-        assertEquals("(I Lo(v(e ((ewoks", flux.getContent());
-    }
-
-    @Test
-    public final void applyWithDoubleAndUncloseParentheses() {
-        final String line = "I Love) ew)oks)";
-        final CommandFlux flux = commandManager.applyCommand(line);
-        assertEquals("I Love) ew)oks)", flux.getContent());
+    public final void testSkipParentheses2() {
+        final String line = "I (Love ewoks\\)";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I (Love ewoks\\)", flux.getContent());
     }
 
 }

@@ -13,19 +13,25 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PlusOperatorTest {
 
-    private CommandManager commandManager;
+    private OperatorManager operatorManager;
 
     @BeforeEach
     public final void beforeEach() {
-        final OperatorManager operatorManager = ModuloAPI.getCommand().getOperatorManager();
-        commandManager = ModuloAPI.getCommand().getCommandManager();
+        operatorManager = ModuloAPI.getCommand().getOperatorManager();
         operatorManager.registerItemToBuild(null, new ParenthesesOperator(), new PlusOperator());
     }
 
     @Test
     public final void applyWithNoAddition() {
         final String line = "I Love 5 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals(line, flux.getContent());
+    }
+
+    @Test
+    public final void applyWithSkipAddition() {
+        final String line = "I Love \\+ 5 ewoks";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
@@ -45,35 +51,35 @@ public class PlusOperatorTest {
             "I Love 3+  \n  3 ewoks",
     })
     public final void applyWithSimpleAddition(String line) {
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 6.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithDoubleAddition() {
         final String line = "I Love 5.5 + 1.1 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 6.6 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithTripleAddition() {
         final String line = "I Love 5.5 + 1.1 + 24 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 30.6 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithNegativeAddition() {
         final String line = "I Love -5.5 + 1.1 + 24 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 19.6 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithParenthesesAddition() {
         final String line = "I Love (5) + (1 + 4) ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 10.0 ewoks", flux.getContent());
     }
 

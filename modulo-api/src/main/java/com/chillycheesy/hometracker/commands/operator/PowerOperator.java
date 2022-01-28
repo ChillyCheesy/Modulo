@@ -6,7 +6,7 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
 @Operator(Priority.MAJOR)
-@OperatorFindByRegex("\\^")
+@OperatorFindByRegex("(?<!\\\\)\\^")
 public class PowerOperator extends NumberOperator implements OperatorListener {
 
     @Override

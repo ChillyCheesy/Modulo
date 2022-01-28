@@ -5,6 +5,9 @@ import com.chillycheesy.hometracker.commands.*;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Operator(Priority.DIVINE)
 public class ParenthesesOperator implements OperatorListener, OperatorFinder {
 
@@ -22,13 +25,18 @@ public class ParenthesesOperator implements OperatorListener, OperatorFinder {
     public Operation findOperatorMatch(CommandFlux flux) {
         if (flux != null) {
             final String content = flux.getContent();
-            int start = content.indexOf('('), open = 1;
-            if (start > -1 && start < content.length() - 1) {
-                for (int i = start + 1 ; i < content.length() ; ++i) {
-                    char c = content.charAt(i);
-                    if (c == '(') ++open;
-                    else if (c == ')') --open;
-                    if (open == 0) return createOperation(content, start, i);
+            final Pattern pattern = Pattern.compile("(?<!\\\\)\\(");
+            final Matcher matcher = pattern.matcher(content);
+            if (matcher.find()) {
+                int start = matcher.start(), open = 1;
+                if (start > -1 && start < content.length() - 1) {
+                    for (int i = start + 1 ; i < content.length() ; ++i) {
+                        char c = content.charAt(i);
+                        if (c == '\\') ++start;
+                        else if (c == '(') ++open;
+                        else if (c == ')') --open;
+                        if (open == 0) return createOperation(content, start, i);
+                    }
                 }
             }
         }

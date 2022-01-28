@@ -5,7 +5,7 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
 @Operator(Priority.IMPORTANT)
-@OperatorFindByRegex("\\+")
+@OperatorFindByRegex("(?<!\\\\)\\+")
 public class PlusOperator extends NumberOperator {
 
     @Override
@@ -18,3 +18,9 @@ public class PlusOperator extends NumberOperator {
     }
 
 }
+
+// Alias
+// operators
+// command
+
+//echo (x + 4)

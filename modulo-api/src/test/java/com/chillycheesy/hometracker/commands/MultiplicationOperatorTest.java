@@ -11,24 +11,30 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MultiplicationOperatorTest {
 
-    private CommandManager commandManager;
+    private OperatorManager operatorManager;
 
     @BeforeEach
     public final void beforeEach() {
-        final OperatorManager operatorManager = ModuloAPI.getCommand().getOperatorManager();
+        operatorManager = ModuloAPI.getCommand().getOperatorManager();
         operatorManager.registerItemToBuild(null,
                 new ParenthesesOperator(),
                 new PlusOperator(),
                 new MinusOperator(),
                 new MultiplicationOperator()
         );
-        commandManager = ModuloAPI.getCommand().getCommandManager();
     }
 
     @Test
     public final void applyWithNoMultiplication() {
         final String line = "I Love 5 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals(line, flux.getContent());
+    }
+
+    @Test
+    public final void applyWithSkipMultiplication() {
+        final String line = "I Love \\* 5 ewoks";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
@@ -48,42 +54,42 @@ public class MultiplicationOperatorTest {
             "I Love 3*  \n  3 ewoks",
     })
     public final void applyWithSimpleMultiplication(String line) {
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 9.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithDoubleMultiplication() {
         final String line = "I Love 5.5 * 1.1 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 6.050000000000001 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithPriority() {
         final String line = "I Love 5 + 2 * 3 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 11.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithParenthesesMultiplication() {
         final String line = "I Love 5 * (2 + 3) ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 25.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithNegativeMultiplication() {
         final String line = "I Love -1 * 10 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love -10.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithNegativeMultiplication2() {
         final String line = "I Love -5 * -5 ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 25.0 ewoks", flux.getContent());
     }
 
