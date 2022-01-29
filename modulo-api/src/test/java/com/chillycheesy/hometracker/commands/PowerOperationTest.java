@@ -2,6 +2,7 @@ package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.operator.*;
+import com.chillycheesy.hometracker.utils.exception.CommandException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,14 +25,14 @@ public class PowerOperationTest {
     }
 
     @Test
-    public final void applyWithNoModulo() {
+    public final void applyWithNoModulo() throws CommandException {
         final String line = "I Love 5 ewoks";
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
     @Test
-    public final void applyWithSkipModulo() {
+    public final void applyWithSkipModulo() throws CommandException {
         final String line = "I Love \\^ 5 ewoks";
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals(line, flux.getContent());
@@ -52,27 +53,27 @@ public class PowerOperationTest {
             "I Love 3   ^\n3 ewoks",
             "I Love 3^  \n  3 ewoks",
     })
-    public final void applyWithSimpleModulo(String line) {
+    public final void applyWithSimpleModulo(String line) throws CommandException {
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 27.0 ewoks", flux.getContent());
     }
 
     @Test
-    public final void applyWithDoubleModulo() {
+    public final void applyWithDoubleModulo() throws CommandException {
         final String line = "I Love 5.5 ^ 2 ewoks";
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 30.25 ewoks", flux.getContent());
     }
 
     @Test
-    public final void applyWithPriority() {
+    public final void applyWithPriority() throws CommandException {
         final String line = "I Love 5 + 3 ^ 3 ewoks";
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 32.0 ewoks", flux.getContent());
     }
 
     @Test
-    public final void applyWithParenthesesModulo() {
+    public final void applyWithParenthesesModulo() throws CommandException {
         final String line = "I Love 5 ^ (2 + 3) ewoks";
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love 3125.0 ewoks", flux.getContent());

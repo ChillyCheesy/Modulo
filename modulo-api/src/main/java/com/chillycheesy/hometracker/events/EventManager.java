@@ -50,7 +50,7 @@ public class EventManager extends ListenerManager {
             for (Method method : methods)
                 method.invoke(listener, event);
         }
-        if (Cancelable.class.isAssignableFrom(event.getClass()) && !((Cancelable) event).isCanceled())
+        if (Cancelable.class.isAssignableFrom(event.getClass()) && !((Cancelable) event).isCanceled() && ((Cancelable) event).getCancelableAction() != null)
             ((Cancelable) event).getCancelableAction().action();
 
     }

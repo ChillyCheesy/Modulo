@@ -1,42 +1,42 @@
 package com.chillycheesy.hometracker.commands.operator;
 
-import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.*;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
-import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Operator(Priority.EPIC)
-public class ParenthesesOperator implements OperatorListener, OperatorFinder {
+@Operator(Priority.DIVINE)
+public class SkipOperator implements OperatorListener, OperatorFinder {
 
     @Override
-    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
-        final String content = center.getContent().replaceAll("^\\(|\\)$", "");
-        center.setContent(content);
-        final CommandContainer commandContainer = ModuloAPI.getCommand();
-        final CommandManager manager = commandContainer.getCommandManager();
-        final CommandProcessor processor = manager.getProcessor();
-        return FluxBuilder.combine(left, processor.execute(module, center), right);
+    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) {
+        center.setContent(format(center.getContent().replaceAll("^'|'$", "")));
+        return FluxBuilder.combine(left, center, right);
+    }
+
+    private String format(String content) {
+        final StringBuilder result = new StringBuilder("\"");
+        for (int i = 0 ; i < content.length() ; ++i) {
+            result.append("\\").append(content.charAt(i));
+        }
+        return result.append("\"").toString();
     }
 
     @Override
     public Operation findOperatorMatch(CommandFlux flux) {
         if (flux != null) {
             final String content = flux.getContent();
-            final Pattern pattern = Pattern.compile("(?<!\\\\)\\(");
+            final Pattern pattern = Pattern.compile("(?<!\\\\)'");
             final Matcher matcher = pattern.matcher(content);
             if (matcher.find()) {
-                int start = matcher.start(), open = 1;
+                int start = matcher.start();
                 if (start > -1 && start < content.length() - 1) {
                     for (int i = start + 1 ; i < content.length() ; ++i) {
                         char c = content.charAt(i);
                         if (c == '\\') ++i;
-                        else if (c == '(') ++open;
-                        else if (c == ')') --open;
-                        if (open == 0) return createOperation(content, start, i);
+                        else if (c == '\'') return createOperation(content, start, i);
                     }
                 }
             }
@@ -51,5 +51,4 @@ public class ParenthesesOperator implements OperatorListener, OperatorFinder {
         final CommandFlux right = new CommandFlux(content.substring(end + 1, endContent));
         return new Operation(left, center, right, this);
     }
-
 }

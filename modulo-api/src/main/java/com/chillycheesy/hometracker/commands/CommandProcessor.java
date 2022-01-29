@@ -2,9 +2,15 @@ package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.modules.Module;
+import com.chillycheesy.hometracker.utils.exception.CommandException;
+import com.chillycheesy.hometracker.utils.exception.CommandNotFoundException;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class CommandProcessor {
 
@@ -16,26 +22,26 @@ public class CommandProcessor {
         this.operatorManager = operatorManager;
     }
 
-    public CommandFlux execute(Module caller, CommandFlux flux) {
-        return processCommands(caller, operatorManager.applyOperators(caller, flux));
+    public CommandFlux execute(Module caller, CommandFlux flux) throws CommandException {
+        flux = operatorManager.applyOperators(caller, flux);
+        final String content = flux.getContent();
+        final Pattern pattern = Pattern.compile("(?<!\\\\)\"(.*?)[^\\\\]\"|\\S+");
+        final Matcher matcher = pattern.matcher(content);
+        return processCommands(caller, flux, matcher.results()
+                .map(MatchResult::group)
+                .map(group -> group.replaceAll("^\"|\"$", ""))
+                .map(group -> group.replaceAll("(?<!\\\\)\\\\", "")).toArray(String[]::new));
     }
 
-    private CommandFlux processCommands(Module caller, CommandFlux flux) {
-        final String content = flux.getContent();
-        final Pattern pattern = Pattern.compile("\"(.*?)[^\\\\]\"|\\S+");
-        final Matcher matcher = pattern.matcher(content);
-        /*final String[] matches = (String[]) matcher.results()
-                .map(MatchResult::group)
-                .filter(Objects::nonNull)
-                .map(group -> group.replaceAll("^\"|\"$", ""))
-                .map(group -> group.replaceAll("(?<!\\\\)\\\\", "")).toArray();
-        if (matches.length > 0) {
-            final String label = matches[0];
-            final String[] args = (matches.length > 1 ? Arrays.copyOfRange(matches, 1, matches.length) : new String[]{});
+    private CommandFlux processCommands(Module caller, CommandFlux flux, String[] arguments) throws CommandException {
+        if (arguments.length > 0) {
+            final String label = arguments[0];
+            final String[] args = arguments.length > 1 ? Arrays.copyOfRange(arguments, 1, arguments.length) : new String[0];
             final Command command = commandManager.getCommandByLabel(label);
-            command.getCommandListener().onCommand(caller, label, args, flux);
-        }*/
-        return flux;
+            if (command == null) throw new CommandNotFoundException(flux, 0, label);
+            return command.getCommandListener().onCommand(caller, label, args, flux);
+        }
+        throw new CommandException(flux, 0, "No arguments provided");
     }
 
     public CommandManager getCommandManager() {

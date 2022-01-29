@@ -1,12 +1,17 @@
 package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.operator.*;
+import com.chillycheesy.hometracker.commands.operator.OperatorManager;
+import com.chillycheesy.hometracker.commands.operator.ParenthesesOperator;
+import com.chillycheesy.hometracker.commands.operator.PlusOperator;
+import com.chillycheesy.hometracker.commands.operator.SkipOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-public class StopCommandTest {
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+public class EchoCommandTest {
 
     private CommandManager commandManager;
 
@@ -19,12 +24,14 @@ public class StopCommandTest {
                 new PlusOperator()
         );
         commandManager = ModuloAPI.getCommand().getCommandManager();
+        final Command echoCommand = new Command("echo");
+        echoCommand.setCommandListener(new EchoCommand());
+        commandManager.registerItem(null, echoCommand);
     }
 
     @Test
     public final void testRunCommand() throws CommandException {
-        final CommandFlux flux = commandManager.applyCommand("command arg1 '6 + 7' \"6 + 7\"");
-
+        final CommandFlux flux = commandManager.applyCommand("echo arg1 '6 + 7' \"6 + 7\"");
+        assertEquals("arg1 6 + 7 13.0", flux.getContent());
     }
-
 }

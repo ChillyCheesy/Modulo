@@ -3,6 +3,7 @@ package com.chillycheesy.hometracker.commands;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Manager;
+import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 public class CommandManager extends Manager<Command> {
 
@@ -13,12 +14,12 @@ public class CommandManager extends Manager<Command> {
         processor = new CommandProcessor(this, operatorManager);
     }
 
-    public CommandFlux applyCommand(Module caller, String line) {
+    public CommandFlux applyCommand(Module caller, String line) throws CommandException {
         final CommandFlux flux = FluxBuilder.create(line);
         return processor.execute(caller, flux);
     }
 
-    public CommandFlux applyCommand(String line) {
+    public CommandFlux applyCommand(String line) throws CommandException {
         return applyCommand(null, line);
     }
 

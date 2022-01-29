@@ -11,6 +11,10 @@ public class Command {
 
     public Command() { }
 
+    public Command(String label) {
+        this.label = label;
+    }
+
     public Command(Module registeredModule, String label, String[] alias, String description, String usage, CommandListener commandListener) {
         this.registeredModule = registeredModule;
         this.label = label;

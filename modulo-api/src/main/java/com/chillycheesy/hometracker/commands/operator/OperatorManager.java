@@ -4,6 +4,7 @@ import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.commands.Operator;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Manager;
+import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class OperatorManager extends Manager<com.chillycheesy.hometracker.comman
         return success;
     }
 
-    public CommandFlux applyOperators(Module caller, CommandFlux flux) {
+    public CommandFlux applyOperators(Module caller, CommandFlux flux) throws CommandException {
         for (com.chillycheesy.hometracker.commands.Operator operator : getSortedOperators()) {
             final OperatorFinder finder = operator.getFinder();
             final Operation operation = finder.findOperatorMatch(flux);
@@ -32,7 +33,7 @@ public class OperatorManager extends Manager<com.chillycheesy.hometracker.comman
         return flux;
     }
 
-    private CommandFlux applyOperator(Module caller, com.chillycheesy.hometracker.commands.Operator operator, Operation operation) {
+    private CommandFlux applyOperator(Module caller, com.chillycheesy.hometracker.commands.Operator operator, Operation operation) throws CommandException {
         final CommandFlux flux = operation.apply(caller);
         final OperatorFinder finder = operator.getFinder();
         final Operation newOperation = finder.findOperatorMatch(flux);

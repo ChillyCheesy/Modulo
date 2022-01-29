@@ -2,6 +2,7 @@ package com.chillycheesy.hometracker.commands.operator;
 
 import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.modules.Module;
+import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -24,7 +25,7 @@ public class Operation {
         this.listener = listener;
     }
 
-    public CommandFlux apply(Module caller) {
+    public CommandFlux apply(Module caller) throws CommandException {
         return listener.onOperate(caller, left, center, right);
     }
 
@@ -61,7 +62,7 @@ public class Operation {
     }
 
     public static Operation buildFormRegex(CommandFlux flux, String regex, OperatorListener listener) {
-        final Pattern pattern = Pattern.compile("(?<!'(.*))(?<!\\\\)" + regex + "(?!'(.*))");
+        final Pattern pattern = Pattern.compile("(?<!\\\\)" + regex);
         final Matcher matcher = pattern.matcher(flux.getContent());
         if (matcher.find()) {
             final String content = flux.getContent();
