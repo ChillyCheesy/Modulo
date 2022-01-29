@@ -36,6 +36,13 @@ public class MinusOperatorTest {
         assertEquals(line, flux.getContent());
     }
 
+    @Test
+    public final void applyWithSkipMinus2() {
+        final String line = "I Love '5 - 5' ewoks";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals(line, flux.getContent());
+    }
+
     @ParameterizedTest
     @ValueSource(strings = {
             "I Love 9 - 3 ewoks",

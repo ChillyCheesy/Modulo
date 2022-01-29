@@ -38,4 +38,25 @@ public class ParenthesesOperatorTest {
         assertEquals("I (Love ewoks\\)", flux.getContent());
     }
 
+    @Test
+    public final void testSkipParentheses3() {
+        final String line = "I '(Love ewoks)'";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I '(Love ewoks)'", flux.getContent());
+    }
+
+    @Test
+    public final void testSkipParentheses4() {
+        final String line = "I '(Love ewoks')";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I '(Love ewoks')", flux.getContent());
+    }
+
+    @Test
+    public final void testSkipParentheses5() {
+        final String line = "I (Love 'ewoks)'";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I (Love 'ewoks)'", flux.getContent());
+    }
+
 }

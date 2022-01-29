@@ -25,17 +25,21 @@ public class ParenthesesOperator implements OperatorListener, OperatorFinder {
     public Operation findOperatorMatch(CommandFlux flux) {
         if (flux != null) {
             final String content = flux.getContent();
-            final Pattern pattern = Pattern.compile("(?<!\\\\)\\(");
+            final Pattern pattern = Pattern.compile("(?<!'(.*))(?<!\\\\)\\((?!'(.*))");
             final Matcher matcher = pattern.matcher(content);
             if (matcher.find()) {
                 int start = matcher.start(), open = 1;
                 if (start > -1 && start < content.length() - 1) {
+                    boolean skip = false;    // skip if we find a single quote
                     for (int i = start + 1 ; i < content.length() ; ++i) {
                         char c = content.charAt(i);
-                        if (c == '\\') ++start;
-                        else if (c == '(') ++open;
-                        else if (c == ')') --open;
-                        if (open == 0) return createOperation(content, start, i);
+                        if (c == '\'') skip = !skip;
+                        if (!skip) {
+                            if (c == '\\') ++i;
+                            else if (c == '(') ++open;
+                            else if (c == ')') --open;
+                            if (open == 0) return createOperation(content, start, i);
+                        }
                     }
                 }
             }
