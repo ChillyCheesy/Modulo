@@ -16,8 +16,8 @@ public class FluxBuilder {
         return extractFromFlux(flux, regex, "");
     }
 
-    public static CommandFlux combine(CommandFlux...fluxes) {
-        final CommandFlux builtFLux = FluxBuilder.empty();
+    public static CommandFlux combine(AliasManager aliasManager, CommandFlux...fluxes) {
+        final CommandFlux builtFLux = FluxBuilder.empty(aliasManager);
         for (CommandFlux flux : fluxes) {
             builtFLux.setContent(builtFLux.getContent() + flux.getContent());
             builtFLux.setSuccess(builtFLux.isSuccess() && flux.isSuccess());
@@ -25,11 +25,11 @@ public class FluxBuilder {
         return builtFLux;
     }
 
-    public static CommandFlux empty() {
-        return create("");
+    public static CommandFlux empty(AliasManager aliasManager) {
+        return create("", aliasManager);
     }
 
-    public static CommandFlux create(String content) {
-        return new CommandFlux(content);
+    public static CommandFlux create(String content, AliasManager aliasManager) {
+        return new CommandFlux(content, aliasManager);
     }
 }

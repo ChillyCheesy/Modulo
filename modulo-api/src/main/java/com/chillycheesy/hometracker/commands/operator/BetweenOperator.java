@@ -1,42 +1,29 @@
 package com.chillycheesy.hometracker.commands.operator;
 
-import com.chillycheesy.hometracker.commands.*;
-import com.chillycheesy.hometracker.modules.Module;
-import com.chillycheesy.hometracker.utils.Priority;
+import com.chillycheesy.hometracker.commands.AliasManager;
+import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.FluxBuilder;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Operator(Priority.DIVINE)
-public class SkipOperator extends BetweenOperator implements OperatorListener {
+public abstract class BetweenOperator implements OperatorFinder, OperatorListener {
 
-    @Override
-    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) {
-        center.setContent(format(center.getContent().replaceAll("^'|'$", "")));
-        return FluxBuilder.combine(left.getAliasManager(), left, center, right);
-    }
-
-    private String format(String content) {
-        final StringBuilder result = new StringBuilder("\"");
-        for (int i = 0 ; i < content.length() ; ++i) {
-            result.append("\\").append(content.charAt(i));
-        }
-        return result.append("\"").toString();
-    }
-
-    @Override
-    public Operation findOperatorMatch(CommandFlux flux) {
+    public Operation findOperatorMatch(CommandFlux flux, char firstChar, char lastChar) {
         if (flux != null) {
             final String content = flux.getContent();
-            final Pattern pattern = Pattern.compile("(?<!\\\\)'");
+            final String regex = String.format("(?<!\\\\)\\%s", firstChar);
+            final Pattern pattern = Pattern.compile(regex);
             final Matcher matcher = pattern.matcher(content);
             if (matcher.find()) {
-                int start = matcher.start();
+                int start = matcher.start(), open = 1;
                 if (start > -1 && start < content.length() - 1) {
                     for (int i = start + 1 ; i < content.length() ; ++i) {
                         char c = content.charAt(i);
                         if (c == '\\') ++i;
-                        else if (c == '\'') return createOperation(flux.getAliasManager(), content, start, i);
+                        else if (c == firstChar) ++open;
+                        else if (c == lastChar) --open;
+                        if (open == 0) return createOperation(flux.getAliasManager(), content, start, i);
                     }
                 }
             }
@@ -51,4 +38,5 @@ public class SkipOperator extends BetweenOperator implements OperatorListener {
         final CommandFlux right = FluxBuilder.create(content.substring(end + 1, endContent), aliasManager);
         return new Operation(left, center, right, this);
     }
+
 }

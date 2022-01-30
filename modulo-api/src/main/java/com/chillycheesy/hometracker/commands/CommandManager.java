@@ -1,5 +1,6 @@
 package com.chillycheesy.hometracker.commands;
 
+import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Manager;
@@ -14,13 +15,18 @@ public class CommandManager extends Manager<Command> {
         processor = new CommandProcessor(this, operatorManager);
     }
 
-    public CommandFlux applyCommand(Module caller, String line) throws CommandException {
-        final CommandFlux flux = FluxBuilder.create(line);
+    public CommandFlux applyCommand(Module caller, AliasManager aliasManager, String line) throws CommandException {
+        final CommandFlux flux = FluxBuilder.create(line, aliasManager);
         return processor.execute(caller, flux);
     }
 
+    public CommandFlux applyCommand(AliasManager aliasManager, String line) throws CommandException {
+        return applyCommand(null, aliasManager, line);
+    }
+
     public CommandFlux applyCommand(String line) throws CommandException {
-        return applyCommand(null, line);
+        final AliasManager rootAliasManager = ModuloAPI.getCommand().getMainAliasManager();
+        return applyCommand(rootAliasManager, line);
     }
 
     public Command getCommandByLabel(String label) {
