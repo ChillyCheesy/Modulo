@@ -2,19 +2,22 @@ package com.chillycheesy.hometracker.commands.operator.natif;
 
 import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.operator.builder.Operator;
 import com.chillycheesy.hometracker.commands.operator.builder.OperatorFindByRegex;
 import com.chillycheesy.hometracker.commands.operator.OperatorListener;
 import com.chillycheesy.hometracker.modules.Module;
+import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
-@OperatorFindByRegex("<:")
-public class LeftInjectorOperator implements OperatorListener {
+@Operator(Priority.EPIC)
+@OperatorFindByRegex("(<:|:>)")
+public class InjectorOperator implements OperatorListener {
 
     @Override
     public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
         final String leftContent = left.getContent();
         final String rightContent = right.getContent();
-        return FluxBuilder.create("{" + leftContent + ";" + rightContent + "};", left.getAliasManager());
+        return FluxBuilder.create("{" + leftContent + ";" + rightContent + "}", left.getAliasManager());
     }
 
 }

@@ -8,13 +8,13 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 @OperatorFindByRegex("=>")
-public class InsertStrictAliasOperator implements OperatorListener {
+public class CreateStrictAliasOperator implements OperatorListener {
 
     @Override
     public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
         final String leftContent = left.getContent();
         final String rightContent = right.getContent();
-        return FluxBuilder.create("alias ('" + leftContent + "') ('" + rightContent + "')", center.getAliasManager());
+        return FluxBuilder.create("alias '" + leftContent + "' '" + rightContent + "'", center.getAliasManager());
     }
 
 }

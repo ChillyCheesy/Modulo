@@ -15,13 +15,11 @@ public class BlockOperator extends BetweenOperator implements OperatorListener {
 
     @Override
     public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
-        final String content = center.getContent().replaceAll("^\\{|}$", "");
-        center.setContent(content);
-        center.setAliasManager(center.getAliasManager().createChild());
+        final CommandFlux flux = new CommandFlux(center.getContent().replaceAll("^\\{|}$", ""), center.getAliasManager().createChild());
         final CommandContainer commandContainer = ModuloAPI.getCommand();
         final CommandManager manager = commandContainer.getCommandManager();
         final CommandProcessor processor = manager.getProcessor();
-        return FluxBuilder.combine(left.getAliasManager(), processor.execute(module, center), right);
+        return FluxBuilder.combine(left.getAliasManager(), left, processor.execute(module, flux), right);
     }
 
     @Override

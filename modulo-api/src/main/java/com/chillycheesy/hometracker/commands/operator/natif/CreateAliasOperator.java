@@ -8,7 +8,7 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 @OperatorFindByRegex("=")
-public class InsertAliasOperator implements OperatorListener {
+public class CreateAliasOperator implements OperatorListener {
 
     @Override
     public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {

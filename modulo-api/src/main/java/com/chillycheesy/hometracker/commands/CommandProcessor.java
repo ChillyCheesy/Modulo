@@ -19,7 +19,7 @@ public class CommandProcessor {
     private CommandManager commandManager;
     private OperatorManager operatorManager;
 
-    private Pattern nonCommand;
+    private final Pattern nonCommand;
 
     public CommandProcessor(CommandManager commandManager, OperatorManager operatorManager) {
         this.commandManager = commandManager;
