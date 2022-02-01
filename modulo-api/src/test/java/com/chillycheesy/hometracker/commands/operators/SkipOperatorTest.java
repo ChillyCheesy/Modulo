@@ -8,6 +8,7 @@ import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.SkipOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +23,12 @@ public class SkipOperatorTest {
         operatorManager = ModuloAPI.getCommand().getOperatorManager();
         operatorManager.registerItemToBuild(null,  new ParenthesesOperator(), new SkipOperator());
         ModuloAPI.getCommand().getCommandManager().registerItemToBuild(null, new EchoCommand());
+    }
+
+    @AfterEach
+    public final void afterEach() {
+        ModuloAPI.getCommand().getOperatorManager().removeAllItems(null);
+        ModuloAPI.getCommand().getCommandManager().removeAllItems(null);
     }
 
     @Test

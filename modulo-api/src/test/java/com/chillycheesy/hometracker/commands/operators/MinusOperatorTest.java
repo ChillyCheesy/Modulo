@@ -9,6 +9,7 @@ import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.PlusOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.SkipOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -24,6 +25,12 @@ public class MinusOperatorTest {
     public final void beforeEach() {
         operatorManager = ModuloAPI.getCommand().getOperatorManager();
         operatorManager.registerItemToBuild(null, new ParenthesesOperator(), new PlusOperator(), new MinusOperator());
+    }
+
+    @AfterEach
+    public final void afterEach() {
+        ModuloAPI.getCommand().getOperatorManager().removeAllItems(null);
+        ModuloAPI.getCommand().getCommandManager().removeAllItems(null);
     }
 
     @Test

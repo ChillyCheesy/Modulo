@@ -6,6 +6,7 @@ import com.chillycheesy.hometracker.commands.FluxBuilder;
 import com.chillycheesy.hometracker.commands.operator.*;
 import com.chillycheesy.hometracker.commands.operator.natif.*;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -28,6 +29,12 @@ public class ModuloOperatorTest {
                 new DivideOperator(),
                 new ModuloOperator()
         );
+    }
+
+    @AfterEach
+    public final void afterEach() {
+        ModuloAPI.getCommand().getOperatorManager().removeAllItems(null);
+        ModuloAPI.getCommand().getCommandManager().removeAllItems(null);
     }
 
     @Test

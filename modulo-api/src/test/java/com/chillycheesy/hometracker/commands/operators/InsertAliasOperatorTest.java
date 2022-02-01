@@ -4,10 +4,10 @@ import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.commands.CommandManager;
 import com.chillycheesy.hometracker.commands.natif.EchoCommand;
-import com.chillycheesy.hometracker.commands.operator.natif.AliasOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.InsertAliasOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,6 +21,12 @@ public class InsertAliasOperatorTest {
         commandManager = ModuloAPI.getCommand().getCommandManager();
         ModuloAPI.getCommand().getOperatorManager().registerItemToBuild(null, new ParenthesesOperator(), new InsertAliasOperator());
         commandManager.registerItemToBuild(null, new EchoCommand());
+    }
+
+    @AfterEach
+    public final void afterEach() {
+        ModuloAPI.getCommand().getOperatorManager().removeAllItems(null);
+        ModuloAPI.getCommand().getCommandManager().removeAllItems(null);
     }
 
     @Test
