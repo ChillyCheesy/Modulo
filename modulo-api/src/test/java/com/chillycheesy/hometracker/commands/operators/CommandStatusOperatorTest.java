@@ -4,15 +4,11 @@ import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.commands.CommandListener;
 import com.chillycheesy.hometracker.commands.CommandManager;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
 import com.chillycheesy.hometracker.commands.builder.Description;
 import com.chillycheesy.hometracker.commands.builder.Label;
 import com.chillycheesy.hometracker.commands.builder.Usage;
 import com.chillycheesy.hometracker.commands.natif.EchoCommand;
-import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.CommandStatusOperator;
-import com.chillycheesy.hometracker.commands.operator.natif.InstructionEndOperator;
-import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 import org.junit.jupiter.api.AfterEach;
@@ -41,7 +37,7 @@ public class CommandStatusOperatorTest {
 
     @Test
     public void commandSuccessTest() throws CommandException {
-        final String line = "[successCommand]";
+        final String line = "echo I love [successCommand]";
         final CommandFlux flux = commandManager.applyCommand(line);
         assertEquals("I love true", flux.getContent());
     }

@@ -18,12 +18,11 @@ import java.util.regex.Pattern;
 public class NotOperator implements OperatorListener, OperatorFinder {
 
     public static final String OPERATOR_REGEX = "(\\!)";
-    private final String BOOLEAN_REGEX= "(true|false)";
 
     protected CommandFlux applyOperation(CommandFlux left, CommandFlux center, CommandFlux right, String operator) {
+        String BOOLEAN_REGEX = "(true|false)";
         final boolean rightBoolean = Boolean.parseBoolean(FluxBuilder.extractFromFlux(right, "^" + BOOLEAN_REGEX));
         final CommandFlux flux = FluxBuilder.combine(left.getAliasManager(), left, center, right);
-        System.out.println(left.getContent() + operator + right.getContent());
         flux.setContent(flux.getContent().replaceFirst(operator + "\\s*" + BOOLEAN_REGEX," " + !rightBoolean));
         return flux;
     }
@@ -36,7 +35,7 @@ public class NotOperator implements OperatorListener, OperatorFinder {
             final String content = flux.getContent();
             final CommandFlux left = new CommandFlux(content.substring(0, matcher.start()).trim(), flux.getAliasManager());
             final CommandFlux center = new CommandFlux(content.substring(matcher.start(), matcher.start() + 1).trim(), flux.getAliasManager());
-            final CommandFlux right = new CommandFlux(content.substring(matcher.start() + 1, content.length()).trim(), flux.getAliasManager());
+            final CommandFlux right = new CommandFlux(content.substring(matcher.start() + 1).trim(), flux.getAliasManager());
             return new Operation(left, center, right, this);
         }
         return null;
