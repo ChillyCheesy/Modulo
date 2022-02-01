@@ -10,7 +10,7 @@ public class AliasCommand implements CommandListener{
         final AliasManager aliasManager = flux.getAliasManager();
         boolean successAssign = args.length == 2;
         if (successAssign)
-            aliasManager.addAlias(args[0], args[1]);
+            aliasManager.registerAlias(args[0], args[1]);
         flux.setSuccess(successAssign);
         return flux;
     }

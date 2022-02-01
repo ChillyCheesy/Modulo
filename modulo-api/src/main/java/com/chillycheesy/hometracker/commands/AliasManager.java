@@ -14,12 +14,12 @@ public class AliasManager {
         this.aliases = aliases;
     }
 
-    public void addAlias(String alias, String command) {
+    public void registerAlias(String alias, String command) {
         aliases.put(alias, command);
     }
 
-    public void addAlias(String alias, String...command) {
-        Arrays.stream(command).forEach(c -> addAlias(alias, c));
+    public void registerAlias(String alias, String...command) {
+        Arrays.stream(command).forEach(c -> registerAlias(alias, c));
     }
 
     public String getValue(String alias) {
