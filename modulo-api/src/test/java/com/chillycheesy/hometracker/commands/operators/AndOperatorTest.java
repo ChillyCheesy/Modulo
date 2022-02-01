@@ -63,4 +63,24 @@ public class AndOperatorTest {
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love false ewoks", flux.getContent());
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "I Love true && false ewoks",
+            "I Love false && true ewoks"
+    })
+    public final void applyWithDifferentXor(String line) throws CommandException {
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I Love false ewoks", flux.getContent());
+    }
+
+    @Test
+    public final void applyWithSameOr() throws CommandException {
+        String line = "I Love true && true ewoks";
+        CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I Love true ewoks", flux.getContent());
+        line = "I Love false && false ewoks";
+        flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I Love false ewoks", flux.getContent());
+    }
 }
