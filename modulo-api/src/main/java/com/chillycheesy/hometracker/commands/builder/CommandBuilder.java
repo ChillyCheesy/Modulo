@@ -28,7 +28,7 @@ public class CommandBuilder {
         command.setLabel(mainLabel);
         if (aliases.length > 0) {
             final AliasManager aliasManager = ModuloAPI.getCommand().getMainAliasManager();
-            aliasManager.addAlias(mainLabel, aliases);
+            aliasManager.registerAlias(mainLabel, aliases);
         }
     }
 
