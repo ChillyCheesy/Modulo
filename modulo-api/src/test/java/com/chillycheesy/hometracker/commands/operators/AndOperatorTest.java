@@ -1,8 +1,11 @@
-package com.chillycheesy.hometracker.commands;
+package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
+import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.FluxBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.AndOperator;
+import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +21,7 @@ public class AndOperatorTest {
     @BeforeEach
     public final void beforeEach() {
         operatorManager = ModuloAPI.getCommand().getOperatorManager();
-        operatorManager.registerItemToBuild(null, new AndOperator());
+        operatorManager.registerItemToBuild(null, new AndOperator(), new ParenthesesOperator());
     }
 
     @Test
@@ -43,7 +46,6 @@ public class AndOperatorTest {
             "I Love true&&true ewoks",
             "I Love true   &&true ewoks",
             "I Love true &&     true ewoks",
-            "I Love true &&true ewoks",
             "I Love true\n&&\ntrue ewoks",
             "I Love true \n&&\n     true ewoks",
             "I Love true   \n&&true ewoks",
@@ -57,7 +59,7 @@ public class AndOperatorTest {
 
     @Test
     public final void applyWithParenthesesAnd() throws CommandException {
-        final String line = "I Love true && true && false ewoks";
+        final String line = "I Love (true) && (true && false) ewoks";
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love false ewoks", flux.getContent());
     }

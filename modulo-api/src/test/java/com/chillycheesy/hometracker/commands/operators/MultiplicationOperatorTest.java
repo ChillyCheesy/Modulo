@@ -1,6 +1,8 @@
-package com.chillycheesy.hometracker.commands;
+package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
+import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.FluxBuilder;
 import com.chillycheesy.hometracker.commands.operator.*;
 import com.chillycheesy.hometracker.commands.operator.natif.MinusOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.MultiplicationOperator;

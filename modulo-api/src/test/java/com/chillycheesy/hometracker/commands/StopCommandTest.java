@@ -26,7 +26,7 @@ public class StopCommandTest {
 
     @Test
     public final void testRunCommand() throws CommandException {
-        final CommandFlux flux = commandManager.applyCommand("command arg1 '6 + 7' \"6 + 7\"");
+        // final CommandFlux flux = commandManager.applyCommand("command arg1 '6 + 7' \"6 + 7\"");
 
     }
 

@@ -1,4 +1,4 @@
-package com.chillycheesy.hometracker.commands.operator.natif;
+package com.chillycheesy.hometracker.commands.operator;
 
 import com.chillycheesy.hometracker.commands.AliasManager;
 import com.chillycheesy.hometracker.commands.CommandFlux;

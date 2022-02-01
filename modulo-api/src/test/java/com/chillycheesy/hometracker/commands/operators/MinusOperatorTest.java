@@ -1,10 +1,13 @@
-package com.chillycheesy.hometracker.commands;
+package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
+import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.FluxBuilder;
 import com.chillycheesy.hometracker.commands.operator.natif.MinusOperator;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.PlusOperator;
+import com.chillycheesy.hometracker.commands.operator.natif.SkipOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,13 +36,6 @@ public class MinusOperatorTest {
     @Test
     public final void applyWithSkipMinus() throws CommandException {
         final String line = "I Love 5 \\- 5 ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
-        assertEquals(line, flux.getContent());
-    }
-
-    @Test
-    public final void applyWithSkipMinus2() throws CommandException {
-        final String line = "I Love '5 - 5' ewoks";
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
