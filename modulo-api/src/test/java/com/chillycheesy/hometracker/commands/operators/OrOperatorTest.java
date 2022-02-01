@@ -1,8 +1,11 @@
-package com.chillycheesy.hometracker.commands;
+package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
+import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.FluxBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.OrOperator;
+import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,7 +21,7 @@ public class OrOperatorTest {
     @BeforeEach
     public final void beforeEach() {
         operatorManager = ModuloAPI.getCommand().getOperatorManager();
-        operatorManager.registerItemToBuild(null, new OrOperator());
+        operatorManager.registerItemToBuild(null, new OrOperator(), new ParenthesesOperator());
     }
 
     @Test
@@ -56,9 +59,36 @@ public class OrOperatorTest {
     }
 
     @Test
+    public final void applyWithParenthesesOr() throws CommandException {
+        final String line = "I Love (true) || (true || false) ewoks";
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I Love true ewoks", flux.getContent());
+    }
+
+    @Test
     public final void applyWithMultipuleOr() throws CommandException {
         final String line = "I Love true || true || false ewoks";
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {
+            "I Love true || false ewoks",
+            "I Love false || true ewoks"
+    })
+    public final void applyWithDifferentOr(String line) throws CommandException {
+        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I Love true ewoks", flux.getContent());
+    }
+
+    @Test
+    public final void applyWithSameOr() throws CommandException {
+        String line = "I Love true || true ewoks";
+        CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I Love true ewoks", flux.getContent());
+        line = "I Love false || false ewoks";
+        flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        assertEquals("I Love false ewoks", flux.getContent());
     }
 }
