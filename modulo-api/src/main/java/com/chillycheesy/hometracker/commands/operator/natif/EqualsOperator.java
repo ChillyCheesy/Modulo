@@ -21,7 +21,6 @@ public class EqualsOperator implements OperatorListener {
         final String leftString = FluxBuilder.extractFromFlux(left, STRING_REGEX + "$", "");
         final String rightString = FluxBuilder.extractFromFlux(right, "^" + STRING_REGEX, "");
         final CommandFlux flux = FluxBuilder.combine(left.getAliasManager(), left, center, right);
-        System.out.println(leftString + " " + rightString);
         flux.setContent(flux.getContent().replaceFirst(STRING_REGEX + "\\s*" + "==" + "\\s*" + STRING_REGEX, "" + this.equals(leftString, rightString)));
         return flux;
     }
