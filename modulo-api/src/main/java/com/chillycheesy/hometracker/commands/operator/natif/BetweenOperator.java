@@ -1,8 +1,11 @@
-package com.chillycheesy.hometracker.commands.operator;
+package com.chillycheesy.hometracker.commands.operator.natif;
 
 import com.chillycheesy.hometracker.commands.AliasManager;
 import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.operator.Operation;
+import com.chillycheesy.hometracker.commands.operator.OperatorFinder;
+import com.chillycheesy.hometracker.commands.operator.OperatorListener;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

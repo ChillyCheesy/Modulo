@@ -2,6 +2,8 @@ package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.operator.*;
+import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
+import com.chillycheesy.hometracker.commands.operator.natif.SkipOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

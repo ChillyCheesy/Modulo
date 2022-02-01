@@ -2,7 +2,6 @@ package com.chillycheesy.hometracker.commands;
 
 public class Command {
 
-    private Module registeredModule;
     private String label;
     private String[] alias;
     private String description;
@@ -15,17 +14,12 @@ public class Command {
         this.label = label;
     }
 
-    public Command(Module registeredModule, String label, String[] alias, String description, String usage, CommandListener commandListener) {
-        this.registeredModule = registeredModule;
+    public Command(String label, String[] alias, String description, String usage, CommandListener commandListener) {
         this.label = label;
         this.alias = alias;
         this.description = description;
         this.usage = usage;
         this.commandListener = commandListener;
-    }
-
-    public Module getRegisteredModule() {
-        return registeredModule;
     }
 
     public CommandListener getCommandListener() {
@@ -58,10 +52,6 @@ public class Command {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public void setRegisteredModule(Module registeredModule) {
-        this.registeredModule = registeredModule;
     }
 
     public void setLabel(String label) {

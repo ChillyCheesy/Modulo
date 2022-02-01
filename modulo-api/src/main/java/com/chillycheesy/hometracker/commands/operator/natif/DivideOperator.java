@@ -1,7 +1,8 @@
-package com.chillycheesy.hometracker.commands.operator;
+package com.chillycheesy.hometracker.commands.operator.natif;
 
 import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.NumberOperator;
+import com.chillycheesy.hometracker.commands.operator.builder.Operator;
+import com.chillycheesy.hometracker.commands.operator.builder.OperatorFindByRegex;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 

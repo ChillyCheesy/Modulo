@@ -1,6 +1,8 @@
-package com.chillycheesy.hometracker.commands;
+package com.chillycheesy.hometracker.commands.natif;
 
 import com.chillycheesy.hometracker.ModuloAPI;
+import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.CommandListener;
 import com.chillycheesy.hometracker.modules.Module;
 
 public class EchoCommand implements CommandListener {

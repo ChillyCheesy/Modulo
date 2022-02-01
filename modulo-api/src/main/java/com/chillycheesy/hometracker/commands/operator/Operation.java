@@ -67,9 +67,9 @@ public class Operation {
         if (matcher.find()) {
             final String content = flux.getContent();
             final int startContent = 0, start = matcher.start(), end = matcher.end(), endContent = content.length();
-            final CommandFlux left = new CommandFlux(content.substring(startContent, start).trim());
-            final CommandFlux center = new CommandFlux(content.substring(start, end).trim());
-            final CommandFlux right = new CommandFlux(content.substring(end, endContent).trim());
+            final CommandFlux left = new CommandFlux(content.substring(startContent, start).trim(), flux.getAliasManager());
+            final CommandFlux center = new CommandFlux(content.substring(start, end).trim(), flux.getAliasManager());
+            final CommandFlux right = new CommandFlux(content.substring(end, endContent).trim(), flux.getAliasManager());
             return new Operation(left, center, right, listener);
         }
         return null;

@@ -1,6 +1,7 @@
 package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
+import com.chillycheesy.hometracker.commands.builder.CommandBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Manager;
@@ -13,6 +14,19 @@ public class CommandManager extends Manager<Command> {
     public CommandManager(OperatorManager operatorManager) {
         super();
         processor = new CommandProcessor(this, operatorManager);
+    }
+
+    public boolean registerItemToBuild(Module module, Object item) {
+        final Command command = CommandBuilder.build(item);
+        return super.registerItem(module, command);
+    }
+
+    public boolean registerItemToBuild(Module module, Object...items) {
+        boolean success = true;
+        for (Object item : items)
+            if (!this.registerItemToBuild(module, item))
+                success = false;
+        return success;
     }
 
     public CommandFlux applyCommand(Module caller, AliasManager aliasManager, String line) throws CommandException {

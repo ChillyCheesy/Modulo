@@ -1,15 +1,25 @@
 package com.chillycheesy.hometracker.commands;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class AliasManager {
 
     private AliasManager parent;
-    private Map<String, String> aliases;
+    private final Map<String, String> aliases;
+
+    public AliasManager() {
+        this(new HashMap<>());
+    }
+    public AliasManager(Map<String, String> aliases) {
+        this.aliases = aliases;
+    }
 
     public void addAlias(String alias, String command) {
         aliases.put(alias, command);
+    }
+
+    public void addAlias(String alias, String...command) {
+        Arrays.stream(command).forEach(c -> addAlias(alias, c));
     }
 
     public String getValue(String alias) {
@@ -20,10 +30,19 @@ public class AliasManager {
         return blockAlias;
     }
 
+    public boolean isAlias(String alias) {
+        return aliases.containsKey(alias);
+    }
+
+    public List<String> getAliases() {
+        final List<String> parent = new ArrayList<>(this.parent != null ? this.parent.getAliases() : Collections.emptyList());
+        parent.addAll(aliases.keySet());
+        return parent;
+    }
+
     public AliasManager createChild() {
         AliasManager child = new AliasManager();
         child.parent = this;
-        child.aliases = new HashMap<>(aliases);
         return child;
     }
 

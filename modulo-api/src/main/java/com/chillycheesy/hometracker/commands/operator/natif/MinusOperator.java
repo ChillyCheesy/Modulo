@@ -1,7 +1,9 @@
-package com.chillycheesy.hometracker.commands.operator;
+package com.chillycheesy.hometracker.commands.operator.natif;
 
 import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.NumberOperator;
+import com.chillycheesy.hometracker.commands.operator.Operation;
+import com.chillycheesy.hometracker.commands.operator.builder.Operator;
+import com.chillycheesy.hometracker.commands.operator.OperatorFinder;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
@@ -28,9 +30,9 @@ public class MinusOperator extends NumberOperator implements OperatorFinder {
         if (matcher.find()) {
             final String content = flux.getContent();
             final int startContent = 0, start = matcher.end() - 1, end = matcher.end(), endContent = content.length();
-            final CommandFlux left = new CommandFlux(content.substring(startContent, start).trim());
-            final CommandFlux center = new CommandFlux(content.substring(start, end).trim());
-            final CommandFlux right = new CommandFlux(content.substring(end, endContent).trim());
+            final CommandFlux left = new CommandFlux(content.substring(startContent, start).trim(), flux.getAliasManager());
+            final CommandFlux center = new CommandFlux(content.substring(start, end).trim(), flux.getAliasManager());
+            final CommandFlux right = new CommandFlux(content.substring(end, endContent).trim(), flux.getAliasManager());
             return new Operation(left, center, right, this);
         }
         return null;

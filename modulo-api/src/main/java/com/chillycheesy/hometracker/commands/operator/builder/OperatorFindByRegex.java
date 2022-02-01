@@ -1,4 +1,4 @@
-package com.chillycheesy.hometracker.commands.operator;
+package com.chillycheesy.hometracker.commands.operator.builder;
 
 import java.lang.annotation.*;
 

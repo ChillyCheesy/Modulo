@@ -1,5 +1,7 @@
 package com.chillycheesy.hometracker.commands;
 
+import com.chillycheesy.hometracker.ModuloAPI;
+
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -31,5 +33,9 @@ public class FluxBuilder {
 
     public static CommandFlux create(String content, AliasManager aliasManager) {
         return new CommandFlux(content, aliasManager);
+    }
+
+    public static CommandFlux create(String content) {
+        return create(content, ModuloAPI.getCommand().getMainAliasManager());
     }
 }

@@ -2,6 +2,7 @@ package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.operator.*;
+import com.chillycheesy.hometracker.commands.operator.natif.*;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,7 +11,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class ModuloOperationTest {
+public class ModuloOperatorTest {
 
     private OperatorManager operatorManager;
 
@@ -23,7 +24,7 @@ public class ModuloOperationTest {
                 new MinusOperator(),
                 new MultiplicationOperator(),
                 new DivideOperator(),
-                new ModuloOperation()
+                new ModuloOperator()
         );
     }
 
