@@ -10,7 +10,7 @@ import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 @Operator(Priority.EPIC)
-@OperatorFindByRegex("(<:|:>)")
+@OperatorFindByRegex("(\\(.*[^\\\\]+\\)\\s*[^\\\\]?:>|<:\\s*[^\\\\]?\\(.*[^\\\\]+\\))")
 public class InjectorOperator implements OperatorListener {
 
     @Override
