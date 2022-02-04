@@ -28,7 +28,9 @@ public class CommandProcessor {
     }
 
     public CommandFlux execute(Module caller, CommandFlux flux) throws CommandException {
+        System.out.println("Executing command: " + flux.getContent());
         flux = operatorManager.applyOperators(caller, flux);
+        System.out.println("After command: " + flux.getContent());
         final String content = flux.getContent();
         final Pattern pattern = Pattern.compile("(?<!\\\\)\"(.*?)[^\\\\]\"|\\S+");
         final Matcher matcher = pattern.matcher(content);

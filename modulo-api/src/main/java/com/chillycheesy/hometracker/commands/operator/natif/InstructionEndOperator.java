@@ -12,7 +12,7 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
-@Operator(Priority.DIVINE)
+@Operator(Priority.LEGENDARY)
 public class InstructionEndOperator implements OperatorFinder, OperatorListener {
 
     @Override

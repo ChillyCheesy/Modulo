@@ -41,7 +41,8 @@ public class BlockOperatorTest {
 
     @Test
     public final void testWithInsertAliasIntoBlock() throws CommandException {
-        final String line = "ewok = Wicket; " +
+        final String line =
+                "ewok = Wicket; " +
                 "echo {" +
                 "   planet = Endor;" +
                 "   return planet" +

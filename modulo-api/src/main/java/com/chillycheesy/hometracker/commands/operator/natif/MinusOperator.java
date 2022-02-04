@@ -11,7 +11,7 @@ import com.chillycheesy.hometracker.utils.Priority;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Operator(Priority.IMPORTANT)
+@Operator(Priority.NEUTRAL)
 public class MinusOperator extends NumberOperator implements OperatorFinder {
 
     @Override

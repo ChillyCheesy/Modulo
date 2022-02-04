@@ -14,7 +14,7 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Operator(Priority.HIGH)
+@Operator(Priority.EPIC)
 public class AliasOperator implements OperatorListener, OperatorFinder {
 
     @Override
@@ -29,7 +29,7 @@ public class AliasOperator implements OperatorListener, OperatorFinder {
     public Operation findOperatorMatch(CommandFlux flux) {
         final AliasManager aliasManager = flux.getAliasManager();
         for (String alias : aliasManager.getAliases()) {
-            final Pattern pattern = Pattern.compile("(?<!\\\\)" + alias + "(?!\\w)");
+            final Pattern pattern = Pattern.compile("(?<![\\\\\\w])(" + alias + ")(?!\\w)");
             final Matcher matcher = pattern.matcher(flux.getContent());
             if (matcher.find()) {
                 return createOperation(aliasManager, flux.getContent(), matcher.start(), matcher.end());

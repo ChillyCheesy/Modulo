@@ -8,7 +8,7 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
-@Operator(Priority.IMPORTANT)
+@Operator(Priority.LOOK_AT_THIS_DUDE)
 @OperatorFindByRegex("(\\|\\|)")
 public class OrOperator extends BooleanOperator {
 

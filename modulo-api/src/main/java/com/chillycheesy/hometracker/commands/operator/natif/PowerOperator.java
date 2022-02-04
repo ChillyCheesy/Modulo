@@ -8,7 +8,7 @@ import com.chillycheesy.hometracker.commands.operator.OperatorListener;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
-@Operator(Priority.MAJOR)
+@Operator(Priority.COMMON)
 @OperatorFindByRegex("\\^")
 public class PowerOperator extends NumberOperator implements OperatorListener {
 

@@ -13,8 +13,7 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-
-@Operator(Priority.IMPORTANT)
+@Operator(Priority.LOOK_AT_THIS_DUDE)
 public class NotOperator implements OperatorListener, OperatorFinder {
 
     public static final String OPERATOR_REGEX = "(\\!)";

@@ -7,7 +7,7 @@ import com.chillycheesy.hometracker.commands.operator.builder.OperatorFindByRege
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
-@Operator(Priority.IMPORTANT)
+@Operator(Priority.NEUTRAL)
 @OperatorFindByRegex("\\+")
 public class PlusOperator extends NumberOperator {
 
