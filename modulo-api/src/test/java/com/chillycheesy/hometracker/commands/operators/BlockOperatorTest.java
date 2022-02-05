@@ -42,9 +42,9 @@ public class BlockOperatorTest {
     @Test
     public final void testWithInsertAliasIntoBlock() throws CommandException {
         final String line =
-                "ewok = Wicket; " +
+                "ewok = Wicket;" +
                 "echo {" +
-                "   planet = Endor;" +
+                "   planet = \"Endor\";" +
                 "   return planet" +
                 "}";
         final CommandFlux flux = commandManager.applyCommand(line);

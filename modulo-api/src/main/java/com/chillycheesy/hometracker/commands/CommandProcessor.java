@@ -28,9 +28,7 @@ public class CommandProcessor {
     }
 
     public CommandFlux execute(Module caller, CommandFlux flux) throws CommandException {
-        System.out.println("Executing command: " + flux.getContent());
         flux = operatorManager.applyOperators(caller, flux);
-        System.out.println("After command: " + flux.getContent());
         final String content = flux.getContent();
         final Pattern pattern = Pattern.compile("(?<!\\\\)\"(.*?)[^\\\\]\"|\\S+");
         final Matcher matcher = pattern.matcher(content);
@@ -47,7 +45,7 @@ public class CommandProcessor {
             final Command command = commandManager.getCommandByLabel(label);
             if (command == null)
                 if (nonCommand.matcher(label).find()) return flux;
-                else throw new CommandNotFoundException(flux, 0, label);
+                else throw new CommandNotFoundException(flux, label);
             return command.getCommandListener().onCommand(caller, label, args, flux);
         }
         throw new CommandException(flux, 0, "No arguments provided");

@@ -10,7 +10,7 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
-@Operator(Priority.COMMON)
+@Operator(Priority.UNCOMMON)
 public class CommandStatusOperator extends BetweenOperator implements OperatorListener {
 
     @Override
