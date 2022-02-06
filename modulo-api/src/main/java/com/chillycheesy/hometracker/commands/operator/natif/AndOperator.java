@@ -8,6 +8,15 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
+/**
+ * Operator that return true if the left and right parameter are true, false in any other case.
+ * This operator only work with a boolean before and after the symbol "&&"
+ * Exemple :
+ *         true && true => true
+ *         true && false => false
+ *         false && true => false
+ *         false && false => false
+ */
 @Operator(Priority.LOOK_AT_THIS_DUDE)
 @OperatorFindByRegex("(\\&\\&)")
 public class AndOperator extends BooleanOperator {
