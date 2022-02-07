@@ -9,4 +9,4 @@ Despelette was here !
 </pre>
 
 ## How to use it
-* [Command](wiki/Command.md)
+* [Command](https://github.com/ChillyCheesy/Modulo/blob/dev/wiki/COMMAND.md)
