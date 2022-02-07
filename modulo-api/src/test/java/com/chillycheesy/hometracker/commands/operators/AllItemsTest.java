@@ -57,11 +57,21 @@ public class AllItemsTest {
     }
 
     @Test
-    public final void functionTest() throws CommandException {
+    public final void functionPlusTest() throws CommandException {
         final String command =
             "plus => a + b;" +
-            "echo (a = 5;b = 10) :> plus;";
+            "\"a=8;b=7\":> plus";
         assertEquals("15.0", commandManager.applyCommand(command).getContent());
+    }
+
+    @Test
+    public final void functionPrintTest() throws CommandException {
+        final String command =
+                "print => return {" +
+                "   return \"Message: msg\"" +
+                "};" +
+                "echo \"msg=hello\" :> print";
+        assertEquals("Message: hello", commandManager.applyCommand(command).getContent());
     }
 
 }

@@ -8,7 +8,7 @@ import com.chillycheesy.hometracker.commands.operator.OperatorListener;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
-@Operator(Priority.COMMON)
+@Operator(Priority.UNCOMMON)
 @OperatorFindByRegex("%")
 public class ModuloOperator extends NumberOperator implements OperatorListener {
 

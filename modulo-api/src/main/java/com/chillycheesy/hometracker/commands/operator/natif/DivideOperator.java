@@ -14,7 +14,7 @@ import com.chillycheesy.hometracker.utils.Priority;
  *          30 / 6 => 5
  *          -3 / 2 => -1.5
  */
-@Operator(Priority.COMMON)
+@Operator(Priority.UNCOMMON)
 @OperatorFindByRegex("/")
 public class DivideOperator extends NumberOperator {
 

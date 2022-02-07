@@ -18,7 +18,7 @@ import java.util.regex.Pattern;
  *          5 - 6 => -1
  *          -3 - 2 => -5
  */
-@Operator(Priority.NEUTRAL)
+@Operator(Priority.COMMON)
 public class MinusOperator extends NumberOperator implements OperatorFinder {
 
     @Override

@@ -14,7 +14,7 @@ import com.chillycheesy.hometracker.utils.Priority;
  *          5 * 6 => 30
  *          -3 * 2 => -6
  */
-@Operator(Priority.COMMON)
+@Operator(Priority.UNCOMMON)
 @OperatorFindByRegex("\\*")
 public class MultiplicationOperator extends NumberOperator {
 

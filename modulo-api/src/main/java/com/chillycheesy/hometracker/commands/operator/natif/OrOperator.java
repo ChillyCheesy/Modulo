@@ -17,7 +17,7 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
  *         false || true => true
  *         false || false => false
  */
-@Operator(Priority.LOOK_AT_THIS_DUDE)
+@Operator(Priority.NEUTRAL)
 @OperatorFindByRegex("(\\|\\|)")
 public class OrOperator extends BooleanOperator {
 

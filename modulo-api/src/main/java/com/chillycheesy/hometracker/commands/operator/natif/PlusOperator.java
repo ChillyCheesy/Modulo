@@ -14,7 +14,7 @@ import com.chillycheesy.hometracker.utils.Priority;
  *          5 + 6 => 11
  *          -3 + 2 => -1
  */
-@Operator(Priority.NEUTRAL)
+@Operator(Priority.COMMON)
 @OperatorFindByRegex("\\+")
 public class PlusOperator extends NumberOperator {
 

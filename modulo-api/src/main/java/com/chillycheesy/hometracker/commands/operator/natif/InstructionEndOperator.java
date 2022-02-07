@@ -50,6 +50,7 @@ public class InstructionEndOperator implements OperatorFinder, OperatorListener 
     public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
         final CommandProcessor commandProcessor = ModuloAPI.getCommand().getCommandManager().getProcessor();
         final CommandFlux leftResult = commandProcessor.execute(module, left);
+        right.setAliasManager(leftResult.getAliasManager());
         return right.getContent().equals("") ? leftResult : right;
     }
 }

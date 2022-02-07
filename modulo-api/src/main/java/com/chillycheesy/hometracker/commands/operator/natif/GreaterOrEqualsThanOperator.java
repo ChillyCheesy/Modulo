@@ -8,7 +8,7 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
-@Operator(Priority.MISERABLE)
+@Operator(Priority.COMMON)
 @OperatorFindByRegex(">=")
 public class GreaterOrEqualsThanOperator extends CompareOperator {
 

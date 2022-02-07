@@ -18,7 +18,7 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
  *          true == false => false
  *          "I love ewoks" == "I hate ewoks" => false
  */
-@Operator(Priority.MISERABLE)
+@Operator(Priority.COMMON)
 @OperatorFindByRegex("(==)")
 public class EqualsOperator implements OperatorListener {
 

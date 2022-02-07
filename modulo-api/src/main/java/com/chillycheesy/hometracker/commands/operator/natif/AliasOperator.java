@@ -14,7 +14,7 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-@Operator(Priority.EPIC)
+@Operator(Priority.MAJOR)
 public class AliasOperator implements OperatorListener, OperatorFinder {
 
     @Override

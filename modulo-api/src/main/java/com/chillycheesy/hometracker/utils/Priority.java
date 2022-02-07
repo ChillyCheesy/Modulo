@@ -1,8 +1,9 @@
 package com.chillycheesy.hometracker.utils;
 
 public class Priority {
-    public static final int DIVINE = 9;
-    public static final int LEGENDARY = 8;
+    public static final int DIVINE = 10;
+    public static final int LEGENDARY = 9;
+    public static final int MYSTIC = 8;
     public static final int EPIC = 7;
     public static final int UNBREAKABLE = 6;
     public static final int MAJOR = 5;

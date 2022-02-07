@@ -10,7 +10,7 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
-@Operator(Priority.RARE)
+@Operator(Priority.UNBREAKABLE)
 public class BlockOperator extends BetweenOperator implements OperatorListener {
 
     @Override
@@ -19,7 +19,8 @@ public class BlockOperator extends BetweenOperator implements OperatorListener {
         final CommandContainer commandContainer = ModuloAPI.getCommand();
         final CommandManager manager = commandContainer.getCommandManager();
         final CommandProcessor processor = manager.getProcessor();
-        return FluxBuilder.combine(left.getAliasManager(), left, processor.execute(module, flux), right);
+        final CommandFlux result = processor.execute(module, flux);
+        return FluxBuilder.combine(left.getAliasManager(), left, result, right);
     }
 
     @Override

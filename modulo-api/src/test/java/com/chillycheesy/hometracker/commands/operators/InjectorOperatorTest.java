@@ -39,17 +39,9 @@ public class InjectorOperatorTest {
 
     @Test
     public final void testWithRightInsertAlias() throws CommandException {
-        final String line = "(ewok) :> Wicket";
+        final String line = "\"ewok\" :> Wicket";
         final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
         assertEquals("{ewok;Wicket}", flux.getContent());
     }
-
-    @Test
-    public final void testWithLeftInsertAlias() throws CommandException {
-        final String line = "Wicket <: (ewok)";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
-        assertEquals("{ewok;Wicket}", flux.getContent());
-    }
-
 
 }
