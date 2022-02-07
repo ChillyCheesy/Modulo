@@ -62,7 +62,7 @@ public class Operation {
     }
 
     public static Operation buildFormRegex(CommandFlux flux, String regex, OperatorListener listener) {
-        final Pattern pattern = Pattern.compile("(?<!\\\\)" + regex);
+        final Pattern pattern = Pattern.compile("(?!([(\\[{].*))((?<!\\\\)" + regex + ")(?!(.*[)\\]}]))");
         final Matcher matcher = pattern.matcher(flux.getContent());
         if (matcher.find()) {
             final String content = flux.getContent();

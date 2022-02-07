@@ -10,11 +10,12 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
-@Operator(Priority.EPIC)
+@Operator(Priority.UNBREAKABLE)
 public class ParenthesesOperator extends BetweenOperator implements OperatorListener {
 
     @Override
     public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
+        System.out.println(center);
         final String content = center.getContent().replaceAll("^\\(|\\)$", "");
         center.setContent(content);
         final CommandContainer commandContainer = ModuloAPI.getCommand();

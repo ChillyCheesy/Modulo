@@ -15,9 +15,13 @@ public class CreateAliasOperator implements OperatorListener {
 
     @Override
     public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
-        final String leftContent = left.getContent();
-        final String rightContent = right.getContent();
-        return FluxBuilder.create("alias \"" + leftContent + "\" \"" + rightContent + "\"", center.getAliasManager());
+        final String leftContent = stringify(left);
+        final String rightContent = stringify(right);
+        return FluxBuilder.create("alias " + leftContent + " " + rightContent, center.getAliasManager());
+    }
+
+    private String stringify(CommandFlux flux) {
+        return flux.getContent().replaceAll("^[^\"].*[^\"]$", "\"$0\"");
     }
 
 }

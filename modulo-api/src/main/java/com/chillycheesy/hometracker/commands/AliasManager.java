@@ -49,4 +49,8 @@ public class AliasManager {
     public AliasManager getParent() {
         return parent;
     }
+
+    public void clear() {
+        aliases.clear();
+    }
 }

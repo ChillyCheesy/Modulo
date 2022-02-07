@@ -9,7 +9,7 @@ import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 @Operator(Priority.MISERABLE)
-@OperatorFindByRegex(">")
+@OperatorFindByRegex("((?<!:)>)")
 public class GreaterThanOperator extends CompareOperator {
 
     @Override

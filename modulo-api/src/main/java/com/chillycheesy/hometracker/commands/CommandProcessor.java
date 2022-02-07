@@ -6,11 +6,9 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
 import com.chillycheesy.hometracker.utils.exception.CommandNotFoundException;
 
 import java.util.Arrays;
-import java.util.List;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class CommandProcessor {
 
@@ -35,7 +33,7 @@ public class CommandProcessor {
         return processCommands(caller, flux, matcher.results()
                 .map(MatchResult::group)
                 .map(group -> group.replaceAll("^\"|\"$", ""))
-                .map(group -> group.replaceAll("(?<!\\\\)\\\\", "")).toArray(String[]::new));
+                .map(group -> group.replaceAll("(?<!\\\\)\\\\(?!\\\\)", "")).toArray(String[]::new));
     }
 
     private CommandFlux processCommands(Module caller, CommandFlux flux, String[] arguments) throws CommandException {

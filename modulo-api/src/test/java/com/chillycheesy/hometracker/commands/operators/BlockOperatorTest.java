@@ -44,7 +44,7 @@ public class BlockOperatorTest {
         final String line =
                 "ewok = Wicket;" +
                 "echo {" +
-                "   planet = \"Endor\";" +
+                "   planet = Endor;" +
                 "   return planet" +
                 "}";
         final CommandFlux flux = commandManager.applyCommand(line);

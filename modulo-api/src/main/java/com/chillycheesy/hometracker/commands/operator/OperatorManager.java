@@ -27,8 +27,7 @@ public class OperatorManager extends Manager<Operator> {
         for (Operator operator : getSortedOperators()) {
             final OperatorFinder finder = operator.getFinder();
             final Operation operation = finder.findOperatorMatch(flux);
-            if (operation != null)
-                flux = applyOperator(caller, operator, operation);
+            if (operation != null) flux = applyOperators(caller, applyOperator(caller, operator, operation));
         }
         return flux;
     }
