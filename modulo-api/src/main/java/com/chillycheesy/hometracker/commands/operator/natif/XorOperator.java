@@ -8,6 +8,15 @@ import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
 
+/**
+ * Operator that return true if at least one of the parameter is true, false if both are false or both are true.
+ * This operator only work with a boolean before and after the symbol "|&" or "&|"
+ * Exemple :
+ *         true &| true => false
+ *         true |& false => true
+ *         false &| true => true
+ *         false |& false => false
+ */
 @Operator(Priority.LOOK_AT_THIS_DUDE)
 @OperatorFindByRegex("((\\&\\|)|(\\|\\&))")
 public class XorOperator extends BooleanOperator {

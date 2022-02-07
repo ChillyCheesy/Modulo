@@ -11,6 +11,13 @@ import com.chillycheesy.hometracker.utils.Priority;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Operator that execute a subtraction with the two parameter
+ * This operator need number before and after the symbol "-"
+ * Exemple :
+ *          5 - 6 => -1
+ *          -3 - 2 => -5
+ */
 @Operator(Priority.NEUTRAL)
 public class MinusOperator extends NumberOperator implements OperatorFinder {
 

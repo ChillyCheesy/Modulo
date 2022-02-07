@@ -7,6 +7,13 @@ import com.chillycheesy.hometracker.commands.operator.builder.OperatorFindByRege
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Priority;
 
+/**
+ * Operator that execute a division with the two parameter
+ * This operator need number before and after the symbol "/"
+ * Exemple :
+ *          30 / 6 => 5
+ *          -3 / 2 => -1.5
+ */
 @Operator(Priority.COMMON)
 @OperatorFindByRegex("/")
 public class DivideOperator extends NumberOperator {
