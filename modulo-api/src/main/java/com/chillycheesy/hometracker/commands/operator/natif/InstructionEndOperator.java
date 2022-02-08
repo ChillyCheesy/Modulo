@@ -40,9 +40,9 @@ public class InstructionEndOperator implements OperatorFinder, OperatorListener 
     private Operation createOperation(CommandFlux flux, int index) {
         final String content = flux.getContent();
         final int startContent = 0, endContent = content.length();
-        final CommandFlux left = FluxBuilder.create(content.substring(startContent, index), flux.getAliasManager());
-        final CommandFlux center = FluxBuilder.create(content.substring(index, index + 1), flux.getAliasManager());
-        final CommandFlux right = FluxBuilder.create(content.substring(index + 1, endContent), flux.getAliasManager());
+        final CommandFlux left = FluxBuilder.create(flux.getAliasManager(), content.substring(startContent, index));
+        final CommandFlux center = FluxBuilder.create(flux.getAliasManager(), content.substring(index, index + 1));
+        final CommandFlux right = FluxBuilder.create(flux.getAliasManager(), content.substring(index + 1, endContent));
         return new Operation(left, center, right, this);
     }
 

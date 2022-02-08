@@ -19,7 +19,7 @@ public class AliasCommand implements CommandListener {
         final AliasManager aliasManager = flux.getAliasManager();
         if (args.length == 2) {
             aliasManager.registerAlias(args[0], args[1]);
-            return FluxBuilder.create("'" + args[1] + "'", aliasManager);
+            return FluxBuilder.create(aliasManager, "'" + args[1] + "'");
         }
         flux.setSuccess(false);
         return flux;

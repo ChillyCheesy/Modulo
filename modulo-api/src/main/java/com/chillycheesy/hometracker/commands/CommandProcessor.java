@@ -10,6 +10,13 @@ import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * This class is responsible for processing commands.
+ * <p>
+ *     It is responsible for parsing the command and run it.
+ *     It is also responsible for handling the exceptions.
+ * </p>
+ */
 public class CommandProcessor {
 
     private static final String NON_COMMAND_REGEX = "(-?\\d+\\.?\\d*)|((true)|(false))";
@@ -19,12 +26,24 @@ public class CommandProcessor {
 
     private final Pattern nonCommand;
 
+    /**
+     * Constructor.
+     * @param commandManager The command manager.
+     * @param operatorManager The operator manager.
+     */
     public CommandProcessor(CommandManager commandManager, OperatorManager operatorManager) {
         this.commandManager = commandManager;
         this.operatorManager = operatorManager;
         nonCommand = Pattern.compile(NON_COMMAND_REGEX);
     }
 
+    /**
+     * Processes the command.
+     * @param caller The module that called the command.
+     * @param flux The command flux to process.
+     * @return The command flux after processing.
+     * @throws CommandException If the command fails.
+     */
     public CommandFlux execute(Module caller, CommandFlux flux) throws CommandException {
         flux = operatorManager.applyOperators(caller, flux);
         final String content = flux.getContent();

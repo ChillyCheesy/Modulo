@@ -21,7 +21,7 @@ public class CommandStatusOperator extends BetweenOperator implements OperatorLi
         final CommandManager manager = commandContainer.getCommandManager();
         final CommandProcessor processor = manager.getProcessor();
         final CommandFlux flux = processor.execute(module, center);
-        return FluxBuilder.combine(left.getAliasManager(), left, FluxBuilder.create(flux.isSuccess() + "", left.getAliasManager()), right);
+        return FluxBuilder.combine(left.getAliasManager(), left, FluxBuilder.create(left.getAliasManager(), flux.isSuccess() + ""), right);
     }
 
     @Override

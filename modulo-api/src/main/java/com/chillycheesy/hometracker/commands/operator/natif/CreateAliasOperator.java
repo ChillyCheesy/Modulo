@@ -17,7 +17,7 @@ public class CreateAliasOperator implements OperatorListener {
     public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
         final String leftContent = stringify(left);
         final String rightContent = stringify(right);
-        return FluxBuilder.create("alias " + leftContent + " " + rightContent, center.getAliasManager());
+        return FluxBuilder.create(center.getAliasManager(), "alias " + leftContent + " " + rightContent);
     }
 
     private String stringify(CommandFlux flux) {

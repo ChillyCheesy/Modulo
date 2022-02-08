@@ -3,9 +3,6 @@ package com.chillycheesy.hometracker.commands.operator;
 import com.chillycheesy.hometracker.commands.AliasManager;
 import com.chillycheesy.hometracker.commands.CommandFlux;
 import com.chillycheesy.hometracker.commands.FluxBuilder;
-import com.chillycheesy.hometracker.commands.operator.Operation;
-import com.chillycheesy.hometracker.commands.operator.OperatorFinder;
-import com.chillycheesy.hometracker.commands.operator.OperatorListener;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,9 +33,9 @@ public abstract class BetweenOperator implements OperatorFinder, OperatorListene
 
     private Operation createOperation(AliasManager aliasManager, String content, int start, int end) {
         final int startContent = 0, endContent = content.length();
-        final CommandFlux left = FluxBuilder.create(content.substring(startContent, start), aliasManager);
-        final CommandFlux center = FluxBuilder.create(content.substring(start, end + 1), aliasManager);
-        final CommandFlux right = FluxBuilder.create(content.substring(end + 1, endContent), aliasManager);
+        final CommandFlux left = FluxBuilder.create(aliasManager, content.substring(startContent, start));
+        final CommandFlux center = FluxBuilder.create(aliasManager, content.substring(start, end + 1));
+        final CommandFlux right = FluxBuilder.create(aliasManager, content.substring(end + 1, endContent));
         return new Operation(left, center, right, this);
     }
 

@@ -22,7 +22,7 @@ public class InjectorOperator implements OperatorListener {
         return FluxBuilder.combine(
                 left.getAliasManager(),
                 left,
-                FluxBuilder.create("{" + toInject + right.getContent() + "}", right.getAliasManager())
+                FluxBuilder.create(right.getAliasManager(), "{" + toInject + right.getContent() + "}")
         );
     }
 }

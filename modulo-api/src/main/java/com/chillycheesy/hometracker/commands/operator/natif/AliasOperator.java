@@ -40,9 +40,9 @@ public class AliasOperator implements OperatorListener, OperatorFinder {
 
     private Operation createOperation(AliasManager aliasManager, String content, int start, int end) {
         final int startContent = 0, endContent = content.length();
-        final CommandFlux left = FluxBuilder.create(content.substring(startContent, start), aliasManager);
-        final CommandFlux center = FluxBuilder.create(content.substring(start, end), aliasManager);
-        final CommandFlux right = FluxBuilder.create(content.substring(end, endContent), aliasManager);
+        final CommandFlux left = FluxBuilder.create(aliasManager, content.substring(startContent, start));
+        final CommandFlux center = FluxBuilder.create(aliasManager, content.substring(start, end));
+        final CommandFlux right = FluxBuilder.create(aliasManager, content.substring(end, endContent));
         return new Operation(left, center, right, this);
     }
 }
