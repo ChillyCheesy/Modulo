@@ -1,10 +1,12 @@
 package com.chillycheesy.hometracker.pages;
 
-import com.chillycheesy.hometracker.pages.accessors.Accessor;
-import com.chillycheesy.hometracker.pages.exception.No404AccessorException;
+import com.chillycheesy.hometracker.utils.exception.No404SubPageException;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 /**
  * <pre>
@@ -13,13 +15,17 @@ import java.util.Optional;
  * </pre>
  * @author Geoffrey Vaniscotte
  */
-public class Page {
+public class Page implements RoutingRedirection {
     /**
      * The path to access this page.
      */
-    private String path;
+    protected String path;
     /**
-     * The list of sub path that can either call a method, return a value.
+     * The http request type (GET, PUT, POST, DELETE)
+     */
+    protected HttpRequest requestType;
+    /**
+     * The list of sub pages that can either call a method, return a value.
      * The sub path can be empty "" to represent the default accessors of the page,
      * the sub path can also be "*" to represent the not found page case (404 error).
      *
@@ -30,10 +36,63 @@ public class Page {
      * The sub path can be a keyword to be handled differently by the system (like "*").
      * the sub path "readme" can represent the document or your Page or Module.
      */
-    private List<Accessor> accessors;
-    public Accessor redirect(String subpath) throws No404AccessorException {
-        final Optional<Accessor> optionalAccessor = this.accessors.stream().filter(accessor -> accessor.getSubpath().equals(subpath)).findFirst();
-        if (optionalAccessor.isEmpty() && subpath.equals("*")) throw new No404AccessorException();
-        return optionalAccessor.isPresent() ? optionalAccessor.get() : redirect("*");
+    protected List<Page> subpages;
+
+    protected Supplier<String> content;
+
+    public Page(HttpRequest requestType, String path, Supplier<String> content) {
+        this.requestType = requestType;
+        this.path = path;
+        this.subpages = new ArrayList<>();
+        this.content = content;
+    }
+
+    public Page(HttpRequest requestType, String path) {
+        this(requestType, path, () -> "");
+    }
+
+    public Page(String path) {
+        this(HttpRequest.ANY, path);
+    }
+
+    public Page addSubPage(Page subpage) {
+        this.subpages.add(subpage);
+        return this;
+    }
+
+    public boolean removeSubPage(Object o) {
+        return subpages.remove(o);
+    }
+
+    public boolean addAllSubPage(Collection<? extends Page> c) {
+        return subpages.addAll(c);
+    }
+
+    public boolean removeAllSubPage(Collection<?> c) {
+        return subpages.removeAll(c);
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setContent(Supplier<String> content) {
+        this.content = content;
+    }
+
+    public String getContent() {
+        return content.get();
+    }
+
+    public Page redirect(HttpRequest httpRequest, String subpath) {
+        subpath = subpath.replaceAll("^/|/$", "");
+        if (subpath.startsWith(this.path) && (this.requestType.equals(httpRequest) || this.requestType.equals(HttpRequest.ANY))) {
+            for (Page page : this.subpages) {
+                final Page redirection = page.redirect(httpRequest, subpath.substring(this.path.length() + 1));
+                if (redirection != null) return redirection;
+            }
+            return this;
+        }
+        return null;
     }
 }

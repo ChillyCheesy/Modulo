@@ -4,5 +4,6 @@ public enum HttpRequest {
     GET,
     POST,
     DELETE,
-    PUT
+    PUT,
+    ANY
 }
