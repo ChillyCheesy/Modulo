@@ -8,8 +8,17 @@ import com.chillycheesy.hometracker.commands.CommandListener;
 import java.lang.annotation.Annotation;
 import java.util.Arrays;
 
+/**
+ * Builds a command from a class annotated with {@link Label}, {@link Description}, {@link Usage}.
+ * The class can also implement {@link CommandListener} to receive events when the command is executed.
+ */
 public class CommandBuilder {
 
+    /**
+     * Builds a command from a class annotated with {@link Label}, {@link Description}, {@link Usage}.
+     * @param toBuild the class to build the command from.
+     * @return the built command.
+     */
     public static Command build(Object toBuild) {
         final Command command = new Command();
         final Annotation[] annotations = toBuild.getClass().getDeclaredAnnotations();

@@ -1,8 +1,8 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.AndOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
@@ -34,14 +34,14 @@ public class AndOperatorTest {
     @Test
     public final void applyWithNoAnd() throws CommandException {
         final String line = "I Love true ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
     @Test
     public final void applyWithSkipAnd() throws CommandException {
         final String line = "I Love true \\&& false ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
@@ -60,14 +60,14 @@ public class AndOperatorTest {
             "I Love true&&  \n  true ewoks",
     })
     public final void applyWithSimpleAnd(String line) throws CommandException {
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithParenthesesAnd() throws CommandException {
         final String line = "I Love (true) && (true && false) ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love false ewoks", flux.getContent());
     }
 
@@ -77,17 +77,17 @@ public class AndOperatorTest {
             "I Love false && true ewoks"
     })
     public final void applyWithDifferentXor(String line) throws CommandException {
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love false ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithSameOr() throws CommandException {
         String line = "I Love true && true ewoks";
-        CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
         line = "I Love false && false ewoks";
-        flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love false ewoks", flux.getContent());
     }
 }

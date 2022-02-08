@@ -1,8 +1,8 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.GreaterThanOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
@@ -33,14 +33,14 @@ public class GreaterThanOperatorTest {
     @Test
     public final void applyWithNoGreaterThan() throws CommandException {
         final String line = "I Love 6 ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
     @Test
     public final void applyWithSkipGreaterThan() throws CommandException {
         final String line = "I Love 6 \\> 10 ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
@@ -60,14 +60,14 @@ public class GreaterThanOperatorTest {
             "I Love 36>  \n  3 ewoks",
     })
     public final void applyWithSimpleGreaterThan(String line) throws CommandException {
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithNotGreaterThan() throws CommandException {
         final String line = "I Love 1 > 10 ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love false ewoks",flux.getContent());
     }
 }

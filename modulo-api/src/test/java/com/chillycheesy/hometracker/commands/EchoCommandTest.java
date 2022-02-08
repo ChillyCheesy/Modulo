@@ -32,7 +32,7 @@ public class EchoCommandTest {
 
     @Test
     public final void testRunCommand() throws CommandException {
-        final CommandFlux flux = commandManager.applyCommand("echo arg1 '6 + 7' \"6 + 7\"");
+        final CommandFlow flux = commandManager.applyCommand("echo arg1 '6 + 7' \"6 + 7\"");
         assertEquals("arg1 6 + 7 13.0", flux.getContent());
     }
 }

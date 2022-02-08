@@ -1,7 +1,7 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.CommandFlow;
 import com.chillycheesy.hometracker.commands.CommandManager;
 import com.chillycheesy.hometracker.commands.natif.EchoCommand;
 import com.chillycheesy.hometracker.commands.operator.natif.AliasOperator;
@@ -33,7 +33,7 @@ public class AliasOperatorTest {
     @Test
     public final void testWithNoAlias() throws CommandException {
         final String line = "echo I Love ewoks";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("I Love ewoks", flux.getContent());
     }
 
@@ -41,7 +41,7 @@ public class AliasOperatorTest {
     public final void testWithAliasEnd() throws CommandException {
         ModuloAPI.getCommand().getMainAliasManager().registerAlias("wookies", "ewoks");
         final String line = "echo I Love wookies";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("I Love ewoks", flux.getContent());
     }
 
@@ -49,7 +49,7 @@ public class AliasOperatorTest {
     public final void testWithAliasCenter() throws CommandException {
         ModuloAPI.getCommand().getMainAliasManager().registerAlias("wookie", "true");
         final String line = "echo (wookie ewok)";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("true ewok", flux.getContent());
     }
 
@@ -57,7 +57,7 @@ public class AliasOperatorTest {
     public final void testWithAliasStart() throws CommandException {
         ModuloAPI.getCommand().getMainAliasManager().registerAlias("wookie", "ewok");
         final String line = "echo (echo best wookie of the world)";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("best ewok of the world", flux.getContent());
     }
 

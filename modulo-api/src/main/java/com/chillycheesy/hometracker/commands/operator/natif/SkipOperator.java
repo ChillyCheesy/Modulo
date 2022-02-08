@@ -1,6 +1,7 @@
 package com.chillycheesy.hometracker.commands.operator.natif;
 
 import com.chillycheesy.hometracker.commands.*;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.BetweenOperator;
 import com.chillycheesy.hometracker.commands.operator.Operation;
 import com.chillycheesy.hometracker.commands.operator.builder.Operator;
@@ -15,9 +16,9 @@ import java.util.regex.Pattern;
 public class SkipOperator extends BetweenOperator implements OperatorListener {
 
     @Override
-    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) {
+    public CommandFlow onOperate(Module module, CommandFlow left, CommandFlow center, CommandFlow right) {
         center.setContent(format(center.getContent().replaceAll("^'|'$", "")));
-        return FluxBuilder.combine(left.getAliasManager(), left, center, right);
+        return CommandFlowBuilder.combine(left.getAliasManager(), left, center, right);
     }
 
     private String format(String content) {
@@ -29,7 +30,7 @@ public class SkipOperator extends BetweenOperator implements OperatorListener {
     }
 
     @Override
-    public Operation findOperatorMatch(CommandFlux flux) {
+    public Operation findOperatorMatch(CommandFlow flux) {
         if (flux != null) {
             final String content = flux.getContent();
             final Pattern pattern = Pattern.compile("(?<!\\\\)'");
@@ -50,9 +51,9 @@ public class SkipOperator extends BetweenOperator implements OperatorListener {
 
     private Operation createOperation(AliasManager aliasManager, String content, int start, int end) {
         final int startContent = 0, endContent = content.length();
-        final CommandFlux left = FluxBuilder.create(aliasManager, content.substring(startContent, start));
-        final CommandFlux center = FluxBuilder.create(aliasManager, content.substring(start, end + 1));
-        final CommandFlux right = FluxBuilder.create(aliasManager, content.substring(end + 1, endContent));
+        final CommandFlow left = CommandFlowBuilder.create(aliasManager, content.substring(startContent, start));
+        final CommandFlow center = CommandFlowBuilder.create(aliasManager, content.substring(start, end + 1));
+        final CommandFlow right = CommandFlowBuilder.create(aliasManager, content.substring(end + 1, endContent));
         return new Operation(left, center, right, this);
     }
 }

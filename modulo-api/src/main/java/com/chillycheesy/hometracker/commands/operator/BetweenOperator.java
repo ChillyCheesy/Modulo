@@ -1,15 +1,15 @@
 package com.chillycheesy.hometracker.commands.operator;
 
 import com.chillycheesy.hometracker.commands.AliasManager;
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public abstract class BetweenOperator implements OperatorFinder, OperatorListener {
 
-    public Operation findOperatorMatch(CommandFlux flux, char firstChar, char lastChar) {
+    public Operation findOperatorMatch(CommandFlow flux, char firstChar, char lastChar) {
         if (flux != null) {
             final String content = flux.getContent();
             final String regex = String.format("(?<!\\\\)\\%s", firstChar);
@@ -33,9 +33,9 @@ public abstract class BetweenOperator implements OperatorFinder, OperatorListene
 
     private Operation createOperation(AliasManager aliasManager, String content, int start, int end) {
         final int startContent = 0, endContent = content.length();
-        final CommandFlux left = FluxBuilder.create(aliasManager, content.substring(startContent, start));
-        final CommandFlux center = FluxBuilder.create(aliasManager, content.substring(start, end + 1));
-        final CommandFlux right = FluxBuilder.create(aliasManager, content.substring(end + 1, endContent));
+        final CommandFlow left = CommandFlowBuilder.create(aliasManager, content.substring(startContent, start));
+        final CommandFlow center = CommandFlowBuilder.create(aliasManager, content.substring(start, end + 1));
+        final CommandFlow right = CommandFlowBuilder.create(aliasManager, content.substring(end + 1, endContent));
         return new Operation(left, center, right, this);
     }
 

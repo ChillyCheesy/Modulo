@@ -1,7 +1,7 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.CommandFlow;
 import com.chillycheesy.hometracker.commands.CommandManager;
 import com.chillycheesy.hometracker.commands.natif.AliasCommand;
 import com.chillycheesy.hometracker.commands.natif.EchoCommand;
@@ -35,7 +35,7 @@ public class BlockOperatorTest {
     @Test
     public final void testWithNoInsertAlias() throws CommandException {
         final String line = "ewok = Wicket";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("Wicket", flux.getAliasManager().getValue("ewok"));
     }
 
@@ -47,7 +47,7 @@ public class BlockOperatorTest {
                 "   planet = Endor;" +
                 "   return planet" +
                 "}";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("Endor", flux.getContent());
         assertFalse(flux.getAliasManager().isAlias("planet"));
     }

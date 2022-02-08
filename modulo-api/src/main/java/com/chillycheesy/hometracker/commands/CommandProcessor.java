@@ -40,32 +40,32 @@ public class CommandProcessor {
     /**
      * Processes the command.
      * @param caller The module that called the command.
-     * @param flux The command flux to process.
-     * @return The command flux after processing.
+     * @param flow The command flow to process.
+     * @return The command flow after processing.
      * @throws CommandException If the command fails.
      */
-    public CommandFlux execute(Module caller, CommandFlux flux) throws CommandException {
-        flux = operatorManager.applyOperators(caller, flux);
-        final String content = flux.getContent();
+    public CommandFlow execute(Module caller, CommandFlow flow) throws CommandException {
+        flow = operatorManager.applyOperators(caller, flow);
+        final String content = flow.getContent();
         final Pattern pattern = Pattern.compile("(?<!\\\\)\"(.*?)[^\\\\]\"|\\S+");
         final Matcher matcher = pattern.matcher(content);
-        return processCommands(caller, flux, matcher.results()
+        return processCommands(caller, flow, matcher.results()
                 .map(MatchResult::group)
                 .map(group -> group.replaceAll("^\"|\"$", ""))
                 .map(group -> group.replaceAll("(?<!\\\\)\\\\(?!\\\\)", "")).toArray(String[]::new));
     }
 
-    private CommandFlux processCommands(Module caller, CommandFlux flux, String[] arguments) throws CommandException {
+    private CommandFlow processCommands(Module caller, CommandFlow flow, String[] arguments) throws CommandException {
         if (arguments.length > 0) {
             final String label = arguments[0];
             final String[] args = arguments.length > 1 ? Arrays.copyOfRange(arguments, 1, arguments.length) : new String[0];
             final Command command = commandManager.getCommandByLabel(label);
             if (command == null)
-                if (nonCommand.matcher(label).find()) return flux;
-                else throw new CommandNotFoundException(flux, label);
-            return command.getCommandListener().onCommand(caller, label, args, flux);
+                if (nonCommand.matcher(label).find()) return flow;
+                else throw new CommandNotFoundException(flow, label);
+            return command.getCommandListener().onCommand(caller, label, args, flow);
         }
-        throw new CommandException(flux, 0, "No arguments provided");
+        throw new CommandException(flow, 0, "No arguments provided");
     }
 
     public CommandManager getCommandManager() {

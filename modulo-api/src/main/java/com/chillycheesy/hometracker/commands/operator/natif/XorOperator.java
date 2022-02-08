@@ -1,6 +1,6 @@
 package com.chillycheesy.hometracker.commands.operator.natif;
 
-import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.CommandFlow;
 import com.chillycheesy.hometracker.commands.operator.BooleanOperator;
 import com.chillycheesy.hometracker.commands.operator.builder.Operator;
 import com.chillycheesy.hometracker.commands.operator.builder.OperatorFindByRegex;
@@ -22,7 +22,7 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
 public class XorOperator extends BooleanOperator {
 
     @Override
-    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
+    public CommandFlow onOperate(Module module, CommandFlow left, CommandFlow center, CommandFlow right) throws CommandException {
         return super.applyOperation(left, center, right, "((\\&\\|)|(\\|\\&))", this::xor);
     }
 

@@ -1,8 +1,8 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.OrOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
@@ -34,14 +34,14 @@ public class OrOperatorTest {
     @Test
     public final void applyWithNoOr() throws CommandException {
         final String line = "I Love true ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
     @Test
     public final void applyWithSkipOr() throws CommandException {
         final String line = "I Love true \\|| false ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
@@ -61,21 +61,21 @@ public class OrOperatorTest {
             "I Love true||  \n  true ewoks",
     })
     public final void applyWithSimpleOr(String line) throws CommandException {
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithParenthesesOr() throws CommandException {
         final String line = "I Love (true) || (true || false) ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithMultipuleOr() throws CommandException {
         final String line = "I Love true || true || false ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
     }
 
@@ -85,17 +85,17 @@ public class OrOperatorTest {
             "I Love false || true ewoks"
     })
     public final void applyWithDifferentOr(String line) throws CommandException {
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithSameOr() throws CommandException {
         String line = "I Love true || true ewoks";
-        CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
         line = "I Love false || false ewoks";
-        flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love false ewoks", flux.getContent());
     }
 }

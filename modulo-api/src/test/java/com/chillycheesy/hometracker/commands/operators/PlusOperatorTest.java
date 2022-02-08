@@ -1,8 +1,8 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.PlusOperator;
@@ -34,14 +34,14 @@ public class PlusOperatorTest {
     @Test
     public final void applyWithNoAddition() throws CommandException {
         final String line = "I Love 5 ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
     @Test
     public final void applyWithSkipAddition() throws CommandException {
         final String line = "I Love \\+ 5 ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
@@ -61,35 +61,35 @@ public class PlusOperatorTest {
             "I Love 3+  \n  3 ewoks",
     })
     public final void applyWithSimpleAddition(String line) throws CommandException {
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love 6.0 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithDoubleAddition() throws CommandException {
         final String line = "I Love 5.5 + 1.1 ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love 6.6 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithTripleAddition() throws CommandException {
         final String line = "I Love 5.5 + 1.1 + 24 ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love 30.6 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithNegativeAddition() throws CommandException {
         final String line = "I Love -5.5 + 1.1 + 24 ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love 19.6 ewoks", flux.getContent());
     }
 
     @Test
     public final void applyWithParenthesesAddition() throws CommandException {
         final String line = "I Love (5) + (1 + 4) ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love 10.0 ewoks", flux.getContent());
     }
 

@@ -1,8 +1,8 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.natif.EchoCommand;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.ParenthesesOperator;
@@ -34,14 +34,14 @@ public class SkipOperatorTest {
     @Test
     public final void testParentheses() throws CommandException {
         final String line = "I (echo Love ewoks)";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love ewoks", flux.getContent());
     }
 
     @Test
     public final void testSkipParentheses() throws CommandException {
         final String line = "I '(Love ewoks)'";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I \"\\(\\L\\o\\v\\e\\ \\e\\w\\o\\k\\s\\)\"", flux.getContent());
     }
 

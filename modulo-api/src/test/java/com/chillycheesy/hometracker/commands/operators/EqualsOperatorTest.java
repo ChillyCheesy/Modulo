@@ -1,8 +1,8 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.EqualsOperator;
 import com.chillycheesy.hometracker.utils.exception.CommandException;
@@ -32,14 +32,14 @@ public class EqualsOperatorTest {
     @Test
     public final void applyWithNoEquals() throws CommandException {
         final String line = "I Love true ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
     @Test
     public final void applyWithSkipEquals() throws CommandException {
         final String line = "I Love true \\== false ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals(line, flux.getContent());
     }
 
@@ -59,7 +59,7 @@ public class EqualsOperatorTest {
             "I Love true==  \n  true ewoks",
     })
     public final void applyWithSimpleEquals(String line) throws CommandException {
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love true ewoks", flux.getContent());
     }
 
@@ -72,7 +72,7 @@ public class EqualsOperatorTest {
             "I Love r4t4t4r4r433 == 34rt534t3tg ewoks"
     })
     public final void applyWithFalseEquals(String line) throws CommandException {
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love false ewoks", flux.getContent());
     }
 }

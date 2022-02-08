@@ -1,7 +1,7 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.CommandFlow;
 import com.chillycheesy.hometracker.commands.CommandManager;
 import com.chillycheesy.hometracker.commands.natif.EchoCommand;
 import com.chillycheesy.hometracker.commands.operator.natif.InstructionEndOperator;
@@ -33,35 +33,35 @@ public class InstructionEndOperatorTest {
     @Test
     public final void testWithNoEndParentheses() throws CommandException {
         final String line = "echo I (echo Love ewoks)";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("I Love ewoks", flux.getContent());
     }
 
     @Test
     public final void testWithParentheses() throws CommandException {
         final String line = "echo I Love (echo ewoks; echo wookies)";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("I Love wookies", flux.getContent());
     }
 
     @Test
     public final void testWithBracket() throws CommandException {
         final String line = "echo I Love [echo ewoks; echo wookies]";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("I Love [echo ewoks; echo wookies]", flux.getContent());
     }
 
     @Test
     public final void testWithBrace() throws CommandException {
         final String line = "echo I Love {echo ewoks; echo wookies}";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("I Love {echo ewoks; echo wookies}", flux.getContent());
     }
 
     @Test
     public final void testMultiple() throws CommandException {
         final String line = "echo I Love (echo ewoks; echo wookies); echo ee chee wa maa";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("ee chee wa maa", flux.getContent());
     }
 

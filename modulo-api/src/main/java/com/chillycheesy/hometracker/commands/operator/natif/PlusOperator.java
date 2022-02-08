@@ -19,7 +19,7 @@ import com.chillycheesy.hometracker.utils.Priority;
 public class PlusOperator extends NumberOperator {
 
     @Override
-    public CommandFlux onOperate(Module caller, CommandFlux left, CommandFlux center, CommandFlux right) {
+    public CommandFlow onOperate(Module caller, CommandFlow left, CommandFlow center, CommandFlow right) {
         return super.applyOperation(left, center, right, "\\+", this::plus);
     }
 

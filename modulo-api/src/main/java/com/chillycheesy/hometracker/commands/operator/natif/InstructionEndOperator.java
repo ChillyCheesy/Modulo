@@ -1,9 +1,9 @@
 package com.chillycheesy.hometracker.commands.operator.natif;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.CommandFlow;
 import com.chillycheesy.hometracker.commands.CommandProcessor;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.Operation;
 import com.chillycheesy.hometracker.commands.operator.OperatorFinder;
 import com.chillycheesy.hometracker.commands.operator.OperatorListener;
@@ -16,7 +16,7 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
 public class InstructionEndOperator implements OperatorFinder, OperatorListener {
 
     @Override
-    public Operation findOperatorMatch(CommandFlux flux) {
+    public Operation findOperatorMatch(CommandFlow flux) {
         final String content = flux.getContent();
         int openParentheses = 0, openBrackets = 0, openBraces = 0;
         boolean skipSimple = false, skipDouble = false;
@@ -37,19 +37,19 @@ public class InstructionEndOperator implements OperatorFinder, OperatorListener 
         return null;
     }
 
-    private Operation createOperation(CommandFlux flux, int index) {
+    private Operation createOperation(CommandFlow flux, int index) {
         final String content = flux.getContent();
         final int startContent = 0, endContent = content.length();
-        final CommandFlux left = FluxBuilder.create(flux.getAliasManager(), content.substring(startContent, index));
-        final CommandFlux center = FluxBuilder.create(flux.getAliasManager(), content.substring(index, index + 1));
-        final CommandFlux right = FluxBuilder.create(flux.getAliasManager(), content.substring(index + 1, endContent));
+        final CommandFlow left = CommandFlowBuilder.create(flux.getAliasManager(), content.substring(startContent, index));
+        final CommandFlow center = CommandFlowBuilder.create(flux.getAliasManager(), content.substring(index, index + 1));
+        final CommandFlow right = CommandFlowBuilder.create(flux.getAliasManager(), content.substring(index + 1, endContent));
         return new Operation(left, center, right, this);
     }
 
     @Override
-    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
+    public CommandFlow onOperate(Module module, CommandFlow left, CommandFlow center, CommandFlow right) throws CommandException {
         final CommandProcessor commandProcessor = ModuloAPI.getCommand().getCommandManager().getProcessor();
-        final CommandFlux leftResult = commandProcessor.execute(module, left);
+        final CommandFlow leftResult = commandProcessor.execute(module, left);
         right.setAliasManager(leftResult.getAliasManager());
         return right.getContent().equals("") ? leftResult : right;
     }

@@ -1,9 +1,23 @@
 package com.chillycheesy.hometracker.commands.operator;
 
+/**
+ * An Operator is represented by a priority level a two methods.
+ * The first is find the operator in a {@link com.chillycheesy.hometracker.commands.CommandFlow}.
+ * The second is to execute the operator.
+ */
 public class Operator {
 
+    /**
+     * The priority level of the operator.
+     */
     private int priority;
+    /**
+     * The method to execute the operator.
+     */
     private OperatorListener listener;
+    /**
+     * The method to find the operator in a {@link com.chillycheesy.hometracker.commands.CommandFlow}.
+     */
     private OperatorFinder finder;
 
     public Operator() { }

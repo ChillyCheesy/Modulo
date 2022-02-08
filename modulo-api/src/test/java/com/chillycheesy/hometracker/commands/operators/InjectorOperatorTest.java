@@ -1,8 +1,8 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.commands.operator.natif.CreateStrictAliasOperator;
 import com.chillycheesy.hometracker.commands.operator.natif.InjectorOperator;
@@ -33,14 +33,14 @@ public class InjectorOperatorTest {
     @Test
     public final void testWithNoInsertAlias() throws CommandException {
         final String line = "I Love ewoks";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("I Love ewoks", flux.getContent());
     }
 
     @Test
     public final void testWithRightInsertAlias() throws CommandException {
         final String line = "\"ewok\" :> Wicket";
-        final CommandFlux flux = operatorManager.applyOperators(null, FluxBuilder.create(line));
+        final CommandFlow flux = operatorManager.applyOperators(null, CommandFlowBuilder.create(line));
         assertEquals("{ewok;Wicket}", flux.getContent());
     }
 

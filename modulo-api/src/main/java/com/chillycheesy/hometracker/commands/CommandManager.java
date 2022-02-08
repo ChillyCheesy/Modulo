@@ -2,6 +2,7 @@ package com.chillycheesy.hometracker.commands;
 
 import com.chillycheesy.hometracker.ModuloAPI;
 import com.chillycheesy.hometracker.commands.builder.CommandBuilder;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorManager;
 import com.chillycheesy.hometracker.modules.Module;
 import com.chillycheesy.hometracker.utils.Manager;
@@ -51,11 +52,11 @@ public class CommandManager extends Manager<Command> {
      * @param caller The caller of the command.
      * @param aliasManager The alias manager that is running the command.
      * @param line The line to run.
-     * @return The command flux (the command result).
+     * @return The command flow (the command result).
      * @throws CommandException If the command failed.
      */
-    public CommandFlux applyCommand(Module caller, AliasManager aliasManager, String line) throws CommandException {
-        final CommandFlux flux = FluxBuilder.create(aliasManager, line);
+    public CommandFlow applyCommand(Module caller, AliasManager aliasManager, String line) throws CommandException {
+        final CommandFlow flux = CommandFlowBuilder.create(aliasManager, line);
         return processor.execute(caller, flux);
     }
 
@@ -63,20 +64,20 @@ public class CommandManager extends Manager<Command> {
      * This method run a command.
      * @param aliasManager The alias manager that is running the command.
      * @param line The line to run.
-     * @return The command flux (the command result).
+     * @return The command flow (the command result).
      * @throws CommandException If the command failed.
      */
-    public CommandFlux applyCommand(AliasManager aliasManager, String line) throws CommandException {
+    public CommandFlow applyCommand(AliasManager aliasManager, String line) throws CommandException {
         return applyCommand(null, aliasManager, line);
     }
 
     /**
      * This method run a command.
      * @param line The line to parse.
-     * @return The command.
+     * @return The command flow (the command result).
      * @throws CommandException If the command failed.
      */
-    public CommandFlux applyCommand(String line) throws CommandException {
+    public CommandFlow applyCommand(String line) throws CommandException {
         final AliasManager rootAliasManager = ModuloAPI.getCommand().getMainAliasManager();
         return applyCommand(rootAliasManager, line);
     }

@@ -1,12 +1,12 @@
 package com.chillycheesy.hometracker.utils.exception;
 
-import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.CommandFlow;
 
 import java.util.Arrays;
 
 public class CommandException extends Exception {
 
-    public CommandException(CommandFlux flux, int index, String message) {
+    public CommandException(CommandFlow flux, int index, String message) {
         super(message + "\n" +
             "CommandException: " + flux.getContent() + "\n" +
             "                  " + String.valueOf(CommandException.buildSpaces(index)) + "^\n"

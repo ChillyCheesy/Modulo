@@ -1,7 +1,7 @@
 package com.chillycheesy.hometracker.commands.operator.natif;
 
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.builder.Operator;
 import com.chillycheesy.hometracker.commands.operator.OperatorListener;
 import com.chillycheesy.hometracker.commands.operator.builder.OperatorFindByRegex;
@@ -14,15 +14,15 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
 public class InjectorOperator implements OperatorListener {
 
     @Override
-    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
+    public CommandFlow onOperate(Module module, CommandFlow left, CommandFlow center, CommandFlow right) throws CommandException {
         final String toInject = center.getContent().trim()
                 .replaceAll("^\"|(\"\\s*[^\\\\]?:>)$", "")
                 .replaceAll("([^;]$)", "$0;");
         left.setContent(left.getContent().replaceAll("\\S$", "$0 "));
-        return FluxBuilder.combine(
+        return CommandFlowBuilder.combine(
                 left.getAliasManager(),
                 left,
-                FluxBuilder.create(right.getAliasManager(), "{" + toInject + right.getContent() + "}")
+                CommandFlowBuilder.create(right.getAliasManager(), "{" + toInject + right.getContent() + "}")
         );
     }
 }

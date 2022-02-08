@@ -1,6 +1,6 @@
 package com.chillycheesy.hometracker.commands.operator.natif;
 
-import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.CommandFlow;
 import com.chillycheesy.hometracker.commands.operator.NumberOperator;
 import com.chillycheesy.hometracker.commands.operator.Operation;
 import com.chillycheesy.hometracker.commands.operator.builder.Operator;
@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 public class MinusOperator extends NumberOperator implements OperatorFinder {
 
     @Override
-    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) {
+    public CommandFlow onOperate(Module module, CommandFlow left, CommandFlow center, CommandFlow right) {
         return super.applyOperation(left, center, right, "-", this::minus);
     }
 
@@ -32,15 +32,15 @@ public class MinusOperator extends NumberOperator implements OperatorFinder {
 
 
     @Override
-    public Operation findOperatorMatch(CommandFlux flux) {
+    public Operation findOperatorMatch(CommandFlow flux) {
         final Pattern pattern = Pattern.compile("\\d+\\.?\\d*\\s*(?<!\\\\)-");
         final Matcher matcher = pattern.matcher(flux.getContent());
         if (matcher.find()) {
             final String content = flux.getContent();
             final int startContent = 0, start = matcher.end() - 1, end = matcher.end(), endContent = content.length();
-            final CommandFlux left = new CommandFlux(content.substring(startContent, start).trim(), flux.getAliasManager());
-            final CommandFlux center = new CommandFlux(content.substring(start, end).trim(), flux.getAliasManager());
-            final CommandFlux right = new CommandFlux(content.substring(end, endContent).trim(), flux.getAliasManager());
+            final CommandFlow left = new CommandFlow(content.substring(startContent, start).trim(), flux.getAliasManager());
+            final CommandFlow center = new CommandFlow(content.substring(start, end).trim(), flux.getAliasManager());
+            final CommandFlow right = new CommandFlow(content.substring(end, endContent).trim(), flux.getAliasManager());
             return new Operation(left, center, right, this);
         }
         return null;

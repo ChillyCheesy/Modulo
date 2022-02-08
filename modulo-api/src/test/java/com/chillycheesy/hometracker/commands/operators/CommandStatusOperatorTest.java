@@ -1,7 +1,7 @@
 package com.chillycheesy.hometracker.commands.operators;
 
 import com.chillycheesy.hometracker.ModuloAPI;
-import com.chillycheesy.hometracker.commands.CommandFlux;
+import com.chillycheesy.hometracker.commands.CommandFlow;
 import com.chillycheesy.hometracker.commands.CommandListener;
 import com.chillycheesy.hometracker.commands.CommandManager;
 import com.chillycheesy.hometracker.commands.builder.Description;
@@ -38,21 +38,21 @@ public class CommandStatusOperatorTest {
     @Test
     public void commandSuccessTest() throws CommandException {
         final String line = "echo I love [successCommand]";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("I love true", flux.getContent());
     }
 
     @Test
     public void commandFailedTest() throws CommandException {
         final String line = "[failedCommand]";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("false", flux.getContent());
     }
 
     @Test
     public void commandEchoTest() throws CommandException {
         final String line = "echo I Love [failedCommand]";
-        final CommandFlux flux = commandManager.applyCommand(line);
+        final CommandFlow flux = commandManager.applyCommand(line);
         assertEquals("I Love false", flux.getContent());
     }
 
@@ -65,7 +65,7 @@ public class CommandStatusOperatorTest {
 class SuccessCommand implements CommandListener {
 
     @Override
-    public CommandFlux onCommand(Module caller, String label, String[] args, CommandFlux flux) {
+    public CommandFlow onCommand(Module caller, String label, String[] args, CommandFlow flux) {
         flux.setSuccess(true);
         return flux;
     }
@@ -78,7 +78,7 @@ class SuccessCommand implements CommandListener {
 class FailedCommand implements CommandListener {
 
     @Override
-    public CommandFlux onCommand(Module caller, String label, String[] args, CommandFlux flux) {
+    public CommandFlow onCommand(Module caller, String label, String[] args, CommandFlow flux) {
         flux.setSuccess(false);
         return flux;
     }

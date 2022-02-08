@@ -1,7 +1,7 @@
 package com.chillycheesy.hometracker.commands.operator.natif;
 
-import com.chillycheesy.hometracker.commands.CommandFlux;
-import com.chillycheesy.hometracker.commands.FluxBuilder;
+import com.chillycheesy.hometracker.commands.CommandFlow;
+import com.chillycheesy.hometracker.commands.builder.CommandFlowBuilder;
 import com.chillycheesy.hometracker.commands.operator.OperatorListener;
 import com.chillycheesy.hometracker.commands.operator.builder.Operator;
 import com.chillycheesy.hometracker.commands.operator.builder.OperatorFindByRegex;
@@ -25,10 +25,10 @@ public class EqualsOperator implements OperatorListener {
     protected final String STRING_REGEX = "\\w+";
 
     @Override
-    public CommandFlux onOperate(Module module, CommandFlux left, CommandFlux center, CommandFlux right) throws CommandException {
-        final String leftString = FluxBuilder.extractFromFlux(left, STRING_REGEX + "$", "");
-        final String rightString = FluxBuilder.extractFromFlux(right, "^" + STRING_REGEX, "");
-        final CommandFlux flux = FluxBuilder.combine(left.getAliasManager(), left, center, right);
+    public CommandFlow onOperate(Module module, CommandFlow left, CommandFlow center, CommandFlow right) throws CommandException {
+        final String leftString = CommandFlowBuilder.extractFromFlux(left, STRING_REGEX + "$", "");
+        final String rightString = CommandFlowBuilder.extractFromFlux(right, "^" + STRING_REGEX, "");
+        final CommandFlow flux = CommandFlowBuilder.combine(left.getAliasManager(), left, center, right);
         flux.setContent(flux.getContent().replaceFirst(STRING_REGEX + "\\s*" + "==" + "\\s*" + STRING_REGEX, "" + this.equals(leftString, rightString)));
         return flux;
     }
