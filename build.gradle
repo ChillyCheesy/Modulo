@@ -1,6 +1,6 @@
 allprojects {
-    version = hometracker_version as Object
-    group = 'com.owle'
+    version = modulo_version as Object
+    group = 'com.chillycheesy'
     repositories {
         mavenCentral()
     }
