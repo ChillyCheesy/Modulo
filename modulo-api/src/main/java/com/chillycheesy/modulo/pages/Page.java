@@ -1,10 +1,8 @@
 package com.chillycheesy.modulo.pages;
 
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Collection;
-import java.util.List;
-import java.util.function.Supplier;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.util.*;
 
 /**
  * <pre>
@@ -36,21 +34,31 @@ public class Page implements RoutingRedirection {
      */
     protected List<Page> subpages;
 
-    protected Supplier<String> content;
+    protected Page parent;
 
-    public Page(HttpRequest requestType, String path, Supplier<String> content) {
+    protected PageResponse content;
+
+    public Page(HttpRequest requestType, String path, PageResponse content) {
         this.requestType = requestType;
         this.path = path;
         this.subpages = new ArrayList<>();
         this.content = content;
     }
 
-    public Page(String path, Supplier<String> content) {
+    public Page(HttpRequest requestType, String path, String content) {
+        this(requestType, path, (request, response) -> content);
+    }
+
+    public Page(String path, String content) {
+        this(path, (request, response) -> content);
+    }
+
+    public Page(String path, PageResponse content) {
         this(HttpRequest.ANY, path, content);
     }
 
     public Page(HttpRequest requestType, String path) {
-        this(requestType, path, () -> "");
+        this(requestType, path, (request, response) -> "");
     }
 
     public Page(String path) {
@@ -58,6 +66,7 @@ public class Page implements RoutingRedirection {
     }
 
     public Page addSubPage(Page subpage) {
+        subpage.parent = this;
         this.subpages.add(subpage);
         return this;
     }
@@ -78,16 +87,24 @@ public class Page implements RoutingRedirection {
         return path;
     }
 
-    public void setContent(Supplier<String> content) {
+    public String getFullPath() {
+        final StringBuilder builder = new StringBuilder();
+        if (parent != null) {
+            builder.append(parent.getFullPath()).append("/");
+        }
+        return builder.append(path).toString();
+    }
+
+    public void setContent(PageResponse content) {
         this.content = content;
     }
 
-    public String getContent() {
-        return content.get();
+    public String getContent(HttpServletRequest request, HttpServletResponse response) {
+        return content.buildBody(request, response);
     }
 
-    public byte[] getEncryptedContent() {
-        return Base64.getEncoder().encode(this.getContent().getBytes());
+    public byte[] getEncryptedContent(HttpServletRequest request, HttpServletResponse response) {
+        return Base64.getEncoder().encode(this.getContent(request, response).getBytes());
     }
 
     public boolean hasChild(Page searchPage) {
@@ -105,12 +122,35 @@ public class Page implements RoutingRedirection {
     public Page redirect(HttpRequest httpRequest, String subpath) {
         subpath = subpath.replaceAll("^/|/$", "");
         if (subpath.startsWith(this.path) && (this.requestType.equals(httpRequest) || this.requestType.equals(HttpRequest.ANY))) {
-            for (Page page : this.subpages) {
+                for (Page page : this.subpages) {
                 final Page redirection = page.redirect(httpRequest, subpath.substring(this.path.length()));
                 if (redirection != null) return redirection;
             }
             return this;
         }
         return null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Page page = (Page) o;
+        return Objects.equals(path, page.path) && requestType == page.requestType && Objects.equals(subpages, page.subpages) && Objects.equals(content, page.content);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(path, requestType, subpages, content);
+    }
+
+    @Override
+    public String toString() {
+        return "Page{" +
+                "path='" + path + '\'' +
+                ", requestType=" + requestType +
+                ", subpages=" + subpages +
+                ", content=" + content +
+                '}';
     }
 }

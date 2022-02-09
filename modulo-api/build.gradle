@@ -10,6 +10,7 @@ sourceCompatibility = 11
 dependencies {
     compile 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.1'
     compile 'commons-io:commons-io:2.11.0'
+    compile 'org.apache.tomcat.embed:tomcat-embed-core:9.0.39'
 
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testCompile 'org.junit.jupiter:junit-jupiter-params:5.8.2'

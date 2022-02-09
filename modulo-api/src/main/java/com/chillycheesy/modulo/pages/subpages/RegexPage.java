@@ -2,6 +2,7 @@ package com.chillycheesy.modulo.pages.subpages;
 
 import com.chillycheesy.modulo.pages.HttpRequest;
 import com.chillycheesy.modulo.pages.Page;
+import com.chillycheesy.modulo.pages.PageResponse;
 
 import java.util.function.Supplier;
 import java.util.regex.Matcher;
@@ -9,11 +10,19 @@ import java.util.regex.Pattern;
 
 public class RegexPage extends Page {
 
-    public RegexPage(HttpRequest requestType, String path, Supplier<String> content) {
+    public RegexPage(HttpRequest requestType, String path, PageResponse content) {
         super(requestType, path, content);
     }
 
-    public RegexPage(String path, Supplier<String> content) {
+    public RegexPage(HttpRequest requestType, String path, String content) {
+        super(requestType, path, content);
+    }
+
+    public RegexPage(String path, String content) {
+        super(path, content);
+    }
+
+    public RegexPage(String path, PageResponse content) {
         super(path, content);
     }
 

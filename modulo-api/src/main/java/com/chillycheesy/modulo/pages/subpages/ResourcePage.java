@@ -3,24 +3,32 @@ package com.chillycheesy.modulo.pages.subpages;
 import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.pages.HttpRequest;
 import com.chillycheesy.modulo.pages.Page;
-import org.apache.commons.io.IOUtils;
+import com.chillycheesy.modulo.pages.PageResponse;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Base64;
 import java.util.Scanner;
-import java.util.function.Supplier;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
 public class ResourcePage extends Page {
 
-    public ResourcePage(HttpRequest requestType, String path, Supplier<String> content) {
+    public ResourcePage(HttpRequest requestType, String path, PageResponse content) {
         super(requestType, path, content);
     }
 
-    public ResourcePage(String path, Supplier<String> content) {
+    public ResourcePage(HttpRequest requestType, String path, String content) {
+        super(requestType, path, content);
+    }
+
+    public ResourcePage(String path, String content) {
+        super(path, content);
+    }
+
+    public ResourcePage(String path, PageResponse content) {
         super(path, content);
     }
 
@@ -33,8 +41,10 @@ public class ResourcePage extends Page {
     }
 
     @Override
-    public String getContent() {
-        final String resourcePath = super.getContent();
+    public String getContent(HttpServletRequest request, HttpServletResponse response) {
+        final String uri = request.getRequestURI().substring(super.getFullPath().length() + 1);
+        final String resourcePath = super.getContent(request, response) + uri;
+        System.out.println("Resource path: " + resourcePath + " uri: " + uri + " path: " + super.getFullPath());
         try {
             final JarFile jarJarFile = ModuloAPI.getPage().getPageManager().getModuleByItem(this).getJarFile();
             final JarEntry jarJarEntry = jarJarFile.getJarEntry(resourcePath);
