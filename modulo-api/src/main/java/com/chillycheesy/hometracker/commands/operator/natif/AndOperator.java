@@ -10,12 +10,14 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 /**
  * Operator that return true if the left and right parameter are true, false in any other case.
- * This operator only work with a boolean before and after the symbol "&&"
+ * This operator only work with a boolean before and after the symbol "&amp;&amp;"
  * Exemple :
- *         true && true => true
- *         true && false => false
- *         false && true => false
- *         false && false => false
+ * <ul>
+ *     <li>true &amp;&amp; true = true</li>
+ *     <li>true &amp;&amp; false = false</li>
+ *     <li>false &amp;&amp; true = false</li>
+ *     <li>false &amp;&amp; false = false</li>
+ * </ul>
  */
 @Operator(Priority.NEUTRAL)
 @OperatorFindByRegex("(\\&\\&)")

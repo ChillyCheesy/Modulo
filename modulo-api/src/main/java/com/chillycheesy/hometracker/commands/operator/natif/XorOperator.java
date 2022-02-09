@@ -10,12 +10,12 @@ import com.chillycheesy.hometracker.utils.exception.CommandException;
 
 /**
  * Operator that return true if at least one of the parameter is true, false if both are false or both are true.
- * This operator only work with a boolean before and after the symbol "|&" or "&|"
+ * This operator only work with a boolean before and after the symbol "|&amp;" or "&amp;|"
  * Exemple :
- *         true &| true => false
- *         true |& false => true
- *         false &| true => true
- *         false |& false => false
+ *         true &amp;| true => false
+ *         true |&amp; false => true
+ *         false &amp;| true => true
+ *         false |&amp; false => false
  */
 @Operator(Priority.NEUTRAL)
 @OperatorFindByRegex("((\\&\\|)|(\\|\\&))")

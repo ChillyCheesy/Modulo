@@ -9,7 +9,6 @@ import com.chillycheesy.hometracker.modules.Module;
 
 /**
  * The ReturnCommand prints the arguments passed to it in the result CommandFlow.
- *
  */
 @Label("return")
 @Description("return the given arguments in the current flux")

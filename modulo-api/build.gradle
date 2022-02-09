@@ -1,6 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id 'signing'
 }
 
 archivesBaseName = 'modulo-api'
@@ -13,20 +14,34 @@ dependencies {
     testCompile 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testCompile 'org.junit.jupiter:junit-jupiter-params:5.8.2'
     testRuntime 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
-    testCompile 'org.mockito:mockito-core:4.2.0'
+    testCompile 'org.mockito:mockito-core:4.3.1'
 }
 
 java {
     withSourcesJar()
+    withJavadocJar()
 }
 
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            groupId = 'com.chillycheesy'
-            artifactId = 'modulo'
-            version = '1.0.1'
             from components.java
+            pom {
+                name = project.name
+                description = 'Modulo is a collaborative Java framework, where anybody can add any module to his Modulo Server and developeur can create easily and quickly create their own module with our API.'
+                url = 'https://modulo.chillycheesy.com'
+                licenses {
+                    license {
+                        name = 'Mizilla Public License, Version 2.0'
+                        url = 'https://www.mozilla.org/en-US/MPL/2.0/'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/ChillyCheesy/Modulo.git'
+                    developerConnection = 'scm:git:git@github.com:ChillyCheesy/Modulo.git'
+                    url = 'https://github.com/ChillyCheesy/Modulo/tree/master'
+                }
+            }
         }
     }
 }
