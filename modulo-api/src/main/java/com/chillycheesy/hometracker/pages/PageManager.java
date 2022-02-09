@@ -43,4 +43,19 @@ public class PageManager extends Manager<Page> implements RoutingRedirection {
         if (path.equals("*")) throw new No404SubPageException();
         return redirect(httpRequest, "*");
     }
+
+    @Override
+    public Module getModuleByItem(Page searchPage) {
+        for (Module module : managedItems.keySet()) {
+            final List<Page> pages = managedItems.get(module);
+            if (pages.contains(searchPage))
+                return module;
+            for (Page page : pages) {
+                if (page.hasChild(searchPage)) {
+                    return module;
+                }
+            }
+        }
+        return null;
+    }
 }

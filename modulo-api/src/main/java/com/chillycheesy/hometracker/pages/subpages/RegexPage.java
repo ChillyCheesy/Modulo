@@ -13,6 +13,10 @@ public class RegexPage extends Page {
         super(requestType, path, content);
     }
 
+    public RegexPage(String path, Supplier<String> content) {
+        super(path, content);
+    }
+
     public RegexPage(HttpRequest requestType, String path) {
         super(requestType, path);
     }

@@ -47,6 +47,10 @@ public class Page implements RoutingRedirection {
         this.content = content;
     }
 
+    public Page(String path, Supplier<String> content) {
+        this(HttpRequest.ANY, path, content);
+    }
+
     public Page(HttpRequest requestType, String path) {
         this(requestType, path, () -> "");
     }
@@ -82,6 +86,18 @@ public class Page implements RoutingRedirection {
 
     public String getContent() {
         return content.get();
+    }
+
+    public boolean hasChild(Page searchPage) {
+        if (this.equals(searchPage)) {
+            return true;
+        }
+        for (Page page : subpages) {
+            if (page.equals(searchPage) || page.hasChild(searchPage)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public Page redirect(HttpRequest httpRequest, String subpath) {
