@@ -15,8 +15,8 @@ import java.util.regex.Pattern;
  * Operator that execute a subtraction with the two parameter
  * This operator need number before and after the symbol "-"
  * Exemple :
- *          5 - 6 => -1
- *          -3 - 2 => -5
+ *          5 - 6 =&gt; -1
+ *          -3 - 2 =&gt; -5
  */
 @Operator(Priority.COMMON)
 public class MinusOperator extends NumberOperator implements OperatorFinder {

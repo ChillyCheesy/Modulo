@@ -142,7 +142,7 @@ public class ModuleManager {
 
     /**
      * It stops a module, removes it from the {@link SignalManager} and the {@link EventManager} and the {@link ModuleManager}
-     * @param module
+     * @param module module you want to stop
      */
     public void stopModule(Module module){
         module.stop();

@@ -13,10 +13,10 @@ import com.chillycheesy.modulo.utils.exception.CommandException;
  * Operator that check if the right parameter is equals to the left parameter
  * This operator work with number, strings or boolean before and after the symbol "=="
  * Exemple:
- *          6 == 6 => true
- *          6 == 5 => false
- *          true == false => false
- *          "I love ewoks" == "I hate ewoks" => false
+ *          6 == 6 =&gt; true
+ *          6 == 5 =&gt; false
+ *          true == false =&gt; false
+ *          "I love ewoks" == "I hate ewoks" =&gt; false
  */
 @Operator(Priority.COMMON)
 @OperatorFindByRegex("(==)")

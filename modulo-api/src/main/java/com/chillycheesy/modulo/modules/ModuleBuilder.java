@@ -92,8 +92,8 @@ public class ModuleBuilder {
      * @param file the jar file of your {@link Module}
      * @param inputStream the {@link InputStream} you especially want to use
      * @return a {@link ModuleConfig}
-     * @throws IOException
-     * @throws InvalidModuleConfigurationException
+     * @throws IOException if the file can't be access or read.
+     * @throws InvalidModuleConfigurationException if the configuration doesn't match the rules described on top of the class.
      */
     public static ModuleConfig readYml(File file, InputStream inputStream) throws IOException, InvalidModuleConfigurationException {
         final ObjectMapper mapper = new ObjectMapper(new YAMLFactory());

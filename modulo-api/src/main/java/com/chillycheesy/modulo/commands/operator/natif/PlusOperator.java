@@ -11,8 +11,8 @@ import com.chillycheesy.modulo.utils.Priority;
  * Operator that execute an addition with the two parameter
  * This operator need number before and after the symbol "+"
  * Exemple :
- *          5 + 6 => 11
- *          -3 + 2 => -1
+ *          5 + 6 =&gt; 11
+ *          -3 + 2 =&gt; -1
  */
 @Operator(Priority.COMMON)
 @OperatorFindByRegex("\\+")

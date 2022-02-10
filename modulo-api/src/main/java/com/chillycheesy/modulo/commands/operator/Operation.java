@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * <p>
  *     The operation is responsible for parsing the operator and determining the
  *     next command flow.
- * <p>
+ * </p>
  */
 public class Operation {
 
@@ -90,7 +90,7 @@ public class Operation {
 
     /**
      * Get the command flow in the left of the operation.
-     * @return
+     * @return The command flow in the left of the operation.
      */
     public CommandFlow getLeft() {
         return left;

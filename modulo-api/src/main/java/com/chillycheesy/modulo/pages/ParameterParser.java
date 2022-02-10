@@ -39,7 +39,7 @@ public class ParameterParser {
      * @param param the parameter of the path
      * @param body the body of the request
      * @return an {@link Object} depending on what the method you call returns
-     * @throws JsonProcessingException
+     * @throws JsonProcessingException if the request is not valid
      */
     public static Object parse(Parameter parameter, String methodPath, String path, String param, String body) throws JsonProcessingException {
         final ParameterParser parser = new ParameterParser(parameter, parameter.getAnnotations(), methodPath, path, param, body);
