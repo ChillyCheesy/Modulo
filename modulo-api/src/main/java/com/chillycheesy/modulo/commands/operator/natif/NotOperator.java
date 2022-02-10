@@ -13,6 +13,15 @@ import com.chillycheesy.modulo.commands.operator.builder.Operator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Operator that return the opposite of the given parameter.
+ * This operator only work with a boolean after the symbol "!"
+ * Exemple:
+ * <ul>
+ *     <li>!true = false</li>
+ *     <li>!false = true</li>
+ * </ul>
+ */
 @Operator(Priority.NEUTRAL)
 public class NotOperator implements OperatorListener, OperatorFinder {
 

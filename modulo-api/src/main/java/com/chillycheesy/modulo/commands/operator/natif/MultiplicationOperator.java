@@ -11,8 +11,10 @@ import com.chillycheesy.modulo.utils.Priority;
  * Operator that execute a multiplication with the two parameter
  * This operator need number before and after the symbol "*"
  * Exemple :
- *          5 * 6 =&gt; 30
- *          -3 * 2 =&gt; -6
+ * <ul>
+ *     <li>5 * 6 = 30</li>
+ *     <li>-3 * 2 = -6</li>
+ * </ul>
  */
 @Operator(Priority.UNCOMMON)
 @OperatorFindByRegex("\\*")

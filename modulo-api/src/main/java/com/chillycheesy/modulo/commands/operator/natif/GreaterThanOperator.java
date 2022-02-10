@@ -8,6 +8,16 @@ import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.modulo.utils.Priority;
 import com.chillycheesy.modulo.utils.exception.CommandException;
 
+/**
+ * Operator that return true if the left parameter is greater than the right parameter, false if it is not.
+ * This operator need number before and after the symbol "&gt;".
+ * Exemple:
+ * <ul>
+ *     <li>5 &gt; 2 = true</li>
+ *     <li>5 &gt; 10 = false</li>
+ *     <li>5 &gt; 5 = false</li>
+ * </ul>
+ */
 @Operator(Priority.COMMON)
 @OperatorFindByRegex("((?<!:)>)")
 public class GreaterThanOperator extends CompareOperator {

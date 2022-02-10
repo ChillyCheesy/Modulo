@@ -11,8 +11,10 @@ import com.chillycheesy.modulo.utils.Priority;
  * Operator that execute a division with the two parameter
  * This operator need number before and after the symbol "/"
  * Exemple :
- *          30 / 6 =&gt; 5
- *          -3 / 2 =&gt; -1.5
+ * <ul>
+ *     <li>30 / 6 = 5</li>
+ *     <li>-3 / 2 = -1.5</li>
+ * </ul>
  */
 @Operator(Priority.UNCOMMON)
 @OperatorFindByRegex("/")

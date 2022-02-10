@@ -12,10 +12,12 @@ import com.chillycheesy.modulo.utils.exception.CommandException;
  * Operator that return true if the left or right parameter are true, false if both are false.
  * This operator only work with a boolean before and after the symbol "||"
  * Exemple :
- *         true || true =&gt; true
- *         true || false =&gt; true
- *         false || true =&gt; true
- *         false || false =&gt; false
+ * <ul>
+ *     <li>true || true = true</li>
+ *     <li>true || false = true</li>
+ *     <li>false || true = true</li>
+ *     <li>false || false = false</li>
+ * </ul>
  */
 @Operator(Priority.NEUTRAL)
 @OperatorFindByRegex("(\\|\\|)")

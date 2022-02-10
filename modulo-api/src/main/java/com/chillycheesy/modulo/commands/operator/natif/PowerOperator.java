@@ -8,6 +8,15 @@ import com.chillycheesy.modulo.commands.operator.builder.OperatorFindByRegex;
 import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.modulo.utils.Priority;
 
+/**
+ * Operator that raise the left parameter to the power of the right parameter.
+ * This operator only work with number before and after the symbol "^"
+ * Exemple:
+ * <ul>
+ *     <li>5 ^ 2 = 25</li>
+ *     <li>6 ^ -2 = -36</li>
+ * </ul>
+ */
 @Operator(Priority.UNCOMMON)
 @OperatorFindByRegex("\\^")
 public class PowerOperator extends NumberOperator implements OperatorListener {

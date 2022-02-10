@@ -12,10 +12,12 @@ import com.chillycheesy.modulo.utils.exception.CommandException;
  * Operator that return true if at least one of the parameter is true, false if both are false or both are true.
  * This operator only work with a boolean before and after the symbol "|&amp;" or "&amp;|"
  * Exemple :
- *         true &amp;| true =&gt; false
- *         true |&amp; false =&gt; true
- *         false &amp;| true =&gt; true
- *         false |&amp; false =&gt; false
+ * <ul>
+ *     <li>true &amp;| true = false</li>
+ *     <li>true |&amp; false = true</li>
+ *     <li>false &amp;| true = true</li>
+ *     <li>false |&amp; false = false</li>
+ * </ul>
  */
 @Operator(Priority.NEUTRAL)
 @OperatorFindByRegex("((\\&\\|)|(\\|\\&))")

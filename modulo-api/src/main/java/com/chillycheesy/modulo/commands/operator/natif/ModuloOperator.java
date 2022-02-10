@@ -8,6 +8,15 @@ import com.chillycheesy.modulo.commands.operator.builder.OperatorFindByRegex;
 import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.modulo.utils.Priority;
 
+/**
+ * Operator that return the values of the left parameter modulo the right one.
+ * This operator need number before and after the symbol "%".
+ * Exemple:
+ * <ul>
+ *     <li>10 % 2 = 0</li>
+ *     <li>13 % 5 = 3</li>
+ * </ul>
+ */
 @Operator(Priority.UNCOMMON)
 @OperatorFindByRegex("%")
 public class ModuloOperator extends NumberOperator implements OperatorListener {
