@@ -6,8 +6,39 @@ import com.chillycheesy.modulo.commands.operator.OperatorListener;
 
 import java.lang.annotation.Annotation;
 
+/**
+ * This class is used to build an Operator form any Object.
+ *
+ * The Object can have the following annotations:
+ * <ul>
+ *     <li>{@link Operator}</li>
+ *     <li>{@link OperatorFindByRegex}</li>
+ * </ul>
+ * The Object can implement the following interfaces:
+ * <ul>
+ *     <li>{@link OperatorListener}</li>
+ *     <li>{@link OperatorFinder}</li>
+ * </ul>
+ */
 public class OperatorBuilder {
 
+    /**
+     * Builds an Operator from the given Object.
+     *
+     * The Object can have the following annotations:
+     * <ul>
+     *      <li>{@link Operator}</li>
+     *      <li>{@link OperatorFindByRegex}</li>
+     * </ul>
+     * The Object can implement the following interfaces:
+     * <ul>
+     *      <li>{@link OperatorListener}</li>
+     *      <li>{@link OperatorFinder}</li>
+     * </ul>
+     * @param operatorInterface The Object to build the Operator from.
+     * @param <T> The type of the Object.
+     * @return The built Operator.
+     */
     public static <T> com.chillycheesy.modulo.commands.operator.Operator build(T operatorInterface) {
         final com.chillycheesy.modulo.commands.operator.Operator operator = new com.chillycheesy.modulo.commands.operator.Operator();
         final Annotation[] annotations = operatorInterface.getClass().getDeclaredAnnotations();
