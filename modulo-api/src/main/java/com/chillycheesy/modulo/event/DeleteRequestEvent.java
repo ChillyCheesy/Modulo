@@ -1,5 +1,8 @@
 package com.chillycheesy.modulo.event;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * This event was wen a http DELETE request was emit.
  * @see RequestEvent
@@ -8,15 +11,12 @@ package com.chillycheesy.modulo.event;
 public class DeleteRequestEvent extends RequestEvent {
 
     /**
-     * Create a new Delete request event.
-     * @param moduleName The target module.
-     * @param pageName The target page. (it should be a page of the target module)
-     * @param path The target path of the page.
-     * @param param The param of the page.
-     * @param body The body request.
+     * Creates a new DeleteRequestEvent.
+     *
+     * @param request  The request that was made.
+     * @param response The response that was made.
      */
-    public DeleteRequestEvent(String moduleName, String pageName, String path, String param, String body) {
-        super(moduleName, pageName, path, param, body);
+    public DeleteRequestEvent(HttpServletRequest request, HttpServletResponse response) {
+        super(request, response);
     }
-
 }
