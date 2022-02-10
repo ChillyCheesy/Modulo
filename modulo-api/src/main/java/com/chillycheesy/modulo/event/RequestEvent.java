@@ -1,171 +1,90 @@
 package com.chillycheesy.modulo.event;
 
+import com.chillycheesy.modulo.events.Cancelable;
+import com.chillycheesy.modulo.events.CancelableAction;
 import com.chillycheesy.modulo.events.Event;
-import com.chillycheesy.modulo.modules.Module;
-import com.chillycheesy.modulo.pages.Page;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * This event was wen a http request was emit.
- * @author henouille
  */
-public class RequestEvent extends Event {
-
-    private String moduleName;
-    private String pageName;
-    private String path;
-    private String param;
-    private String body;
-
-    private Module module;
-    private Page page;
-    private String content;
+public class RequestEvent extends Event implements Cancelable {
 
     /**
-     * Create a new request event.
-     * @param moduleName The target module.
-     * @param pageName The target page. (it should be a page of the target module)
-     * @param path The target path of the page.
-     * @param param The param of the page.
-     * @param body The body request.
+     * The request that was made.
      */
-    public RequestEvent(String moduleName, String pageName, String path, String param, String body) {
-        this.moduleName = moduleName;
-        this.pageName = pageName;
-        this.path = path;
-        this.body = body;
-        this.param = param;
+    protected HttpServletRequest request;
+    /**
+     * The response that was made.
+     */
+    protected HttpServletResponse response;
 
-        content = null;
-        module = null;
-        page = null;
+    protected boolean isCanceled;
+    protected CancelableAction cancelableAction;
+
+    /**
+     * Creates a new RequestEvent.
+     * @param request The request that was made.
+     * @param response The response that was made.
+     */
+    public RequestEvent(HttpServletRequest request, HttpServletResponse response) {
+        this.request = request;
+        this.response = response;
     }
 
     /**
-     * Getter for the target module name.
-     * @return The target module name.
+     * Gets the request that was made.
+     * @return The request that was made.
      */
-    public String getModuleName() {
-        return moduleName;
+    public HttpServletRequest getRequest() {
+        return request;
     }
 
     /**
-     * Setter for the target module name.
-     * @param moduleName The new target module name.
+     * Gets the response that was made.
+     * @return The response that was made.
      */
-    public void setModuleName(String moduleName) {
-        this.moduleName = moduleName;
+    public HttpServletResponse getResponse() {
+        return response;
     }
 
     /**
-     * Getter for the page name.
-     * @return The target page name.
+     * Sets the request that was made.
+     * @param request The request that was made.
      */
-    public String getPageName() {
-        return pageName;
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
     }
 
     /**
-     * Setter for the page name.
-     * @param pageName The new target page name.
+     * Sets the response that was made.
+     * @param response The response that was made.
      */
-    public void setPageName(String pageName) {
-        this.pageName = pageName;
+    public void setResponse(HttpServletResponse response) {
+        this.response = response;
     }
 
-    /**
-     * Getter for the target path of the page.
-     * @return The target path of the page.
-     */
-    public String getPath() {
-        return path;
+    @Override
+    public boolean isCanceled() {
+        return isCanceled;
     }
 
-    /**
-     * Setter for the target path of the page.
-     * @param path The new target path of the page.
-     */
-    public void setPath(String path) {
-        this.path = path;
+    @Override
+    public void setCanceled(boolean cancel) {
+        this.isCanceled = cancel;
     }
 
-    /**
-     * Getter for the request body.
-     * @return The request body.
-     */
-    public String getBody() {
-        return body;
+    @Override
+    public Cancelable setCancelableAction(CancelableAction action) {
+        this.cancelableAction = action;
+        return this;
     }
 
-    /**
-     * Setter for the request body.
-     * @param body The new request body.
-     */
-    public void setBody(String body) {
-        this.body = body;
+    @Override
+    public CancelableAction getCancelableAction() {
+        return cancelableAction;
     }
 
-    /**
-     * Getter for the request param.
-     * @return The request param.
-     */
-    public String getParam() {
-        return param;
-    }
-
-    /**
-     * Setter for the request param.
-     * @param param The new request param.
-     */
-    public void setParam(String param) {
-        this.param = param;
-    }
-
-    /**
-     * Getter for the content.
-     * The content was the response of the request.
-     * @return The response of the request.
-     */
-    public String getContent() {
-        return content;
-    }
-
-    /**
-     * Setter for the content.
-     * @param content The new content.
-     */
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    /**
-     * Getter for the target page.
-     * @return The target page.
-     */
-    public Page getPage() {
-        return page;
-    }
-
-    /**
-     * Setter for the target page.
-     * @param page The new target page.
-     */
-    public void setPage(Page page) {
-        this.page = page;
-    }
-
-    /**
-     * Setter for the target module.
-     * @param module The target module.
-     */
-    public void setModule(Module module) {
-        this.module = module;
-    }
-
-    /**
-     * Getter for the target module.
-     * @return The target module.
-     */
-    public Module getModule() {
-        return module;
-    }
 }

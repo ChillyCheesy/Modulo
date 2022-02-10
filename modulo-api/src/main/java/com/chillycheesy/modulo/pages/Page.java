@@ -128,7 +128,7 @@ public class Page implements RoutingRedirection {
     public Page redirect(HttpRequest httpRequest, String subpath) {
         subpath = subpath.replaceAll("^/|/$", "");
         if (subpath.startsWith(this.path) && (this.requestType.equals(httpRequest) || this.requestType.equals(HttpRequest.ANY))) {
-                for (Page page : this.subpages) {
+            for (Page page : this.subpages) {
                 final Page redirection = page.redirect(httpRequest, subpath.substring(this.path.length()));
                 if (redirection != null) return redirection;
             }

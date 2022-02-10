@@ -1,5 +1,8 @@
 package com.chillycheesy.modulo.event;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * This event was wen a http POST request was emit.
  * @see RequestEvent
@@ -7,16 +10,14 @@ package com.chillycheesy.modulo.event;
  */
 public class PostRequestEvent extends RequestEvent {
 
-    /**
-     * Create a new post request event.
-     * @param moduleName The target module.
-     * @param pageName The target page. (it should be a page of the target module)
-     * @param path The target path of the page.
-     * @param param The param of the page.
-     * @param body The body request.
-     */
-    public PostRequestEvent(String moduleName, String pageName, String path, String param, String body) {
-        super(moduleName, pageName, path, param, body);
-    }
 
+    /**
+     * Creates a new PostRequestEvent.
+     *
+     * @param request  The request that was made.
+     * @param response The response that was made.
+     */
+    public PostRequestEvent(HttpServletRequest request, HttpServletResponse response) {
+        super(request, response);
+    }
 }

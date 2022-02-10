@@ -1,9 +1,12 @@
 package com.chillycheesy.modulo.pages.subpages;
 
 import com.chillycheesy.modulo.ModuloAPI;
+import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.modulo.pages.HttpRequest;
 import com.chillycheesy.modulo.pages.Page;
+import com.chillycheesy.modulo.pages.PageManager;
 import com.chillycheesy.modulo.pages.PageResponse;
+import com.chillycheesy.modulo.utils.exception.No404SubPageException;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Scanner;
+import java.util.Objects;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
@@ -43,17 +46,18 @@ public class ResourcePage extends Page {
 
     @Override
     public String getContent(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        final PageManager pageManager = ModuloAPI.getPage().getPageManager();
         final String uri = request.getRequestURI().substring(super.getFullPath().length() + 1);
-        final String resourcePath = super.getContent(request, response, false) + uri;
-        System.out.println("Resource path: " + resourcePath + " uri: " + uri + " path: " + super.getFullPath());
+        final String resourcePath = super.getContent(request, response, false).replaceAll("[^/]$", "$0/") + uri;
         try {
             final JarFile jarJarFile = ModuloAPI.getPage().getPageManager().getModuleByItem(this).getJarFile();
             final JarEntry jarJarEntry = jarJarFile.getJarEntry(resourcePath);
-            return this.getResourceAsString(jarJarFile, jarJarEntry, response);
-        } catch (IOException e) {
-            ModuloAPI.getLogger().error(null, e.getMessage());
+            return Objects.isNull(jarJarEntry) ? pageManager.redirect(HttpRequest.ANY, "*").getContent(request, response) : this.getResourceAsString(jarJarFile, jarJarEntry, response);
+        } catch (IOException | No404SubPageException e) {
+            final Module module = ModuloAPI.getPage().getPageManager().getModuleByItem(this);
+            ModuloAPI.getLogger().error(module, e.getMessage());
         }
-        return "";
+        return null;
     }
 
     private String getResourceAsString(JarFile jarJarFile, JarEntry jarJarEntry, HttpServletResponse response) throws IOException {
@@ -67,7 +71,7 @@ public class ResourcePage extends Page {
         try (final InputStream inputStream = jarJarFile.getInputStream(jarJarEntry);
              final BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream)) {
             IOUtils.copy(bufferedInputStream, response.getOutputStream());
-            return "";
+            return jarJarEntry.getRealName();
         }
     }
 }
