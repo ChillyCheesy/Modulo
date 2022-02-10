@@ -2,6 +2,9 @@ package com.chillycheesy.modulo.pages;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -103,18 +106,15 @@ public class Page implements RoutingRedirection {
         return content.buildBody(request, response);
     }
 
-    public byte[] getEncryptedContent(HttpServletRequest request, HttpServletResponse response) {
-        return Base64.getEncoder().encode(this.getContent(request, response).getBytes());
+    public String getEncryptedContent(HttpServletRequest request, HttpServletResponse response) {
+        return Base64.getEncoder().encodeToString(this.getContent(request, response).getBytes(StandardCharsets.UTF_8));
     }
 
     public boolean hasChild(Page searchPage) {
-        if (this.equals(searchPage)) {
-            return true;
-        }
+        if (this.equals(searchPage)) return true;
         for (Page page : subpages) {
-            if (page.equals(searchPage) || page.hasChild(searchPage)) {
+            if (page.equals(searchPage) || page.hasChild(searchPage))
                 return true;
-            }
         }
         return false;
     }
