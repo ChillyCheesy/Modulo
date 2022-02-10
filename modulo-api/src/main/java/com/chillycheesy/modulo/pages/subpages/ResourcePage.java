@@ -4,6 +4,7 @@ import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.pages.HttpRequest;
 import com.chillycheesy.modulo.pages.Page;
 import com.chillycheesy.modulo.pages.PageResponse;
+import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -41,37 +42,32 @@ public class ResourcePage extends Page {
     }
 
     @Override
-    public String getContent(HttpServletRequest request, HttpServletResponse response) {
+    public String getContent(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final String uri = request.getRequestURI().substring(super.getFullPath().length() + 1);
-        final String resourcePath = super.getContent(request, response) + uri;
+        final String resourcePath = super.getContent(request, response, false) + uri;
         System.out.println("Resource path: " + resourcePath + " uri: " + uri + " path: " + super.getFullPath());
         try {
             final JarFile jarJarFile = ModuloAPI.getPage().getPageManager().getModuleByItem(this).getJarFile();
             final JarEntry jarJarEntry = jarJarFile.getJarEntry(resourcePath);
-            return this.getResourceAsString(jarJarFile, jarJarEntry);
+            return this.getResourceAsString(jarJarFile, jarJarEntry, response);
         } catch (IOException e) {
             ModuloAPI.getLogger().error(null, e.getMessage());
         }
-        return null;
+        return "";
     }
 
-    private String getResourceAsString(JarFile jarJarFile, JarEntry jarJarEntry) throws IOException {
+    private String getResourceAsString(JarFile jarJarFile, JarEntry jarJarEntry, HttpServletResponse response) throws IOException {
         if (jarJarEntry.isDirectory()) {
             // The resource requested is a directory so we want to find an index.html in it.
             final String jarJarEntryName = jarJarEntry.getName();
             final String newJarJarEntryPath = jarJarEntryName.replaceAll("/$", "") + "/index.html";
             final JarEntry indexJarJarEntry = new JarEntry(newJarJarEntryPath);
-            return getResourceAsString(jarJarFile, indexJarJarEntry);
+            return getResourceAsString(jarJarFile, indexJarJarEntry, response);
         }
         try (final InputStream inputStream = jarJarFile.getInputStream(jarJarEntry);
-             final BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-             final Scanner scanner = new Scanner(bufferedInputStream)) {
-            final StringBuilder stringBuilder = new StringBuilder();
-            while (scanner.hasNext()) {
-                stringBuilder.append(scanner.nextLine()).append("\n");
-            }
-            final String buildedString = stringBuilder.toString();
-            return buildedString.substring(0, buildedString.length() - 1);
+             final BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream)) {
+            IOUtils.copy(bufferedInputStream, response.getOutputStream());
+            return "";
         }
     }
 }
