@@ -12,6 +12,15 @@ import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.modulo.utils.Priority;
 import com.chillycheesy.modulo.utils.exception.CommandException;
 
+/**
+ * Operator that separate operation instruction and return the last instruction<br>
+ * This operator can be used between any operation with the symbol ";"<br>
+ * Exemple:<br>
+ * <ul>
+ *     <li>echo I love ; echo ewok = ewok<br></li>
+ *     <li>echo I hate (echo ewok ; echo wookies) = I hate wookies </li>
+ * </ul>
+ */
 @Operator(Priority.LEGENDARY)
 public class InstructionEndOperator implements OperatorFinder, OperatorListener {
 

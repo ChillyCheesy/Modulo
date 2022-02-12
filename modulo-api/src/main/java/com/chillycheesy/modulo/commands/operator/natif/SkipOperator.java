@@ -13,6 +13,15 @@ import com.chillycheesy.modulo.commands.operator.builder.Operator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Operator that replace the instruction by a none interpretable value.<br>
+ * This operator work with any operation instruction between the symbol "&apos;"<br>
+ * Exemple:<br>
+ * <ul>
+ *     <li>'echo I love ewok' = echo I love ewok<br></li>
+ *     <li>'I love ewoks' = I love ewoks</li>
+ * </ul>
+ */
 @Operator(Priority.DIVINE)
 public class SkipOperator extends BetweenOperator implements OperatorListener {
 
