@@ -9,38 +9,37 @@ import com.chillycheesy.modulo.commands.builder.Label;
 import com.chillycheesy.modulo.commands.builder.Usage;
 import com.chillycheesy.modulo.modules.Module;
 
-import javax.management.monitor.CounterMonitorMBean;
-
 
 /**
  * The HelpCommand prints the list of the server's command in the result CommandFlux and in the console output
  */
 @Label("help")
 @Description("Return the list of server's commands")
-@Usage("help - Return the list of server's commands")
+@Usage("help <command's name> - Return the list of server's commands or the description of the given command's")
 public class HelpCommand implements CommandListener {
 
     @Override
     public CommandFlow onCommand(Module caller, String label, String[] args, CommandFlow flow) {
-        String commands = args.length == 0 ? getAllCommand() : getCommand(args[0]);
-        ModuloAPI.getLogger().info(caller,commands);
-        flow.setContent(commands);
+        final StringBuilder commands = new StringBuilder("HELP\n");
+        commands.append(args.length == 0 ? getAllCommand() : getCommandByLabel(args[0]));
+        ModuloAPI.getLogger().info(caller,commands.toString());
+        flow.setContent(commands.toString());
         flow.setSuccess(true);
         return flow;
     }
 
     private String getAllCommand(){
-        String commands = "HELP\n";
+        final StringBuilder commands = new StringBuilder();
         for(Command c: ModuloAPI.getCommand().getCommandManager().getAllItems()){
-            commands += "\t"+c.getLabel()+" : "+c.getDescription()+"\n";
+            commands.append(getCommandByLabel(c.getLabel()));
         }
-        return commands;
+        return commands.toString();
     }
 
-    private String getCommand(String label){
-        String command = "HELP\n";
+    private String getCommandByLabel(String label){
+        final StringBuilder command = new StringBuilder();
         Command c = ModuloAPI.getCommand().getCommandManager().getCommandByLabel(label);
-        command += "\t"+c.getLabel()+" : "+c.getDescription()+"\n";
-        return command;
+        command.append("\t"+c.getLabel()+" : "+c.getDescription()+"\n");
+        return command.toString();
     }
 }
