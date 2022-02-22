@@ -15,7 +15,7 @@ import java.util.*;
 public class PageManager extends Manager<Page> implements RoutingRedirection {
 
     @Override
-    public Page redirect(HttpRequest httpRequest, String path) throws No404SubPageException {
+    public Page redirect(HttpRequestType httpRequest, String path) throws No404SubPageException {
         if (path.startsWith("/")) return redirect(httpRequest, path.substring(1));
         for (List<Page> pages : this.managedItems.values()) {
             for (Page page : pages.stream().filter(page -> !page.getPath().equals("")).toArray(Page[]::new)) {
@@ -29,7 +29,7 @@ public class PageManager extends Manager<Page> implements RoutingRedirection {
         return redirectDefaultPage(httpRequest, path);
     }
 
-    private Page redirectDefaultPage(HttpRequest httpRequest, String path) throws No404SubPageException {
+    private Page redirectDefaultPage(HttpRequestType httpRequest, String path) throws No404SubPageException {
         final Page defaultPage = this.getPageByPath("");
         return Objects.isNull(defaultPage) ? this.redirect(httpRequest, "*") : defaultPage.redirect(httpRequest, path);
     }

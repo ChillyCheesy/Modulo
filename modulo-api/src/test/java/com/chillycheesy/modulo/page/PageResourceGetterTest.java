@@ -2,9 +2,9 @@ package com.chillycheesy.modulo.page;
 
 import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.modules.Module;
-import com.chillycheesy.modulo.pages.HttpRequest;
+import com.chillycheesy.modulo.pages.HttpRequestType;
 import com.chillycheesy.modulo.pages.Page;
-import com.chillycheesy.modulo.pages.subpages.ResourcePage;
+import com.chillycheesy.modulo.pages.natif.ResourcePage;
 import com.chillycheesy.modulo.utils.exception.HTModuleNotFoundException;
 import com.chillycheesy.modulo.utils.exception.MissingDependenciesModuleException;
 import com.chillycheesy.modulo.utils.exception.No404SubPageException;
@@ -90,8 +90,8 @@ public class PageResourceGetterTest {
         final Page subpage2 = new ResourcePage("b","nothtml");
         final Page page = new ResourcePage("page","pageweb").addSubPage(subpage.addSubPage(subpage2));
         ModuloAPI.getPage().getPageManager().registerItem(this.module, page);
-        assertEquals("pageweb", ModuloAPI.getPage().getPageManager().redirect(HttpRequest.GET, "page").getContent(request, response, false));
-        assertEquals("subpage", ModuloAPI.getPage().getPageManager().redirect(HttpRequest.GET, "page/a").getContent(request, response, false));
-        assertEquals("nothtml", ModuloAPI.getPage().getPageManager().redirect(HttpRequest.GET, "page/a/b").getContent(request, response, false));
+        assertEquals("pageweb", ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "page").getContent(request, response, false));
+        assertEquals("subpage", ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "page/a").getContent(request, response, false));
+        assertEquals("nothtml", ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "page/a/b").getContent(request, response, false));
     }
 }

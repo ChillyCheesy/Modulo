@@ -6,8 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -25,7 +23,7 @@ public class Page implements RoutingRedirection {
     /**
      * The http request type (GET, PUT, POST, DELETE)
      */
-    protected HttpRequest requestType;
+    protected HttpRequestType requestType;
     /**
      * The list of sub pages that can either call a method, return a value.
      * The sub path can be empty "" to represent the default accessors of the page,
@@ -44,14 +42,14 @@ public class Page implements RoutingRedirection {
 
     protected PageResponse content;
 
-    public Page(HttpRequest requestType, String path, PageResponse content) {
+    public Page(HttpRequestType requestType, String path, PageResponse content) {
         this.requestType = requestType;
         this.path = path;
         this.subpages = new ArrayList<>();
         this.content = content;
     }
 
-    public Page(HttpRequest requestType, String path, String content) {
+    public Page(HttpRequestType requestType, String path, String content) {
         this(requestType, path, (request, response) -> content);
     }
 
@@ -60,15 +58,23 @@ public class Page implements RoutingRedirection {
     }
 
     public Page(String path, PageResponse content) {
-        this(HttpRequest.ANY, path, content);
+        this(HttpRequestType.ANY, path, content);
     }
 
-    public Page(HttpRequest requestType, String path) {
+    public Page(HttpRequestType requestType, String path) {
         this(requestType, path, (request, response) -> "");
     }
 
     public Page(String path) {
-        this(HttpRequest.ANY, path);
+        this(HttpRequestType.ANY, path);
+    }
+
+    public Page(Page page) {
+        this.path = page.path;
+        this.requestType = page.requestType;
+        this.subpages = new ArrayList<>(page.subpages);
+        this.content = page.content;
+        this.parent = page.parent;
     }
 
     public Page addSubPage(Page subpage) {
@@ -105,6 +111,14 @@ public class Page implements RoutingRedirection {
         this.content = content;
     }
 
+    public void setRequestType(HttpRequestType requestType) {
+        this.requestType = requestType;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
     public String getContent(HttpServletRequest request, HttpServletResponse response, boolean pushInResponse) throws IOException {
         final String builtContent = content.buildBody(request, response);
         final ByteArrayInputStream inputStream = new ByteArrayInputStream(builtContent.getBytes());
@@ -125,9 +139,9 @@ public class Page implements RoutingRedirection {
         return false;
     }
 
-    public Page redirect(HttpRequest httpRequest, String subpath) {
+    public Page redirect(HttpRequestType httpRequest, String subpath) {
         subpath = subpath.replaceAll("^/|/$", "");
-        if (subpath.startsWith(this.path) && (this.requestType.equals(httpRequest) || this.requestType.equals(HttpRequest.ANY))) {
+        if (subpath.startsWith(this.path) && (this.requestType.equals(httpRequest) || this.requestType.equals(HttpRequestType.ANY))) {
             for (Page page : this.subpages) {
                 final Page redirection = page.redirect(httpRequest, subpath.substring(this.path.length()));
                 if (redirection != null) return redirection;
