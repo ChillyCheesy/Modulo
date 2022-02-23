@@ -8,7 +8,7 @@ import java.lang.annotation.Annotation;
 public enum PageAnnotations {
 
     PAGE_TYPE(PageType.class, (PageVisitor visitor, Page page, Annotation annotation) -> visitor.create(page, (PageType) annotation)),
-    HTTP_REQUEST(HttpRequest.class, (PageVisitor visitor, Page page, Annotation annotation) -> visitor.create(page, (PageType) annotation));
+    HTTP_REQUEST(HttpRequest.class, (PageVisitor visitor, Page page, Annotation annotation) -> visitor.create(page, (HttpRequest) annotation));
 
     private final Class<? extends Annotation> annotationClass;
     private final Function3<PageVisitor, Page, Annotation, Page> applyVisitor;
