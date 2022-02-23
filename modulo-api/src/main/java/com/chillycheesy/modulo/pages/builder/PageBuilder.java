@@ -35,17 +35,17 @@ public class PageBuilder {
             for (PageAnnotations pageAnnotations : PageAnnotations.values()) {
                 final Annotation annotation = method.getAnnotation(pageAnnotations.getAnnotationClass());
                 if (annotation != null)
-                    page = pageAnnotations.visit(page, annotation, visitor);
+                    page = pageAnnotations.visit(new PageBuilderMetaInfo(visitor, page), annotation);
             }
-            page.setContent(createPageContent(object, method));
+            page.setContent(createPageContent(object, method, page));
         }
         return page;
     }
 
-    private PageResponse createPageContent(Object object, Method method) {
+    private PageResponse createPageContent(Object object, Method method, Page page) {
         return (request, response) -> {
             try {
-                final Object[] args = createArgs(method, request, response);
+                final Object[] args = createArgs(method, request, response, page);
                 return method.invoke(object, args).toString();
             } catch (IllegalAccessException | InvocationTargetException | IOException e) {
                 e.printStackTrace();
@@ -54,22 +54,22 @@ public class PageBuilder {
         };
     }
 
-    private Object[] createArgs(Method method, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private Object[] createArgs(Method method, HttpServletRequest request, HttpServletResponse response, Page page) throws IOException {
         final TypeVariable<Method>[] parameterType = method.getTypeParameters();
         final Object[] args = new Object[parameterType.length];
         for (int i = 0; i < parameterType.length; i++) {
             final TypeVariable<Method> typeVariable = parameterType[i];
-            args[i] = createArg(typeVariable, request, response);
+            args[i] = createArg(typeVariable, request, response, page);
         }
         return args;
     }
 
-    private Object createArg(TypeVariable<Method> typeVariable, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    private Object createArg(TypeVariable<Method> typeVariable, HttpServletRequest request, HttpServletResponse response, Page page) throws IOException {
         Object object = createArgInstance(typeVariable, request, response);
         for (PageParameterAnnotations pageParameterAnnotations : PageParameterAnnotations.values()) {
             final Annotation annotation = typeVariable.getAnnotation(pageParameterAnnotations.getAnnotationClass());
             if (annotation != null)
-                object = pageParameterAnnotations.visit(object, request, response, annotation, visitor);
+                object = pageParameterAnnotations.visit(new PageBuilderMetaInfo(visitor, page, request, response, object), annotation);
         }
         return object;
     }
