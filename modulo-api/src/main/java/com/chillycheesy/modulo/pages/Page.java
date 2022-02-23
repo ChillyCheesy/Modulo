@@ -4,6 +4,7 @@ import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.*;
@@ -120,10 +121,16 @@ public class Page implements RoutingRedirection {
     }
 
     public String getContent(HttpServletRequest request, HttpServletResponse response, boolean pushInResponse) throws IOException {
-        final String builtContent = content.buildBody(request, response);
-        final ByteArrayInputStream inputStream = new ByteArrayInputStream(builtContent.getBytes());
-        if (pushInResponse) IOUtils.copy(inputStream, response.getOutputStream());
+        final String builtContent = content != null ? content.buildBody(request, response) : null;
+        if (builtContent != null && pushInResponse) {
+            final BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(builtContent.getBytes()));
+            IOUtils.copy(inputStream, response.getOutputStream());
+        }
         return builtContent;
+    }
+
+    public HttpRequestType getRequestType() {
+        return requestType;
     }
 
     public String getContent(HttpServletRequest request, HttpServletResponse response) throws IOException {

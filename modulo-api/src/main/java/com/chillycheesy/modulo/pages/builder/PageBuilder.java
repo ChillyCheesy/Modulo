@@ -20,6 +20,15 @@ public class PageBuilder {
         this.visitor = visitor;
     }
 
+    public static Page build(Object object, PageVisitor visitor) {
+        final PageBuilder builder = new PageBuilder(visitor);
+        return builder.createPageFromObject(object);
+    }
+
+    public static Page build(Object object) {
+        return build(object, new DefaultPageVisitor());
+    }
+
     private Page createPageFromObject(Object object) {
         final Page page = createPageFromClassAnnotations(object);
         return createPageFromMethodsAnnotations(page, object);
@@ -46,7 +55,12 @@ public class PageBuilder {
         return (request, response) -> {
             try {
                 final Object[] args = createArgs(method, request, response, page);
-                return method.invoke(object, args).toString();
+                if (method.getReturnType() == void.class) {
+                    method.invoke(object, args);
+                    return null;
+                } else {
+                    return method.invoke(object, args).toString();
+                }
             } catch (IllegalAccessException | InvocationTargetException | IOException e) {
                 e.printStackTrace();
             }
@@ -84,14 +98,5 @@ public class PageBuilder {
             return IOUtils.toString(request.getReader());
         }
         return null;
-    }
-
-    public static Page build(Object object, PageVisitor visitor) {
-        final PageBuilder builder = new PageBuilder(visitor);
-        return builder.createPageFromObject(object);
-    }
-
-    public static Page build(Object object) {
-        return build(object, new DefaultPageVisitor());
     }
 }

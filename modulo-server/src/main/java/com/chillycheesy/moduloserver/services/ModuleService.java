@@ -1,4 +1,4 @@
-package com.chillycheesy.moduloserver.listeners.services;
+package com.chillycheesy.moduloserver.services;
 
 import com.chillycheesy.modulo.modules.ModuleContainer;
 import com.chillycheesy.modulo.modules.Module;
