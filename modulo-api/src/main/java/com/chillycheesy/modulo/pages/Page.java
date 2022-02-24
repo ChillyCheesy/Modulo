@@ -8,6 +8,8 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * <pre>
@@ -21,10 +23,17 @@ public class Page implements RoutingRedirection {
      * The path to access this page.
      */
     protected String path;
+
+    /**
+     * The original path to access this page.
+     */
+    protected String fullPath;
+
     /**
      * The http request type (GET, PUT, POST, DELETE)
      */
     protected HttpRequestType requestType;
+
     /**
      * The list of sub pages that can either call a method, return a value.
      * The sub path can be empty "" to represent the default accessors of the page,
@@ -45,9 +54,9 @@ public class Page implements RoutingRedirection {
 
     public Page(HttpRequestType requestType, String path, PageResponse content) {
         this.requestType = requestType;
-        this.path = path;
         this.subpages = new ArrayList<>();
         this.content = content;
+        setPath(path);
     }
 
     public Page(HttpRequestType requestType, String path, String content) {
@@ -71,10 +80,8 @@ public class Page implements RoutingRedirection {
     }
 
     public Page(Page page) {
-        this.path = page.path;
-        this.requestType = page.requestType;
-        this.subpages = new ArrayList<>(page.subpages);
-        this.content = page.content;
+        this(page.requestType, page.path, page.content);
+        this.subpages.addAll(page.subpages);
         this.parent = page.parent;
     }
 
@@ -84,12 +91,12 @@ public class Page implements RoutingRedirection {
         return this;
     }
 
-    public boolean removeSubPage(Object o) {
-        return subpages.remove(o);
+    public boolean removeSubPage(Page subpage) {
+        return subpages.remove(subpage);
     }
 
-    public boolean addAllSubPage(Collection<? extends Page> c) {
-        return subpages.addAll(c);
+    public void addAllSubPage(Collection<? extends Page> c) {
+        c.forEach(this::addSubPage);
     }
 
     public boolean removeAllSubPage(Collection<?> c) {
@@ -117,7 +124,16 @@ public class Page implements RoutingRedirection {
     }
 
     public void setPath(String path) {
-        this.path = path;
+        final PageResponse oldResponse = redirect(requestType, fullPath).content;
+        this.fullPath = path.replaceAll("^/|/$", "");
+        final Pattern pattern = Pattern.compile("\\w+");
+        final Matcher matcher = pattern.matcher(this.fullPath);
+        if (matcher.find()) {
+            this.path = matcher.group(0);
+            if (matcher.groupCount() > 1) subpages.add(new Page(requestType, fullPath.substring(path.length()), oldResponse));
+        } else {
+            this.path = fullPath;
+        }
     }
 
     public String getContent(HttpServletRequest request, HttpServletResponse response, boolean pushInResponse) throws IOException {
@@ -163,7 +179,7 @@ public class Page implements RoutingRedirection {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Page page = (Page) o;
-        return Objects.equals(path, page.path) && requestType == page.requestType && Objects.equals(subpages, page.subpages) && Objects.equals(content, page.content);
+        return Objects.equals(path, page.path);
     }
 
     @Override
@@ -175,6 +191,7 @@ public class Page implements RoutingRedirection {
     public String toString() {
         return "Page{" +
                 "path='" + path + '\'' +
+                ", fullPath=" + fullPath +
                 ", requestType=" + requestType +
                 ", subpages=" + subpages +
                 ", content=" + content +

@@ -19,7 +19,7 @@ public class DefaultPageVisitor implements PageVisitor {
     @Override
     public Page create(PageBuilderMetaInfo info, HttpRequest annotation) {
         final Page page = info.getPage();
-        System.out.println("Creating page for " + info.getPage());
+
         return page;
     }
 

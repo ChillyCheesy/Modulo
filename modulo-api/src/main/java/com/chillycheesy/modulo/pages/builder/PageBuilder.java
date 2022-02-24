@@ -58,7 +58,7 @@ public class PageBuilder {
                 if (method.getReturnType() == void.class) {
                     method.invoke(object, args);
                     return null;
-                } else {
+                } else if (method.getReturnType() == String.class) {
                     return method.invoke(object, args).toString();
                 }
             } catch (IllegalAccessException | InvocationTargetException | IOException e) {
@@ -71,10 +71,8 @@ public class PageBuilder {
     private Object[] createArgs(Method method, HttpServletRequest request, HttpServletResponse response, Page page) throws IOException {
         final TypeVariable<Method>[] parameterType = method.getTypeParameters();
         final Object[] args = new Object[parameterType.length];
-        for (int i = 0; i < parameterType.length; i++) {
-            final TypeVariable<Method> typeVariable = parameterType[i];
-            args[i] = createArg(typeVariable, request, response, page);
-        }
+        for (int i = 0; i < parameterType.length; i++)
+            args[i] = createArg(parameterType[i], request, response, page);
         return args;
     }
 
