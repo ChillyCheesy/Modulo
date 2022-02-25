@@ -4,6 +4,7 @@ import com.chillycheesy.modulo.pages.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.lang.reflect.TypeVariable;
 
 public class PageBuilderMetaInfo {
 
@@ -11,13 +12,15 @@ public class PageBuilderMetaInfo {
     private Page page;
     private HttpServletRequest request;
     private HttpServletResponse response;
+    private TypeVariable<?> typeVariable;
     private Object object;
 
-    public PageBuilderMetaInfo(PageVisitor visitor, Page page, HttpServletRequest request, HttpServletResponse response, Object object) {
+    public PageBuilderMetaInfo(PageVisitor visitor, Page page, HttpServletRequest request, HttpServletResponse response, TypeVariable<?> typeVariable, Object object) {
         this.visitor = visitor;
         this.page = page;
         this.response = response;
         this.request = request;
+        this.typeVariable = typeVariable;
         this.object = object;
     }
 
@@ -40,6 +43,10 @@ public class PageBuilderMetaInfo {
 
     public HttpServletRequest getRequest() {
         return request;
+    }
+
+    public TypeVariable<?> getTypeVariable() {
+        return typeVariable;
     }
 
     public Object getObject() {

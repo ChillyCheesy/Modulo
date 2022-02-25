@@ -8,8 +8,6 @@ import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * <pre>
@@ -25,17 +23,12 @@ public class Page implements RoutingRedirection {
     protected String path;
 
     /**
-     * The original path to access this page.
-     */
-    protected String fullPath;
-
-    /**
      * The http request type (GET, PUT, POST, DELETE)
      */
     protected HttpRequestType requestType;
 
     /**
-     * The list of sub pages that can either call a method, return a value.
+     * The list of subpages that can either call a method, return a value.
      * The sub path can be empty "" to represent the default accessors of the page,
      * the sub path can also be "*" to represent the not found page case (404 error).
      *
@@ -56,7 +49,7 @@ public class Page implements RoutingRedirection {
         this.requestType = requestType;
         this.subpages = new ArrayList<>();
         this.content = content;
-        setPath(path);
+        this.path = path;
     }
 
     public Page(HttpRequestType requestType, String path, String content) {
@@ -124,19 +117,23 @@ public class Page implements RoutingRedirection {
     }
 
     public void setPath(String path) {
-        final PageResponse oldResponse = redirect(requestType, fullPath).content;
-        this.fullPath = path.replaceAll("^/|/$", "");
-        final Pattern pattern = Pattern.compile("\\w+");
-        final Matcher matcher = pattern.matcher(this.fullPath);
-        if (matcher.find()) {
-            this.path = matcher.group(0);
-            if (matcher.groupCount() > 1) subpages.add(new Page(requestType, fullPath.substring(path.length()), oldResponse));
-        } else {
-            this.path = fullPath;
-        }
+        this.path = path;
     }
 
-    public String getContent(HttpServletRequest request, HttpServletResponse response, boolean pushInResponse) throws IOException {
+    public HttpRequestType getRequestType() {
+        return requestType;
+    }
+
+    /**
+     * Call the page method with the given request and response.
+     * The response can be registered inside the request OutputStream.
+     * @param request the http request.
+     * @param response the http response.
+     * @param pushInResponse the response can be registered inside the response OutputStream.
+     * @return true if the page has been found and the response has been sent, false otherwise.
+     * @throws IOException if an error occurs while sending the response.
+     */
+    public String applyRequest(HttpServletRequest request, HttpServletResponse response, boolean pushInResponse) throws IOException {
         final String builtContent = content != null ? content.buildBody(request, response) : null;
         if (builtContent != null && pushInResponse) {
             final BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(builtContent.getBytes()));
@@ -145,20 +142,23 @@ public class Page implements RoutingRedirection {
         return builtContent;
     }
 
-    public HttpRequestType getRequestType() {
-        return requestType;
-    }
-
-    public String getContent(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        return this.getContent(request, response, true);
+    /**
+     * Call the page method with the given request and response.
+     * The response is register inside the response OutputStream.
+     * @param request the request.
+     * @param response the response.
+     * @return the content of the response.
+     * @throws IOException if an error occurs.
+     */
+    public String applyRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        return this.applyRequest(request, response, true);
     }
 
     public boolean hasChild(Page searchPage) {
         if (this.equals(searchPage)) return true;
-        for (Page page : subpages) {
+        for (Page page : subpages)
             if (page.equals(searchPage) || page.hasChild(searchPage))
                 return true;
-        }
         return false;
     }
 
@@ -191,7 +191,6 @@ public class Page implements RoutingRedirection {
     public String toString() {
         return "Page{" +
                 "path='" + path + '\'' +
-                ", fullPath=" + fullPath +
                 ", requestType=" + requestType +
                 ", subpages=" + subpages +
                 ", content=" + content +

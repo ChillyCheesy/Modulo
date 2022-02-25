@@ -45,14 +45,14 @@ public class ResourcePage extends Page {
     }
 
     @Override
-    public String getContent(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String applyRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final PageManager pageManager = ModuloAPI.getPage().getPageManager();
         final String uri = request.getRequestURI().substring(super.getFullPath().length() + 1);
-        final String resourcePath = super.getContent(request, response, false).replaceAll("[^/]$", "$0/") + uri;
+        final String resourcePath = super.applyRequest(request, response, false).replaceAll("[^/]$", "$0/") + uri;
         try {
             final JarFile jarJarFile = ModuloAPI.getPage().getPageManager().getModuleByItem(this).getJarFile();
             final JarEntry jarJarEntry = jarJarFile.getJarEntry(resourcePath);
-            return Objects.isNull(jarJarEntry) ? pageManager.redirect(HttpRequestType.ANY, "*").getContent(request, response) : this.getResourceAsString(jarJarFile, jarJarEntry, response);
+            return Objects.isNull(jarJarEntry) ? pageManager.redirect(HttpRequestType.ANY, "*").applyRequest(request, response) : this.getResourceAsString(jarJarFile, jarJarEntry, response);
         } catch (IOException | No404SubPageException e) {
             final Module module = ModuloAPI.getPage().getPageManager().getModuleByItem(this);
             ModuloAPI.getLogger().error(module, e.getMessage());

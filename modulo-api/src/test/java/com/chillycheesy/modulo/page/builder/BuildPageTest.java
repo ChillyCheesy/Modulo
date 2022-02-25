@@ -60,7 +60,8 @@ public class BuildPageTest {
     @Test
     public final void testBuildHello1() throws IOException {
         final Page page = PageBuilder.build(new MyHelloPage1());
-        final String content = page.redirect(HttpRequestType.GET, "hello").getContent(request, response);
+        System.out.println(page);
+        final String content = page.redirect(HttpRequestType.GET, "hello/world").applyRequest(request, response);
         assertEquals("hello, world", content);
     }
 

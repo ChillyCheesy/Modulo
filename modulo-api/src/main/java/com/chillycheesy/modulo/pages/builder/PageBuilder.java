@@ -42,7 +42,7 @@ public class PageBuilder {
         final Method[] methods = object.getClass().getMethods();
         for (Method method : methods) {
             for (PageAnnotations pageAnnotations : PageAnnotations.values()) {
-                final Annotation annotation = method.getAnnotation(pageAnnotations.getAnnotationClass());
+                final Annotation annotation = method.getDeclaredAnnotation(pageAnnotations.getAnnotationClass());
                 if (annotation != null)
                     page = pageAnnotations.visit(new PageBuilderMetaInfo(visitor, page), annotation);
             }
@@ -81,7 +81,7 @@ public class PageBuilder {
         for (PageParameterAnnotations pageParameterAnnotations : PageParameterAnnotations.values()) {
             final Annotation annotation = typeVariable.getAnnotation(pageParameterAnnotations.getAnnotationClass());
             if (annotation != null)
-                object = pageParameterAnnotations.visit(new PageBuilderMetaInfo(visitor, page, request, response, object), annotation);
+                object = pageParameterAnnotations.visit(new PageBuilderMetaInfo(visitor, page, request, response, typeVariable, object), annotation);
         }
         return object;
     }
