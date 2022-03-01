@@ -4,6 +4,7 @@ import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.commands.Command;
 import com.chillycheesy.modulo.commands.CommandFlow;
 import com.chillycheesy.modulo.commands.CommandListener;
+import com.chillycheesy.modulo.commands.CommandParameter;
 import com.chillycheesy.modulo.commands.builder.Description;
 import com.chillycheesy.modulo.commands.builder.Label;
 import com.chillycheesy.modulo.commands.builder.Usage;
@@ -21,14 +22,19 @@ public class HelpCommand implements CommandListener {
     @Override
     public CommandFlow onCommand(Module caller, String label, String[] args, CommandFlow flow) {
         final StringBuilder commands = new StringBuilder("HELP\n");
-        commands.append(args.length == 0 ? getAllCommand() : getCommandByLabel(args[0]));
+
+        final CommandParameter parameter = new CommandParameter(args);
+        parameter.addOptionMethod("--name",this::getCommandByLabel);
+        parameter.addOptionMethod("--all",this::getAllCommand);
+
+        commands.append(parameter.applyParameter());
         ModuloAPI.getLogger().info(caller,commands.toString());
         flow.setContent(commands.toString());
         flow.setSuccess(true);
         return flow;
     }
 
-    private String getAllCommand(){
+    private String getAllCommand(String placeholder){
         final StringBuilder commands = new StringBuilder();
         for(Command c: ModuloAPI.getCommand().getCommandManager().getAllItems()){
             commands.append(getCommandByLabel(c.getLabel()));

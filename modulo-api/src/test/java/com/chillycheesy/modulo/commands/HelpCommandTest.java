@@ -31,13 +31,13 @@ public class HelpCommandTest {
 
     @Test
     public final void testRunCommand() throws CommandException {
-        final CommandFlow flow = commandManager.applyCommand("help");
+        final CommandFlow flow = commandManager.applyCommand("help --all");
         assertEquals("HELP\n\techo : Echos the given text\n\thelp : Return the list of server's commands\n",flow.getContent());
     }
 
     @Test
     public final void testRunCommandWithParameter() throws CommandException {
-        final CommandFlow flow = commandManager.applyCommand("help echo");
+        final CommandFlow flow = commandManager.applyCommand("help --name echo");
         assertEquals("HELP\n\techo : Echos the given text\n",flow.getContent());
     }
 }
