@@ -31,7 +31,7 @@ public class HelpCommandTest {
 
     @Test
     public final void testRunCommand() throws CommandException {
-        final CommandFlow flow = commandManager.applyCommand("help --all");
+        final CommandFlow flow = commandManager.applyCommand("help -a");
         assertEquals("HELP\n\techo : Echos the given text\n\thelp : Return the list of server's commands\n",flow.getContent());
     }
 

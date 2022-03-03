@@ -46,11 +46,21 @@ public class CommandParameter {
     }
 
     /**
-     * @param option is the word that gonna trigger the method
      * @param method is the method to apply to the command
+     * @param option is the word that gonna trigger the method
      */
-    public void addOptionMethod(String option,Function<String,String> method){
+    public void addOptionMethod(Function<String,String> method,String option){
         this.optionMethods.put(option,method);
+    }
+
+    /**
+     * @param method is the method to apply to the command
+     * @param options is the list of word that gonna trigger the method
+     */
+    public void addOptionMethod(Function<String,String> method,String... options){
+        for(String option: options) {
+            this.addOptionMethod(method, option);
+        }
     }
 
 }

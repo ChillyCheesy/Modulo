@@ -24,8 +24,8 @@ public class HelpCommand implements CommandListener {
         final StringBuilder commands = new StringBuilder("HELP\n");
 
         final CommandParameter parameter = new CommandParameter(args);
-        parameter.addOptionMethod("--name",this::getCommandByLabel);
-        parameter.addOptionMethod("--all",this::getAllCommand);
+        parameter.addOptionMethod(this::getCommandByLabel,"--name","-n");
+        parameter.addOptionMethod(this::getAllCommand,"--all","-a");
 
         commands.append(parameter.applyParameter());
         ModuloAPI.getLogger().info(caller,commands.toString());
