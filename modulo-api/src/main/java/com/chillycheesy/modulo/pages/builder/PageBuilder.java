@@ -6,11 +6,12 @@ import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.lang.reflect.TypeVariable;
+import java.util.Objects;
 
 public class PageBuilder {
 
@@ -40,14 +41,15 @@ public class PageBuilder {
 
     private Page createPageFromMethodsAnnotations(Page page, Object object) {
         final Method[] methods = object.getClass().getMethods();
-        for (Method method : methods) {
-            for (PageAnnotations pageAnnotations : PageAnnotations.values()) {
-                final Annotation annotation = method.getDeclaredAnnotation(pageAnnotations.getAnnotationClass());
-                if (annotation != null)
-                    page = pageAnnotations.visit(new PageBuilderMetaInfo(visitor, page), annotation);
+        for (Method method : methods)
+            if (method.isAnnotationPresent(HttpRequest.class)) {
+                for (PageAnnotations pageAnnotations : PageAnnotations.values()) {
+                    final Annotation annotation = method.getDeclaredAnnotation(pageAnnotations.getAnnotationClass());
+                    if (annotation != null) page = pageAnnotations.visit(new PageBuilderMetaInfo(visitor, page), annotation);
+                }
+                final Page subpage = page.getLastChild();
+                subpage.setContent(createPageContent(object, method, subpage));
             }
-            page.setContent(createPageContent(object, method, page));
-        }
         return page;
     }
 
@@ -55,10 +57,12 @@ public class PageBuilder {
         return (request, response) -> {
             try {
                 final Object[] args = createArgs(method, request, response, page);
-                if (method.getReturnType() == void.class) {
+                if (method.getReturnType().equals(void.class)) {
                     method.invoke(object, args);
-                    return null;
-                } else if (method.getReturnType() == String.class) {
+                } else if (method.getReturnType().equals(String.class)) {
+                    return method.invoke(object, args).toString();
+                } else {
+                    //TODO: return json format
                     return method.invoke(object, args).toString();
                 }
             } catch (IllegalAccessException | InvocationTargetException | IOException e) {
@@ -69,32 +73,37 @@ public class PageBuilder {
     }
 
     private Object[] createArgs(Method method, HttpServletRequest request, HttpServletResponse response, Page page) throws IOException {
-        final TypeVariable<Method>[] parameterType = method.getTypeParameters();
+        final Class<?>[] parameterType = method.getParameterTypes();
+        final Annotation[][] annotations = method.getParameterAnnotations();
         final Object[] args = new Object[parameterType.length];
-        for (int i = 0; i < parameterType.length; i++)
-            args[i] = createArg(parameterType[i], request, response, page);
+        for (int i = 0 ; i < parameterType.length ; ++i)
+            args[i] = createArg(parameterType[i], annotations[i], request, response, page);
         return args;
     }
 
-    private Object createArg(TypeVariable<Method> typeVariable, HttpServletRequest request, HttpServletResponse response, Page page) throws IOException {
-        Object object = createArgInstance(typeVariable, request, response);
+    private Object createArg(Class<?> type, Annotation[] annotations, HttpServletRequest request, HttpServletResponse response, Page page) throws IOException {
+        Object object = createArgInstance(type, request, response);
         for (PageParameterAnnotations pageParameterAnnotations : PageParameterAnnotations.values()) {
-            final Annotation annotation = typeVariable.getAnnotation(pageParameterAnnotations.getAnnotationClass());
-            if (annotation != null)
-                object = pageParameterAnnotations.visit(new PageBuilderMetaInfo(visitor, page, request, response, typeVariable, object), annotation);
+            for (Annotation annotation : annotations) {
+                if (pageParameterAnnotations.getAnnotationClass().equals(annotation.annotationType())) {
+                    object = pageParameterAnnotations.visit(new PageBuilderMetaInfo(visitor, page, request, response, type, object), annotation);
+                }
+            }
         }
         return object;
     }
 
-    private Object createArgInstance(TypeVariable<Method> typeVariable, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        final String typeName = typeVariable.getTypeName();
-        if (typeName.equals(HttpServletRequest.class.getName())) {
+    private Object createArgInstance(Class<?> type, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        if (type.equals(HttpServletRequest.class)) {
             return request;
-        } else if (typeName.equals(HttpServletResponse.class.getName())) {
+        } else if (type.equals(HttpServletResponse.class)) {
             return response;
-        } else if (typeName.equals(String.class.getName())) {
-            return IOUtils.toString(request.getReader());
+        } else if (type.equals(String.class)) {
+            final BufferedReader reader = request.getReader();
+            return Objects.nonNull(reader) ? IOUtils.toString(request.getReader()) : "";
+        } else {
+            //TODO: return json format
+            return null;
         }
-        return null;
     }
 }

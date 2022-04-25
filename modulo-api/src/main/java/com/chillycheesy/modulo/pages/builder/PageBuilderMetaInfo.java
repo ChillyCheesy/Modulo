@@ -4,7 +4,6 @@ import com.chillycheesy.modulo.pages.Page;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.lang.reflect.TypeVariable;
 
 public class PageBuilderMetaInfo {
 
@@ -12,15 +11,15 @@ public class PageBuilderMetaInfo {
     private Page page;
     private HttpServletRequest request;
     private HttpServletResponse response;
-    private TypeVariable<?> typeVariable;
+    private Class<?> type;
     private Object object;
 
-    public PageBuilderMetaInfo(PageVisitor visitor, Page page, HttpServletRequest request, HttpServletResponse response, TypeVariable<?> typeVariable, Object object) {
+    public PageBuilderMetaInfo(PageVisitor visitor, Page page, HttpServletRequest request, HttpServletResponse response, Class<?> type, Object object) {
         this.visitor = visitor;
         this.page = page;
         this.response = response;
         this.request = request;
-        this.typeVariable = typeVariable;
+        this.type = type;
         this.object = object;
     }
 
@@ -45,11 +44,35 @@ public class PageBuilderMetaInfo {
         return request;
     }
 
-    public TypeVariable<?> getTypeVariable() {
-        return typeVariable;
+    public Class<?> getTypeVariable() {
+        return type;
     }
 
     public Object getObject() {
         return object;
+    }
+
+    public void setVisitor(PageVisitor visitor) {
+        this.visitor = visitor;
+    }
+
+    public void setPage(Page page) {
+        this.page = page;
+    }
+
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
+    }
+
+    public void setResponse(HttpServletResponse response) {
+        this.response = response;
+    }
+
+    public void setType(Class<?> type) {
+        this.type = type;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
     }
 }

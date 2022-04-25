@@ -124,6 +124,10 @@ public class Page implements RoutingRedirection {
         return requestType;
     }
 
+    public Page getParent() {
+        return parent;
+    }
+
     /**
      * Call the page method with the given request and response.
      * The response can be registered inside the request OutputStream.
@@ -172,6 +176,11 @@ public class Page implements RoutingRedirection {
             return this;
         }
         return null;
+    }
+
+    public Page getLastChild() {
+        if (subpages.size() == 0) return this;
+        return subpages.get(subpages.size() - 1).getLastChild();
     }
 
     @Override

@@ -7,6 +7,5 @@ import java.lang.annotation.*;
 @Target({ElementType.PARAMETER})
 @Inherited
 public @interface Path {
-    String value() default "";
-    String defaultValue() default "";
+    String value() default "value";
 }

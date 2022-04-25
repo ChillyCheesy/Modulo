@@ -4,6 +4,7 @@ import com.chillycheesy.modulo.utils.Function2;
 import java.lang.annotation.Annotation;
 
 public enum PageParameterAnnotations {
+
     PATH(Path.class, (info, annotation) -> info.getVisitor().createArgument(info, (Path) annotation));
 
     private final Class<? extends Annotation> annotationClass;

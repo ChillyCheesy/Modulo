@@ -14,20 +14,11 @@ import java.io.IOException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class BuildPageTest {
 
-    private static class MyHelloPage1 {
-
-        @HttpRequest(type = HttpRequestType.GET, path = "hello/{name}")
-        public String hello(@Path(value = "name", defaultValue = "world") String value) {
-            return "hello, " + value;
-        }
-
-    }
-
-    private static class MyHelloPage2 {
-
+    public static class MyHelloPage1 {
         @HttpRequest(type = HttpRequestType.GET, path = "hello/{name}")
         public String hello(@Path("name") String value) {
             return "hello, " + value;
@@ -35,9 +26,9 @@ public class BuildPageTest {
 
     }
 
-    private static class MyHelloPage3 {
+    public static class MyHelloPage2 {
 
-        @HttpRequest(type = HttpRequestType.GET, path = "hello/{name}")
+        @HttpRequest(type = HttpRequestType.GET, path = "hello/{value}")
         public String hello(@Path String name) {
             return "hello, " + name;
         }
@@ -60,8 +51,20 @@ public class BuildPageTest {
     @Test
     public final void testBuildHello1() throws IOException {
         final Page page = PageBuilder.build(new MyHelloPage1());
-        System.out.println(page);
-        final String content = page.redirect(HttpRequestType.GET, "hello/world").applyRequest(request, response);
+        final String path = "/hello/world";
+        final Page redirect = page.redirect(HttpRequestType.GET, path);
+        when(request.getRequestURI()).thenReturn(path);
+        final String content = redirect.applyRequest(request, response,false);
+        assertEquals("hello, world", content);
+    }
+
+    @Test
+    public final void testBuildHello2() throws IOException {
+        final Page page = PageBuilder.build(new MyHelloPage2());
+        final String path = "/hello/world";
+        final Page redirect = page.redirect(HttpRequestType.GET, path);
+        when(request.getRequestURI()).thenReturn(path);
+        final String content = redirect.applyRequest(request, response,false);
         assertEquals("hello, world", content);
     }
 
