@@ -1,7 +1,6 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'signing'
 }
 
 archivesBaseName = 'modulo-api'
@@ -29,7 +28,7 @@ publishing {
             from components.java
             pom {
                 name = project.name
-                description = 'Modulo is a collaborative Java framework, where anybody can add any module to his Modulo Server and developeur can create easily and quickly create their own module with our API.'
+                description = 'Modulo is a collaborative Java framework, where anybody can add any module to his Modulo Server.'
                 url = 'https://modulo.chillycheesy.com'
                 licenses {
                     license {
@@ -41,6 +40,15 @@ publishing {
                     connection = 'scm:git:https://github.com/ChillyCheesy/Modulo.git'
                     developerConnection = 'scm:git:git@github.com:ChillyCheesy/Modulo.git'
                     url = 'https://github.com/ChillyCheesy/Modulo/tree/master'
+                }
+                repositories {
+                    maven {
+                        url url
+                        credentials {
+                            username repoUser
+                            password repoPassword
+                        }
+                    }
                 }
             }
         }
