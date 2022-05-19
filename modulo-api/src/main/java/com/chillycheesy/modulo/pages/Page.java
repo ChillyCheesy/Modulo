@@ -4,10 +4,9 @@ import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.BufferedInputStream;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 /**
@@ -22,12 +21,14 @@ public class Page implements RoutingRedirection {
      * The path to access this page.
      */
     protected String path;
+
     /**
      * The http request type (GET, PUT, POST, DELETE)
      */
-    protected HttpRequest requestType;
+    protected HttpRequestType requestType;
+
     /**
-     * The list of sub pages that can either call a method, return a value.
+     * The list of subpages that can either call a method, return a value.
      * The sub path can be empty "" to represent the default accessors of the page,
      * the sub path can also be "*" to represent the not found page case (404 error).
      *
@@ -44,14 +45,14 @@ public class Page implements RoutingRedirection {
 
     protected PageResponse content;
 
-    public Page(HttpRequest requestType, String path, PageResponse content) {
+    public Page(HttpRequestType requestType, String path, PageResponse content) {
         this.requestType = requestType;
-        this.path = path;
         this.subpages = new ArrayList<>();
         this.content = content;
+        this.path = path;
     }
 
-    public Page(HttpRequest requestType, String path, String content) {
+    public Page(HttpRequestType requestType, String path, String content) {
         this(requestType, path, (request, response) -> content);
     }
 
@@ -60,15 +61,21 @@ public class Page implements RoutingRedirection {
     }
 
     public Page(String path, PageResponse content) {
-        this(HttpRequest.ANY, path, content);
+        this(HttpRequestType.ANY, path, content);
     }
 
-    public Page(HttpRequest requestType, String path) {
+    public Page(HttpRequestType requestType, String path) {
         this(requestType, path, (request, response) -> "");
     }
 
     public Page(String path) {
-        this(HttpRequest.ANY, path);
+        this(HttpRequestType.ANY, path);
+    }
+
+    public Page(Page page) {
+        this(page.requestType, page.path, page.content);
+        this.subpages.addAll(page.subpages);
+        this.parent = page.parent;
     }
 
     public Page addSubPage(Page subpage) {
@@ -77,12 +84,12 @@ public class Page implements RoutingRedirection {
         return this;
     }
 
-    public boolean removeSubPage(Object o) {
-        return subpages.remove(o);
+    public boolean removeSubPage(Page subpage) {
+        return subpages.remove(subpage);
     }
 
-    public boolean addAllSubPage(Collection<? extends Page> c) {
-        return subpages.addAll(c);
+    public void addAllSubPage(Collection<? extends Page> c) {
+        c.forEach(this::addSubPage);
     }
 
     public boolean removeAllSubPage(Collection<?> c) {
@@ -105,29 +112,63 @@ public class Page implements RoutingRedirection {
         this.content = content;
     }
 
-    public String getContent(HttpServletRequest request, HttpServletResponse response, boolean pushInResponse) throws IOException {
-        final String builtContent = content.buildBody(request, response);
-        final ByteArrayInputStream inputStream = new ByteArrayInputStream(builtContent.getBytes());
-        if (pushInResponse) IOUtils.copy(inputStream, response.getOutputStream());
+    public void setRequestType(HttpRequestType requestType) {
+        this.requestType = requestType;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public HttpRequestType getRequestType() {
+        return requestType;
+    }
+
+    public Page getParent() {
+        return parent;
+    }
+
+    /**
+     * Call the page method with the given request and response.
+     * The response can be registered inside the request OutputStream.
+     * @param request the http request.
+     * @param response the http response.
+     * @param pushInResponse the response can be registered inside the response OutputStream.
+     * @return true if the page has been found and the response has been sent, false otherwise.
+     * @throws IOException if an error occurs while sending the response.
+     */
+    public String applyRequest(HttpServletRequest request, HttpServletResponse response, boolean pushInResponse) throws IOException {
+        final String builtContent = content != null ? content.buildBody(request, response) : null;
+        if (builtContent != null && pushInResponse) {
+            final BufferedInputStream inputStream = new BufferedInputStream(new ByteArrayInputStream(builtContent.getBytes()));
+            IOUtils.copy(inputStream, response.getOutputStream());
+        }
         return builtContent;
     }
 
-    public String getContent(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        return this.getContent(request, response, true);
+    /**
+     * Call the page method with the given request and response.
+     * The response is register inside the response OutputStream.
+     * @param request the request.
+     * @param response the response.
+     * @return the content of the response.
+     * @throws IOException if an error occurs.
+     */
+    public String applyRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        return this.applyRequest(request, response, true);
     }
 
     public boolean hasChild(Page searchPage) {
         if (this.equals(searchPage)) return true;
-        for (Page page : subpages) {
+        for (Page page : subpages)
             if (page.equals(searchPage) || page.hasChild(searchPage))
                 return true;
-        }
         return false;
     }
 
-    public Page redirect(HttpRequest httpRequest, String subpath) {
+    public Page redirect(HttpRequestType httpRequest, String subpath) {
         subpath = subpath.replaceAll("^/|/$", "");
-        if (subpath.startsWith(this.path) && (this.requestType.equals(httpRequest) || this.requestType.equals(HttpRequest.ANY))) {
+        if (subpath.startsWith(this.path) && (this.requestType.equals(httpRequest) || this.requestType.equals(HttpRequestType.ANY))) {
             for (Page page : this.subpages) {
                 final Page redirection = page.redirect(httpRequest, subpath.substring(this.path.length()));
                 if (redirection != null) return redirection;
@@ -137,12 +178,17 @@ public class Page implements RoutingRedirection {
         return null;
     }
 
+    public Page getLastChild() {
+        if (subpages.size() == 0) return this;
+        return subpages.get(subpages.size() - 1).getLastChild();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Page page = (Page) o;
-        return Objects.equals(path, page.path) && requestType == page.requestType && Objects.equals(subpages, page.subpages) && Objects.equals(content, page.content);
+        return Objects.equals(path, page.path);
     }
 
     @Override

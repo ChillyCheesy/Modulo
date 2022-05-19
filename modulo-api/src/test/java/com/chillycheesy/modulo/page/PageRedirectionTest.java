@@ -1,13 +1,13 @@
 package com.chillycheesy.modulo.page;
 
 import com.chillycheesy.modulo.ModuloAPI;
-import com.chillycheesy.modulo.pages.HttpRequest;
+import com.chillycheesy.modulo.pages.HttpRequestType;
 import com.chillycheesy.modulo.pages.Page;
 import com.chillycheesy.modulo.pages.PageManager;
-import com.chillycheesy.modulo.pages.subpages.BooleanRegexPage;
-import com.chillycheesy.modulo.pages.subpages.NumberRegexPage;
-import com.chillycheesy.modulo.pages.subpages.RegexPage;
-import com.chillycheesy.modulo.pages.subpages.StringRegexPage;
+import com.chillycheesy.modulo.pages.natif.BooleanPage;
+import com.chillycheesy.modulo.pages.natif.NumberRegexPage;
+import com.chillycheesy.modulo.pages.natif.RegexPage;
+import com.chillycheesy.modulo.pages.natif.StringRegexPage;
 import com.chillycheesy.modulo.utils.exception.No404SubPageException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ public class PageRedirectionTest {
         final Page parent = new Page("page").addSubPage(new Page("a").addSubPage(expectedPage));
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        final Page redirectedPage = pm.redirect(HttpRequest.GET, "page/a/b");
+        final Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/a/b");
         assertEquals(expectedPage, redirectedPage);
     }
 
@@ -37,7 +37,7 @@ public class PageRedirectionTest {
         final Page parent = new Page("page").addSubPage(expectedPage);
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        final Page redirectedPage = pm.redirect(HttpRequest.GET, "page/a/b/c/d/e/f");
+        final Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/a/b/c/d/e/f");
         assertEquals(expectedPage, redirectedPage);
     }
 
@@ -46,33 +46,31 @@ public class PageRedirectionTest {
         final Page parent = new Page("page");
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        final Page redirectedPage = pm.redirect(HttpRequest.GET, "page/a/b/c/d/e/f");
+        final Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/a/b/c/d/e/f");
         assertEquals(parent, redirectedPage);
     }
 
     @Test
-    public void redirectionFailTest() throws No404SubPageException {
-        assertThrows(No404SubPageException.class, () -> {
-            ModuloAPI.getPage().getPageManager().redirect(HttpRequest.GET, "notfound/a/b/c");
-        });
+    public void redirectionFailTest() {
+        assertThrows(No404SubPageException.class, () -> ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "notfound/a/b/c"));
     }
 
     @Test
     public void redirectionFindWithHttpRequestTest() throws No404SubPageException {
-        final Page expectedPage = new Page(HttpRequest.POST, "a");
+        final Page expectedPage = new Page(HttpRequestType.POST, "a");
         final Page parent = new Page("page").addSubPage(expectedPage);
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        final Page redirectedPage = pm.redirect(HttpRequest.POST, "page/a");
+        final Page redirectedPage = pm.redirect(HttpRequestType.POST, "page/a");
         assertEquals(expectedPage, redirectedPage);
     }
 
     @Test
     public void redirectionNotFindWithHttpRequestTest() throws No404SubPageException {
-        final Page parent = new Page("page").addSubPage(new Page(HttpRequest.POST, "a"));
+        final Page parent = new Page("page").addSubPage(new Page(HttpRequestType.POST, "a"));
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        final Page redirectedPage = pm.redirect(HttpRequest.GET, "page/a");
+        final Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/a");
         assertEquals(parent, redirectedPage);
     }
 
@@ -83,11 +81,11 @@ public class PageRedirectionTest {
         parent.addSubPage(expectedPage);
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        Page redirectedPage = pm.redirect(HttpRequest.GET, "page/a/");
+        Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/a/");
         assertEquals(expectedPage, redirectedPage);
-        redirectedPage = pm.redirect(HttpRequest.GET, "/page/a");
+        redirectedPage = pm.redirect(HttpRequestType.GET, "/page/a");
         assertEquals(expectedPage, redirectedPage);
-        redirectedPage = pm.redirect(HttpRequest.GET, "/page");
+        redirectedPage = pm.redirect(HttpRequestType.GET, "/page");
         assertEquals(parent, redirectedPage);
     }
 
@@ -97,7 +95,7 @@ public class PageRedirectionTest {
         final Page parent = new Page("page").addSubPage(expectedPage);
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        final Page redirectedPage = pm.redirect(HttpRequest.GET, "page/59");
+        final Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/59");
         assertEquals(expectedPage, redirectedPage);
     }
 
@@ -107,7 +105,7 @@ public class PageRedirectionTest {
         final Page parent = new Page("page").addSubPage(expectedPage);
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        final Page redirectedPage = pm.redirect(HttpRequest.GET, "page/truc");
+        final Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/truc");
         assertEquals(expectedPage, redirectedPage);
     }
 
@@ -117,15 +115,15 @@ public class PageRedirectionTest {
         final Page parent = new Page("page").addSubPage(expectedPage);
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        Page redirectedPage = pm.redirect(HttpRequest.GET, "page/6");
+        Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/6");
         assertEquals(expectedPage, redirectedPage);
-        redirectedPage = pm.redirect(HttpRequest.GET, "page/69");
+        redirectedPage = pm.redirect(HttpRequestType.GET, "page/69");
         assertEquals(expectedPage, redirectedPage);
-        redirectedPage = pm.redirect(HttpRequest.GET, "page/-42");
+        redirectedPage = pm.redirect(HttpRequestType.GET, "page/-42");
         assertEquals(expectedPage, redirectedPage);
-        redirectedPage = pm.redirect(HttpRequest.GET, "page/3.14");
+        redirectedPage = pm.redirect(HttpRequestType.GET, "page/3.14");
         assertEquals(expectedPage, redirectedPage);
-        redirectedPage = pm.redirect(HttpRequest.GET, "page/-3.14");
+        redirectedPage = pm.redirect(HttpRequestType.GET, "page/-3.14");
         assertEquals(expectedPage, redirectedPage);
     }
 
@@ -135,29 +133,29 @@ public class PageRedirectionTest {
         final Page parent = new Page("page").addSubPage(expectedPage);
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        final Page redirectedPage = pm.redirect(HttpRequest.GET, "page/notanumber");
+        final Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/notanumber");
         assertEquals(parent, redirectedPage);
     }
 
     @Test
     public void redirectionWorkWithBooleanRegexTest() throws No404SubPageException {
-        final Page expectedPage = new BooleanRegexPage();
+        final Page expectedPage = new BooleanPage();
         final Page parent = new Page("page").addSubPage(expectedPage);
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        Page redirectedPage = pm.redirect(HttpRequest.GET, "page/true");
+        Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/true");
         assertEquals(expectedPage, redirectedPage);
-        redirectedPage = pm.redirect(HttpRequest.GET, "page/false");
+        redirectedPage = pm.redirect(HttpRequestType.GET, "page/false");
         assertEquals(expectedPage, redirectedPage);
     }
 
     @Test
     public void redirectionFailWithBooleanRegexTest() throws No404SubPageException {
-        final Page expectedPage = new BooleanRegexPage();
+        final Page expectedPage = new BooleanPage();
         final Page parent = new Page("page").addSubPage(expectedPage);
         final PageManager pm = ModuloAPI.getPage().getPageManager();
         pm.registerItem(null, parent);
-        final Page redirectedPage = pm.redirect(HttpRequest.GET, "page/notaboolean");
+        final Page redirectedPage = pm.redirect(HttpRequestType.GET, "page/notaboolean");
         assertEquals(parent, redirectedPage);
     }
 }

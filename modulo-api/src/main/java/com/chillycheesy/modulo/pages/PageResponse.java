@@ -19,4 +19,5 @@ public interface PageResponse {
      * @return The response body.
      */
     String buildBody(HttpServletRequest request, HttpServletResponse response);
+
 }
