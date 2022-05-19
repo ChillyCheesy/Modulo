@@ -10,6 +10,7 @@ import com.chillycheesy.modulo.utils.exception.MissingDependenciesModuleExceptio
 import com.chillycheesy.modulo.utils.exception.No404SubPageException;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import javax.servlet.ServletOutputStream;
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
+@Disabled
 public class PageResourceGetterTest {
 
     private Module module;
