@@ -35,6 +35,11 @@ jobs:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
           URL_SONATYPE_RELEASE: ${{ secrets.URL_SONATYPE_RELEASE }}
+      - name: 🥸 Update version for snapshot
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          version_line=(cat gradle.properties | grep modulo_version)
+          sed -i -e "s/$version_line/$version_line-SNAPSHOT/g" gradle.properties
       - name: 🐭 Deploy maven-central
         run: |
           chmod +x gradlew
