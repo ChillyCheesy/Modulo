@@ -1,8 +1,8 @@
 package com.chillycheesy.modulo.pages.subpages;
 
-import com.chillycheesy.modulo.pages.HttpRequest;
 import com.chillycheesy.modulo.pages.Page;
 import com.chillycheesy.modulo.pages.PageResponse;
+import com.chillycheesy.modulo.pages.builder.HttpRequest;
 import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,8 +14,8 @@ import java.io.IOException;
  * This page display an existing website into an HTML iframe
  * @author Aymeric Defossez
  */
-public class IFramePage extends Page {
-
+public class IFramePage /*extends Page*/ {
+/*
     private int width;
     private int height;
 
@@ -62,5 +62,5 @@ public class IFramePage extends Page {
         final ByteArrayInputStream inputStream = new ByteArrayInputStream(builtContent.getBytes());
         if (pushInResponse) IOUtils.copy(inputStream, response.getOutputStream());
         return builtContent;
-    }
+    }*/
 }

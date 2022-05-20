@@ -1,6 +1,5 @@
 package com.chillycheesy.modulo.pages.subpages;
 
-import com.chillycheesy.modulo.pages.HttpRequest;
 import com.chillycheesy.modulo.pages.Page;
 import com.chillycheesy.modulo.pages.PageResponse;
 
@@ -12,8 +11,8 @@ import java.io.IOException;
  * This page redirect your app to an existing website.
  * @author Aymeric Defossez
  */
-public class RedirectPage extends Page {
-
+public class RedirectPage /*extends Page*/ {
+/*
     public RedirectPage(HttpRequest requestType, String path, PageResponse content) {
         super(requestType, path, content);
     }
@@ -43,5 +42,5 @@ public class RedirectPage extends Page {
         final String builtContent = "<meta http-equiv=\"refresh\" content=\"0; URL=" + content.buildBody(request, response) + "\" />";
         if (pushInResponse) response.sendRedirect(content.buildBody(request, response));;
         return builtContent;
-    }
+    }*/
 }
