@@ -22,6 +22,13 @@ java {
     withJavadocJar()
 }
 
+final deployPropertiesFile = rootProject.file('deploy.properties')
+final deployProperty = new Properties()
+if (deployPropertiesFile.exists()) {
+    deployProperty.load(new FileInputStream(deployPropertiesFile))
+    println 'deploy.properties find.'
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
@@ -43,10 +50,10 @@ publishing {
                 }
                 repositories {
                     maven {
-                        url project.properties.url ?: ''
+                        url deployProperty.url ?: ''
                         credentials {
-                            username project.properties.repoUser ?: ''
-                            password project.properties.repoPassword ?: ''
+                            username deployProperty.repoUser ?: ''
+                            password deployProperty.repoPassword ?: ''
                         }
                     }
                 }
