@@ -52,7 +52,10 @@ jobs:
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: $GITHUB_TOKEN
-          automatic_release_tag: latest
+          automatic_release_tag: $TITLE
           title: 🪤 $TITLE
+          files: |
+            modulo-api/build/libs/*.jar
+            modulo-server/build/libs/*.jar
         env:
           GITHUB_TOKEN: ${{ github.token }}
