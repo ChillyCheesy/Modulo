@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.4.0'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'com.chillycheesy.modulo-application' version '0.0.2'
+    id 'maven-publish'
 }
 
 archivesBaseName = 'modulo-server'
@@ -29,11 +30,52 @@ module {
     main = 'com.chillycheesy.moduloserver.ServerModule'
 }
 
-jar {
-    manifest {
-        attributes(
-                'Implementation-Title':   modulo_modulename as Object,
-                'Implementation-Version': modulo_version as Object
-        )
+
+final deployPropertiesFile = rootProject.file('deploy.properties')
+final deployProperty = new Properties()
+if (deployPropertiesFile.exists()) {
+    deployProperty.load(new FileInputStream(deployPropertiesFile))
+    println 'deploy.properties find.'
+}
+
+configurations {
+    [apiElements, runtimeElements].each {
+        it.outgoing.artifacts.removeIf {
+            it.buildDependencies.getDependencies(null).contains(jar)
+        }
+        it.outgoing.artifact(bootJar)
+    }
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            pom {
+                name = modulo_modulename
+                description = 'Modulo Server provide the ServerModule and all system about the server starting actions.'
+                url = 'https://modulo.chillycheesy.com'
+                licenses {
+                    license {
+                        name = 'Mozilla Public License, Version 2.0'
+                        url = 'https://www.mozilla.org/en-US/MPL/2.0/'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/ChillyCheesy/Modulo.git'
+                    developerConnection = 'scm:git:git@github.com:ChillyCheesy/Modulo.git'
+                    url = 'https://github.com/ChillyCheesy/Modulo/tree/master'
+                }
+                repositories {
+                    maven {
+                        url deployProperty.url ?: ''
+                        credentials {
+                            username deployProperty.repoUser ?: ''
+                            password deployProperty.repoPassword ?: ''
+                        }
+                    }
+                }
+            }
+        }
     }
 }

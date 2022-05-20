@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 
 /**
  * Operator that replace the instruction by a none interpretable value.<br>
- * This operator work with any operation instruction between the symbol "&apos;"<br>
+ * This operator work with any operation instruction between the symbols simples quotes <i>(" ' ")</i><br>
  * Exemple:<br>
  * <ul>
  *     <li>'echo I love ewok' = echo I love ewok<br></li>
