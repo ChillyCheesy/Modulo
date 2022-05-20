@@ -70,12 +70,3 @@ publishing {
         }
     }
 }
-
-jar {
-    manifest {
-        attributes(
-                'Implementation-Title':   modulo_modulename as Object,
-                'Implementation-Version': modulo_version as Object
-        )
-    }
-}
