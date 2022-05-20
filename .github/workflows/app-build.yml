@@ -38,7 +38,7 @@ jobs:
       - name: 🥸 Update version for snapshot
         if: github.ref == 'refs/heads/dev'
         run: |
-          version_line=(cat gradle.properties | grep modulo_version)
+          version_line=$(cat gradle.properties | grep modulo_version)
           sed -i -e "s/$version_line/$version_line-SNAPSHOT/g" gradle.properties
       - name: 🐭 Deploy maven-central
         run: |
