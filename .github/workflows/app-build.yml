@@ -38,8 +38,8 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew clean :modulo-api:publish :modulo-server:publish
+      - run: TITLE=$(cat gradle.properties | grep modulo_version | cut -d '=' -f 2)
       - name: Create release
-        run: TITLE=$(cat gradle.properties | grep modulo_version | cut -d '=' -f 2)
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: $GITHUB_TOKEN
