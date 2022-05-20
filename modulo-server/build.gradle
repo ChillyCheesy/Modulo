@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.4.0'
     id 'io.spring.dependency-management' version '1.0.10.RELEASE'
     id 'com.chillycheesy.modulo-application' version '0.0.2'
+    id 'maven-publish'
 }
 
 archivesBaseName = 'modulo-server'
@@ -27,6 +28,40 @@ module {
     version = modulo_version as Object
     authors = ['ChillyCheesy']
     main = 'com.chillycheesy.moduloserver.ServerModule'
+}
+
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            pom {
+                name = modulo_modulename
+                description = 'Modulo Server provide the ServerModule and all system about the server starting actions.'
+                url = 'https://modulo.chillycheesy.com'
+                licenses {
+                    license {
+                        name = 'Mizilla Public License, Version 2.0'
+                        url = 'https://www.mozilla.org/en-US/MPL/2.0/'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:https://github.com/ChillyCheesy/Modulo.git'
+                    developerConnection = 'scm:git:git@github.com:ChillyCheesy/Modulo.git'
+                    url = 'https://github.com/ChillyCheesy/Modulo/tree/master'
+                }
+                repositories {
+                    maven {
+                        url project.properties.url ?: ''
+                        credentials {
+                            username project.properties.repoUser ?: ''
+                            password project.properties.repoPassword ?: ''
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 jar {

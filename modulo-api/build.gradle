@@ -41,16 +41,15 @@ publishing {
                     developerConnection = 'scm:git:git@github.com:ChillyCheesy/Modulo.git'
                     url = 'https://github.com/ChillyCheesy/Modulo/tree/master'
                 }
-                /*
                 repositories {
                     maven {
-                        url url ?: ''
+                        url project.properties.url ?: ''
                         credentials {
-                            username repoUser ?: ''
-                            password repoPassword ?: ''
+                            username project.properties.repoUser ?: ''
+                            password project.properties.repoPassword ?: ''
                         }
                     }
-                }*/
+                }
             }
         }
     }
