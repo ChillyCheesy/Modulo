@@ -38,7 +38,7 @@ jobs:
       - name: 🐭 Deploy maven-central
         run: |
           chmod +x gradlew
-          ./gradlew :modulo-server:publish
+          ./gradlew clean :modulo-api:publish :modulo-server:publish
       - name: Setup release title
         if: github.ref == 'refs/heads/master'
         run: TITLE=$(cat gradle.properties | grep modulo_version | cut -d '=' -f 2)
