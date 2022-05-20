@@ -46,14 +46,14 @@ jobs:
           ./gradlew clean :modulo-api:publish :modulo-server:publish
       - name: Setup release title
         # if: github.ref == 'refs/heads/master'
-        run: TITLE=$(cat gradle.properties | grep modulo_version | cut -d '=' -f 2)
+        run: echo "TITLE=$(cat gradle.properties | grep modulo_version | cut -d '=' -f 2)" >> $GITHUB_ENV
       - name: Create release
         # if: github.ref == 'refs/heads/master'
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: $TITLE
-          title: 🪤 $TITLE
+          automatic_release_tag: ${{ env.TITLE }}
+          title: 🪤 ${{ env.TITLE }}
           files: |
             modulo-api/build/libs/*.jar
             modulo-server/build/libs/*.jar
