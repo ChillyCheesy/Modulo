@@ -39,8 +39,11 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew clean :modulo-api:publish :modulo-server:publish
-      - run: TITLE=$(cat gradle.properties | grep modulo_version | cut -d '=' -f 2)
+      - name: Setup release title
+        if: github.ref == 'refs/heads/master'
+        run: TITLE=$(cat gradle.properties | grep modulo_version | cut -d '=' -f 2)
       - name: Create release
+        if: github.ref == 'refs/heads/master'
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: $GITHUB_TOKEN
