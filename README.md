@@ -1,25 +1,12 @@
 # Modulo Project
 
-## Create variable
+Despelette was here !
+<pre>
+              ..----.._    _
+            .' .--.    "-.(O)_
+<span style="color: red">'-.__.-'"'=:</span>|  ,  _)_ \__ . c\'-..
+            ''------'---''---'-"
+</pre>
 
-```
-alias varname value
-```
-```
-var = 3 + 4
-alias var (3 + 4)
-```
-
-## Function variable
-
-```
-alias sum "(a + b)"
-{
-    alias a 5;
-    alias b 5
-    (a + b)
-}
-
-sum (a, b) => a + b;
-sum
-```
+## How to use it
+* [Command](https://github.com/ChillyCheesy/Modulo/blob/dev/wiki/COMMAND.md)

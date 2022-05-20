@@ -4,16 +4,16 @@ plugins {
     id 'com.chillycheesy.modulo-application' version '0.0.2'
 }
 
-archivesBaseName = 'hometracker-server'
+archivesBaseName = 'modulo-server'
 sourceCompatibility = 11
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.2'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.6.3'
     compile group: 'org.springframework.boot', name: 'spring-boot-loader', version: '1.5.2.RELEASE'
     implementation project(':modulo-api')
 
-    testCompile 'org.mockito:mockito-core:4.2.0'
-    testImplementation('org.springframework.boot:spring-boot-starter-test:2.6.2') {
+    testCompile 'org.mockito:mockito-core:4.3.1'
+    testImplementation('org.springframework.boot:spring-boot-starter-test:2.6.3') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
 }
@@ -23,17 +23,17 @@ test {
 }
 
 module {
-    moduleName = hometracker_modulename as Object
-    version = hometracker_version as Object
+    moduleName = modulo_modulename as Object
+    version = modulo_version as Object
     authors = ['ChillyCheesy']
-    main = 'com.owle.hometracker.ServerModule'
+    main = 'com.chillycheesy.moduloserver.ServerModule'
 }
 
 jar {
     manifest {
         attributes(
-                'Implementation-Title':   hometracker_modulename as Object,
-                'Implementation-Version': hometracker_version as Object
+                'Implementation-Title':   modulo_modulename as Object,
+                'Implementation-Version': modulo_version as Object
         )
     }
 }
