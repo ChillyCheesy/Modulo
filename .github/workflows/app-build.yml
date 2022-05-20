@@ -18,9 +18,9 @@ jobs:
       - name: Setup properties SNAPSHOT
         if: github.ref == 'refs/heads/dev'
         run: |
-          echo "repoPassword=$SONATYPE_PASSWORD" >> gradle.properties
-          echo "repoUser=$SONATYPE_USER" >> gradle.properties
-          echo "url=$URL_SONATYPE_SNAPSHOT" >> gradle.properties
+          echo "\nrepoPassword=$SONATYPE_PASSWORD" >> gradle.properties
+          echo "\nrepoUser=$SONATYPE_USER" >> gradle.properties
+          echo "\nurl=$URL_SONATYPE_SNAPSHOT" >> gradle.properties
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
@@ -28,9 +28,9 @@ jobs:
       - name: Setup properties RELEASE
         if: github.ref == 'refs/heads/master'
         run: |
-          echo "repoPassword=$SONATYPE_PASSWORD" >> gradle.properties
-          echo "repoUser=$SONATYPE_USER" >> gradle.properties
-          echo "url=$URL_SONATYPE_RELEASE" >> gradle.properties
+          echo "\nrepoPassword=$SONATYPE_PASSWORD" >> gradle.properties
+          echo "\nrepoUser=$SONATYPE_USER" >> gradle.properties
+          echo "\nurl=$URL_SONATYPE_RELEASE" >> gradle.properties
         env:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
