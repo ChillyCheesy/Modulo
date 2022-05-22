@@ -64,17 +64,17 @@ public abstract class Module {
     /**
      * Method called when the {@link #load()} method is called
      */
-    protected abstract void onLoad() throws Exception;
+    protected abstract <E extends Throwable> void onLoad() throws E;
 
     /**
      * Method called when the {@link #start()} method is called
      */
-    protected abstract void onStart() throws Exception;
+    protected abstract <E extends Throwable> void onStart() throws E;
 
     /**
      * Method called when the {@link #stop()} method is called
      */
-    protected abstract void onStop() throws Exception;
+    protected abstract <E extends Throwable> void onStop() throws E;
 
     /**
      * Method calls to load the module<br>
