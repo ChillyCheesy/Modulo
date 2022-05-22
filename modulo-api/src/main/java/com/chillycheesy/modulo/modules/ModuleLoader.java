@@ -44,7 +44,8 @@ public class ModuleLoader {
         if (!file.isDirectory()) throw new FileIsNotAModuleDirectoryException(file);
         final List<Module> loadedModules = new ArrayList<>();
         for (File jarFile : Objects.requireNonNull(file.listFiles())) {
-            loadedModules.add(this.loadModule(jarFile));
+            final Module loadedModule = loadModule(jarFile);
+            if (loadedModule != null) loadedModules.add(loadedModule);
         }
         return loadedModules;
     }
@@ -110,12 +111,11 @@ public class ModuleLoader {
     }
 
     public List<Module> startModules(List<Module> modules) throws MissingDependenciesModuleException {
-        for (Module module : modules)
-            module = startModule(module);
+        for (Module module : modules) startModule(module);
         return modules;
     }
 
-    private Module startModule(Module module) throws MissingDependenciesModuleException {
+    public Module startModule(Module module) throws MissingDependenciesModuleException {
         if (!startedModule.contains(module)) {
             final ModuleManager moduleManager = ModuloAPI.getModule().getModuleManager();
             final List<String> dependencies = module.getDependencies();
@@ -182,7 +182,7 @@ public class ModuleLoader {
      * @throws IOException If the file was not a JarFile.
      */
     public boolean isValid(File file) throws IOException {
-        return isValid(new JarFile(file));
+        return file.getName().endsWith(".jar") && isValid(new JarFile(file));
     }
 
     /**

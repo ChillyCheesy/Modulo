@@ -135,6 +135,15 @@ public class ModuleManager {
      * It will invoke the {@link #stopModule(Module)} method.
      */
     public void stopAllModules(){
+        stopModules(modules);
+    }
+
+    /**
+     * Method that stop all {@link Module}.<br>
+     * It will invoke the {@link #stopModule(Module)} method.
+     * @param modules modules you want to stop
+     */
+    public void stopModules(List<Module> modules){
         while (modules.size() > 0) {
             stopModule(modules.get(0));
         }

@@ -88,6 +88,7 @@ public abstract class Module {
                 this.onLoad();
             } catch (Exception e) {
                 ModuloAPI.getLogger().error(this, e.getMessage());
+                e.printStackTrace();
             }
         });
         ModuloAPI.getEvent().getEventManager().emitEvent(this, onLoadEvent);
@@ -104,6 +105,7 @@ public abstract class Module {
                 this.onStart();
             } catch (Exception e) {
                 ModuloAPI.getLogger().error(this, e.getMessage());
+                e.printStackTrace();
             }
         });
         ModuloAPI.getEvent().getEventManager().emitEvent(this, onStartEvent);
@@ -122,6 +124,7 @@ public abstract class Module {
                 this.onStop();
             } catch (Exception e) {
                 ModuloAPI.getLogger().error(this, e.getMessage());
+                e.printStackTrace();
             }
         });
         ModuloAPI.getEvent().getEventManager().emitEvent(this, onStopEvent);

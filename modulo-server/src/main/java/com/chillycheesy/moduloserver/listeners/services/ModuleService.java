@@ -26,7 +26,7 @@ public class ModuleService {
     public void loadAndStartModule(Module module) throws MissingDependenciesModuleException {
         final ModuleLoader loader = this.module.getModuleLoader();
         loader.loadModule(module);
-        loader.startModules();
+        loader.startModule(module);
     }
 
     public List<Module> loadModules() throws IOException, FileIsNotAModuleDirectoryException {
@@ -43,9 +43,9 @@ public class ModuleService {
         return loader.startModules(modules);
     }
 
-    public void stopModules() {
+    public void stopModules(List<Module> modules) {
         final ModuleManager manager = module.getModuleManager();
-        manager.stopAllModules();
+        manager.stopModules(modules);
     }
 
 }

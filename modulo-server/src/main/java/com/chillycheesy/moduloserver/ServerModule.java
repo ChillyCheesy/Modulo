@@ -48,7 +48,7 @@ public class ServerModule extends Module {
     @Override
     protected void onStop() {
         logger.info(this, "-- Prepare to stop modules. --");
-        moduleService.stopModules();
+        moduleService.stopModules(modules);
         logger.info(this, "Servers stopped.");
     }
 

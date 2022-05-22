@@ -8,10 +8,10 @@ archivesBaseName = 'modulo-server'
 sourceCompatibility = 11
 
 dependencies {
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3'
+    compileOnlyApi 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3'
     implementation 'org.springframework.boot:spring-boot-starter-web:2.6.7'
     implementation 'org.springframework.boot:spring-boot-loader:2.6.7'
-    compileOnlyApi project(':modulo-api')
+    implementation project(':modulo-api')
 
     testImplementation 'org.mockito:mockito-core:4.5.1'
     testImplementation('org.springframework.boot:spring-boot-starter-test:2.6.7') {
