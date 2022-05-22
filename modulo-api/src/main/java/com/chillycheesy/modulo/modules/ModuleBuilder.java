@@ -114,8 +114,8 @@ public class ModuleBuilder {
      *     <li>Name of your {@link Module}</li>
      * </ul>
      *
-     * @param file
-     * @param config
+     * @param file the jar file of your {@link Module}
+     * @param config the configuration of your {@link Module}
      * @throws InvalidModuleConfigurationException
      */
     private static void checkField(File file, ModuleConfig config) throws InvalidModuleConfigurationException {

@@ -1,11 +1,8 @@
 package com.chillycheesy.modulo.pages;
 
-import org.apache.commons.io.IOUtils;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -122,7 +119,18 @@ public class Page implements RoutingRedirection {
     public String getContent(HttpServletRequest request, HttpServletResponse response, boolean pushInResponse) throws IOException {
         final String builtContent = content.buildBody(request, response);
         final ByteArrayInputStream inputStream = new ByteArrayInputStream(builtContent.getBytes());
-        if (pushInResponse) IOUtils.copy(inputStream, response.getOutputStream());
+        if (pushInResponse) {
+            try (final BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+            final BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(response.getOutputStream());
+            final BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(bufferedInputStream));
+            final BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(bufferedOutputStream))) {
+                String line;
+                while ((line = bufferedReader.readLine()) != null) {
+                    bufferedWriter.write(line);
+                    bufferedWriter.newLine();
+                }
+            }
+        }
         return builtContent;
     }
 
