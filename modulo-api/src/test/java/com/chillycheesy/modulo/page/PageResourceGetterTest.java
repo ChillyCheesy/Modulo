@@ -56,19 +56,17 @@ public class PageResourceGetterTest {
     @Test
     public void stringSinglePageContentTest() throws IOException {
         final Page page = new Page("page","Hello World");
-        assertEquals("Hello World", page.getContent(request, response, false));
+        assertEquals("Hello World", page.applyRequest(request, response, false));
     }
 
     @Test
     public void stringSubPageContentTest() throws IOException {
         final Page subpage1 = new Page("a","I m a subpage");
         final Page subpage2 = new Page("b","me too");
-        final Page page = new Page("page","Hello World")
-                .addSubPage(subpage1)
-                .addSubPage(subpage2);
-        assertEquals("Hello World", page.getContent(request, response, false));
-        assertEquals("I m a subpage", subpage1.getContent(request, response, false));
-        assertEquals("me too", subpage2.getContent(request, response, false));
+        final Page page = new Page("page","Hello World").addSubPage(subpage1).addSubPage(subpage2);
+        assertEquals("Hello World", page.applyRequest(request, response, false));
+        assertEquals("I m a subpage", subpage1.applyRequest(request, response, false));
+        assertEquals("me too", subpage2.applyRequest(request, response, false));
     }
 
     @Test
@@ -76,7 +74,7 @@ public class PageResourceGetterTest {
         final Page page = new ResourcePage("page","pageweb");
         ModuloAPI.getPage().getPageManager().registerItem(this.module, page);
         final String expectedHtml = "pageweb";
-        assertEquals(expectedHtml, page.getContent(request, response, false));
+        assertEquals(expectedHtml, page.applyRequest(request, response, false));
     }
 
     @Test
@@ -85,9 +83,9 @@ public class PageResourceGetterTest {
         final Page subpage2 = new ResourcePage("b","nothtml");
         final Page page = new ResourcePage("page","pageweb").addSubPage(subpage.addSubPage(subpage2));
         ModuloAPI.getPage().getPageManager().registerItem(this.module, page);
-        assertEquals("pageweb", page.getContent(request, response, false));
-        assertEquals("subpage", subpage.getContent(request, response, false));
-        assertEquals("nothtml", subpage2.getContent(request, response, false));
+        assertEquals("pageweb", page.applyRequest(request, response, false));
+        assertEquals("subpage", subpage.applyRequest(request, response, false));
+        assertEquals("nothtml", subpage2.applyRequest(request, response, false));
     }
 
     @Test
@@ -96,8 +94,8 @@ public class PageResourceGetterTest {
         final Page subpage2 = new ResourcePage("b","nothtml");
         final Page page = new ResourcePage("page","pageweb").addSubPage(subpage.addSubPage(subpage2));
         ModuloAPI.getPage().getPageManager().registerItem(this.module, page);
-        assertEquals("pageweb", ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "page").getContent(request, response, false));
-        assertEquals("subpage", ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "page/a").getContent(request, response, false));
-        assertEquals("nothtml", ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "page/a/b").getContent(request, response, false));
+        assertEquals("pageweb", ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "page").applyRequest(request, response, false));
+        assertEquals("subpage", ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "page/a").applyRequest(request, response, false));
+        assertEquals("nothtml", ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "page/a/b").applyRequest(request, response, false));
     }
 }

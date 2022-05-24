@@ -51,10 +51,8 @@ public class PageRedirectionTest {
     }
 
     @Test
-    public void redirectionFailTest() throws No404SubPageException {
-        assertThrows(No404SubPageException.class, () -> {
-            ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "notfound/a/b/c");
-        });
+    public void redirectionFailTest() {
+        assertThrows(No404SubPageException.class, () -> ModuloAPI.getPage().getPageManager().redirect(HttpRequestType.GET, "notfound/a/b/c"));
     }
 
     @Test

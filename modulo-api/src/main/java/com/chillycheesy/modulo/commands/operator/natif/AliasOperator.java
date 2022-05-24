@@ -14,6 +14,13 @@ import com.chillycheesy.modulo.utils.exception.CommandException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Operator that replace an alias with their values, like a variable
+ * Exemple:
+ * <ul>
+ *     <li>ewokName = Wicket</li>
+ * </ul>
+ */
 @Operator(Priority.MAJOR)
 public class AliasOperator implements OperatorListener, OperatorFinder {
 

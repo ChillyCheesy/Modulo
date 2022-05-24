@@ -49,7 +49,7 @@ public class PageController {
         event.setCancelableAction(() -> {
             try {
                 final Page page = ModuloAPI.getPage().getPageManager().redirect(httpRequest, request.getRequestURI());
-                final String content = page.getContent(request, response);
+                final String content = page.applyRequest(request, response);
                 final SendPageEvent sendPageEvent = new SendPageEvent(page, request, response, content);
                 eventManager.emitEvent(serverModule, sendPageEvent);
             } catch (IOException | No404SubPageException e) {

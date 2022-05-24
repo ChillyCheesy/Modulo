@@ -1,19 +1,19 @@
 package com.chillycheesy.modulo.pages.builder;
 
 import com.chillycheesy.modulo.pages.Page;
-import com.chillycheesy.modulo.utils.Function3;
+import com.chillycheesy.modulo.utils.Function2;
 
 import java.lang.annotation.Annotation;
 
 public enum PageAnnotations {
 
-    PAGE_TYPE(PageType.class, (PageVisitor visitor, Page page, Annotation annotation) -> visitor.create(page, (PageType) annotation)),
-    HTTP_REQUEST(HttpRequest.class, (PageVisitor visitor, Page page, Annotation annotation) -> visitor.create(page, (PageType) annotation));
+    PAGE_TYPE(PageType.class, (info, annotation) -> info.getVisitor().create(info, (PageType) annotation)),
+    HTTP_REQUEST(HttpRequest.class, (info, annotation) -> info.getVisitor().create(info, (HttpRequest) annotation));
 
     private final Class<? extends Annotation> annotationClass;
-    private final Function3<PageVisitor, Page, Annotation, Page> applyVisitor;
+    private final Function2<PageBuilderMetaInfo, Annotation, Page> applyVisitor;
 
-    PageAnnotations(Class<? extends Annotation> annotationClass, Function3<PageVisitor, Page, Annotation, Page> applyVisitor) {
+    PageAnnotations(Class<? extends Annotation> annotationClass, Function2<PageBuilderMetaInfo, Annotation, Page> applyVisitor) {
         this.annotationClass = annotationClass;
         this.applyVisitor = applyVisitor;
     }
@@ -22,7 +22,7 @@ public enum PageAnnotations {
         return annotationClass;
     }
 
-    public Page visit(Page page, Annotation annotation, PageVisitor visitor) {
-        return applyVisitor.apply(visitor, page, annotation);
+    public Page visit(PageBuilderMetaInfo info, Annotation annotation) {
+        return applyVisitor.apply(info, annotation);
     }
 }

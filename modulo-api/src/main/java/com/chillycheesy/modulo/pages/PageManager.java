@@ -20,16 +20,10 @@ public class PageManager extends Manager<Page> implements RoutingRedirection {
         for (List<Page> pages : this.managedItems.values()) {
             for (Page page : pages.stream().filter(page -> !page.getPath().equals("")).toArray(Page[]::new)) {
                 final Page redirection = page.redirect(httpRequest, path);
-                if (redirection != null) {
-                    return redirection;
-                }
+                if (redirection != null) return redirection;
             }
         }
         if (path.equals("*")) throw new No404SubPageException();
-        return redirectDefaultPage(httpRequest, path);
-    }
-
-    private Page redirectDefaultPage(HttpRequestType httpRequest, String path) throws No404SubPageException {
         final Page defaultPage = this.getPageByPath("");
         return Objects.isNull(defaultPage) ? this.redirect(httpRequest, "*") : defaultPage.redirect(httpRequest, path);
     }
@@ -47,11 +41,9 @@ public class PageManager extends Manager<Page> implements RoutingRedirection {
             final List<Page> pages = managedItems.get(module);
             if (pages.contains(searchPage))
                 return module;
-            for (Page page : pages) {
-                if (page.hasChild(searchPage)) {
+            for (Page page : pages)
+                if (page.hasChild(searchPage))
                     return module;
-                }
-            }
         }
         return null;
     }

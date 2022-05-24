@@ -1,0 +1,60 @@
+name: 🌶 App build
+
+on:
+  push:
+    branches:
+      - master
+      - dev
+
+jobs:
+  build_app:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+      - name: Setup properties SNAPSHOT
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          echo "repoPassword=$SONATYPE_PASSWORD" > deploy.properties
+          echo "repoUser=$SONATYPE_USER" >> deploy.properties
+          echo "url=$URL_SONATYPE_SNAPSHOT" >> deploy.properties
+        env:
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
+          URL_SONATYPE_SNAPSHOT: ${{ secrets.URL_SONATYPE_SNAPSHOT }}
+      - name: Setup properties RELEASE
+        if: github.ref == 'refs/heads/master'
+        run: |
+          echo "repoPassword=$SONATYPE_PASSWORD" > deploy.properties
+          echo "repoUser=$SONATYPE_USER" >> deploy.properties
+          echo "url=$URL_SONATYPE_RELEASE" >> deploy.properties
+        env:
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_USER: ${{ secrets.SONATYPE_USER }}
+          URL_SONATYPE_RELEASE: ${{ secrets.URL_SONATYPE_RELEASE }}
+      - name: 🥸 Update version for snapshot
+        if: github.ref == 'refs/heads/dev'
+        run: |
+          version_line=$(cat gradle.properties | grep modulo_version)
+          sed -i -e "s/$version_line/$version_line-SNAPSHOT/g" gradle.properties
+      - name: 🐭 Deploy maven-central
+        run: |
+          chmod +x gradlew
+          ./gradlew clean :modulo-api:publish :modulo-server:publish
+      - name: Setup release title
+        if: github.ref == 'refs/heads/master'
+        run: echo "TITLE=$(cat gradle.properties | grep modulo_version | cut -d '=' -f 2)" >> $GITHUB_ENV
+      - name: Create release
+        if: github.ref == 'refs/heads/master'
+        uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: ${{ env.TITLE }}
+          title: 🪤 ${{ env.TITLE }}
+          prerelease: false
+          files: |
+            modulo-api/build/libs/*.jar
+            modulo-server/build/libs/*.jar

@@ -1,7 +1,6 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id 'signing'
 }
 
 archivesBaseName = 'modulo-api'
@@ -26,17 +25,24 @@ test {
     useJUnitPlatform()
 }
 
+final deployPropertiesFile = rootProject.file('deploy.properties')
+final deployProperty = new Properties()
+if (deployPropertiesFile.exists()) {
+    deployProperty.load(new FileInputStream(deployPropertiesFile))
+    println 'deploy.properties find.'
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {
             from components.java
             pom {
                 name = project.name
-                description = 'Modulo is a collaborative Java framework, where anybody can add any module to his Modulo Server and developeur can create easily and quickly create their own module with our API.'
+                description = 'Modulo is a collaborative Java framework, where anybody can add any module to his Modulo Server.'
                 url = 'https://modulo.chillycheesy.com'
                 licenses {
                     license {
-                        name = 'Mizilla Public License, Version 2.0'
+                        name = 'Mozilla Public License, Version 2.0'
                         url = 'https://www.mozilla.org/en-US/MPL/2.0/'
                     }
                 }
@@ -45,8 +51,16 @@ publishing {
                     developerConnection = 'scm:git:git@github.com:ChillyCheesy/Modulo.git'
                     url = 'https://github.com/ChillyCheesy/Modulo/tree/master'
                 }
+                repositories {
+                    maven {
+                        url deployProperty.url ?: ''
+                        credentials {
+                            username deployProperty.repoUser ?: ''
+                            password deployProperty.repoPassword ?: ''
+                        }
+                    }
+                }
             }
         }
     }
 }
-

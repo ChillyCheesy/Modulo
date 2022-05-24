@@ -2,8 +2,8 @@ package com.chillycheesy.moduloserver;
 
 import com.chillycheesy.modulo.modules.ModuleConfig;
 import com.chillycheesy.modulo.modules.Module;
-import com.chillycheesy.moduloserver.listeners.services.ModuleService;
-import com.chillycheesy.moduloserver.listeners.services.ServerListenerService;
+import com.chillycheesy.moduloserver.services.ModuleService;
+import com.chillycheesy.moduloserver.services.ServerListenerService;
 import com.chillycheesy.modulo.utils.Log;
 import com.chillycheesy.modulo.utils.exception.FileIsNotAModuleDirectoryException;
 import com.chillycheesy.modulo.utils.exception.MissingDependenciesModuleException;

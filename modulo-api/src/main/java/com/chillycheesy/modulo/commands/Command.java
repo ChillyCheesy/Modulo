@@ -1,5 +1,7 @@
 package com.chillycheesy.modulo.commands;
 
+import java.util.Arrays;
+
 /**
  * This class represents a command that can be executed by the {@link CommandManager}.
  * A command contain a label, a description, and an example of how to use it named usage.
@@ -122,5 +124,16 @@ public class Command {
      */
     public void setUsage(String usage) {
         this.usage = usage;
+    }
+
+    @Override
+    public String toString() {
+        return "Command{" +
+                "label='" + label + '\'' +
+                ", alias=" + Arrays.toString(alias) +
+                ", description='" + description + '\'' +
+                ", usage='" + usage + '\'' +
+                ", commandListener=" + commandListener +
+                '}';
     }
 }
