@@ -30,16 +30,16 @@ public class HelpCommand implements CommandListener {
 
     private String getAllCommand(){
         final StringBuilder commands = new StringBuilder();
-        for(Command c: ModuloAPI.getCommand().getCommandManager().getAllItems()){
+        for (Command c: ModuloAPI.getCommand().getCommandManager().getAllItems()) {
             commands.append(getCommandByLabel(c.getLabel()));
         }
         return commands.toString();
     }
 
     private String getCommandByLabel(String label){
-        final StringBuilder command = new StringBuilder();
-        Command c = ModuloAPI.getCommand().getCommandManager().getCommandByLabel(label);
-        command.append("\t"+c.getLabel()+" : "+c.getDescription()+"\n");
-        return command.toString();
+        final StringBuilder builder = new StringBuilder();
+        final Command command = ModuloAPI.getCommand().getCommandManager().getCommandByLabel(label);
+        builder.append("\t").append(command.getLabel()).append(" : ").append(command.getDescription()).append("\n");
+        return builder.toString();
     }
 }

@@ -1,6 +1,6 @@
 package com.chillycheesy.modulo.pages;
 
-import org.apache.commons.io.IOUtils;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -134,7 +134,7 @@ public class Page implements RoutingRedirection {
      * @param request the http request.
      * @param response the http response.
      * @param pushInResponse the response can be registered inside the response OutputStream.
-     * @return true if the page has been found and the response has been sent, false otherwise.
+     * @return the content of the response.
      * @throws IOException if an error occurs while sending the response.
      */
     public String applyRequest(HttpServletRequest request, HttpServletResponse response, boolean pushInResponse) throws IOException {

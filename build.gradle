@@ -1,5 +1,5 @@
 allprojects {
-    version = modulo_version as Object
+    version = modulo_version
     group = 'com.chillycheesy'
     repositories {
         mavenCentral()

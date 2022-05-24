@@ -2,7 +2,6 @@ package com.chillycheesy.modulo.pages.builder;
 
 import com.chillycheesy.modulo.pages.Page;
 import com.chillycheesy.modulo.pages.PageResponse;
-import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +10,6 @@ import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.Objects;
 
 public class PageBuilder {
 
@@ -100,7 +98,10 @@ public class PageBuilder {
             return response;
         } else if (type.equals(String.class)) {
             final BufferedReader reader = request.getReader();
-            return Objects.nonNull(reader) ? IOUtils.toString(request.getReader()) : "";
+            final StringBuilder requestContent = new StringBuilder();
+            String buffer;
+            while ((buffer = reader.readLine()) != null) requestContent.append(buffer).append("\n");
+            return requestContent.toString();
         } else {
             //TODO: return json format
             return null;

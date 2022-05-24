@@ -35,16 +35,16 @@ public class ModuleAdapter extends Module {
     /**
      * Method called when the {@link Module#load()}  method is called
      */
-    protected void onLoad() throws Exception { }
+    protected <E extends Throwable> void onLoad() throws E { }
 
     /**
      * Method called when the {@link Module#start()} method is called
      */
-    protected void onStart() throws Exception { }
+    protected <E extends Throwable> void onStart() throws E { }
 
     /**
      * Method called when the {@link Module#stop()}  method is called
      */
     @Override
-    protected void onStop() throws Exception { }
+    protected <E extends Throwable> void onStop() throws E { }
 }

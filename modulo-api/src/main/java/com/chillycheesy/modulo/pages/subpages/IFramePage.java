@@ -1,15 +1,5 @@
 package com.chillycheesy.modulo.pages.subpages;
 
-import com.chillycheesy.modulo.pages.Page;
-import com.chillycheesy.modulo.pages.PageResponse;
-import com.chillycheesy.modulo.pages.builder.HttpRequest;
-import org.apache.commons.io.IOUtils;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-
 /**
  * This page display an existing website into an HTML iframe
  * @author Aymeric Defossez
