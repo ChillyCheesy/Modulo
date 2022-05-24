@@ -133,8 +133,7 @@ public class ModuleBuilder {
         final InputStream is = jar.getInputStream(jarEntry);
         final ModuleConfig config = readYml(file, is);
         final Class<?> moduleClass = Class.forName(config.getMain(), true, urlClassLoader);
-        final Object object = moduleClass.getConstructor().newInstance();
-        final Module module = (Module) object;
+        final Module module = (Module) moduleClass.getConstructor().newInstance();
         module.setConfig(config);
         module.setJarFile(jar);
         return module;

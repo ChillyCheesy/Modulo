@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.jar.JarFile;
@@ -85,7 +86,10 @@ public class ModuleLoader {
      * @throws IOException If the file was not a JarFile.
      */
     public Module loadModule(File file) throws IOException {
-        return loadModule(file, URLClassLoader.newInstance(new URL[]{file.toURI().toURL()}));
+        final URL[] urls = new URL[]{file.toURI().toURL()};
+        final ClassLoader classLoader = this.getClass().getClassLoader();
+        final URLClassLoader urlClassLoader = URLClassLoader.newInstance(urls, classLoader);
+        return loadModule(file, urlClassLoader);
     }
 
     /**
@@ -126,7 +130,7 @@ public class ModuleLoader {
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
             for (Module dependency : allDependencies) this.startModule(dependency);
-            if (!startedModule.containsAll(dependencies.stream().map(this::getLoadedModuleByName).collect(Collectors.toList())))
+            if (!new HashSet<>(startedModule).containsAll(dependencies.stream().map(this::getLoadedModuleByName).collect(Collectors.toList())))
                 throw new MissingDependenciesModuleException(module, getMissingDependenciesList(dependencies));
             moduleManager.addModule(module);
             startedModule.add(module);
