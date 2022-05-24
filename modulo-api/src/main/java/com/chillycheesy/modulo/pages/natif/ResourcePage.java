@@ -7,13 +7,10 @@ import com.chillycheesy.modulo.pages.Page;
 import com.chillycheesy.modulo.pages.PageManager;
 import com.chillycheesy.modulo.pages.PageResponse;
 import com.chillycheesy.modulo.utils.exception.No404SubPageException;
-import org.apache.commons.io.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 import java.util.Objects;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -69,8 +66,15 @@ public class ResourcePage extends Page {
             return getResourceAsString(jarJarFile, indexJarJarEntry, response);
         }
         try (final InputStream inputStream = jarJarFile.getInputStream(jarJarEntry);
-             final BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream)) {
-            IOUtils.copy(bufferedInputStream, response.getOutputStream());
+             final BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
+             final BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(response.getOutputStream());
+             final BufferedReader reader = new BufferedReader(new InputStreamReader(bufferedInputStream));
+             final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(bufferedOutputStream))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write(line);
+                writer.newLine();
+            }
             return jarJarEntry.getRealName();
         }
     }

@@ -6,6 +6,7 @@ import com.chillycheesy.modulo.pages.builder.HttpRequest;
 import com.chillycheesy.modulo.pages.builder.PageBuilder;
 import com.chillycheesy.modulo.pages.builder.Path;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+@Disabled
 public class BuildPageTest {
 
     public static class MyHelloPage1 {
@@ -41,11 +43,12 @@ public class BuildPageTest {
     @BeforeEach
     public final void initRequestMock() {
         request = mock(HttpServletRequest.class);
+        response = mock(HttpServletResponse.class);
     }
 
     @BeforeEach
     public final void initResponseMock() {
-        response = mock(HttpServletResponse.class);
+
     }
 
     @Test

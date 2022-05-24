@@ -114,8 +114,8 @@ public class ModuleBuilder {
      *     <li>Name of your {@link Module}</li>
      * </ul>
      *
-     * @param file
-     * @param config
+     * @param file the jar file of your {@link Module}
+     * @param config the configuration of your {@link Module}
      * @throws InvalidModuleConfigurationException
      */
     private static void checkField(File file, ModuleConfig config) throws InvalidModuleConfigurationException {
@@ -133,8 +133,7 @@ public class ModuleBuilder {
         final InputStream is = jar.getInputStream(jarEntry);
         final ModuleConfig config = readYml(file, is);
         final Class<?> moduleClass = Class.forName(config.getMain(), true, urlClassLoader);
-        final Object object = moduleClass.getConstructor().newInstance();
-        final Module module = (Module) object;
+        final Module module = (Module) moduleClass.getConstructor().newInstance();
         module.setConfig(config);
         module.setJarFile(jar);
         return module;

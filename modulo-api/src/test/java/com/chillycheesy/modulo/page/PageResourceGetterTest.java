@@ -2,6 +2,7 @@ package com.chillycheesy.modulo.page;
 
 import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.modules.Module;
+import com.chillycheesy.modulo.modules.ModuleLoader;
 import com.chillycheesy.modulo.pages.HttpRequestType;
 import com.chillycheesy.modulo.pages.Page;
 import com.chillycheesy.modulo.pages.natif.ResourcePage;
@@ -13,10 +14,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -26,15 +27,15 @@ import static org.mockito.Mockito.*;
 public class PageResourceGetterTest {
 
     private Module module;
-
     private HttpServletResponse response;
     private HttpServletRequest request;
-    private ServletOutputStream outputStream;
 
     @BeforeEach
     public void buildJarFileModule() throws IOException, HTModuleNotFoundException, MissingDependenciesModuleException {
-        ModuloAPI.getModule().getModuleLoader().loadModule(getClass().getClassLoader().getResource("TestModule-1.0.jar").getFile());
-        ModuloAPI.getModule().getModuleLoader().startModules();
+        final String file = Objects.requireNonNull(getClass().getClassLoader().getResource("TestModule-1.0.jar")).getFile();
+        final ModuleLoader loader = ModuloAPI.getModule().getModuleLoader();
+        loader.loadModule(file);
+        loader.startModules();
         this.module = ModuloAPI.getModule().getModuleManager().getModule("TestModule");
 
         response = mock(HttpServletResponse.class);
@@ -44,6 +45,7 @@ public class PageResourceGetterTest {
     @AfterEach
     public void stopModule() {
         ModuloAPI.getModule().getModuleManager().stopAllModules();
+        ModuloAPI.getPage().getPageManager().getAllItems().clear();
     }
 
     @Test

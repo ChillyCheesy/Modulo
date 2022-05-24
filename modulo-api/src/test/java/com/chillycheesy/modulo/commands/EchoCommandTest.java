@@ -10,6 +10,7 @@ import com.chillycheesy.modulo.commands.operator.natif.ParenthesesOperator;
 import com.chillycheesy.modulo.commands.operator.natif.PlusOperator;
 import com.chillycheesy.modulo.commands.operator.natif.SkipOperator;
 import com.chillycheesy.modulo.utils.exception.CommandException;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,6 +32,11 @@ public class EchoCommandTest {
         final Command echoCommand = new Command("echo");
         echoCommand.setCommandListener(new EchoCommand());
         commandManager.registerItem(null, echoCommand);
+    }
+
+    @AfterEach
+    public final void clearCommandManager() {
+        commandManager.getAllItems().clear();
     }
 
     @Test
