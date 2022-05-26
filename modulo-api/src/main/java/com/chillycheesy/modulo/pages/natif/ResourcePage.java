@@ -7,6 +7,7 @@ import com.chillycheesy.modulo.pages.Page;
 import com.chillycheesy.modulo.pages.PageManager;
 import com.chillycheesy.modulo.pages.PageResponse;
 import com.chillycheesy.modulo.utils.exception.No404SubPageException;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,10 @@ import java.util.Objects;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 
+/**
+ * The ResourcePage represents a page that is a resource of the application.
+ * It can be a file or a directory, inside the jar resource.
+ */
 public class ResourcePage extends Page {
 
     public ResourcePage(HttpRequestType requestType, String path, PageResponse content) {
@@ -49,7 +54,9 @@ public class ResourcePage extends Page {
         try {
             final JarFile jarJarFile = ModuloAPI.getPage().getPageManager().getModuleByItem(this).getJarFile();
             final JarEntry jarJarEntry = jarJarFile.getJarEntry(resourcePath);
-            return Objects.isNull(jarJarEntry) ? pageManager.redirect(HttpRequestType.ANY, "*").applyRequest(request, response) : this.getResourceAsString(jarJarFile, jarJarEntry, response);
+            return Objects.isNull(jarJarEntry)
+                    ? pageManager.redirect(HttpRequestType.ANY, "*").applyRequest(request, response)
+                    : this.getResourceAsString(jarJarFile, jarJarEntry, response);
         } catch (IOException | No404SubPageException e) {
             final Module module = ModuloAPI.getPage().getPageManager().getModuleByItem(this);
             ModuloAPI.getLogger().error(module, e.getMessage());
@@ -67,14 +74,8 @@ public class ResourcePage extends Page {
         }
         try (final InputStream inputStream = jarJarFile.getInputStream(jarJarEntry);
              final BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-             final BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(response.getOutputStream());
-             final BufferedReader reader = new BufferedReader(new InputStreamReader(bufferedInputStream));
-             final BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(bufferedOutputStream))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                writer.write(line);
-                writer.newLine();
-            }
+             final BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(response.getOutputStream())) {
+            IOUtils.copy(bufferedInputStream, bufferedOutputStream);
             return jarJarEntry.getRealName();
         }
     }
