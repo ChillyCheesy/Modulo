@@ -8,11 +8,16 @@ import com.chillycheesy.modulo.pages.*;
 import com.chillycheesy.moduloserver.ServerModule;
 import com.chillycheesy.modulo.utils.exception.No404SubPageException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import java.io.*;
 
 @RestController
 public class PageController {
@@ -21,30 +26,30 @@ public class PageController {
     @Autowired private EventContainer eventContainer;
 
     @GetMapping("/**")
-    public void getRedirect(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody void getRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final GetRequestEvent event = new GetRequestEvent(request, response);
         redirect(request, response, event, HttpRequestType.GET);
     }
 
     @PostMapping("/**")
-    public void postRedirect(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody void postRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final PostRequestEvent event = new PostRequestEvent(request, response);
         redirect(request, response, event, HttpRequestType.POST);
     }
 
     @PutMapping("/**")
-    public void putRedirect(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody void putRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final PutRequestEvent event = new PutRequestEvent(request, response);
         redirect(request, response, event, HttpRequestType.PUT);
     }
 
     @DeleteMapping("/**")
-    public void deleteRedirect(HttpServletRequest request, HttpServletResponse response) {
+    public @ResponseBody void deleteRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final DeleteRequestEvent event = new DeleteRequestEvent(request, response);
         redirect(request, response, event, HttpRequestType.DELETE);
     }
 
-    private void redirect(HttpServletRequest request, HttpServletResponse response, RequestEvent event, HttpRequestType httpRequest) {
+    private void redirect(HttpServletRequest request, HttpServletResponse response, RequestEvent event, HttpRequestType httpRequest) throws IOException {
         final EventManager eventManager = eventContainer.getEventManager();
         event.setCancelableAction(() -> {
             try {
@@ -58,4 +63,5 @@ public class PageController {
         });
         eventManager.emitEvent(serverModule, event);
     }
+
 }

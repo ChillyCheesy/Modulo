@@ -8,6 +8,7 @@ on:
 
 jobs:
   build_app:
+    name: Build app and deploy 🪶
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -53,8 +54,24 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: ${{ env.TITLE }}
-          title: 🪤 ${{ env.TITLE }}
+          title: 📦 ${{ env.TITLE }}
           prerelease: false
           files: |
             modulo-api/build/libs/*.jar
             modulo-server/build/libs/*.jar
+
+  deploy_javadoc:
+    if: github.ref == 'refs/heads/dev'
+    name: Deploy javadoc 📄
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build javadoc
+        run: |
+          chmod +x gradlew
+          ./gradlew clean :modulo-api:javadoc
+      - name: Deploy Javadoc 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.3.3
+        with:
+          branch: gh-pages
+          folder: modulo-api/build/docs/javadoc
