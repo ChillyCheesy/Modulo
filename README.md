@@ -86,6 +86,7 @@ What is modulo...
     name: HelloModule
     description: This is a hello module
     version: 1.0.0
+    main: com.chillycheesy.modulo.HelloModule # The main class of the module
     authors:
       - ChillyCheesy
     dependencies: [] # Optional
