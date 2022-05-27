@@ -1,7 +1,7 @@
 <div align="center">
 
 # Modulo
-[![Build App](https://github.com/ChillyCheesy/Modulo/actions/workflows/app-build.yml/badge.svg?branch=master)]()
+[![Build App](https://github.com/ChillyCheesy/Modulo/actions/workflows/app-build.yml/badge.svg?branch=master)](https://github.com/ChillyCheesy/Modulo/actions)
 [![maven-central](https://maven-badges.herokuapp.com/maven-central/com.chillycheesy/modulo-api/badge.svg?style=flat)](https://search.maven.org/artifact/com.chillycheesy/modulo-api)
 [![Release](https://img.shields.io/github/v/release/ChillyCheesy/modulo.svg)](https://github.com/ChillyCheesy/Modulo/releases)
 
@@ -10,9 +10,9 @@
 
 <div align="center">
 
-![License](https://img.shields.io/github/license/ChillyCheesy/Modulo.svg)
-![Stars](https://img.shields.io/github/stars/ChillyCheesy/modulo.svg)
-![Forks](https://img.shields.io/github/forks/chillycheesy/modulo.svg)
+[![License](https://img.shields.io/github/license/ChillyCheesy/Modulo.svg)](https://github.com/ChillyCheesy/Modulo/blob/master/LICENSE.md)
+[![Stars](https://img.shields.io/github/stars/ChillyCheesy/modulo.svg)](https://github.com/ChillyCheesy/Modulo/stargazers)
+[![Forks](https://img.shields.io/github/forks/chillycheesy/modulo.svg)](https://github.com/ChillyCheesy/Modulo/network/members)
 
 </div>
 
