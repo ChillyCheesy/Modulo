@@ -32,21 +32,7 @@ public abstract class Module {
      * @param main             the main file of your jar (example: com.dev.MyAwesomeModule).
      */
     public Module(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main) {
-        this(new ModuleConfig(name, version, authors, dependencies, softDependencies, main, null));
-    }
-
-    /**
-     * @param name             it's how your HTModule will be call by <i>HomeTracker</i><br>
-     *                         note that two HTModules can't have the same name (you won't be able to add it to the {@link ModuleManager}
-     * @param version          the actual version of your module.
-     * @param authors          the list of persons that works on your module.
-     * @param dependencies     the list of modules that your module name need to work, the dependencies will be loaded before your module get load by the {@link ModuleLoader} (your module <b>cannot</b> load without them).
-     * @param softDependencies the list of modules that your module name can use to work with but without being an obligation (your module <b>can</b> load without them).
-     * @param main             the main file of your jar (example: com.dev.MyAwesomeModule).
-     * @param mainPageName     the name of the main page by default it is "index".
-     */
-    public Module(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main, String mainPageName) {
-        this(new ModuleConfig(name, version, authors, dependencies, softDependencies, main, mainPageName));
+        this(new ModuleConfig(name, version, authors, dependencies, softDependencies, main));
     }
 
     /**
@@ -177,14 +163,6 @@ public abstract class Module {
 
     public void setMain(String main) {
         config.setMain(main);
-    }
-
-    public String getMainPage() {
-        return config.getMainPageName();
-    }
-
-    public void setMainPage(String mainPage) {
-        config.setMainPageName(mainPage);
     }
 
     public ModuleConfig getConfig() {
