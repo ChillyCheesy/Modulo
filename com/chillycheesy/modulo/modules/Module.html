@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":6,"i12":6,"i13":6,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10,"i24":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":6,"i11":6,"i12":6,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -178,16 +178,6 @@ extends java.lang.Object</pre>
       java.lang.String&nbsp;main)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String,java.util.List,java.util.List,java.util.List,java.lang.String,java.lang.String)">Module</a></span>&#8203;(java.lang.String&nbsp;name,
-      java.lang.String&nbsp;version,
-      java.util.List&lt;java.lang.String&gt;&nbsp;authors,
-      java.util.List&lt;java.lang.String&gt;&nbsp;dependencies,
-      java.util.List&lt;java.lang.String&gt;&nbsp;softDependencies,
-      java.lang.String&nbsp;main,
-      java.lang.String&nbsp;mainPageName)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
 </table>
 </li>
 </ul>
@@ -238,25 +228,20 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMainPage()">getMainPage</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getName()">getName</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;java.lang.String&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSoftDependencies()">getSoftDependencies</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVersion()">getVersion</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#load()">load</a></span>()</code></th>
 <td class="colLast">
@@ -265,73 +250,68 @@ extends java.lang.Object</pre>
  Call the <a href="#onLoad()"><code>onLoad()</code></a> method</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected abstract &lt;E extends java.lang.Throwable&gt;<br>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onLoad()">onLoad</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Method called when the <a href="#load()"><code>load()</code></a> method is called</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>protected abstract &lt;E extends java.lang.Throwable&gt;<br>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onStart()">onStart</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Method called when the <a href="#start()"><code>start()</code></a> method is called</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>protected abstract &lt;E extends java.lang.Throwable&gt;<br>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#onStop()">onStop</a></span>()</code></th>
 <td class="colLast">
 <div class="block">Method called when the <a href="#stop()"><code>stop()</code></a> method is called</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setAuthors(java.util.List)">setAuthors</a></span>&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;authors)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setConfig(com.chillycheesy.modulo.modules.ModuleConfig)">setConfig</a></span>&#8203;(<a href="ModuleConfig.html" title="class in com.chillycheesy.modulo.modules">ModuleConfig</a>&nbsp;config)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setDependencies(java.util.List)">setDependencies</a></span>&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;dependencies)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setJarFile(java.util.jar.JarFile)">setJarFile</a></span>&#8203;(java.util.jar.JarFile&nbsp;jarFile)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setMain(java.lang.String)">setMain</a></span>&#8203;(java.lang.String&nbsp;main)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i19" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setMainPage(java.lang.String)">setMainPage</a></span>&#8203;(java.lang.String&nbsp;mainPage)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i20" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setName(java.lang.String)">setName</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSoftDependencies(java.util.List)">setSoftDependencies</a></span>&#8203;(java.util.List&lt;java.lang.String&gt;&nbsp;softDependencies)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setVersion(java.lang.String)">setVersion</a></span>&#8203;(java.lang.String&nbsp;version)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#start()">start</a></span>()</code></th>
 <td class="colLast">
@@ -339,7 +319,7 @@ extends java.lang.Object</pre>
  Call the <a href="#onStart()"><code>onStart()</code></a> method</div>
 </td>
 </tr>
-<tr id="i24" class="altColor">
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#stop()">stop</a></span>()</code></th>
 <td class="colLast">
@@ -393,32 +373,6 @@ extends java.lang.Object</pre>
 <dd><code>dependencies</code> - the list of modules that your module name need to work, the dependencies will be load before your module get load by the <a href="ModuleLoader.html" title="class in com.chillycheesy.modulo.modules"><code>ModuleLoader</code></a> (your module <b>cannot</b> load without them).</dd>
 <dd><code>softDependencies</code> - the list of modules that your module name can use to work with but without being an obligation (your module <b>can</b> load without them).</dd>
 <dd><code>main</code> - the main file of your jar (example: com.dev.MyAwesomeModule).</dd>
-</dl>
-</li>
-</ul>
-<a id="&lt;init&gt;(java.lang.String,java.lang.String,java.util.List,java.util.List,java.util.List,java.lang.String,java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>Module</h4>
-<pre>public&nbsp;Module&#8203;(java.lang.String&nbsp;name,
-              java.lang.String&nbsp;version,
-              java.util.List&lt;java.lang.String&gt;&nbsp;authors,
-              java.util.List&lt;java.lang.String&gt;&nbsp;dependencies,
-              java.util.List&lt;java.lang.String&gt;&nbsp;softDependencies,
-              java.lang.String&nbsp;main,
-              java.lang.String&nbsp;mainPageName)</pre>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>name</code> - it's how your HTModule will be call by <i>HomeTracker</i><br>
-                         note that two HTModules can't have the same name (you won't be able to add it to the <a href="ModuleManager.html" title="class in com.chillycheesy.modulo.modules"><code>ModuleManager</code></a></dd>
-<dd><code>version</code> - the actual version of your module.</dd>
-<dd><code>authors</code> - the list of persons that works on your module.</dd>
-<dd><code>dependencies</code> - the list of modules that your module name need to work, the dependencies will be loaded before your module get load by the <a href="ModuleLoader.html" title="class in com.chillycheesy.modulo.modules"><code>ModuleLoader</code></a> (your module <b>cannot</b> load without them).</dd>
-<dd><code>softDependencies</code> - the list of modules that your module name can use to work with but without being an obligation (your module <b>can</b> load without them).</dd>
-<dd><code>main</code> - the main file of your jar (example: com.dev.MyAwesomeModule).</dd>
-<dd><code>mainPageName</code> - the name of the main page by default it is "index".</dd>
 </dl>
 </li>
 </ul>
@@ -641,24 +595,6 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setMain</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;setMain&#8203;(java.lang.String&nbsp;main)</pre>
-</li>
-</ul>
-<a id="getMainPage()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getMainPage</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getMainPage()</pre>
-</li>
-</ul>
-<a id="setMainPage(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>setMainPage</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setMainPage&#8203;(java.lang.String&nbsp;mainPage)</pre>
 </li>
 </ul>
 <a id="getConfig()">
