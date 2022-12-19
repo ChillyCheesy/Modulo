@@ -8,6 +8,7 @@ import com.chillycheesy.modulo.event.LogEvent;
 import com.chillycheesy.modulo.utils.Log;
 import com.chillycheesy.modulo.utils.exception.InvalidParameterEventHandlerException;
 
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public class EventManager extends ListenerManager {
     public void emitEvent(Module module, Event event) {
         try {
             emit(module, event);
-        } catch (InvocationTargetException | IllegalAccessException e) {
+        } catch (InvocationTargetException | IllegalAccessException | IOException e) {
             e.printStackTrace();
             if (!(event instanceof LogEvent))
                 ModuloAPI.getLogger().error(module, e.getMessage());
@@ -42,7 +43,7 @@ public class EventManager extends ListenerManager {
      * @param module The emitter module.
      * @param event The emitted event.
      */
-    private void emit(Module module, Event event) throws InvocationTargetException, IllegalAccessException {
+    private void emit(Module module, Event event) throws InvocationTargetException, IllegalAccessException, IOException {
         event.setEmitter(module);
         final List<Listener> moduleListeners = super.getAllItems();
         for (Listener listener : moduleListeners) {

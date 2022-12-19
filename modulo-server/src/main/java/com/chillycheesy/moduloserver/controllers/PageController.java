@@ -4,15 +4,10 @@ import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.event.*;
 import com.chillycheesy.modulo.events.EventContainer;
 import com.chillycheesy.modulo.events.EventManager;
-import com.chillycheesy.modulo.pages.*;
-import com.chillycheesy.moduloserver.ServerModule;
+import com.chillycheesy.modulo.pages.PageManager;
 import com.chillycheesy.modulo.utils.exception.No404SubPageException;
+import com.chillycheesy.moduloserver.ServerModule;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,39 +21,39 @@ public class PageController {
     @Autowired private EventContainer eventContainer;
 
     @GetMapping("/**")
-    public @ResponseBody void getRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void getRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final GetRequestEvent event = new GetRequestEvent(request, response);
-        redirect(request, response, event, HttpRequestType.GET);
+        redirect(request, response, event);
     }
 
     @PostMapping("/**")
-    public @ResponseBody void postRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void postRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final PostRequestEvent event = new PostRequestEvent(request, response);
-        redirect(request, response, event, HttpRequestType.POST);
+        redirect(request, response, event);
     }
 
     @PutMapping("/**")
-    public @ResponseBody void putRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void putRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final PutRequestEvent event = new PutRequestEvent(request, response);
-        redirect(request, response, event, HttpRequestType.PUT);
+        redirect(request, response, event);
     }
 
     @DeleteMapping("/**")
-    public @ResponseBody void deleteRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void deleteRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final DeleteRequestEvent event = new DeleteRequestEvent(request, response);
-        redirect(request, response, event, HttpRequestType.DELETE);
+        redirect(request, response, event);
     }
 
-    private void redirect(HttpServletRequest request, HttpServletResponse response, RequestEvent event, HttpRequestType httpRequest) throws IOException {
+    private void redirect(HttpServletRequest request, HttpServletResponse response, RequestEvent event) throws IOException {
         final EventManager eventManager = eventContainer.getEventManager();
+        final PageManager pageManager = ModuloAPI.getPage().getPageManager();
         event.setCancelableAction(() -> {
             try {
-                final Page page = ModuloAPI.getPage().getPageManager().redirect(httpRequest, request.getRequestURI());
-                final String content = page.applyRequest(request, response);
-                final SendPageEvent sendPageEvent = new SendPageEvent(page, request, response, content);
-                eventManager.emitEvent(serverModule, sendPageEvent);
-            } catch (IOException | No404SubPageException e) {
-                ModuloAPI.getLogger().error(serverModule, e.getMessage());
+                if(!pageManager.response(request, response))
+                    throw new No404SubPageException();
+            } catch (No404SubPageException e) {
+                ModuloAPI.getLogger().error(serverModule, "No 404 page found");
+                response.sendError(404);
             }
         });
         eventManager.emitEvent(serverModule, event);

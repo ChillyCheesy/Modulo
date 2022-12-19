@@ -9,8 +9,10 @@ allprojects {
     }
 }
 
-task clean {
+tasks.register('clean') {
     subprojects.forEach { project ->
         finalizedBy ":$project.name:clean"
     }
 }
+
+tasks.findByPath(':modulo-server:compileJava').dependsOn ':sand-box:deployToTestServer'

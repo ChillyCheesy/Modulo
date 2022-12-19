@@ -17,8 +17,7 @@ public class Manager<T> {
 
     public boolean registerItem(Module module, T item) {
         if (item == null) return false;
-        if (!managedItems.containsKey(module))
-            managedItems.put(module, new ArrayList<>());
+        if (!managedItems.containsKey(module)) managedItems.put(module, new ArrayList<>());
         final List<T> moduleListeners = managedItems.get(module);
         moduleListeners.add(item);
         return true;
