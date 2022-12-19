@@ -1,6 +1,0 @@
-name: SandBox
-version: 1.0.0
-authors: [ChillyCheesy]
-main: com.chillycheesy.sandbox.SandBoxModule
-dependencies: []
-softDependencies: []
