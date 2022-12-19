@@ -6,15 +6,16 @@
 <title>Page (modulo-api BINKS-0.1.2 API)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery-ui.overrides.css" title="Style">
 <script type="text/javascript" src="../../../../script.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip/dist/jszip.min.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils.min.js"></script>
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-ui.min.js"></script>
 </head>
 <body>
 <script type="text/javascript"><!--
@@ -26,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -130,21 +131,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <ul class="blockList">
 <li class="blockList">
 <dl>
-<dt>All Implemented Interfaces:</dt>
-<dd><code><a href="RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages">RoutingRedirection</a></code></dd>
-</dl>
-<dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><code><a href="natif/DeletePage.html" title="class in com.chillycheesy.modulo.pages.natif">DeletePage</a></code>, <code><a href="natif/GetPage.html" title="class in com.chillycheesy.modulo.pages.natif">GetPage</a></code>, <code><a href="natif/NotFoundPath.html" title="class in com.chillycheesy.modulo.pages.natif">NotFoundPath</a></code>, <code><a href="natif/PostPage.html" title="class in com.chillycheesy.modulo.pages.natif">PostPage</a></code>, <code><a href="natif/PutPage.html" title="class in com.chillycheesy.modulo.pages.natif">PutPage</a></code>, <code><a href="natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">RegexPage</a></code>, <code><a href="natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif">ResourcePage</a></code></dd>
+<dd><code><a href="TemplatePage.html" title="class in com.chillycheesy.modulo.pages">TemplatePage</a></code></dd>
 </dl>
 <hr>
 <pre>public class <span class="typeNameLabel">Page</span>
-extends java.lang.Object
-implements <a href="RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages">RoutingRedirection</a></pre>
-<div class="block"><pre>
- Interface of the pages of <i>HomeTracker</i>
- All the pages must implement this interface.
- </pre></div>
+extends java.lang.Object</pre>
 </li>
 </ul>
 </div>
@@ -152,7 +144,7 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <ul class="blockList">
 <li class="blockList">
 <!-- =========== FIELD SUMMARY =========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="field.summary">
 <!--   -->
@@ -166,42 +158,41 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected <a href="PageResponse.html" title="interface in com.chillycheesy.modulo.pages">PageResponse</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#content">content</a></span></code></th>
+<td class="colFirst"><code>protected java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#method">method</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#parent">parent</a></span></code></th>
+<td class="colFirst"><code>protected java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#name">name</a></span></code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#path">path</a></span></code></th>
-<td class="colLast">
-<div class="block">The path to access this page.</div>
-</td>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requestType">requestType</a></span></code></th>
-<td class="colLast">
-<div class="block">The http request type (GET, PUT, POST, DELETE)</div>
-</td>
+<td class="colFirst"><code>protected int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#priority">priority</a></span></code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected java.util.List&lt;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#subpages">subpages</a></span></code></th>
-<td class="colLast">
-<div class="block">The list of subpages that can either call a method, return a value.</div>
-</td>
+<td class="colFirst"><code>protected java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#requestMatcher">requestMatcher</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected <a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#responseHandler">responseHandler</a></span></code></th>
+<td class="colLast">&nbsp;</td>
 </tr>
 </table>
 </li>
 </ul>
 </section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="constructor.summary">
 <!--   -->
@@ -214,38 +205,33 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">Page</a></span>&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;requestType,
-    java.lang.String&nbsp;path)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">Page</a></span>&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;requestType,
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler)">Page</a></span>&#8203;(java.lang.String&nbsp;name,
     java.lang.String&nbsp;path,
-    <a href="PageResponse.html" title="interface in com.chillycheesy.modulo.pages">PageResponse</a>&nbsp;content)</code></th>
+    <a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,java.lang.String)">Page</a></span>&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;requestType,
+<tr class="rowColor">
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler)">Page</a></span>&#8203;(java.lang.String&nbsp;name,
     java.lang.String&nbsp;path,
-    java.lang.String&nbsp;content)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.chillycheesy.modulo.pages.Page)">Page</a></span>&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;page)</code></th>
+    java.lang.String&nbsp;method,
+    <a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String)">Page</a></span>&#8203;(java.lang.String&nbsp;path)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler,java.util.List)">Page</a></span>&#8203;(java.lang.String&nbsp;name,
+    java.lang.String&nbsp;path,
+    java.lang.String&nbsp;method,
+    <a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler,
+    java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt;&nbsp;requestMatcher)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">Page</a></span>&#8203;(java.lang.String&nbsp;path,
-    <a href="PageResponse.html" title="interface in com.chillycheesy.modulo.pages">PageResponse</a>&nbsp;content)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String)">Page</a></span>&#8203;(java.lang.String&nbsp;path,
-    java.lang.String&nbsp;content)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler,java.util.List,int)">Page</a></span>&#8203;(java.lang.String&nbsp;name,
+    java.lang.String&nbsp;path,
+    java.lang.String&nbsp;method,
+    <a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler,
+    java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt;&nbsp;requestMatcher,
+    int&nbsp;priority)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -253,7 +239,7 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 </ul>
 </section>
 <!-- ========== METHOD SUMMARY =========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="method.summary">
 <!--   -->
@@ -267,106 +253,74 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addAllSubPage(java.util.Collection)">addAllSubPage</a></span>&#8203;(java.util.Collection&lt;? extends <a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt;&nbsp;c)</code></th>
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getMethod()">getMethod</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#addSubPage(com.chillycheesy.modulo.pages.Page)">addSubPage</a></span>&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;subpage)</code></th>
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getName()">getName</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#applyRequest(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">applyRequest</a></span>&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request,
-            javax.servlet.http.HttpServletResponse&nbsp;response)</code></th>
-<td class="colLast">
-<div class="block">Call the page method with the given request and response.</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#applyRequest(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,boolean)">applyRequest</a></span>&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request,
-            javax.servlet.http.HttpServletResponse&nbsp;response,
-            boolean&nbsp;pushInResponse)</code></th>
-<td class="colLast">
-<div class="block">Call the page method with the given request and response.</div>
-</td>
-</tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#equals(java.lang.Object)">equals</a></span>&#8203;(java.lang.Object&nbsp;o)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i5" class="rowColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getFullPath()">getFullPath</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code><a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getLastChild()">getLastChild</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code><a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getParent()">getParent</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i8" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPath()">getPath</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPathComparator()">getPathComparator</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPriority()">getPriority</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code><a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getResponseHandler()">getResponseHandler</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#isMatch(javax.servlet.http.HttpServletRequest)">isMatch</a></span>&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#response(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">response</a></span>&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request,
+        javax.servlet.http.HttpServletResponse&nbsp;response)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setMethod(java.lang.String)">setMethod</a></span>&#8203;(java.lang.String&nbsp;method)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 <tr id="i9" class="rowColor">
-<td class="colFirst"><code><a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getRequestType()">getRequestType</a></span>()</code></th>
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setName(java.lang.String)">setName</a></span>&#8203;(java.lang.String&nbsp;name)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i10" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hasChild(com.chillycheesy.modulo.pages.Page)">hasChild</a></span>&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;searchPage)</code></th>
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPageResponse(com.chillycheesy.modulo.pages.response.ResponseHandler)">setPageResponse</a></span>&#8203;(<a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#hashCode()">hashCode</a></span>()</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i12" class="altColor">
-<td class="colFirst"><code><a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">redirect</a></span>&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;httpRequest,
-        java.lang.String&nbsp;subpath)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i13" class="rowColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeAllSubPage(java.util.Collection)">removeAllSubPage</a></span>&#8203;(java.util.Collection&lt;?&gt;&nbsp;c)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i14" class="altColor">
-<td class="colFirst"><code>boolean</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeSubPage(com.chillycheesy.modulo.pages.Page)">removeSubPage</a></span>&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;subpage)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i15" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setContent(com.chillycheesy.modulo.pages.PageResponse)">setContent</a></span>&#8203;(<a href="PageResponse.html" title="interface in com.chillycheesy.modulo.pages">PageResponse</a>&nbsp;content)</code></th>
-<td class="colLast">&nbsp;</td>
-</tr>
-<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPath(java.lang.String)">setPath</a></span>&#8203;(java.lang.String&nbsp;path)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setRequestType(com.chillycheesy.modulo.pages.HttpRequestType)">setRequestType</a></span>&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;requestType)</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPathComparator(java.util.List)">setPathComparator</a></span>&#8203;(java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt;&nbsp;requestMatcher)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i18" class="altColor">
-<td class="colFirst"><code>java.lang.String</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setPriority(int)">setPriority</a></span>&#8203;(int&nbsp;priority)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -375,7 +329,7 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, finalize, getClass, notify, notifyAll, wait, wait, wait</code></li>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -387,12 +341,21 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <ul class="blockList">
 <li class="blockList">
 <!-- ============ FIELD DETAIL =========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="field.detail">
 <!--   -->
 </a>
 <h3>Field Detail</h3>
+<a id="name">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>name</h4>
+<pre>protected&nbsp;java.lang.String name</pre>
+</li>
+</ul>
 <a id="path">
 <!--   -->
 </a>
@@ -400,180 +363,145 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <li class="blockList">
 <h4>path</h4>
 <pre>protected&nbsp;java.lang.String path</pre>
-<div class="block">The path to access this page.</div>
 </li>
 </ul>
-<a id="requestType">
+<a id="method">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>requestType</h4>
-<pre>protected&nbsp;<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a> requestType</pre>
-<div class="block">The http request type (GET, PUT, POST, DELETE)</div>
+<h4>method</h4>
+<pre>protected&nbsp;java.lang.String method</pre>
 </li>
 </ul>
-<a id="subpages">
+<a id="priority">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>subpages</h4>
-<pre>protected&nbsp;java.util.List&lt;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt; subpages</pre>
-<div class="block">The list of subpages that can either call a method, return a value.
- The sub path can be empty "" to represent the default accessors of the page,
- the sub path can also be "*" to represent the not found page case (404 error).
-
- For example if your page index is "skywalker", the default accessors will be the one with an empty sub path ("https://modulo.chillycheesy.com/skywalker"),
- but we could add the accessors for "anakin", "leia", "luke" that show their own content or call their method (https://modulo.chillycheesy.com/skywalker/anakin),
- but if we try to reach the path "https://modulo.chillycheesy.com/skywalker/jarjar" and the "jarjar" sub path cannot be found, we will redirect to the accessor with the path "*"
-
- The sub path can be a keyword to be handled differently by the system (like "*").
- the sub path "readme" can represent the document or your Page or Module.</div>
+<h4>priority</h4>
+<pre>protected&nbsp;int priority</pre>
 </li>
 </ul>
-<a id="parent">
+<a id="requestMatcher">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>parent</h4>
-<pre>protected&nbsp;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a> parent</pre>
+<h4>requestMatcher</h4>
+<pre>protected&nbsp;java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt; requestMatcher</pre>
 </li>
 </ul>
-<a id="content">
+<a id="responseHandler">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>content</h4>
-<pre>protected&nbsp;<a href="PageResponse.html" title="interface in com.chillycheesy.modulo.pages">PageResponse</a> content</pre>
+<h4>responseHandler</h4>
+<pre>protected&nbsp;<a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a> responseHandler</pre>
 </li>
 </ul>
 </li>
 </ul>
 </section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="constructor.detail">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">
+<a id="&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler,java.util.List,int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>Page</h4>
-<pre>public&nbsp;Page&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;requestType,
+<pre>public&nbsp;Page&#8203;(java.lang.String&nbsp;name,
             java.lang.String&nbsp;path,
-            <a href="PageResponse.html" title="interface in com.chillycheesy.modulo.pages">PageResponse</a>&nbsp;content)</pre>
+            java.lang.String&nbsp;method,
+            <a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler,
+            java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt;&nbsp;requestMatcher,
+            int&nbsp;priority)</pre>
 </li>
 </ul>
-<a id="&lt;init&gt;(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,java.lang.String)">
+<a id="&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler,java.util.List)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>Page</h4>
-<pre>public&nbsp;Page&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;requestType,
+<pre>public&nbsp;Page&#8203;(java.lang.String&nbsp;name,
             java.lang.String&nbsp;path,
-            java.lang.String&nbsp;content)</pre>
+            java.lang.String&nbsp;method,
+            <a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler,
+            java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt;&nbsp;requestMatcher)</pre>
 </li>
 </ul>
-<a id="&lt;init&gt;(java.lang.String,java.lang.String)">
+<a id="&lt;init&gt;(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>Page</h4>
-<pre>public&nbsp;Page&#8203;(java.lang.String&nbsp;path,
-            java.lang.String&nbsp;content)</pre>
+<pre>public&nbsp;Page&#8203;(java.lang.String&nbsp;name,
+            java.lang.String&nbsp;path,
+            java.lang.String&nbsp;method,
+            <a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler)</pre>
 </li>
 </ul>
-<a id="&lt;init&gt;(java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>Page</h4>
-<pre>public&nbsp;Page&#8203;(java.lang.String&nbsp;path,
-            <a href="PageResponse.html" title="interface in com.chillycheesy.modulo.pages">PageResponse</a>&nbsp;content)</pre>
-</li>
-</ul>
-<a id="&lt;init&gt;(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>Page</h4>
-<pre>public&nbsp;Page&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;requestType,
-            java.lang.String&nbsp;path)</pre>
-</li>
-</ul>
-<a id="&lt;init&gt;(java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>Page</h4>
-<pre>public&nbsp;Page&#8203;(java.lang.String&nbsp;path)</pre>
-</li>
-</ul>
-<a id="&lt;init&gt;(com.chillycheesy.modulo.pages.Page)">
+<a id="&lt;init&gt;(java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Page</h4>
-<pre>public&nbsp;Page&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;page)</pre>
+<pre>public&nbsp;Page&#8203;(java.lang.String&nbsp;name,
+            java.lang.String&nbsp;path,
+            <a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler)</pre>
 </li>
 </ul>
 </li>
 </ul>
 </section>
 <!-- ============ METHOD DETAIL ========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="method.detail">
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="addSubPage(com.chillycheesy.modulo.pages.Page)">
+<a id="isMatch(javax.servlet.http.HttpServletRequest)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>addSubPage</h4>
-<pre class="methodSignature">public&nbsp;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;addSubPage&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;subpage)</pre>
+<h4>isMatch</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;isMatch&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request)</pre>
 </li>
 </ul>
-<a id="removeSubPage(com.chillycheesy.modulo.pages.Page)">
+<a id="response(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>removeSubPage</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;removeSubPage&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;subpage)</pre>
+<h4>response</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;response&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request,
+                        javax.servlet.http.HttpServletResponse&nbsp;response)
+                 throws java.io.IOException</pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.IOException</code></dd>
+</dl>
 </li>
 </ul>
-<a id="addAllSubPage(java.util.Collection)">
+<a id="getName()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>addAllSubPage</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;addAllSubPage&#8203;(java.util.Collection&lt;? extends <a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt;&nbsp;c)</pre>
-</li>
-</ul>
-<a id="removeAllSubPage(java.util.Collection)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>removeAllSubPage</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;removeAllSubPage&#8203;(java.util.Collection&lt;?&gt;&nbsp;c)</pre>
+<h4>getName</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getName()</pre>
 </li>
 </ul>
 <a id="getPath()">
@@ -585,31 +513,49 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getPath()</pre>
 </li>
 </ul>
-<a id="getFullPath()">
+<a id="getPriority()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getFullPath</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getFullPath()</pre>
+<h4>getPriority</h4>
+<pre class="methodSignature">public&nbsp;int&nbsp;getPriority()</pre>
 </li>
 </ul>
-<a id="setContent(com.chillycheesy.modulo.pages.PageResponse)">
+<a id="getPathComparator()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setContent</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setContent&#8203;(<a href="PageResponse.html" title="interface in com.chillycheesy.modulo.pages">PageResponse</a>&nbsp;content)</pre>
+<h4>getPathComparator</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt;&nbsp;getPathComparator()</pre>
 </li>
 </ul>
-<a id="setRequestType(com.chillycheesy.modulo.pages.HttpRequestType)">
+<a id="getResponseHandler()">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setRequestType</h4>
-<pre class="methodSignature">public&nbsp;void&nbsp;setRequestType&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;requestType)</pre>
+<h4>getResponseHandler</h4>
+<pre class="methodSignature">public&nbsp;<a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;getResponseHandler()</pre>
+</li>
+</ul>
+<a id="getMethod()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getMethod</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;getMethod()</pre>
+</li>
+</ul>
+<a id="setName(java.lang.String)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setName</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setName&#8203;(java.lang.String&nbsp;name)</pre>
 </li>
 </ul>
 <a id="setPath(java.lang.String)">
@@ -621,139 +567,40 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <pre class="methodSignature">public&nbsp;void&nbsp;setPath&#8203;(java.lang.String&nbsp;path)</pre>
 </li>
 </ul>
-<a id="getRequestType()">
+<a id="setPriority(int)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getRequestType</h4>
-<pre class="methodSignature">public&nbsp;<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;getRequestType()</pre>
+<h4>setPriority</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setPriority&#8203;(int&nbsp;priority)</pre>
 </li>
 </ul>
-<a id="getParent()">
+<a id="setPathComparator(java.util.List)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getParent</h4>
-<pre class="methodSignature">public&nbsp;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;getParent()</pre>
+<h4>setPathComparator</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setPathComparator&#8203;(java.util.List&lt;<a href="comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&gt;&nbsp;requestMatcher)</pre>
 </li>
 </ul>
-<a id="applyRequest(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,boolean)">
+<a id="setPageResponse(com.chillycheesy.modulo.pages.response.ResponseHandler)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>applyRequest</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;applyRequest&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request,
-                                     javax.servlet.http.HttpServletResponse&nbsp;response,
-                                     boolean&nbsp;pushInResponse)
-                              throws java.io.IOException</pre>
-<div class="block">Call the page method with the given request and response.
- The response can be registered inside the request OutputStream.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>request</code> - the http request.</dd>
-<dd><code>response</code> - the http response.</dd>
-<dd><code>pushInResponse</code> - the response can be registered inside the response OutputStream.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the content of the response.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code> - if an error occurs while sending the response.</dd>
-</dl>
+<h4>setPageResponse</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setPageResponse&#8203;(<a href="response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>&nbsp;responseHandler)</pre>
 </li>
 </ul>
-<a id="applyRequest(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>applyRequest</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;applyRequest&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request,
-                                     javax.servlet.http.HttpServletResponse&nbsp;response)
-                              throws java.io.IOException</pre>
-<div class="block">Call the page method with the given request and response.
- The response is register inside the response OutputStream.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>request</code> - the request.</dd>
-<dd><code>response</code> - the response.</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>the content of the response.</dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code> - if an error occurs.</dd>
-</dl>
-</li>
-</ul>
-<a id="hasChild(com.chillycheesy.modulo.pages.Page)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>hasChild</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;hasChild&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;searchPage)</pre>
-</li>
-</ul>
-<a id="redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>redirect</h4>
-<pre class="methodSignature">public&nbsp;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;redirect&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;httpRequest,
-                     java.lang.String&nbsp;subpath)</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="RoutingRedirection.html#redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">redirect</a></code>&nbsp;in interface&nbsp;<code><a href="RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages">RoutingRedirection</a></code></dd>
-</dl>
-</li>
-</ul>
-<a id="getLastChild()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>getLastChild</h4>
-<pre class="methodSignature">public&nbsp;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;getLastChild()</pre>
-</li>
-</ul>
-<a id="equals(java.lang.Object)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>equals</h4>
-<pre class="methodSignature">public&nbsp;boolean&nbsp;equals&#8203;(java.lang.Object&nbsp;o)</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code>equals</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
-</dl>
-</li>
-</ul>
-<a id="hashCode()">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>hashCode</h4>
-<pre class="methodSignature">public&nbsp;int&nbsp;hashCode()</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code>hashCode</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
-</dl>
-</li>
-</ul>
-<a id="toString()">
+<a id="setMethod(java.lang.String)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>toString</h4>
-<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code>toString</code>&nbsp;in class&nbsp;<code>java.lang.Object</code></dd>
-</dl>
+<h4>setMethod</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setMethod&#8203;(java.lang.String&nbsp;method)</pre>
 </li>
 </ul>
 </li>

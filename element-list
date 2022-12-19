@@ -10,9 +10,8 @@ com.chillycheesy.modulo.events
 com.chillycheesy.modulo.listener
 com.chillycheesy.modulo.modules
 com.chillycheesy.modulo.pages
-com.chillycheesy.modulo.pages.builder
-com.chillycheesy.modulo.pages.natif
-com.chillycheesy.modulo.pages.subpages
+com.chillycheesy.modulo.pages.comparator
+com.chillycheesy.modulo.pages.response
 com.chillycheesy.modulo.signals
 com.chillycheesy.modulo.utils
 com.chillycheesy.modulo.utils.exception

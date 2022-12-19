@@ -6,15 +6,16 @@
 <title>Index (modulo-api BINKS-0.1.2 API)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="jquery/jquery-ui.css" title="Style">
+<link rel="stylesheet" type="text/css" href="jquery/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="jquery-ui.overrides.css" title="Style">
 <script type="text/javascript" src="script.js"></script>
 <script type="text/javascript" src="jquery/jszip/dist/jszip.min.js"></script>
 <script type="text/javascript" src="jquery/jszip-utils/dist/jszip-utils.min.js"></script>
 <!--[if IE]>
 <script type="text/javascript" src="jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="jquery/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="jquery/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="jquery/jquery-ui.min.js"></script>
 </head>
 <body>
 <script type="text/javascript"><!--
@@ -98,10 +99,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dl>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/events/CancelableAction.html#action()">action()</a></span> - Method in interface com.chillycheesy.modulo.events.<a href="com/chillycheesy/modulo/events/CancelableAction.html" title="interface in com.chillycheesy.modulo.events">CancelableAction</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#addAllSubPage(java.util.Collection)">addAllSubPage(Collection&lt;? extends Page&gt;)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#addSubPage(com.chillycheesy.modulo.pages.Page)">addSubPage(Page)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/Command.html#alias">alias</a></span> - Variable in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/Command.html" title="class in com.chillycheesy.modulo.commands">Command</a></dt>
 <dd>
 <div class="block">The alias list of the command.</div>
@@ -135,8 +132,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Operator that return true if the left and right parameter are true, false in any other case.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/natif/AndOperator.html#%3Cinit%3E()">AndOperator()</a></span> - Constructor for class com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/AndOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif">AndOperator</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/HttpRequestType.html#ANY">ANY</a></span> - com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/Operation.html#apply(com.chillycheesy.modulo.modules.Module)">apply(Module)</a></span> - Method in class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operation.html" title="class in com.chillycheesy.modulo.commands.operator">Operation</a></dt>
 <dd>
@@ -180,16 +175,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Apply the Operators to the CommandFlow.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html#applyRequest(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">applyRequest(HttpServletRequest, HttpServletResponse)</a></span> - Method in class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif">ResourcePage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#applyRequest(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">applyRequest(HttpServletRequest, HttpServletResponse)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>
-<div class="block">Call the page method with the given request and response.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#applyRequest(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,boolean)">applyRequest(HttpServletRequest, HttpServletResponse, boolean)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>
-<div class="block">Call the page method with the given request and response.</div>
-</dd>
 </dl>
 <a id="I:B">
 <!--   -->
@@ -216,16 +201,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/BooleanOperator.html#%3Cinit%3E()">BooleanOperator()</a></span> - Constructor for class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/BooleanOperator.html" title="class in com.chillycheesy.modulo.commands.operator">BooleanOperator</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">BooleanPage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html#%3Cinit%3E()">BooleanPage()</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html" title="class in com.chillycheesy.modulo.pages.natif">BooleanPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType)">BooleanPage(HttpRequestType)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html" title="class in com.chillycheesy.modulo.pages.natif">BooleanPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,com.chillycheesy.modulo.pages.PageResponse)">BooleanPage(HttpRequestType, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html" title="class in com.chillycheesy.modulo.pages.natif">BooleanPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">BooleanPage(HttpRequestType, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html" title="class in com.chillycheesy.modulo.pages.natif">BooleanPage</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/ModuleBuilder.html#build(java.io.File)">build(File)</a></span> - Static method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/ModuleBuilder.html" title="class in com.chillycheesy.modulo.modules">ModuleBuilder</a></dt>
 <dd>
 <div class="block">Method you need to call to build a <a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules"><code>Module</code></a>.</div>
@@ -238,17 +213,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Builds a command from a class annotated with <a href="com/chillycheesy/modulo/commands/builder/Label.html" title="annotation in com.chillycheesy.modulo.commands.builder"><code>Label</code></a>, <a href="com/chillycheesy/modulo/commands/builder/Description.html" title="annotation in com.chillycheesy.modulo.commands.builder"><code>Description</code></a>, <a href="com/chillycheesy/modulo/commands/builder/Usage.html" title="annotation in com.chillycheesy.modulo.commands.builder"><code>Usage</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilder.html#build(java.lang.Object)">build(Object)</a></span> - Static method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilder.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilder</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilder.html#build(java.lang.Object,com.chillycheesy.modulo.pages.builder.PageVisitor)">build(Object, PageVisitor)</a></span> - Static method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilder.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilder</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/builder/OperatorBuilder.html#build(T)">build(T)</a></span> - Static method in class com.chillycheesy.modulo.commands.operator.builder.<a href="com/chillycheesy/modulo/commands/operator/builder/OperatorBuilder.html" title="class in com.chillycheesy.modulo.commands.operator.builder">OperatorBuilder</a></dt>
 <dd>
 <div class="block">Builds an Operator from the given Object.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/PageResponse.html#buildBody(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">buildBody(HttpServletRequest, HttpServletResponse)</a></span> - Method in interface com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageResponse.html" title="interface in com.chillycheesy.modulo.pages">PageResponse</a></dt>
-<dd>
-<div class="block">Get the HTTP response body.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/Operation.html#buildFormRegex(com.chillycheesy.modulo.commands.CommandFlow,java.lang.String,com.chillycheesy.modulo.commands.operator.OperatorListener)">buildFormRegex(CommandFlow, String, OperatorListener)</a></span> - Static method in class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operation.html" title="class in com.chillycheesy.modulo.commands.operator">Operation</a></dt>
 <dd>
@@ -296,11 +263,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/pages/package-summary.html">com.chillycheesy.modulo.pages</a> - package com.chillycheesy.modulo.pages</dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a> - package com.chillycheesy.modulo.pages.builder</dt>
+<dt><a href="com/chillycheesy/modulo/pages/comparator/package-summary.html">com.chillycheesy.modulo.pages.comparator</a> - package com.chillycheesy.modulo.pages.comparator</dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a> - package com.chillycheesy.modulo.pages.natif</dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/subpages/package-summary.html">com.chillycheesy.modulo.pages.subpages</a> - package com.chillycheesy.modulo.pages.subpages</dt>
+<dt><a href="com/chillycheesy/modulo/pages/response/package-summary.html">com.chillycheesy.modulo.pages.response</a> - package com.chillycheesy.modulo.pages.response</dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/signals/package-summary.html">com.chillycheesy.modulo.signals</a> - package com.chillycheesy.modulo.signals</dt>
 <dd>&nbsp;</dd>
@@ -388,6 +353,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Priority.html#COMMON">COMMON</a></span> - Static variable in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Priority.html" title="class in com.chillycheesy.modulo.utils">Priority</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/comparator/StrictMethodRequestMatcher.html#compare(javax.servlet.http.HttpServletRequest,com.chillycheesy.modulo.pages.Page)">compare(HttpServletRequest, Page)</a></span> - Method in class com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/StrictMethodRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator">StrictMethodRequestMatcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/comparator/StrictPathRequestMatcher.html#compare(javax.servlet.http.HttpServletRequest,com.chillycheesy.modulo.pages.Page)">compare(HttpServletRequest, Page)</a></span> - Method in class com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/StrictPathRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator">StrictPathRequestMatcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/comparator/TemplatePathRequestMatcher.html#compare(javax.servlet.http.HttpServletRequest,com.chillycheesy.modulo.pages.TemplatePage)">compare(HttpServletRequest, TemplatePage)</a></span> - Method in class com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/TemplatePathRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator">TemplatePathRequestMatcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/comparator/RequestMatcher.html#compare(javax.servlet.http.HttpServletRequest,T)">compare(HttpServletRequest, T)</a></span> - Method in interface com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a></dt>
+<dd>
+<div class="block">Compare the path of the page with the path of the request.</div>
+</dd>
 <dt><a href="com/chillycheesy/modulo/commands/operator/CompareOperator.html" title="class in com.chillycheesy.modulo.commands.operator"><span class="typeNameLink">CompareOperator</span></a> - Class in <a href="com/chillycheesy/modulo/commands/operator/package-summary.html">com.chillycheesy.modulo.commands.operator</a></dt>
 <dd>
 <div class="block">Utils class to help the creation of operators that compare two number.</div>
@@ -406,20 +381,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Works like <a href="com/chillycheesy/modulo/modules/ModuleManager.html#containsModule(com.chillycheesy.modulo.modules.Module)"><code>ModuleManager.containsModule(Module)</code></a> but by passing the name of the module</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#content">content</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/builder/CommandFlowBuilder.html#create(com.chillycheesy.modulo.commands.AliasManager,java.lang.String)">create(AliasManager, String)</a></span> - Static method in class com.chillycheesy.modulo.commands.builder.<a href="com/chillycheesy/modulo/commands/builder/CommandFlowBuilder.html" title="class in com.chillycheesy.modulo.commands.builder">CommandFlowBuilder</a></dt>
 <dd>
 <div class="block">Create a flow with the given content.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html#create(com.chillycheesy.modulo.pages.builder.PageBuilderMetaInfo,com.chillycheesy.modulo.pages.builder.HttpRequest)">create(PageBuilderMetaInfo, HttpRequest)</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html" title="class in com.chillycheesy.modulo.pages.builder">DefaultPageVisitor</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageVisitor.html#create(com.chillycheesy.modulo.pages.builder.PageBuilderMetaInfo,com.chillycheesy.modulo.pages.builder.HttpRequest)">create(PageBuilderMetaInfo, HttpRequest)</a></span> - Method in interface com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageVisitor.html" title="interface in com.chillycheesy.modulo.pages.builder">PageVisitor</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html#create(com.chillycheesy.modulo.pages.builder.PageBuilderMetaInfo,com.chillycheesy.modulo.pages.builder.PageType)">create(PageBuilderMetaInfo, PageType)</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html" title="class in com.chillycheesy.modulo.pages.builder">DefaultPageVisitor</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageVisitor.html#create(com.chillycheesy.modulo.pages.builder.PageBuilderMetaInfo,com.chillycheesy.modulo.pages.builder.PageType)">create(PageBuilderMetaInfo, PageType)</a></span> - Method in interface com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageVisitor.html" title="interface in com.chillycheesy.modulo.pages.builder">PageVisitor</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/builder/CommandFlowBuilder.html#create(java.lang.String)">create(String)</a></span> - Static method in class com.chillycheesy.modulo.commands.builder.<a href="com/chillycheesy/modulo/commands/builder/CommandFlowBuilder.html" title="class in com.chillycheesy.modulo.commands.builder">CommandFlowBuilder</a></dt>
 <dd>
 <div class="block">Create a flow with the given content.</div>
@@ -427,10 +392,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="com/chillycheesy/modulo/commands/operator/natif/CreateAliasOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">CreateAliasOperator</span></a> - Class in <a href="com/chillycheesy/modulo/commands/operator/natif/package-summary.html">com.chillycheesy.modulo.commands.operator.natif</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/natif/CreateAliasOperator.html#%3Cinit%3E()">CreateAliasOperator()</a></span> - Constructor for class com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/CreateAliasOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif">CreateAliasOperator</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html#createArgument(com.chillycheesy.modulo.pages.builder.PageBuilderMetaInfo,com.chillycheesy.modulo.pages.builder.Path)">createArgument(PageBuilderMetaInfo, Path)</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html" title="class in com.chillycheesy.modulo.pages.builder">DefaultPageVisitor</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageVisitor.html#createArgument(com.chillycheesy.modulo.pages.builder.PageBuilderMetaInfo,com.chillycheesy.modulo.pages.builder.Path)">createArgument(PageBuilderMetaInfo, Path)</a></span> - Method in interface com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageVisitor.html" title="interface in com.chillycheesy.modulo.pages.builder">PageVisitor</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/AliasManager.html#createChild()">createChild()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/AliasManager.html" title="class in com.chillycheesy.modulo.commands">AliasManager</a></dt>
 <dd>
@@ -462,16 +423,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">The default name of the main page, by defaul it's set to "index"</div>
 </dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html" title="class in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">DefaultPageVisitor</span></a> - Class in <a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html#%3Cinit%3E()">DefaultPageVisitor()</a></span> - Constructor for class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html" title="class in com.chillycheesy.modulo.pages.builder">DefaultPageVisitor</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/HttpRequestType.html#DELETE">DELETE</a></span> - com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/DeletePage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">DeletePage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/DeletePage.html#%3Cinit%3E(java.lang.String)">DeletePage(String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/DeletePage.html" title="class in com.chillycheesy.modulo.pages.natif">DeletePage</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/event/DeleteRequestEvent.html" title="class in com.chillycheesy.modulo.event"><span class="typeNameLink">DeleteRequestEvent</span></a> - Class in <a href="com/chillycheesy/modulo/event/package-summary.html">com.chillycheesy.modulo.event</a></dt>
 <dd>
 <div class="block">This event was wen a http DELETE request was emit.</div>
@@ -543,8 +494,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/Module.html#equals(java.lang.Object)">equals(Object)</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/ModuleConfig.html#equals(java.lang.Object)">equals(Object)</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/ModuleConfig.html" title="class in com.chillycheesy.modulo.modules">ModuleConfig</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#equals(java.lang.Object)">equals(Object)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/commands/operator/natif/EqualsOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">EqualsOperator</span></a> - Class in <a href="com/chillycheesy/modulo/commands/operator/natif/package-summary.html">com.chillycheesy.modulo.commands.operator.natif</a></dt>
 <dd>
@@ -660,8 +609,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">G</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/HttpRequestType.html#GET">GET</a></span> - com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/Command.html#getAlias()">getAlias()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/Command.html" title="class in com.chillycheesy.modulo.commands">Command</a></dt>
 <dd>
 <div class="block">Get the alias list of the command.</div>
@@ -676,10 +623,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Manager.html#getAllItems()">getAllItems()</a></span> - Method in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html#getAnnotationClass()">getAnnotationClass()</a></span> - Method in enum com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageAnnotations</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html#getAnnotationClass()">getAnnotationClass()</a></span> - Method in enum com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageParameterAnnotations</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SignalEmitEvent.html#getArgs()">getArgs()</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SignalEmitEvent.html" title="class in com.chillycheesy.modulo.event">SignalEmitEvent</a></dt>
 <dd>
 <div class="block">Getter for the arguments.</div>
@@ -689,6 +632,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/ModuleConfig.html#getAuthors()">getAuthors()</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/ModuleConfig.html" title="class in com.chillycheesy.modulo.modules">ModuleConfig</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SendPageEvent.html#getBody()">getBody()</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event">SendPageEvent</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/RequestParameters.html#getBody()">getBody()</a></span> - Method in class com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/RequestParameters.html" title="class in com.chillycheesy.modulo.pages.response">RequestParameters</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/LogEvent.html#getCancelableAction()">getCancelableAction()</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/LogEvent.html" title="class in com.chillycheesy.modulo.event">LogEvent</a></dt>
 <dd>&nbsp;</dd>
@@ -752,20 +697,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/Operator.html#getFinder()">getFinder()</a></span> - Method in class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operator.html" title="class in com.chillycheesy.modulo.commands.operator">Operator</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getFullPath()">getFullPath()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Manager.html#getItemByModule(com.chillycheesy.modulo.modules.Module)">getItemByModule(Module)</a></span> - Method in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/Module.html#getJarFile()">getJarFile()</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html#getKey()">getKey()</a></span> - Method in class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html" title="class in com.chillycheesy.modulo.pages.natif">PathVariablePage</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/Command.html#getLabel()">getLabel()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/Command.html" title="class in com.chillycheesy.modulo.commands">Command</a></dt>
 <dd>
 <div class="block">Get the label of the command.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getLastChild()">getLastChild()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/Operation.html#getLeft()">getLeft()</a></span> - Method in class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operation.html" title="class in com.chillycheesy.modulo.commands.operator">Operation</a></dt>
 <dd>
 <div class="block">Get the command flow in the left of the operation.</div>
@@ -796,6 +735,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Getter for the message to load.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getMethod()">getMethod()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/ModuleStatusEvent.html#getModule()">getModule()</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/ModuleStatusEvent.html" title="class in com.chillycheesy.modulo.event">ModuleStatusEvent</a></dt>
 <dd>
 <div class="block">Getter for the module.</div>
@@ -812,8 +753,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Get a module using the name of the module</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/PageManager.html#getModuleByItem(com.chillycheesy.modulo.pages.Page)">getModuleByItem(Page)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageManager.html" title="class in com.chillycheesy.modulo.pages">PageManager</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Manager.html#getModuleByItem(T)">getModuleByItem(T)</a></span> - Method in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/ModuleManager.html#getModuleCount()">getModuleCount()</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/ModuleManager.html" title="class in com.chillycheesy.modulo.modules">ModuleManager</a></dt>
@@ -832,7 +771,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/ModuleConfig.html#getName()">getName()</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/ModuleConfig.html" title="class in com.chillycheesy.modulo.modules">ModuleConfig</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#getObject()">getObject()</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getName()">getName()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/CommandContainer.html#getOperatorManager()">getOperatorManager()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandContainer.html" title="class in com.chillycheesy.modulo.commands">CommandContainer</a></dt>
 <dd>
@@ -846,25 +785,21 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Getter for Signal logic section.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#getPage()">getPage()</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/GetPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">GetPage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/GetPage.html#%3Cinit%3E(java.lang.String)">GetPage(String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/GetPage.html" title="class in com.chillycheesy.modulo.pages.natif">GetPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/PageManager.html#getPageByPath(java.lang.String)">getPageByPath(String)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageManager.html" title="class in com.chillycheesy.modulo.pages">PageManager</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/PageContainer.html#getPageManager()">getPageManager()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageContainer.html" title="class in com.chillycheesy.modulo.pages">PageContainer</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/RequestParameters.html#getParameter(java.lang.String)">getParameter(String)</a></span> - Method in class com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/RequestParameters.html" title="class in com.chillycheesy.modulo.pages.response">RequestParameters</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/AliasManager.html#getParent()">getParent()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/AliasManager.html" title="class in com.chillycheesy.modulo.commands">AliasManager</a></dt>
 <dd>
 <div class="block">Get the parent of this AliasManager.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getParent()">getParent()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getPath()">getPath()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getPathComparator()">getPathComparator()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/Operator.html#getPriority()">getPriority()</a></span> - Method in class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operator.html" title="class in com.chillycheesy.modulo.commands.operator">Operator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getPriority()">getPriority()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/CommandManager.html#getProcessor()">getProcessor()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandManager.html" title="class in com.chillycheesy.modulo.commands">CommandManager</a></dt>
 <dd>&nbsp;</dd>
@@ -878,7 +813,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SendPageEvent.html#getRequest()">getRequest()</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event">SendPageEvent</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#getRequest()">getRequest()</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/RequestParameters.html#getRequest()">getRequest()</a></span> - Method in class com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/RequestParameters.html" title="class in com.chillycheesy.modulo.pages.response">RequestParameters</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/event/GetRequestEvent.html" title="class in com.chillycheesy.modulo.event"><span class="typeNameLink">GetRequestEvent</span></a> - Class in <a href="com/chillycheesy/modulo/event/package-summary.html">com.chillycheesy.modulo.event</a></dt>
 <dd>
@@ -888,15 +823,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Creates a new GetRequestEvent.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getRequestType()">getRequestType()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/RequestEvent.html#getResponse()">getResponse()</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/RequestEvent.html" title="class in com.chillycheesy.modulo.event">RequestEvent</a></dt>
 <dd>
 <div class="block">Gets the response that was made.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SendPageEvent.html#getResponse()">getResponse()</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event">SendPageEvent</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#getResponse()">getResponse()</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#getResponseHandler()">getResponseHandler()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/Operation.html#getRight()">getRight()</a></span> - Method in class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operation.html" title="class in com.chillycheesy.modulo.commands.operator">Operation</a></dt>
 <dd>
@@ -924,7 +857,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Get a list of started <a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules"><code>Module</code></a>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#getTypeVariable()">getTypeVariable()</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/TemplatePage.html#getTemplateVariable(java.lang.String)">getTemplateVariable(String)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/TemplatePage.html" title="class in com.chillycheesy.modulo.pages">TemplatePage</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/Command.html#getUsage()">getUsage()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/Command.html" title="class in com.chillycheesy.modulo.commands">Command</a></dt>
 <dd>
@@ -937,8 +870,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/Module.html#getVersion()">getVersion()</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/ModuleConfig.html#getVersion()">getVersion()</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/ModuleConfig.html" title="class in com.chillycheesy.modulo.modules">ModuleConfig</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#getVisitor()">getVisitor()</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/commands/operator/natif/GreaterOrEqualsThanOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">GreaterOrEqualsThanOperator</span></a> - Class in <a href="com/chillycheesy/modulo/commands/operator/natif/package-summary.html">com.chillycheesy.modulo.commands.operator.natif</a></dt>
 <dd>
@@ -958,10 +889,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">H</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#hasChild(com.chillycheesy.modulo.pages.Page)">hasChild(Page)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#hashCode()">hashCode()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SignalEmitEvent.html#haveReceptors()">haveReceptors()</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SignalEmitEvent.html" title="class in com.chillycheesy.modulo.event">SignalEmitEvent</a></dt>
 <dd>
 <div class="block">Check if the signal was receive.</div>
@@ -978,24 +905,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/exception/HTModuleNotFoundException.html#%3Cinit%3E(java.lang.String)">HTModuleNotFoundException(String)</a></span> - Constructor for exception com.chillycheesy.modulo.utils.exception.<a href="com/chillycheesy/modulo/utils/exception/HTModuleNotFoundException.html" title="class in com.chillycheesy.modulo.utils.exception">HTModuleNotFoundException</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html#HTTP_REQUEST">HTTP_REQUEST</a></span> - com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageAnnotations</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/HttpRequest.html" title="annotation in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">HttpRequest</span></a> - Annotation Type in <a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages"><span class="typeNameLink">HttpRequestType</span></a> - Enum in <a href="com/chillycheesy/modulo/pages/package-summary.html">com.chillycheesy.modulo.pages</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <a id="I:I">
 <!--   -->
 </a>
 <h2 class="title">I</h2>
 <dl>
-<dt><a href="com/chillycheesy/modulo/pages/subpages/IFramePage.html" title="class in com.chillycheesy.modulo.pages.subpages"><span class="typeNameLink">IFramePage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/subpages/package-summary.html">com.chillycheesy.modulo.pages.subpages</a></dt>
-<dd>
-<div class="block">This page display an existing website into an HTML iframe</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/subpages/IFramePage.html#%3Cinit%3E()">IFramePage()</a></span> - Constructor for class com.chillycheesy.modulo.pages.subpages.<a href="com/chillycheesy/modulo/pages/subpages/IFramePage.html" title="class in com.chillycheesy.modulo.pages.subpages">IFramePage</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/events/Event.html#IMPORTANT">IMPORTANT</a></span> - Static variable in class com.chillycheesy.modulo.events.<a href="com/chillycheesy/modulo/events/Event.html" title="class in com.chillycheesy.modulo.events">Event</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Log.html#info(com.chillycheesy.modulo.modules.Module,java.lang.Object)">info(Module, Object)</a></span> - Method in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Log.html" title="class in com.chillycheesy.modulo.utils">Log</a></dt>
@@ -1064,6 +979,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Check if the event was cancel.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#isMatch(javax.servlet.http.HttpServletRequest)">isMatch(HttpServletRequest)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/CommandFlow.html#isSuccess()">isSuccess()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandFlow.html" title="class in com.chillycheesy.modulo.commands">CommandFlow</a></dt>
 <dd>
 <div class="block">Get the success status of the flow.</div>
@@ -1183,6 +1100,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils"><span class="typeNameLink">Manager</span></a>&lt;<a href="com/chillycheesy/modulo/utils/Manager.html" title="type parameter in Manager">T</a>&gt; - Class in <a href="com/chillycheesy/modulo/utils/package-summary.html">com.chillycheesy.modulo.utils</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Manager.html#%3Cinit%3E()">Manager()</a></span> - Constructor for class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#method">method</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/commands/operator/natif/MinusOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">MinusOperator</span></a> - Class in <a href="com/chillycheesy/modulo/commands/operator/natif/package-summary.html">com.chillycheesy.modulo.commands.operator.natif</a></dt>
 <dd>
@@ -1308,6 +1227,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </a>
 <h2 class="title">N</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#name">name</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/events/Event.html#NEUTRAL">NEUTRAL</a></span> - Static variable in class com.chillycheesy.modulo.events.<a href="com/chillycheesy/modulo/events/Event.html" title="class in com.chillycheesy.modulo.events">Event</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Priority.html#NEUTRAL">NEUTRAL</a></span> - Static variable in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Priority.html" title="class in com.chillycheesy.modulo.utils">Priority</a></dt>
@@ -1315,10 +1236,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><a href="com/chillycheesy/modulo/utils/exception/No404SubPageException.html" title="class in com.chillycheesy.modulo.utils.exception"><span class="typeNameLink">No404SubPageException</span></a> - Exception in <a href="com/chillycheesy/modulo/utils/exception/package-summary.html">com.chillycheesy.modulo.utils.exception</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/exception/No404SubPageException.html#%3Cinit%3E()">No404SubPageException()</a></span> - Constructor for exception com.chillycheesy.modulo.utils.exception.<a href="com/chillycheesy/modulo/utils/exception/No404SubPageException.html" title="class in com.chillycheesy.modulo.utils.exception">No404SubPageException</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/NotFoundPath.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">NotFoundPath</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/NotFoundPath.html#%3Cinit%3E()">NotFoundPath()</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/NotFoundPath.html" title="class in com.chillycheesy.modulo.pages.natif">NotFoundPath</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/commands/operator/natif/NotOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">NotOperator</span></a> - Class in <a href="com/chillycheesy/modulo/commands/operator/natif/package-summary.html">com.chillycheesy.modulo.commands.operator.natif</a></dt>
 <dd>
@@ -1335,16 +1252,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Utils class to help the creation of operators with numbers.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/NumberOperator.html#%3Cinit%3E()">NumberOperator()</a></span> - Constructor for class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/NumberOperator.html" title="class in com.chillycheesy.modulo.commands.operator">NumberOperator</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">NumberRegexPage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html#%3Cinit%3E()">NumberRegexPage()</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">NumberRegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType)">NumberRegexPage(HttpRequestType)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">NumberRegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,com.chillycheesy.modulo.pages.PageResponse)">NumberRegexPage(HttpRequestType, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">NumberRegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">NumberRegexPage(HttpRequestType, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">NumberRegexPage</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a id="I:O">
@@ -1523,36 +1430,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SendPageEvent.html#page">page</a></span> - Variable in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event">SendPageEvent</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages"><span class="typeNameLink">Page</span></a> - Class in <a href="com/chillycheesy/modulo/pages/package-summary.html">com.chillycheesy.modulo.pages</a></dt>
-<dd>
-<div class="block">
- Interface of the pages of <i>HomeTracker</i>
- All the pages must implement this interface.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">Page(HttpRequestType, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">Page(HttpRequestType, String, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler)">Page(String, String, ResponseHandler)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,java.lang.String)">Page(HttpRequestType, String, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler)">Page(String, String, String, ResponseHandler)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(com.chillycheesy.modulo.pages.Page)">Page(Page)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler,java.util.List)">Page(String, String, String, ResponseHandler, List&lt;RequestMatcher&gt;)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(java.lang.String)">Page(String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">Page(String, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(java.lang.String,java.lang.String)">Page(String, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html#PAGE_TYPE">PAGE_TYPE</a></span> - com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageAnnotations</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageAnnotations</span></a> - Enum in <a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/PageBuilder.html" title="class in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageBuilder</span></a> - Class in <a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageBuilderMetaInfo</span></a> - Class in <a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#%3Cinit%3E(com.chillycheesy.modulo.pages.builder.PageVisitor,com.chillycheesy.modulo.pages.Page)">PageBuilderMetaInfo(PageVisitor, Page)</a></span> - Constructor for class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#%3Cinit%3E(com.chillycheesy.modulo.pages.builder.PageVisitor,com.chillycheesy.modulo.pages.Page,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.lang.Class,java.lang.Object)">PageBuilderMetaInfo(PageVisitor, Page, HttpServletRequest, HttpServletResponse, Class&lt;?&gt;, Object)</a></span> - Constructor for class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler,java.util.List,int)">Page(String, String, String, ResponseHandler, List&lt;RequestMatcher&gt;, int)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/pages/PageContainer.html" title="class in com.chillycheesy.modulo.pages"><span class="typeNameLink">PageContainer</span></a> - Class in <a href="com/chillycheesy/modulo/pages/package-summary.html">com.chillycheesy.modulo.pages</a></dt>
 <dd>&nbsp;</dd>
@@ -1576,41 +1461,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/exception/PageNotFoundException.html#%3Cinit%3E(com.chillycheesy.modulo.modules.Module,java.lang.String)">PageNotFoundException(Module, String)</a></span> - Constructor for exception com.chillycheesy.modulo.utils.exception.<a href="com/chillycheesy/modulo/utils/exception/PageNotFoundException.html" title="class in com.chillycheesy.modulo.utils.exception">PageNotFoundException</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageParameterAnnotations</span></a> - Enum in <a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a></dt>
+<dt><a href="com/chillycheesy/modulo/pages/response/ParameterResponse.html" title="class in com.chillycheesy.modulo.pages.response"><span class="typeNameLink">ParameterResponse</span></a> - Class in <a href="com/chillycheesy/modulo/pages/response/package-summary.html">com.chillycheesy.modulo.pages.response</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/PageResponse.html" title="interface in com.chillycheesy.modulo.pages"><span class="typeNameLink">PageResponse</span></a> - Interface in <a href="com/chillycheesy/modulo/pages/package-summary.html">com.chillycheesy.modulo.pages</a></dt>
-<dd>
-<div class="block">You can use this class to create a response to a request on your <a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages"><code>Page</code></a>.</div>
-</dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/PageType.html" title="annotation in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageType</span></a> - Annotation Type in <a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/PageVisitor.html" title="interface in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageVisitor</span></a> - Interface in <a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#parent">parent</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/ParameterResponse.html#%3Cinit%3E(java.util.function.Function)">ParameterResponse(Function&lt;RequestParameters, String&gt;)</a></span> - Constructor for class com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/ParameterResponse.html" title="class in com.chillycheesy.modulo.pages.response">ParameterResponse</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/commands/operator/natif/ParenthesesOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">ParenthesesOperator</span></a> - Class in <a href="com/chillycheesy/modulo/commands/operator/natif/package-summary.html">com.chillycheesy.modulo.commands.operator.natif</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/natif/ParenthesesOperator.html#%3Cinit%3E()">ParenthesesOperator()</a></span> - Constructor for class com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/ParenthesesOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif">ParenthesesOperator</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#path">path</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>
-<div class="block">The path to access this page.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/HttpRequest.html#path()">path()</a></span> - Method in annotation type com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/HttpRequest.html" title="annotation in com.chillycheesy.modulo.pages.builder">HttpRequest</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/builder/Path.html" title="annotation in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">Path</span></a> - Annotation Type in <a href="com/chillycheesy/modulo/pages/builder/package-summary.html">com.chillycheesy.modulo.pages.builder</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html#PATH">PATH</a></span> - com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageParameterAnnotations</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">PathVariablePage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html#%3Cinit%3E()">PathVariablePage()</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html" title="class in com.chillycheesy.modulo.pages.natif">PathVariablePage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType)">PathVariablePage(HttpRequestType)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html" title="class in com.chillycheesy.modulo.pages.natif">PathVariablePage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,com.chillycheesy.modulo.pages.PageResponse)">PathVariablePage(HttpRequestType, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html" title="class in com.chillycheesy.modulo.pages.natif">PathVariablePage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">PathVariablePage(HttpRequestType, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html" title="class in com.chillycheesy.modulo.pages.natif">PathVariablePage</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/commands/operator/natif/PlusOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">PlusOperator</span></a> - Class in <a href="com/chillycheesy/modulo/commands/operator/natif/package-summary.html">com.chillycheesy.modulo.commands.operator.natif</a></dt>
 <dd>
@@ -1623,12 +1482,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
  </div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/natif/PlusOperator.html#%3Cinit%3E()">PlusOperator()</a></span> - Constructor for class com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/PlusOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif">PlusOperator</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/HttpRequestType.html#POST">POST</a></span> - com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/PostPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">PostPage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/PostPage.html#%3Cinit%3E(java.lang.String)">PostPage(String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PostPage.html" title="class in com.chillycheesy.modulo.pages.natif">PostPage</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/event/PostRequestEvent.html" title="class in com.chillycheesy.modulo.event"><span class="typeNameLink">PostRequestEvent</span></a> - Class in <a href="com/chillycheesy/modulo/event/package-summary.html">com.chillycheesy.modulo.event</a></dt>
 <dd>
@@ -1644,17 +1497,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/natif/PowerOperator.html#%3Cinit%3E()">PowerOperator()</a></span> - Constructor for class com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/PowerOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif">PowerOperator</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#priority">priority</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/signals/SignalHandler.html#priority()">priority()</a></span> - Method in annotation type com.chillycheesy.modulo.signals.<a href="com/chillycheesy/modulo/signals/SignalHandler.html" title="annotation in com.chillycheesy.modulo.signals">SignalHandler</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/utils/Priority.html" title="class in com.chillycheesy.modulo.utils"><span class="typeNameLink">Priority</span></a> - Class in <a href="com/chillycheesy/modulo/utils/package-summary.html">com.chillycheesy.modulo.utils</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Priority.html#%3Cinit%3E()">Priority()</a></span> - Constructor for class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Priority.html" title="class in com.chillycheesy.modulo.utils">Priority</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/HttpRequestType.html#PUT">PUT</a></span> - com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/PutPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">PutPage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/PutPage.html#%3Cinit%3E(java.lang.String)">PutPage(String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PutPage.html" title="class in com.chillycheesy.modulo.pages.natif">PutPage</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/event/PutRequestEvent.html" title="class in com.chillycheesy.modulo.event"><span class="typeNameLink">PutRequestEvent</span></a> - Class in <a href="com/chillycheesy/modulo/event/package-summary.html">com.chillycheesy.modulo.event</a></dt>
 <dd>
@@ -1680,34 +1529,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Reads the yml file in the root of the jar passed in parameter</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/RegexPage.html#redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">redirect(HttpRequestType, String)</a></span> - Method in class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">RegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">redirect(HttpRequestType, String)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/PageManager.html#redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">redirect(HttpRequestType, String)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageManager.html" title="class in com.chillycheesy.modulo.pages">PageManager</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/RoutingRedirection.html#redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">redirect(HttpRequestType, String)</a></span> - Method in interface com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages">RoutingRedirection</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/subpages/RedirectPage.html" title="class in com.chillycheesy.modulo.pages.subpages"><span class="typeNameLink">RedirectPage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/subpages/package-summary.html">com.chillycheesy.modulo.pages.subpages</a></dt>
-<dd>
-<div class="block">This page redirect your app to an existing website.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/subpages/RedirectPage.html#%3Cinit%3E()">RedirectPage()</a></span> - Constructor for class com.chillycheesy.modulo.pages.subpages.<a href="com/chillycheesy/modulo/pages/subpages/RedirectPage.html" title="class in com.chillycheesy.modulo.pages.subpages">RedirectPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">RegexPage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/RegexPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">RegexPage(HttpRequestType, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">RegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/RegexPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">RegexPage(HttpRequestType, String, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">RegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/RegexPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,java.lang.String)">RegexPage(HttpRequestType, String, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">RegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/RegexPage.html#%3Cinit%3E(java.lang.String)">RegexPage(String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">RegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/RegexPage.html#%3Cinit%3E(java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">RegexPage(String, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">RegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/RegexPage.html#%3Cinit%3E(java.lang.String,java.lang.String)">RegexPage(String, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">RegexPage</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/AliasManager.html#registerAlias(java.lang.String,java.lang.String)">registerAlias(String, String)</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/AliasManager.html" title="class in com.chillycheesy.modulo.commands">AliasManager</a></dt>
 <dd>
 <div class="block">Register an alias.</div>
@@ -1722,6 +1543,10 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Register a signal listener which contains method decorated with <a href="com/chillycheesy/modulo/signals/SignalHandler.html" title="annotation in com.chillycheesy.modulo.signals"><code>SignalHandler</code></a> decorator.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/PageManager.html#registerItem(com.chillycheesy.modulo.modules.Module,com.chillycheesy.modulo.pages.Page)">registerItem(Module, Page)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageManager.html" title="class in com.chillycheesy.modulo.pages">PageManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/PageManager.html#registerItem(com.chillycheesy.modulo.modules.Module,com.chillycheesy.modulo.pages.Page...)">registerItem(Module, Page...)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageManager.html" title="class in com.chillycheesy.modulo.pages">PageManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Manager.html#registerItem(com.chillycheesy.modulo.modules.Module,T)">registerItem(Module, T)</a></span> - Method in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Manager.html#registerItem(com.chillycheesy.modulo.modules.Module,T...)">registerItem(Module, T...)</a></span> - Method in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></dt>
@@ -1744,13 +1569,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Manager.html#removeAllItems(com.chillycheesy.modulo.modules.Module)">removeAllItems(Module)</a></span> - Method in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#removeAllSubPage(java.util.Collection)">removeAllSubPage(Collection&lt;?&gt;)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Manager.html#removeItem(com.chillycheesy.modulo.modules.Module,T)">removeItem(Module, T)</a></span> - Method in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/Manager.html#removeItem(com.chillycheesy.modulo.modules.Module,T...)">removeItem(Module, T...)</a></span> - Method in class com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#removeSubPage(com.chillycheesy.modulo.pages.Page)">removeSubPage(Page)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/RequestEvent.html#request">request</a></span> - Variable in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/RequestEvent.html" title="class in com.chillycheesy.modulo.event">RequestEvent</a></dt>
 <dd>
@@ -1766,10 +1587,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Creates a new RequestEvent.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#requestType">requestType</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#requestMatcher">requestMatcher</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/chillycheesy/modulo/pages/comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator"><span class="typeNameLink">RequestMatcher</span></a>&lt;<a href="com/chillycheesy/modulo/pages/comparator/RequestMatcher.html" title="type parameter in RequestMatcher">T</a> extends <a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt; - Interface in <a href="com/chillycheesy/modulo/pages/comparator/package-summary.html">com.chillycheesy.modulo.pages.comparator</a></dt>
 <dd>
-<div class="block">The http request type (GET, PUT, POST, DELETE)</div>
+<div class="block">Check if the path of the request is the same as the path of the page.</div>
 </dd>
+<dt><a href="com/chillycheesy/modulo/pages/response/RequestParameters.html" title="class in com.chillycheesy.modulo.pages.response"><span class="typeNameLink">RequestParameters</span></a> - Class in <a href="com/chillycheesy/modulo/pages/response/package-summary.html">com.chillycheesy.modulo.pages.response</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/RequestParameters.html#%3Cinit%3E(javax.servlet.http.HttpServletRequest,java.lang.String)">RequestParameters(HttpServletRequest, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/RequestParameters.html" title="class in com.chillycheesy.modulo.pages.response">RequestParameters</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/utils/exception/ResourceNotExistingException.html" title="class in com.chillycheesy.modulo.utils.exception"><span class="typeNameLink">ResourceNotExistingException</span></a> - Exception in <a href="com/chillycheesy/modulo/utils/exception/package-summary.html">com.chillycheesy.modulo.utils.exception</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/exception/ResourceNotExistingException.html#%3Cinit%3E(java.lang.String,java.lang.String)">ResourceNotExistingException(String, String)</a></span> - Constructor for exception com.chillycheesy.modulo.utils.exception.<a href="com/chillycheesy/modulo/utils/exception/ResourceNotExistingException.html" title="class in com.chillycheesy.modulo.utils.exception">ResourceNotExistingException</a></dt>
@@ -1778,27 +1605,27 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/utils/exception/ResourceNotFoundException.html#%3Cinit%3E(java.lang.String)">ResourceNotFoundException(String)</a></span> - Constructor for exception com.chillycheesy.modulo.utils.exception.<a href="com/chillycheesy/modulo/utils/exception/ResourceNotFoundException.html" title="class in com.chillycheesy.modulo.utils.exception">ResourceNotFoundException</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">ResourcePage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>
-<div class="block">The ResourcePage represents a page that is a resource of the application.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">ResourcePage(HttpRequestType, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif">ResourcePage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">ResourcePage(HttpRequestType, String, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif">ResourcePage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String,java.lang.String)">ResourcePage(HttpRequestType, String, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif">ResourcePage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html#%3Cinit%3E(java.lang.String)">ResourcePage(String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif">ResourcePage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html#%3Cinit%3E(java.lang.String,com.chillycheesy.modulo.pages.PageResponse)">ResourcePage(String, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif">ResourcePage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html#%3Cinit%3E(java.lang.String,java.lang.String)">ResourcePage(String, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif">ResourcePage</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/RequestEvent.html#response">response</a></span> - Variable in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/RequestEvent.html" title="class in com.chillycheesy.modulo.event">RequestEvent</a></dt>
 <dd>
 <div class="block">The response that was made.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SendPageEvent.html#response">response</a></span> - Variable in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event">SendPageEvent</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/ParameterResponse.html#response(com.chillycheesy.modulo.pages.Page,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">response(Page, HttpServletRequest, HttpServletResponse)</a></span> - Method in class com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/ParameterResponse.html" title="class in com.chillycheesy.modulo.pages.response">ParameterResponse</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/ResponseHandler.html#response(com.chillycheesy.modulo.pages.Page,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">response(Page, HttpServletRequest, HttpServletResponse)</a></span> - Method in interface com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/SimpleResponse.html#response(com.chillycheesy.modulo.pages.Page,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">response(Page, HttpServletRequest, HttpServletResponse)</a></span> - Method in class com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/SimpleResponse.html" title="class in com.chillycheesy.modulo.pages.response">SimpleResponse</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#response(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">response(HttpServletRequest, HttpServletResponse)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/PageManager.html#response(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">response(HttpServletRequest, HttpServletResponse)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageManager.html" title="class in com.chillycheesy.modulo.pages">PageManager</a></dt>
+<dd>
+<div class="block">Call all registered <a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages"><code>Page</code></a> concern by the request.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#responseHandler">responseHandler</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/chillycheesy/modulo/pages/response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response"><span class="typeNameLink">ResponseHandler</span></a> - Interface in <a href="com/chillycheesy/modulo/pages/response/package-summary.html">com.chillycheesy.modulo.pages.response</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/commands/natif/ReturnCommand.html" title="class in com.chillycheesy.modulo.commands.natif"><span class="typeNameLink">ReturnCommand</span></a> - Class in <a href="com/chillycheesy/modulo/commands/natif/package-summary.html">com.chillycheesy.modulo.commands.natif</a></dt>
 <dd>
@@ -1806,14 +1633,14 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/natif/ReturnCommand.html#%3Cinit%3E()">ReturnCommand()</a></span> - Constructor for class com.chillycheesy.modulo.commands.natif.<a href="com/chillycheesy/modulo/commands/natif/ReturnCommand.html" title="class in com.chillycheesy.modulo.commands.natif">ReturnCommand</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages"><span class="typeNameLink">RoutingRedirection</span></a> - Interface in <a href="com/chillycheesy/modulo/pages/package-summary.html">com.chillycheesy.modulo.pages</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <a id="I:S">
 <!--   -->
 </a>
 <h2 class="title">S</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/TemplatePage.html#saveTemplateVariable(java.lang.String,java.lang.String)">saveTemplateVariable(String, String)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/TemplatePage.html" title="class in com.chillycheesy.modulo.pages">TemplatePage</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event"><span class="typeNameLink">SendPageEvent</span></a> - Class in <a href="com/chillycheesy/modulo/event/package-summary.html">com.chillycheesy.modulo.event</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SendPageEvent.html#%3Cinit%3E(com.chillycheesy.modulo.pages.Page,javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse,java.lang.String)">SendPageEvent(Page, HttpServletRequest, HttpServletResponse, String)</a></span> - Constructor for class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event">SendPageEvent</a></dt>
@@ -1870,8 +1697,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/Module.html#setConfig(com.chillycheesy.modulo.modules.ModuleConfig)">setConfig(ModuleConfig)</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#setContent(com.chillycheesy.modulo.pages.PageResponse)">setContent(PageResponse)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/CommandFlow.html#setContent(java.lang.String)">setContent(String)</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandFlow.html" title="class in com.chillycheesy.modulo.commands">CommandFlow</a></dt>
 <dd>
 <div class="block">Set the content of the flow.</div>
@@ -1891,8 +1716,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/Operator.html#setFinder(com.chillycheesy.modulo.commands.operator.OperatorFinder)">setFinder(OperatorFinder)</a></span> - Method in class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operator.html" title="class in com.chillycheesy.modulo.commands.operator">Operator</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/Module.html#setJarFile(java.util.jar.JarFile)">setJarFile(JarFile)</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html#setKey(java.lang.String)">setKey(String)</a></span> - Method in class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html" title="class in com.chillycheesy.modulo.pages.natif">PathVariablePage</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/Command.html#setLabel(java.lang.String)">setLabel(String)</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/Command.html" title="class in com.chillycheesy.modulo.commands">Command</a></dt>
 <dd>
@@ -1916,6 +1739,8 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Setter for the message to load.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#setMethod(java.lang.String)">setMethod(String)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/ModuleStatusEvent.html#setModule(com.chillycheesy.modulo.modules.Module)">setModule(Module)</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/ModuleStatusEvent.html" title="class in com.chillycheesy.modulo.event">ModuleStatusEvent</a></dt>
 <dd>
 <div class="block">Getter for the module.</div>
@@ -1924,17 +1749,21 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/ModuleConfig.html#setName(java.lang.String)">setName(String)</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/ModuleConfig.html" title="class in com.chillycheesy.modulo.modules">ModuleConfig</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#setObject(java.lang.Object)">setObject(Object)</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#setName(java.lang.String)">setName(String)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/CommandProcessor.html#setOperatorManager(com.chillycheesy.modulo.commands.operator.OperatorManager)">setOperatorManager(OperatorManager)</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandProcessor.html" title="class in com.chillycheesy.modulo.commands">CommandProcessor</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SendPageEvent.html#setPage(com.chillycheesy.modulo.pages.Page)">setPage(Page)</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event">SendPageEvent</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#setPage(com.chillycheesy.modulo.pages.Page)">setPage(Page)</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#setPageResponse(com.chillycheesy.modulo.pages.response.ResponseHandler)">setPageResponse(ResponseHandler)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#setPath(java.lang.String)">setPath(String)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#setPathComparator(java.util.List)">setPathComparator(List&lt;RequestMatcher&gt;)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/Operator.html#setPriority(int)">setPriority(int)</a></span> - Method in class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operator.html" title="class in com.chillycheesy.modulo.commands.operator">Operator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#setPriority(int)">setPriority(int)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/CommandManager.html#setProcessor(com.chillycheesy.modulo.commands.CommandProcessor)">setProcessor(CommandProcessor)</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandManager.html" title="class in com.chillycheesy.modulo.commands">CommandManager</a></dt>
 <dd>&nbsp;</dd>
@@ -1948,17 +1777,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SendPageEvent.html#setRequest(javax.servlet.http.HttpServletRequest)">setRequest(HttpServletRequest)</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event">SendPageEvent</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#setRequest(javax.servlet.http.HttpServletRequest)">setRequest(HttpServletRequest)</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#setRequestType(com.chillycheesy.modulo.pages.HttpRequestType)">setRequestType(HttpRequestType)</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/RequestEvent.html#setResponse(javax.servlet.http.HttpServletResponse)">setResponse(HttpServletResponse)</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/RequestEvent.html" title="class in com.chillycheesy.modulo.event">RequestEvent</a></dt>
 <dd>
 <div class="block">Sets the response that was made.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/event/SendPageEvent.html#setResponse(javax.servlet.http.HttpServletResponse)">setResponse(HttpServletResponse)</a></span> - Method in class com.chillycheesy.modulo.event.<a href="com/chillycheesy/modulo/event/SendPageEvent.html" title="class in com.chillycheesy.modulo.event">SendPageEvent</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#setResponse(javax.servlet.http.HttpServletResponse)">setResponse(HttpServletResponse)</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/Operation.html#setRight(com.chillycheesy.modulo.commands.CommandFlow)">setRight(CommandFlow)</a></span> - Method in class com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operation.html" title="class in com.chillycheesy.modulo.commands.operator">Operation</a></dt>
 <dd>
@@ -1980,8 +1803,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Set the success status of the flow.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#setType(java.lang.Class)">setType(Class&lt;?&gt;)</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/Command.html#setUsage(java.lang.String)">setUsage(String)</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/Command.html" title="class in com.chillycheesy.modulo.commands">Command</a></dt>
 <dd>
 <div class="block">Set the example of how to use the command.</div>
@@ -1989,8 +1810,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/Module.html#setVersion(java.lang.String)">setVersion(String)</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/modules/ModuleConfig.html#setVersion(java.lang.String)">setVersion(String)</a></span> - Method in class com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/ModuleConfig.html" title="class in com.chillycheesy.modulo.modules">ModuleConfig</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html#setVisitor(com.chillycheesy.modulo.pages.builder.PageVisitor)">setVisitor(PageVisitor)</a></span> - Method in class com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder">PageBuilderMetaInfo</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/signals/SignalContainer.html" title="class in com.chillycheesy.modulo.signals"><span class="typeNameLink">SignalContainer</span></a> - Class in <a href="com/chillycheesy/modulo/signals/package-summary.html">com.chillycheesy.modulo.signals</a></dt>
 <dd>&nbsp;</dd>
@@ -2017,6 +1836,12 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Class that manage all the signal of HomeTracker.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/signals/SignalManager.html#%3Cinit%3E()">SignalManager()</a></span> - Constructor for class com.chillycheesy.modulo.signals.<a href="com/chillycheesy/modulo/signals/SignalManager.html" title="class in com.chillycheesy.modulo.signals">SignalManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/chillycheesy/modulo/pages/response/SimpleResponse.html" title="class in com.chillycheesy.modulo.pages.response"><span class="typeNameLink">SimpleResponse</span></a> - Class in <a href="com/chillycheesy/modulo/pages/response/package-summary.html">com.chillycheesy.modulo.pages.response</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/SimpleResponse.html#%3Cinit%3E(java.lang.String)">SimpleResponse(String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/SimpleResponse.html" title="class in com.chillycheesy.modulo.pages.response">SimpleResponse</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/response/SimpleResponse.html#%3Cinit%3E(java.util.function.Function)">SimpleResponse(Function&lt;String, String&gt;)</a></span> - Constructor for class com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/SimpleResponse.html" title="class in com.chillycheesy.modulo.pages.response">SimpleResponse</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="com/chillycheesy/modulo/commands/operator/natif/SkipOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">SkipOperator</span></a> - Class in <a href="com/chillycheesy/modulo/commands/operator/natif/package-summary.html">com.chillycheesy.modulo.commands.operator.natif</a></dt>
 <dd>
@@ -2065,35 +1890,33 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Method that stop all <a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules"><code>Module</code></a>.<br>
  It will invoke the <a href="com/chillycheesy/modulo/modules/ModuleManager.html#stopModule(com.chillycheesy.modulo.modules.Module)"><code>ModuleManager.stopModule(Module)</code></a> method.</div>
 </dd>
+<dt><a href="com/chillycheesy/modulo/pages/comparator/StrictMethodRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator"><span class="typeNameLink">StrictMethodRequestMatcher</span></a> - Class in <a href="com/chillycheesy/modulo/pages/comparator/package-summary.html">com.chillycheesy.modulo.pages.comparator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/comparator/StrictMethodRequestMatcher.html#%3Cinit%3E()">StrictMethodRequestMatcher()</a></span> - Constructor for class com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/StrictMethodRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator">StrictMethodRequestMatcher</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/chillycheesy/modulo/pages/comparator/StrictPathRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator"><span class="typeNameLink">StrictPathRequestMatcher</span></a> - Class in <a href="com/chillycheesy/modulo/pages/comparator/package-summary.html">com.chillycheesy.modulo.pages.comparator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/comparator/StrictPathRequestMatcher.html#%3Cinit%3E()">StrictPathRequestMatcher()</a></span> - Constructor for class com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/StrictPathRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator">StrictPathRequestMatcher</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/operator/natif/EqualsOperator.html#STRING_REGEX">STRING_REGEX</a></span> - Variable in class com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/EqualsOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif">EqualsOperator</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">StringRegexPage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/natif/package-summary.html">com.chillycheesy.modulo.pages.natif</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html#%3Cinit%3E()">StringRegexPage()</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">StringRegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType)">StringRegexPage(HttpRequestType)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">StringRegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,com.chillycheesy.modulo.pages.PageResponse)">StringRegexPage(HttpRequestType, PageResponse)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">StringRegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html#%3Cinit%3E(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">StringRegexPage(HttpRequestType, String)</a></span> - Constructor for class com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif">StringRegexPage</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#subpages">subpages</a></span> - Variable in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>
-<div class="block">The list of subpages that can either call a method, return a value.</div>
-</dd>
 </dl>
 <a id="I:T">
 <!--   -->
 </a>
 <h2 class="title">T</h2>
 <dl>
+<dt><a href="com/chillycheesy/modulo/pages/TemplatePage.html" title="class in com.chillycheesy.modulo.pages"><span class="typeNameLink">TemplatePage</span></a> - Class in <a href="com/chillycheesy/modulo/pages/package-summary.html">com.chillycheesy.modulo.pages</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/TemplatePage.html#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,com.chillycheesy.modulo.pages.response.ResponseHandler,int)">TemplatePage(String, String, String, ResponseHandler, int)</a></span> - Constructor for class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/TemplatePage.html" title="class in com.chillycheesy.modulo.pages">TemplatePage</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="com/chillycheesy/modulo/pages/comparator/TemplatePathRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator"><span class="typeNameLink">TemplatePathRequestMatcher</span></a> - Class in <a href="com/chillycheesy/modulo/pages/comparator/package-summary.html">com.chillycheesy.modulo.pages.comparator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/comparator/TemplatePathRequestMatcher.html#%3Cinit%3E()">TemplatePathRequestMatcher()</a></span> - Constructor for class com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/TemplatePathRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator">TemplatePathRequestMatcher</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/Command.html#toString()">toString()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/Command.html" title="class in com.chillycheesy.modulo.commands">Command</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/commands/CommandFlow.html#toString()">toString()</a></span> - Method in class com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandFlow.html" title="class in com.chillycheesy.modulo.commands">CommandFlow</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/Page.html#toString()">toString()</a></span> - Method in class com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/HttpRequest.html#type()">type()</a></span> - Method in annotation type com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/HttpRequest.html" title="annotation in com.chillycheesy.modulo.pages.builder">HttpRequest</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a id="I:U">
@@ -2139,42 +1962,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <dd>
 <div class="block">Handler priority.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageType.html#value()">value()</a></span> - Method in annotation type com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageType.html" title="annotation in com.chillycheesy.modulo.pages.builder">PageType</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/Path.html#value()">value()</a></span> - Method in annotation type com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/Path.html" title="annotation in com.chillycheesy.modulo.pages.builder">Path</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/signals/SignalHandler.html#value()">value()</a></span> - Method in annotation type com.chillycheesy.modulo.signals.<a href="com/chillycheesy/modulo/signals/SignalHandler.html" title="annotation in com.chillycheesy.modulo.signals">SignalHandler</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html#valueOf(java.lang.String)">valueOf(String)</a></span> - Static method in enum com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageAnnotations</a></dt>
-<dd>
-<div class="block">Returns the enum constant of this type with the specified name.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html#valueOf(java.lang.String)">valueOf(String)</a></span> - Static method in enum com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageParameterAnnotations</a></dt>
-<dd>
-<div class="block">Returns the enum constant of this type with the specified name.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/HttpRequestType.html#valueOf(java.lang.String)">valueOf(String)</a></span> - Static method in enum com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a></dt>
-<dd>
-<div class="block">Returns the enum constant of this type with the specified name.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html#values()">values()</a></span> - Static method in enum com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageAnnotations</a></dt>
-<dd>
-<div class="block">Returns an array containing the constants of this enum type, in
-the order they are declared.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html#values()">values()</a></span> - Static method in enum com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageParameterAnnotations</a></dt>
-<dd>
-<div class="block">Returns an array containing the constants of this enum type, in
-the order they are declared.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/HttpRequestType.html#values()">values()</a></span> - Static method in enum com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a></dt>
-<dd>
-<div class="block">Returns an array containing the constants of this enum type, in
-the order they are declared.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html#visit(com.chillycheesy.modulo.pages.builder.PageBuilderMetaInfo,java.lang.annotation.Annotation)">visit(PageBuilderMetaInfo, Annotation)</a></span> - Method in enum com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageAnnotations</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html#visit(com.chillycheesy.modulo.pages.builder.PageBuilderMetaInfo,java.lang.annotation.Annotation)">visit(PageBuilderMetaInfo, Annotation)</a></span> - Method in enum com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder">PageParameterAnnotations</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a id="I:W">

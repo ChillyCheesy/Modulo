@@ -6,15 +6,16 @@
 <title>Class Hierarchy (modulo-api BINKS-0.1.2 API)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="jquery/jquery-ui.css" title="Style">
+<link rel="stylesheet" type="text/css" href="jquery/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="jquery-ui.overrides.css" title="Style">
 <script type="text/javascript" src="script.js"></script>
 <script type="text/javascript" src="jquery/jszip/dist/jszip.min.js"></script>
 <script type="text/javascript" src="jquery/jszip-utils/dist/jszip-utils.min.js"></script>
 <!--[if IE]>
 <script type="text/javascript" src="jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="jquery/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="jquery/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="jquery/jquery-ui.min.js"></script>
 </head>
 <body>
 <script type="text/javascript"><!--
@@ -107,16 +108,15 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li><a href="com/chillycheesy/modulo/listener/package-tree.html">com.chillycheesy.modulo.listener</a>, </li>
 <li><a href="com/chillycheesy/modulo/modules/package-tree.html">com.chillycheesy.modulo.modules</a>, </li>
 <li><a href="com/chillycheesy/modulo/pages/package-tree.html">com.chillycheesy.modulo.pages</a>, </li>
-<li><a href="com/chillycheesy/modulo/pages/builder/package-tree.html">com.chillycheesy.modulo.pages.builder</a>, </li>
-<li><a href="com/chillycheesy/modulo/pages/natif/package-tree.html">com.chillycheesy.modulo.pages.natif</a>, </li>
-<li><a href="com/chillycheesy/modulo/pages/subpages/package-tree.html">com.chillycheesy.modulo.pages.subpages</a>, </li>
+<li><a href="com/chillycheesy/modulo/pages/comparator/package-tree.html">com.chillycheesy.modulo.pages.comparator</a>, </li>
+<li><a href="com/chillycheesy/modulo/pages/response/package-tree.html">com.chillycheesy.modulo.pages.response</a>, </li>
 <li><a href="com/chillycheesy/modulo/signals/package-tree.html">com.chillycheesy.modulo.signals</a>, </li>
 <li><a href="com/chillycheesy/modulo/utils/package-tree.html">com.chillycheesy.modulo.utils</a>, </li>
 <li><a href="com/chillycheesy/modulo/utils/exception/package-tree.html">com.chillycheesy.modulo.utils.exception</a></li>
 </ul>
 </div>
 <div class="contentContainer">
-<section role="region">
+<section>
 <h2 title="Class Hierarchy">Class Hierarchy</h2>
 <ul>
 <li class="circle">java.lang.Object
@@ -155,7 +155,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/CreateAliasOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">CreateAliasOperator</span></a> (implements com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/OperatorListener.html" title="interface in com.chillycheesy.modulo.commands.operator">OperatorListener</a>)</li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/CreateStrictAliasOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">CreateStrictAliasOperator</span></a> (implements com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/OperatorListener.html" title="interface in com.chillycheesy.modulo.commands.operator">OperatorListener</a>)</li>
-<li class="circle">com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/DefaultPageVisitor.html" title="class in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">DefaultPageVisitor</span></a> (implements com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageVisitor.html" title="interface in com.chillycheesy.modulo.pages.builder">PageVisitor</a>)</li>
 <li class="circle">com.chillycheesy.modulo.commands.natif.<a href="com/chillycheesy/modulo/commands/natif/EchoCommand.html" title="class in com.chillycheesy.modulo.commands.natif"><span class="typeNameLink">EchoCommand</span></a> (implements com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandListener.html" title="interface in com.chillycheesy.modulo.commands">CommandListener</a>)</li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/EqualsOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">EqualsOperator</span></a> (implements com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/OperatorListener.html" title="interface in com.chillycheesy.modulo.commands.operator">OperatorListener</a>)</li>
 <li class="circle">com.chillycheesy.modulo.events.<a href="com/chillycheesy/modulo/events/Event.html" title="class in com.chillycheesy.modulo.events"><span class="typeNameLink">Event</span></a>
@@ -189,7 +188,6 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </li>
 <li class="circle">com.chillycheesy.modulo.events.<a href="com/chillycheesy/modulo/events/EventContainer.html" title="class in com.chillycheesy.modulo.events"><span class="typeNameLink">EventContainer</span></a></li>
 <li class="circle">com.chillycheesy.modulo.commands.natif.<a href="com/chillycheesy/modulo/commands/natif/HelpCommand.html" title="class in com.chillycheesy.modulo.commands.natif"><span class="typeNameLink">HelpCommand</span></a> (implements com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandListener.html" title="interface in com.chillycheesy.modulo.commands">CommandListener</a>)</li>
-<li class="circle">com.chillycheesy.modulo.pages.subpages.<a href="com/chillycheesy/modulo/pages/subpages/IFramePage.html" title="class in com.chillycheesy.modulo.pages.subpages"><span class="typeNameLink">IFramePage</span></a></li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/InjectorOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">InjectorOperator</span></a> (implements com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/OperatorListener.html" title="interface in com.chillycheesy.modulo.commands.operator">OperatorListener</a>)</li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.natif.<a href="com/chillycheesy/modulo/commands/operator/natif/InstructionEndOperator.html" title="class in com.chillycheesy.modulo.commands.operator.natif"><span class="typeNameLink">InstructionEndOperator</span></a> (implements com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/OperatorFinder.html" title="interface in com.chillycheesy.modulo.commands.operator">OperatorFinder</a>, com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/OperatorListener.html" title="interface in com.chillycheesy.modulo.commands.operator">OperatorListener</a>)</li>
 <li class="circle">com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Log.html" title="class in com.chillycheesy.modulo.utils"><span class="typeNameLink">Log</span></a></li>
@@ -203,7 +201,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </ul>
 </li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/OperatorManager.html" title="class in com.chillycheesy.modulo.commands.operator"><span class="typeNameLink">OperatorManager</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageManager.html" title="class in com.chillycheesy.modulo.pages"><span class="typeNameLink">PageManager</span></a> (implements com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages">RoutingRedirection</a>)</li>
+<li class="circle">com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageManager.html" title="class in com.chillycheesy.modulo.pages"><span class="typeNameLink">PageManager</span></a></li>
 </ul>
 </li>
 <li class="circle">com.chillycheesy.modulo.modules.<a href="com/chillycheesy/modulo/modules/Module.html" title="class in com.chillycheesy.modulo.modules"><span class="typeNameLink">Module</span></a>
@@ -231,34 +229,21 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operation.html" title="class in com.chillycheesy.modulo.commands.operator"><span class="typeNameLink">Operation</span></a></li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/Operator.html" title="class in com.chillycheesy.modulo.commands.operator"><span class="typeNameLink">Operator</span></a></li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.builder.<a href="com/chillycheesy/modulo/commands/operator/builder/OperatorBuilder.html" title="class in com.chillycheesy.modulo.commands.operator.builder"><span class="typeNameLink">OperatorBuilder</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages"><span class="typeNameLink">Page</span></a> (implements com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages">RoutingRedirection</a>)
+<li class="circle">com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/Page.html" title="class in com.chillycheesy.modulo.pages"><span class="typeNameLink">Page</span></a>
 <ul>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/DeletePage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">DeletePage</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/GetPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">GetPage</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/NotFoundPath.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">NotFoundPath</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PostPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">PostPage</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PutPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">PutPage</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/RegexPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">RegexPage</span></a>
-<ul>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/BooleanPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">BooleanPage</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/NumberRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">NumberRegexPage</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/StringRegexPage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">StringRegexPage</span></a>
-<ul>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/PathVariablePage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">PathVariablePage</span></a></li>
+<li class="circle">com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/TemplatePage.html" title="class in com.chillycheesy.modulo.pages"><span class="typeNameLink">TemplatePage</span></a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="circle">com.chillycheesy.modulo.pages.natif.<a href="com/chillycheesy/modulo/pages/natif/ResourcePage.html" title="class in com.chillycheesy.modulo.pages.natif"><span class="typeNameLink">ResourcePage</span></a></li>
-</ul>
-</li>
-<li class="circle">com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilder.html" title="class in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageBuilder</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageBuilderMetaInfo.html" title="class in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageBuilderMetaInfo</span></a></li>
 <li class="circle">com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageContainer.html" title="class in com.chillycheesy.modulo.pages"><span class="typeNameLink">PageContainer</span></a></li>
+<li class="circle">com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/ParameterResponse.html" title="class in com.chillycheesy.modulo.pages.response"><span class="typeNameLink">ParameterResponse</span></a> (implements com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>)</li>
 <li class="circle">com.chillycheesy.modulo.utils.<a href="com/chillycheesy/modulo/utils/Priority.html" title="class in com.chillycheesy.modulo.utils"><span class="typeNameLink">Priority</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.subpages.<a href="com/chillycheesy/modulo/pages/subpages/RedirectPage.html" title="class in com.chillycheesy.modulo.pages.subpages"><span class="typeNameLink">RedirectPage</span></a></li>
+<li class="circle">com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/RequestParameters.html" title="class in com.chillycheesy.modulo.pages.response"><span class="typeNameLink">RequestParameters</span></a></li>
 <li class="circle">com.chillycheesy.modulo.commands.natif.<a href="com/chillycheesy/modulo/commands/natif/ReturnCommand.html" title="class in com.chillycheesy.modulo.commands.natif"><span class="typeNameLink">ReturnCommand</span></a> (implements com.chillycheesy.modulo.commands.<a href="com/chillycheesy/modulo/commands/CommandListener.html" title="interface in com.chillycheesy.modulo.commands">CommandListener</a>)</li>
 <li class="circle">com.chillycheesy.modulo.signals.<a href="com/chillycheesy/modulo/signals/SignalContainer.html" title="class in com.chillycheesy.modulo.signals"><span class="typeNameLink">SignalContainer</span></a></li>
+<li class="circle">com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/SimpleResponse.html" title="class in com.chillycheesy.modulo.pages.response"><span class="typeNameLink">SimpleResponse</span></a> (implements com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response">ResponseHandler</a>)</li>
+<li class="circle">com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/StrictMethodRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator"><span class="typeNameLink">StrictMethodRequestMatcher</span></a> (implements com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&lt;T&gt;)</li>
+<li class="circle">com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/StrictPathRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator"><span class="typeNameLink">StrictPathRequestMatcher</span></a> (implements com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&lt;T&gt;)</li>
+<li class="circle">com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/TemplatePathRequestMatcher.html" title="class in com.chillycheesy.modulo.pages.comparator"><span class="typeNameLink">TemplatePathRequestMatcher</span></a> (implements com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator">RequestMatcher</a>&lt;T&gt;)</li>
 <li class="circle">java.lang.Throwable (implements java.io.Serializable)
 <ul>
 <li class="circle">java.lang.Exception
@@ -288,7 +273,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </li>
 </ul>
 </section>
-<section role="region">
+<section>
 <h2 title="Interface Hierarchy">Interface Hierarchy</h2>
 <ul>
 <li class="circle">com.chillycheesy.modulo.events.<a href="com/chillycheesy/modulo/events/Cancelable.html" title="interface in com.chillycheesy.modulo.events"><span class="typeNameLink">Cancelable</span></a></li>
@@ -301,40 +286,20 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <li class="circle">com.chillycheesy.modulo.listener.<a href="com/chillycheesy/modulo/listener/Listener.html" title="interface in com.chillycheesy.modulo.listener"><span class="typeNameLink">Listener</span></a></li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/OperatorFinder.html" title="interface in com.chillycheesy.modulo.commands.operator"><span class="typeNameLink">OperatorFinder</span></a></li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.<a href="com/chillycheesy/modulo/commands/operator/OperatorListener.html" title="interface in com.chillycheesy.modulo.commands.operator"><span class="typeNameLink">OperatorListener</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/PageResponse.html" title="interface in com.chillycheesy.modulo.pages"><span class="typeNameLink">PageResponse</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageVisitor.html" title="interface in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageVisitor</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages"><span class="typeNameLink">RoutingRedirection</span></a></li>
+<li class="circle">com.chillycheesy.modulo.pages.comparator.<a href="com/chillycheesy/modulo/pages/comparator/RequestMatcher.html" title="interface in com.chillycheesy.modulo.pages.comparator"><span class="typeNameLink">RequestMatcher</span></a>&lt;T&gt;</li>
+<li class="circle">com.chillycheesy.modulo.pages.response.<a href="com/chillycheesy/modulo/pages/response/ResponseHandler.html" title="interface in com.chillycheesy.modulo.pages.response"><span class="typeNameLink">ResponseHandler</span></a></li>
 </ul>
 </section>
-<section role="region">
+<section>
 <h2 title="Annotation Type Hierarchy">Annotation Type Hierarchy</h2>
 <ul>
 <li class="circle">com.chillycheesy.modulo.commands.builder.<a href="com/chillycheesy/modulo/commands/builder/Description.html" title="annotation in com.chillycheesy.modulo.commands.builder"><span class="typeNameLink">Description</span></a> (implements java.lang.annotation.Annotation)</li>
 <li class="circle">com.chillycheesy.modulo.events.<a href="com/chillycheesy/modulo/events/EventHandler.html" title="annotation in com.chillycheesy.modulo.events"><span class="typeNameLink">EventHandler</span></a> (implements java.lang.annotation.Annotation)</li>
-<li class="circle">com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/HttpRequest.html" title="annotation in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">HttpRequest</span></a> (implements java.lang.annotation.Annotation)</li>
 <li class="circle">com.chillycheesy.modulo.commands.builder.<a href="com/chillycheesy/modulo/commands/builder/Label.html" title="annotation in com.chillycheesy.modulo.commands.builder"><span class="typeNameLink">Label</span></a> (implements java.lang.annotation.Annotation)</li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.builder.<a href="com/chillycheesy/modulo/commands/operator/builder/Operator.html" title="annotation in com.chillycheesy.modulo.commands.operator.builder"><span class="typeNameLink">Operator</span></a> (implements java.lang.annotation.Annotation)</li>
 <li class="circle">com.chillycheesy.modulo.commands.operator.builder.<a href="com/chillycheesy/modulo/commands/operator/builder/OperatorFindByRegex.html" title="annotation in com.chillycheesy.modulo.commands.operator.builder"><span class="typeNameLink">OperatorFindByRegex</span></a> (implements java.lang.annotation.Annotation)</li>
-<li class="circle">com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageType.html" title="annotation in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageType</span></a> (implements java.lang.annotation.Annotation)</li>
-<li class="circle">com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/Path.html" title="annotation in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">Path</span></a> (implements java.lang.annotation.Annotation)</li>
 <li class="circle">com.chillycheesy.modulo.signals.<a href="com/chillycheesy/modulo/signals/SignalHandler.html" title="annotation in com.chillycheesy.modulo.signals"><span class="typeNameLink">SignalHandler</span></a> (implements java.lang.annotation.Annotation)</li>
 <li class="circle">com.chillycheesy.modulo.commands.builder.<a href="com/chillycheesy/modulo/commands/builder/Usage.html" title="annotation in com.chillycheesy.modulo.commands.builder"><span class="typeNameLink">Usage</span></a> (implements java.lang.annotation.Annotation)</li>
-</ul>
-</section>
-<section role="region">
-<h2 title="Enum Hierarchy">Enum Hierarchy</h2>
-<ul>
-<li class="circle">java.lang.Object
-<ul>
-<li class="circle">java.lang.Enum&lt;E&gt; (implements java.lang.Comparable&lt;T&gt;, java.io.Serializable)
-<ul>
-<li class="circle">com.chillycheesy.modulo.pages.<a href="com/chillycheesy/modulo/pages/HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages"><span class="typeNameLink">HttpRequestType</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageAnnotations</span></a></li>
-<li class="circle">com.chillycheesy.modulo.pages.builder.<a href="com/chillycheesy/modulo/pages/builder/PageParameterAnnotations.html" title="enum in com.chillycheesy.modulo.pages.builder"><span class="typeNameLink">PageParameterAnnotations</span></a></li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </section>
 </div>

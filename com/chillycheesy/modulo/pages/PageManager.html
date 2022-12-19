@@ -6,15 +6,16 @@
 <title>PageManager (modulo-api BINKS-0.1.2 API)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <link rel="stylesheet" type="text/css" href="../../../../stylesheet.css" title="Style">
-<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery/jquery-ui.min.css" title="Style">
+<link rel="stylesheet" type="text/css" href="../../../../jquery-ui.overrides.css" title="Style">
 <script type="text/javascript" src="../../../../script.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip/dist/jszip.min.js"></script>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils.min.js"></script>
 <!--[if IE]>
 <script type="text/javascript" src="../../../../jquery/jszip-utils/dist/jszip-utils-ie.min.js"></script>
 <![endif]-->
-<script type="text/javascript" src="../../../../jquery/jquery-3.5.1.js"></script>
-<script type="text/javascript" src="../../../../jquery/jquery-ui.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="../../../../jquery/jquery-ui.min.js"></script>
 </head>
 <body>
 <script type="text/javascript"><!--
@@ -134,14 +135,9 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="description">
 <ul class="blockList">
 <li class="blockList">
-<dl>
-<dt>All Implemented Interfaces:</dt>
-<dd><code><a href="RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages">RoutingRedirection</a></code></dd>
-</dl>
 <hr>
 <pre>public class <span class="typeNameLabel">PageManager</span>
-extends <a href="../utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a>&lt;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt;
-implements <a href="RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages">RoutingRedirection</a></pre>
+extends <a href="../utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a>&lt;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt;</pre>
 <div class="block">Class that manage the different <a href="Page.html" title="class in com.chillycheesy.modulo.pages"><code>Page</code></a> of the different <a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules"><code>Module</code></a>.
  It allows you to add, remove, get any <a href="Page.html" title="class in com.chillycheesy.modulo.pages"><code>Page</code></a> from any <a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules"><code>Module</code></a>.</div>
 </li>
@@ -151,7 +147,7 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <ul class="blockList">
 <li class="blockList">
 <!-- =========== FIELD SUMMARY =========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="field.summary">
 <!--   -->
@@ -168,7 +164,7 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 </ul>
 </section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="constructor.summary">
 <!--   -->
@@ -189,7 +185,7 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 </ul>
 </section>
 <!-- ========== METHOD SUMMARY =========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="method.summary">
 <!--   -->
@@ -203,20 +199,24 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code><a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getModuleByItem(com.chillycheesy.modulo.pages.Page)">getModuleByItem</a></span>&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;searchPage)</code></th>
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#registerItem(com.chillycheesy.modulo.modules.Module,com.chillycheesy.modulo.pages.Page)">registerItem</a></span>&#8203;(<a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a>&nbsp;module,
+            <a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;item)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code><a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getPageByPath(java.lang.String)">getPageByPath</a></span>&#8203;(java.lang.String&nbsp;path)</code></th>
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#registerItem(com.chillycheesy.modulo.modules.Module,com.chillycheesy.modulo.pages.Page...)">registerItem</a></span>&#8203;(<a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a>&nbsp;module,
+            <a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>...&nbsp;items)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code><a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a></code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">redirect</a></span>&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;httpRequest,
-        java.lang.String&nbsp;path)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colFirst"><code>boolean</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#response(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">response</a></span>&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request,
+        javax.servlet.http.HttpServletResponse&nbsp;response)</code></th>
+<td class="colLast">
+<div class="block">Call all registered <a href="Page.html" title="class in com.chillycheesy.modulo.pages"><code>Page</code></a> concern by the request.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -224,7 +224,7 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.chillycheesy.modulo.utils.<a href="../utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a></h3>
-<code><a href="../utils/Manager.html#getAllItems()">getAllItems</a>, <a href="../utils/Manager.html#getItemByModule(com.chillycheesy.modulo.modules.Module)">getItemByModule</a>, <a href="../utils/Manager.html#registerItem(com.chillycheesy.modulo.modules.Module,T)">registerItem</a>, <a href="../utils/Manager.html#registerItem(com.chillycheesy.modulo.modules.Module,T...)">registerItem</a>, <a href="../utils/Manager.html#removeAllItems(com.chillycheesy.modulo.modules.Module)">removeAllItems</a>, <a href="../utils/Manager.html#removeItem(com.chillycheesy.modulo.modules.Module,T)">removeItem</a>, <a href="../utils/Manager.html#removeItem(com.chillycheesy.modulo.modules.Module,T...)">removeItem</a></code></li>
+<code><a href="../utils/Manager.html#getAllItems()">getAllItems</a>, <a href="../utils/Manager.html#getItemByModule(com.chillycheesy.modulo.modules.Module)">getItemByModule</a>, <a href="../utils/Manager.html#getModuleByItem(T)">getModuleByItem</a>, <a href="../utils/Manager.html#removeAllItems(com.chillycheesy.modulo.modules.Module)">removeAllItems</a>, <a href="../utils/Manager.html#removeItem(com.chillycheesy.modulo.modules.Module,T)">removeItem</a>, <a href="../utils/Manager.html#removeItem(com.chillycheesy.modulo.modules.Module,T...)">removeItem</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
@@ -243,7 +243,7 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 <ul class="blockList">
 <li class="blockList">
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="constructor.detail">
 <!--   -->
@@ -262,48 +262,58 @@ implements <a href="RoutingRedirection.html" title="interface in com.chillychees
 </ul>
 </section>
 <!-- ============ METHOD DETAIL ========== -->
-<section role="region">
+<section>
 <ul class="blockList">
 <li class="blockList"><a id="method.detail">
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">
+<a id="registerItem(com.chillycheesy.modulo.modules.Module,com.chillycheesy.modulo.pages.Page...)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>redirect</h4>
-<pre class="methodSignature">public&nbsp;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;redirect&#8203;(<a href="HttpRequestType.html" title="enum in com.chillycheesy.modulo.pages">HttpRequestType</a>&nbsp;httpRequest,
-                     java.lang.String&nbsp;path)
-              throws <a href="../utils/exception/No404SubPageException.html" title="class in com.chillycheesy.modulo.utils.exception">No404SubPageException</a></pre>
+<h4>registerItem</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;registerItem&#8203;(<a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a>&nbsp;module,
+                            <a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>...&nbsp;items)</pre>
 <dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="RoutingRedirection.html#redirect(com.chillycheesy.modulo.pages.HttpRequestType,java.lang.String)">redirect</a></code>&nbsp;in interface&nbsp;<code><a href="RoutingRedirection.html" title="interface in com.chillycheesy.modulo.pages">RoutingRedirection</a></code></dd>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code><a href="../utils/exception/No404SubPageException.html" title="class in com.chillycheesy.modulo.utils.exception">No404SubPageException</a></code></dd>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../utils/Manager.html#registerItem(com.chillycheesy.modulo.modules.Module,T...)">registerItem</a></code>&nbsp;in class&nbsp;<code><a href="../utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a>&lt;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
-<a id="getPageByPath(java.lang.String)">
+<a id="registerItem(com.chillycheesy.modulo.modules.Module,com.chillycheesy.modulo.pages.Page)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>getPageByPath</h4>
-<pre class="methodSignature">public&nbsp;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;getPageByPath&#8203;(java.lang.String&nbsp;path)</pre>
+<h4>registerItem</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;registerItem&#8203;(<a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a>&nbsp;module,
+                            <a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;item)</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../utils/Manager.html#registerItem(com.chillycheesy.modulo.modules.Module,T)">registerItem</a></code>&nbsp;in class&nbsp;<code><a href="../utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a>&lt;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt;</code></dd>
+</dl>
 </li>
 </ul>
-<a id="getModuleByItem(com.chillycheesy.modulo.pages.Page)">
+<a id="response(javax.servlet.http.HttpServletRequest,javax.servlet.http.HttpServletResponse)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>getModuleByItem</h4>
-<pre class="methodSignature">public&nbsp;<a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a>&nbsp;getModuleByItem&#8203;(<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&nbsp;searchPage)</pre>
+<h4>response</h4>
+<pre class="methodSignature">public&nbsp;boolean&nbsp;response&#8203;(javax.servlet.http.HttpServletRequest&nbsp;request,
+                        javax.servlet.http.HttpServletResponse&nbsp;response)
+                 throws java.io.IOException</pre>
+<div class="block">Call all registered <a href="Page.html" title="class in com.chillycheesy.modulo.pages"><code>Page</code></a> concern by the request.</div>
 <dl>
-<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../utils/Manager.html#getModuleByItem(T)">getModuleByItem</a></code>&nbsp;in class&nbsp;<code><a href="../utils/Manager.html" title="class in com.chillycheesy.modulo.utils">Manager</a>&lt;<a href="Page.html" title="class in com.chillycheesy.modulo.pages">Page</a>&gt;</code></dd>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>request</code> - The request.</dd>
+<dd><code>response</code> - The response.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>True if the request has been handled by a <a href="Page.html" title="class in com.chillycheesy.modulo.pages"><code>Page</code></a>.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.IOException</code></dd>
 </dl>
 </li>
 </ul>
