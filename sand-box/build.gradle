@@ -4,6 +4,7 @@ plugins {
 
 group 'com.chillycheesy'
 version '1.0.0'
+sourceCompatibility = 16
 
 module {
     moduleName = 'SandBox'

@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
  *
  * @author Aymeric Hénouille
  */
-public interface RequestMatcher<T extends Page> {
+public interface RequestMatcher {
 
     /**
      * Compare the path of the page with the path of the request.
@@ -17,6 +17,6 @@ public interface RequestMatcher<T extends Page> {
      * @param page The page.
      * @return True if the path of the page is the same as the path of the request.
      */
-    boolean compare(HttpServletRequest request, T page);
+    boolean compare(HttpServletRequest request, Page page);
 }
 

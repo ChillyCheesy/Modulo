@@ -4,7 +4,7 @@ plugins {
 }
 
 archivesBaseName = 'modulo-api'
-sourceCompatibility = 11
+sourceCompatibility = 16
 
 dependencies {
     implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3'
@@ -64,3 +64,4 @@ publishing {
         }
     }
 }
+targetCompatibility = JavaVersion.VERSION_16

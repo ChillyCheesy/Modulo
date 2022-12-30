@@ -4,7 +4,7 @@ import com.chillycheesy.modulo.pages.Page;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class StrictPathRequestMatcher implements RequestMatcher<Page> {
+public class StrictPathRequestMatcher implements RequestMatcher {
 
     @Override
     public boolean compare(HttpServletRequest request, Page page) {

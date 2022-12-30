@@ -6,7 +6,7 @@ plugins {
 }
 
 archivesBaseName = 'modulo-server'
-sourceCompatibility = 11
+sourceCompatibility = 16
 
 dependencies {
     compileClasspath 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3'

@@ -30,9 +30,9 @@
 * [See also](#SeeAlso)
 * [Cute cats](https://www.youtube.com/watch?v=VZrDxD0Za9I)
 
-## Description 🐭 <a id="Description"></a>
+## 🐭 Description <a id="Description"></a>
 What is modulo...
-## Getting started 🚀 <a id="GettingStarted"></a>
+## 🚀 Getting started <a id="GettingStarted"></a>
 **How to use Modulo ?**
 ### Step 1:<a id="GettingStarted-1"></a>
 * Create a new java project in your favorite IDE.  
@@ -105,11 +105,11 @@ What is modulo...
 
 *If you use gradle, you can use the [ModuloGradleApplication](https://github.com/ChillyCheesy/ModuloGradleApplication).*
 
-## How to use it 📕 <a id="HowToUseIt"></a>
+## 📕 How to use it <a id="HowToUseIt"></a>
 See the documentation page [here](https://chillycheesy.github.io/Modulo/).  
 You can also check the [wiki](https://github.com/ChillyCheesy/Modulo/wiki).
 
-## See also 🌶 🧀 <a id="SeeAlso"></a>
+## 🌶 🧀 See also <a id="SeeAlso"></a>
 * [ModuloGradleApplication](https://github.com/ChillyCheesy/ModuloGradleApplication)
 
 <pre>

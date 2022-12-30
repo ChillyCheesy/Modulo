@@ -2,12 +2,14 @@ package com.chillycheesy.modulo.pages;
 
 import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.modules.Module;
+import com.chillycheesy.modulo.pages.factory.PageFactory;
 import com.chillycheesy.modulo.utils.Log;
 import com.chillycheesy.modulo.utils.Manager;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.*;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.stream.Collectors;
@@ -19,6 +21,21 @@ import java.util.stream.Collectors;
  * @author Aymeric Hénouille
  */
 public class PageManager extends Manager<Page> {
+
+    public boolean buildAndRegisterPage(Module module, Object ...objects) {
+        return Arrays.stream(objects).allMatch(object -> this.buildAndRegisterPage(module, object));
+    }
+
+    public boolean buildAndRegisterPage(Module module, Object object) {
+        try {
+            final List<Page> pages = PageFactory.createPages(object);
+            return registerItem(module, pages.toArray(new Page[0]));
+        } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
+            final Log logger = ModuloAPI.getLogger();
+            logger.error(module, "Error while building page for module " + module.getName());
+            throw new RuntimeException(e);
+        }
+    }
 
     @Override
     public boolean registerItem(Module module, Page ...items) {
@@ -44,16 +61,11 @@ public class PageManager extends Manager<Page> {
      * @return True if the request has been handled by a {@link Page}.
      */
     public boolean response(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        final Log logger = ModuloAPI.getLogger();
         final Queue<Page> pages = getMatchedPages(request);
-        final int size = pages.size();
         Page page;
-        while ((page = pages.poll()) != null) {
-            final Module module = super.getModuleByItem(page);
-            if (page.response(request, response)) return true;
-            if (size > 1)
-                logger.warn(module, "The page \"" + page.getName() + "\" generate conflict with this path: \"" + page.getPath() + "\", request : \"" + request.getServletPath() + "\"");
-        }
+        while ((page = pages.poll()) != null)
+            if (page.response(request, response))
+                return true;
         return false;
     }
 

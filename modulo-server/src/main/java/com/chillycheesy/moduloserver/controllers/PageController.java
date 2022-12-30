@@ -52,7 +52,7 @@ public class PageController {
                 if(!pageManager.response(request, response))
                     throw new No404SubPageException();
             } catch (No404SubPageException e) {
-                ModuloAPI.getLogger().error(serverModule, "No 404 page found");
+                ModuloAPI.getLogger().error(serverModule, "Http 404 error: " + request.getRequestURI());
                 response.sendError(404);
             }
         });

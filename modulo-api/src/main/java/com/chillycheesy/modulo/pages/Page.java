@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Page {
 
@@ -41,6 +43,10 @@ public class Page {
         this(name, path, "GET", responseHandler);
     }
 
+    public Page() {
+        this("", "", "", null);
+    }
+
     public boolean isMatch(HttpServletRequest request) {
         return this.requestMatcher.stream().allMatch(requestMatcher -> requestMatcher.compare(request, this));
     }
@@ -54,7 +60,9 @@ public class Page {
     }
 
     public String getPath() {
-        return path;
+        final Pattern pattern = Pattern.compile("[^/].+");
+        final Matcher matcher = pattern.matcher(path);
+        return "/" + (matcher.find() ? matcher.group() : "");
     }
 
     public int getPriority() {

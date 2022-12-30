@@ -1,6 +1,5 @@
 package com.chillycheesy.modulo;
 
-import com.chillycheesy.modulo.commands.CommandContainer;
 import com.chillycheesy.modulo.events.EventContainer;
 import com.chillycheesy.modulo.modules.ModuleContainer;
 import com.chillycheesy.modulo.pages.PageContainer;
@@ -35,11 +34,6 @@ public class ModuloAPI {
      * Log section.
      */
     private static Log logger;
-
-    /**
-     * Command Section
-     */
-    private static CommandContainer command;
 
     /**
      * Getter for Module logic section.
@@ -84,15 +78,6 @@ public class ModuloAPI {
      */
     public static Log getLogger() {
         return logger = logger == null ? new Log(getEvent()) : logger;
-    }
-
-    /**
-     * Getter for Command logic section.
-     *
-     * @return The Command section.
-     */
-    public static CommandContainer getCommand() {
-        return command = command == null ? new CommandContainer() : command;
     }
 
 }

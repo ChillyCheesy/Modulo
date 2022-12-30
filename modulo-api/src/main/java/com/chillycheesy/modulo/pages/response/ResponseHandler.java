@@ -7,7 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public interface ResponseHandler {
+
     boolean response(Page page, HttpServletRequest request, HttpServletResponse response) throws IOException;
+
 }
 
 
