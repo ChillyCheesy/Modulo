@@ -53,7 +53,7 @@ public class ParameterBuilder {
 
     public Object build(Page page, HttpServletRequest request, HttpServletResponse response) throws IOException {
         applyDefaultParameter(page, request, response);
-        applyAnnotation();
+        applyAnnotation(page, request, response);
         return parameterValue;
     }
 
@@ -79,10 +79,10 @@ public class ParameterBuilder {
         }
     }
 
-    private void applyAnnotation() {
+    private void applyAnnotation(Page page, HttpServletRequest request, HttpServletResponse response) {
         for (Annotation annotation : annotations) {
             if (annotation instanceof HttpParam) {
-                parameterAnnotationApplier.applyHttpParamAnnotation((HttpParam) annotation, this);
+                parameterAnnotationApplier.applyHttpParamAnnotation((HttpParam) annotation, page, request, response, this);
             }
         }
     }

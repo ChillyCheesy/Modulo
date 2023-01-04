@@ -16,5 +16,8 @@ public interface MethodAnnotationApplier {
 
     PageBuilder applyDeleteRequestAnnotation(DeleteRequest request, PageBuilder builder);
 
+    PageBuilder applyPriorityAnnotation(Priority priority, PageBuilder builder);
+
+    PageBuilder applyMatcherAnnotation(Matcher matcher, PageBuilder builder);
 
 }

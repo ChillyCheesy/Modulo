@@ -1,0 +1,30 @@
+string: 'hello, world!'
+integer: 42
+boolean: true
+
+server:
+  configuration:
+    port: 8080
+    host: localhost
+  name: 'SandBox'
+  version: '1.0.0'
+
+colors:
+  - 'red'
+  - 'green'
+  - 'blue'
+  - 'yellow'
+  - 'purple'
+
+badges:
+  - name: 'badge1'
+    description: 'description1'
+    icon: 'icon1'
+    color: 'color1'
+  - name: 'badge2'
+    description: 'description2'
+    icon: 'icon2'
+    color: 'color2'
+    status:
+      enabled: true
+      message: 'message2'

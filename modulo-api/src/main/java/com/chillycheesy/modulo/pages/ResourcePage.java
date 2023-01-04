@@ -36,7 +36,7 @@ public class ResourcePage extends TemplatePage {
     @Override
     public String getPath() {
         final String path = super.getPath();
-        return path.replaceAll(".+", "$0/?**");
+        return path.replaceAll(".+[^/]", "$0/?**");
     }
 
     public String getResourcePath(String requestPath) {

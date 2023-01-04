@@ -63,6 +63,10 @@ public class PageFactory {
                 builder = methodApplier.applyPutRequestAnnotation((PutRequest) annotation, builder);
             else if (annotation instanceof DeleteRequest)
                 builder = methodApplier.applyDeleteRequestAnnotation((DeleteRequest) annotation, builder);
+            else if (annotation instanceof Priority)
+                builder = methodApplier.applyPriorityAnnotation((Priority) annotation, builder);
+            else if (annotation instanceof Matcher)
+                builder = methodApplier.applyMatcherAnnotation((Matcher) annotation, builder);
         }
         return builder;
     }

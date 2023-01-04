@@ -1,7 +1,6 @@
 package com.chillycheesy.sandbox.pages;
 
-import com.chillycheesy.modulo.pages.factory.GetRequest;
-import com.chillycheesy.modulo.pages.factory.ResponseResource;
+import com.chillycheesy.modulo.pages.factory.*;
 
 public class JokePage {
 
@@ -9,6 +8,12 @@ public class JokePage {
     @ResponseResource
     public String joke() {
         return "public";
+    }
+
+    @GetRequest("/joke/uppercase")
+    @ResponseBody
+    public String uppercase(@HttpParam String input) {
+        return input.toUpperCase();
     }
 
 }

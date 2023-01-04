@@ -2,7 +2,12 @@ package com.chillycheesy.modulo.pages.factory;
 
 import com.chillycheesy.modulo.pages.Page;
 import com.chillycheesy.modulo.pages.ResourcePage;
-import com.chillycheesy.modulo.pages.TemplatePage;
+import com.chillycheesy.modulo.pages.comparator.RequestMatcher;
+import com.chillycheesy.modulo.pages.comparator.StrictMethodRequestMatcher;
+import com.chillycheesy.modulo.pages.comparator.TemplatePathRequestMatcher;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 public class DefaultMethodAnnotationApplier implements MethodAnnotationApplier {
 
@@ -16,7 +21,9 @@ public class DefaultMethodAnnotationApplier implements MethodAnnotationApplier {
     public PageBuilder applyResponseResourceAnnotation(ResponseResource responseResource, PageBuilder builder) {
         final Class<? extends Page> currentPage = builder.getPageClass();
         if (currentPage == null) {
-            return builder.setPageClass(ResourcePage.class);
+            return builder
+                .setPageClass(ResourcePage.class)
+                .addRequestMatcher(new StrictMethodRequestMatcher(), new TemplatePathRequestMatcher());
         }
         return builder;
     }
@@ -50,6 +57,27 @@ public class DefaultMethodAnnotationApplier implements MethodAnnotationApplier {
     public PageBuilder applyDeleteRequestAnnotation(DeleteRequest request, PageBuilder builder) {
         final String path = request.value();
         return builder.setPath(path).setRequestMethod("DELETE");
+    }
+
+    @Override
+    public PageBuilder applyPriorityAnnotation(Priority priority, PageBuilder builder) {
+        final int priorityValue = priority.value();
+        return builder.setPriority(priorityValue);
+    }
+
+    @Override
+    public PageBuilder applyMatcherAnnotation(Matcher matcher, PageBuilder builder) {
+        final Class<? extends RequestMatcher>[] matchersClasses = matcher.value();
+        for (final Class<? extends RequestMatcher> matcherClass : matchersClasses) {
+            try {
+                final Constructor<? extends RequestMatcher> constructor = matcherClass.getConstructor();
+                final RequestMatcher requestMatcher = constructor.newInstance();
+                builder = builder.addRequestMatcher(requestMatcher);
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+        }
+        return builder;
     }
 
 }

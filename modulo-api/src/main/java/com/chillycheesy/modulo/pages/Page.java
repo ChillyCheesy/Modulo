@@ -9,6 +9,7 @@ import com.chillycheesy.modulo.utils.Priority;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,7 +37,7 @@ public class Page {
     }
 
     public Page(String name, String path, String method, ResponseHandler responseHandler) {
-        this(name, path, method, responseHandler, List.of(new StrictPathRequestMatcher(), new StrictMethodRequestMatcher()));
+        this(name, path, method, responseHandler, new ArrayList<>(List.of(new StrictPathRequestMatcher(), new StrictMethodRequestMatcher())));
     }
 
     public Page(String name, String path, ResponseHandler responseHandler) {

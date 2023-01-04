@@ -13,7 +13,7 @@ public class PageHandler implements ResponseHandler {
     @Override
     public boolean response(Page page, HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.getOutputStream().println("Hello World!");
-        SandBoxModule.instance.log("PageHandler.response() called " + request.getMethod());
+        SandBoxModule.instance.info("PageHandler.response() called " + request.getMethod());
         return true;
     }
 

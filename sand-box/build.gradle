@@ -24,3 +24,7 @@ task deployToTestServer(type: Copy) {
     from "$buildDir/libs/"
     into "../modulo-server/modules/"
 }
+
+compileJava.options.compilerArgs << '-parameters'
+compileTestJava.options.compilerArgs << '-parameters'
+

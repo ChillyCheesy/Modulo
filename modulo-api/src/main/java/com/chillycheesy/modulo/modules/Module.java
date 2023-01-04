@@ -4,10 +4,13 @@ import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.event.OnLoadEvent;
 import com.chillycheesy.modulo.event.OnStartEvent;
 import com.chillycheesy.modulo.event.OnStopEvent;
+import com.chillycheesy.modulo.utils.Log;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.jar.JarFile;
+import java.util.logging.Logger;
 
 /**
  * HTModule is the superclass of all the <i>HomeTracker</i> module.<br>
@@ -55,7 +58,7 @@ public abstract class Module {
     /**
      * Method called when the {@link #start()} method is called
      */
-    protected abstract <E extends Throwable> void onStart() throws E;
+    protected abstract <E extends Throwable> void onStart() throws E, IOException;
 
     /**
      * Method called when the {@link #stop()} method is called
@@ -115,6 +118,33 @@ public abstract class Module {
         });
         ModuloAPI.getEvent().getEventManager().emitEvent(this, onStopEvent);
 
+    }
+
+    /**
+     * Use the {@link Log} class to log an info message.
+     * @param message the message to log.
+     */
+    public void info(String message) {
+        final Log logger = ModuloAPI.getLogger();
+        logger.info(this, message);
+    }
+
+    /**
+     * Use the {@link Log} class to log a debug message.
+     * @param message the message to log.
+     */
+    public void debug(String message) {
+        final Log logger = ModuloAPI.getLogger();
+        logger.debug(this, message);
+    }
+
+    /**
+     * Use the {@link Log} class to log an error message.
+     * @param message the message to log.
+     */
+    public void error(String message) {
+        final Log logger = ModuloAPI.getLogger();
+        logger.error(this, message);
     }
 
     public String getName() {

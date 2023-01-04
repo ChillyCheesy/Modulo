@@ -79,6 +79,7 @@ public class PageManager extends Manager<Page> {
             .flatMap(module -> super.managedItems.get(module).stream())
             .filter(page -> page.isMatch(request))
             .sorted(Comparator.comparingInt(Page::getPriority))
+            .sorted(Comparator.comparingInt(page -> -page.getPath().length()))
             .collect(Collectors.toCollection(LinkedBlockingQueue::new));
     }
 

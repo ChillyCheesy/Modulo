@@ -4,9 +4,8 @@ import java.lang.annotation.*;
 
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.PARAMETER})
+@Target({ElementType.METHOD})
 @Inherited
-public @interface HttpParam {
-        String value() default "?";
-        String defaultValue() default "";
+public @interface Priority {
+    int value() default 0;
 }
