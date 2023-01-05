@@ -5,7 +5,7 @@ import com.chillycheesy.modulo.listener.ListenerManager;
 import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.event.LogEvent;
-import com.chillycheesy.modulo.utils.Log;
+import com.chillycheesy.modulo.utils.Logger;
 import com.chillycheesy.modulo.utils.exception.InvalidParameterEventHandlerException;
 
 import java.io.IOException;
@@ -24,7 +24,7 @@ import java.util.Set;
 public class EventManager extends ListenerManager {
 
     /**
-     * Emit a event and log potential error in the {@link Log}.
+     * Emit a event and log potential error in the {@link Logger}.
      * @param module The emitter module.
      * @param event The emitted event.
      */

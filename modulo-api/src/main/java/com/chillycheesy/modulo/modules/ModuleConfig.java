@@ -118,4 +118,16 @@ public class ModuleConfig {
                 Objects.equals(softDependencies, that.softDependencies) &&
                 Objects.equals(main, that.main);
     }
+
+    @Override
+    public String toString() {
+        return "ModuleConfig{" +
+                "name='" + name + '\'' +
+                ", version='" + version + '\'' +
+                ", authors=" + authors +
+                ", dependencies=" + dependencies +
+                ", softDependencies=" + softDependencies +
+                ", main='" + main + '\'' +
+                '}';
+    }
 }

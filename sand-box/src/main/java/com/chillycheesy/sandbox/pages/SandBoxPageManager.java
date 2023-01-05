@@ -1,21 +1,30 @@
 package com.chillycheesy.sandbox.pages;
 
 import com.chillycheesy.modulo.ModuloAPI;
+import com.chillycheesy.modulo.modules.Module;
+import com.chillycheesy.modulo.modules.ModuloEntity;
+import com.chillycheesy.modulo.pages.PageContainer;
 import com.chillycheesy.modulo.pages.PageManager;
-import com.chillycheesy.modulo.pages.ResourcePage;
-import com.chillycheesy.sandbox.SandBoxModule;
 
-public class SandBoxPageManager {
+public class SandBoxPageManager implements ModuloEntity {
 
-    private final SandBoxModule module;
+    private Module module;
+    private PageManager pageManager;
 
-    public SandBoxPageManager(SandBoxModule module)  {
+    @Override
+    public void load(Module module) {
+        final PageContainer pageContainer = ModuloAPI.getPage();
+        this.pageManager = pageContainer.getPageManager();
         this.module = module;
     }
 
-    public void loadPages() {
-        final PageManager pageManager = ModuloAPI.getPage().getPageManager();
+    @Override
+    public void start() {
         pageManager.buildAndRegisterPage(module, new JokePage());
     }
 
+    @Override
+    public void stop() {
+        pageManager.removeAllItems(module);
+    }
 }

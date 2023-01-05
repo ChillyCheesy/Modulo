@@ -3,7 +3,7 @@ package com.chillycheesy.modulo.pages;
 import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.modulo.pages.factory.PageFactory;
-import com.chillycheesy.modulo.utils.Log;
+import com.chillycheesy.modulo.utils.Logger;
 import com.chillycheesy.modulo.utils.Manager;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +31,7 @@ public class PageManager extends Manager<Page> {
             final List<Page> pages = PageFactory.createPages(object);
             return registerItem(module, pages.toArray(new Page[0]));
         } catch (InvocationTargetException | NoSuchMethodException | InstantiationException | IllegalAccessException e) {
-            final Log logger = ModuloAPI.getLogger();
+            final Logger logger = ModuloAPI.getLogger();
             logger.error(module, "Error while building page for module " + module.getName());
             throw new RuntimeException(e);
         }

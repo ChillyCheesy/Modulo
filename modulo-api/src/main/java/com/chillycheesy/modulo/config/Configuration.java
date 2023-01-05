@@ -1,6 +1,8 @@
 package com.chillycheesy.modulo.config;
 
 import java.util.*;
+import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
 
 public class Configuration {
 
@@ -19,28 +21,47 @@ public class Configuration {
         return Objects.nonNull(value) ? value : getDefault(key);
     }
 
+    public String getString(String key, String defaultValue) {
+        return hasString(key) ? (String) get(key) : defaultValue;
+    }
+
     public String getString(String key) {
-        return hasString(key) ? (String) get(key) : "";
+        return getString(key, "");
+    }
+
+    public Integer getInteger(String key, Integer defaultValue) {
+        final Object value = get(key);
+        return hasInteger(key) ? Integer.parseInt(value.toString()) : defaultValue;
     }
 
     public Integer getInteger(String key) {
+        return getInteger(key, 0);
+    }
+
+    public Double getDouble(String key, Double defaultValue) {
         final Object value = get(key);
-        return hasInteger(key) ? Integer.parseInt(value.toString()) : 0;
+        return hasDouble(key) ? Double.parseDouble(value.toString()) : defaultValue;
     }
 
     public Double getDouble(String key) {
-        final Object value = get(key);
-        return hasDouble(key) ? Double.parseDouble(value.toString()) : 0.0;
+        return getDouble(key, 0.0);
     }
 
     public Boolean getBoolean(String key) {
+        return getBoolean(key, false);
+    }
+    public Boolean getBoolean(String key, Boolean defaultValue) {
         final Object value = get(key);
-        return hasBoolean(key) && Boolean.parseBoolean(value.toString());
+        return hasBoolean(key) ? Boolean.parseBoolean(value.toString()) : defaultValue;
     }
 
     public <T> List<T> getList(String key) {
+        return getList(key, new ArrayList<>());
+    }
+
+    public <T> List<T> getList(String key, List<T> defaultValue) {
         final Object value = get(key);
-        return hasList(key) ? (List<T>) value : new ArrayList<>();
+        return hasList(key) ? (List<T>) value : defaultValue;
     }
 
     public Object getDefault(String key) {
@@ -48,22 +69,47 @@ public class Configuration {
     }
 
     public String getDefaultString(String key) {
-        return hasDefaultString(key) ? (String) getDefault(key) : "";
+        return getDefaultString(key, "");
+    }
+
+    public String getDefaultString(String key, String defaultValue) {
+        return hasDefaultString(key) ? (String) getDefault(key) : defaultValue;
+    }
+
+    public Integer getDefaultInteger(String key, Integer defaultValue) {
+        final Object value = getDefault(key);
+        return hasDefaultInteger(key) ? Integer.parseInt(value.toString()) : defaultValue;
     }
 
     public Integer getDefaultInteger(String key) {
+        return getDefaultInteger(key, 0);
+    }
+
+    public Double getDefaultDouble(String key, Double defaultValue) {
         final Object value = getDefault(key);
-        return hasDefaultInteger(key) ? Integer.parseInt(value.toString()) : 0;
+        return hasDefaultDouble(key) ? Double.parseDouble(value.toString()) : defaultValue;
     }
 
     public Double getDefaultDouble(String key) {
-        final Object value = getDefault(key);
-        return hasDefaultDouble(key) ? Double.parseDouble(value.toString()) : 0.0;
+        return getDefaultDouble(key, 0.0);
     }
 
     public Boolean getDefaultBoolean(String key) {
+        return getDefaultBoolean(key, false);
+    }
+
+    public Boolean getDefaultBoolean(String key, Boolean defaultValue) {
         final Object value = getDefault(key);
-        return hasDefaultBoolean(key) && Boolean.parseBoolean(value.toString());
+        return hasDefaultBoolean(key) ? Boolean.parseBoolean(value.toString()) : defaultValue;
+    }
+
+    public <T> List<T> getDefaultList(String key) {
+        return getDefaultList(key, new ArrayList<>());
+    }
+
+    public <T> List<T> getDefaultList(String key, List<T> defaultValue) {
+        final Object value = getDefault(key);
+        return hasDefaultList(key) ? (List<T>) value : defaultValue;
     }
 
     public void set(String key, Object value) {
@@ -83,7 +129,7 @@ public class Configuration {
     }
 
     public boolean has(String key) {
-        return properties.containsKey(key);
+        return properties.containsKey(key) || hasDefault(key);
     }
 
     public boolean hasList(String key) {
@@ -205,11 +251,21 @@ public class Configuration {
         return mergedProperties;
     }
 
+    public boolean isModified() {
+        return !properties.equals(defaultProperties);
+    }
+
     @Override
     public String toString() {
         return "Configuration{" +
                 "properties=" + properties +
                 ", defaultProperties=" + defaultProperties +
                 '}';
+    }
+
+    public void forEach(BiConsumer<String, String> setProperty) {
+        getMergedProperties().entrySet().stream()
+            .collect(Collectors.toMap(Map.Entry::getKey, e -> String.valueOf(e.getValue())))
+            .forEach(setProperty);
     }
 }

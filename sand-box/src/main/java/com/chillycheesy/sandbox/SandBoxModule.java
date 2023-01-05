@@ -1,14 +1,7 @@
 package com.chillycheesy.sandbox;
 
-import com.chillycheesy.modulo.config.Configuration;
-import com.chillycheesy.modulo.config.ConfigurationFactory;
-import com.chillycheesy.modulo.config.FileConfigurationFactory;
-import com.chillycheesy.modulo.config.YamlConfigurationStrategy;
 import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.sandbox.pages.SandBoxPageManager;
-
-import java.io.IOException;
-import java.util.stream.Collectors;
 
 public class SandBoxModule extends Module {
 
@@ -19,23 +12,20 @@ public class SandBoxModule extends Module {
     @Override
     protected void onLoad() {
         instance = this;
-        pageManager = new SandBoxPageManager(this);
+        pageManager = new SandBoxPageManager();
+        pageManager.load(this);
     }
 
     @Override
-    protected void onStart() throws IOException {
-        info("hello, world test");
-        pageManager.loadPages();
-        final ConfigurationFactory configurationFactory = new FileConfigurationFactory(this, "config.yml");
-        final Configuration configuration = configurationFactory.createConfiguration(new YamlConfigurationStrategy());
-        info("all config: " + configuration.<String>getList("colors").stream().map(String::toUpperCase).collect(Collectors.joining(", ")));
-
-        configurationFactory.saveConfiguration(configuration, new YamlConfigurationStrategy());
+    protected void onStart() {
+        final String message = defaultConfiguration.getString("message");
+        info(message);
+        pageManager.start();
     }
 
     @Override
     protected void onStop() {
-
+        pageManager.stop();
     }
 
 }

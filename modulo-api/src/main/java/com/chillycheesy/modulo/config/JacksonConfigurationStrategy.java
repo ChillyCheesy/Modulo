@@ -95,7 +95,7 @@ public class JacksonConfigurationStrategy implements ConfigurationLoaderStrategy
             final String key = prefix + fieldName;
             if (childNode.isObject()) {
                 final Configuration childConfiguration = new Configuration();
-                configuration.merge(loadConfiguration(childNode, childConfiguration, key + "."));
+                configuration.mergeDefaults(loadConfiguration(childNode, childConfiguration, key + "."));
             } else if (childNode.isArray()) {
                 final Iterator<JsonNode> elements = childNode.elements();
                 final List<Object> configurationList = new ArrayList<>();
@@ -106,8 +106,8 @@ public class JacksonConfigurationStrategy implements ConfigurationLoaderStrategy
                         configurationList.add(loadConfiguration(element, childConfiguration));
                     } else configurationList.add(element.asText());
                 }
-                configuration.set(key, configurationList);
-            } else configuration.set(key, childNode.asText());
+                configuration.setDefault(key, configurationList);
+            } else configuration.setDefault(key, childNode.asText());
         }
         return configuration;
     }

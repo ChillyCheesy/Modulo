@@ -13,7 +13,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.jar.JarFile;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -110,16 +109,15 @@ public class ModuleLoader {
     /**
      * Put and start all loaded modules in the {@link ModuleManager}.
      */
-    public List<Module> startModules() throws MissingDependenciesModuleException {
-        return startModules(loadedModules);
+    public void startModules() throws MissingDependenciesModuleException {
+        startModules(loadedModules);
     }
 
-    public List<Module> startModules(List<Module> modules) throws MissingDependenciesModuleException {
+    public void startModules(List<Module> modules) throws MissingDependenciesModuleException {
         for (Module module : modules) startModule(module);
-        return modules;
     }
 
-    public Module startModule(Module module) throws MissingDependenciesModuleException {
+    public void startModule(Module module) throws MissingDependenciesModuleException {
         if (!startedModule.contains(module)) {
             final ModuleManager moduleManager = ModuloAPI.getModule().getModuleManager();
             final List<String> dependencies = module.getDependencies();
@@ -128,19 +126,17 @@ public class ModuleLoader {
                     .filter(this::containLoadedModuleWithName)
                     .map(this::getLoadedModuleByName)
                     .filter(Objects::nonNull)
-                    .collect(Collectors.toList());
+                    .toList();
             for (Module dependency : allDependencies) this.startModule(dependency);
-            if (!new HashSet<>(startedModule).containsAll(dependencies.stream().map(this::getLoadedModuleByName).collect(Collectors.toList())))
+            if (!new HashSet<>(startedModule).containsAll(dependencies.stream().map(this::getLoadedModuleByName).toList()))
                 throw new MissingDependenciesModuleException(module, getMissingDependenciesList(dependencies));
             moduleManager.addModule(module);
             startedModule.add(module);
-            return module;
         }
-        return module;
     }
 
     private List<String> getMissingDependenciesList(List<String> dependencies) {
-        dependencies.removeAll(startedModule.stream().map(Module::getName).collect(Collectors.toList()));
+        dependencies.removeAll(startedModule.stream().map(Module::getName).toList());
         return new ArrayList<>(dependencies);
     }
 

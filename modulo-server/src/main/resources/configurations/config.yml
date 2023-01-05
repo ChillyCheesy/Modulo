@@ -1,0 +1,3 @@
+show-log:
+    # The log format
+    format: '%d{HH:mm:ss} %-5level - %msg%n'

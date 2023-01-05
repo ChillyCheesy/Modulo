@@ -9,11 +9,11 @@ import com.chillycheesy.modulo.event.InfoLogEvent;
 import com.chillycheesy.modulo.event.WarnLogEvent;
 
 /**
- * Log class can be used to display information in the server console.
+ * Logger class can be used to display information in the server console.
  *
  * @author hénouille
  */
-public class Log {
+public class Logger {
 
     /**
      * The Event Manager.
@@ -21,12 +21,12 @@ public class Log {
     private final EventManager eventManager;
 
     /**
-     * Initialize a new Log.
-     * <i>It si not necessary to instantiate a new Log.
-     * If you want to display a log, use <code>HTAPI.getLogger()</code>.</i>
+     * Initialize a new Logger.
+     * <i>It si not necessary to instantiate a new Logger.
+     * If you want to display a log, use <code>ModuloAPI.getLogger()</code>.</i>
      * @param container EventContainer instance.
      */
-    public Log(EventContainer container) {
+    public Logger(EventContainer container) {
         eventManager = container.getEventManager();
     }
 
@@ -41,7 +41,7 @@ public class Log {
     }
 
     /**
-     * Broadcast an warn log in the console.
+     * Broadcast warn log in the console.
      * @param module Module that is logging the message.
      * @param content The Object to broadcast <i>(The console use the toString() method of the object to broadcast it.)</i>.
      */
@@ -61,7 +61,7 @@ public class Log {
     }
 
     /**
-     * Broadcast an debug log in the console.
+     * Broadcast a debug log in the console.
      * @param module Module that is logging the message.
      * @param content The Object to broadcast <i>(The console use the toString() method of the object to broadcast it.)</i>.
      */

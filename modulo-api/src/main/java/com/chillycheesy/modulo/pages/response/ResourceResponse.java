@@ -58,6 +58,7 @@ public class ResourceResponse implements ResponseHandler {
             out.write(buffer, 0, read);
         out.flush();
         out.close();
+        in.close();
     }
 
     private BufferedInputStream getResourceFile(Module module, String path) throws IOException {

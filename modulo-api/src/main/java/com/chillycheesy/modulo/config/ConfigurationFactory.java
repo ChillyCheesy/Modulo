@@ -6,6 +6,6 @@ public interface ConfigurationFactory {
 
         Configuration createConfiguration(ConfigurationLoaderStrategy loaderStrategy);
 
-        void saveConfiguration(Configuration configuration, ConfigurationLoaderStrategy loaderStrategy) throws IOException;
+        void saveConfiguration(Configuration configuration, ConfigurationLoaderStrategy loaderStrategy);
 
 }

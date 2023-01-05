@@ -1,16 +1,16 @@
 package com.chillycheesy.modulo.modules;
 
 import com.chillycheesy.modulo.ModuloAPI;
+import com.chillycheesy.modulo.config.ConfigurationLoader;
 import com.chillycheesy.modulo.event.OnLoadEvent;
 import com.chillycheesy.modulo.event.OnStartEvent;
 import com.chillycheesy.modulo.event.OnStopEvent;
-import com.chillycheesy.modulo.utils.Log;
+import com.chillycheesy.modulo.utils.Logger;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.jar.JarFile;
-import java.util.logging.Logger;
 
 /**
  * HTModule is the superclass of all the <i>HomeTracker</i> module.<br>
@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author Geoffrey Vaniscotte
  */
-public abstract class Module {
+public abstract class Module extends ConfigurationLoader {
 
     private ModuleConfig config;
     private JarFile jarFile;
@@ -46,9 +46,10 @@ public abstract class Module {
         this.config = config;
     }
 
-    public Module() {
-        config = new ModuleConfig();
-    }
+    /**
+     * Init your module with an empty {@link ModuleConfig} object
+     */
+    public Module() { this(new ModuleConfig()); }
 
     /**
      * Method called when the {@link #load()} method is called
@@ -73,10 +74,11 @@ public abstract class Module {
     public void load() {
         final OnLoadEvent onLoadEvent = (OnLoadEvent) new OnLoadEvent(this).setCancelableAction(() -> {
             try {
-                ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is loading.");
+                info("Module \"" + getName() + "\" version \"" + getVersion() + "\" is loading.");
+                super.load(this);
                 this.onLoad();
             } catch (Exception e) {
-                ModuloAPI.getLogger().error(this, e.getMessage());
+                error(e.getMessage());
                 e.printStackTrace();
             }
         });
@@ -90,10 +92,11 @@ public abstract class Module {
     public void start() {
         final OnStartEvent onStartEvent = (OnStartEvent) new OnStartEvent(this).setCancelableAction(() -> {
             try {
-                ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is starting.");
+                info("Module \"" + getName() + "\" version \"" + getVersion() + "\" is starting.");
+                super.start();
                 this.onStart();
             } catch (Exception e) {
-                ModuloAPI.getLogger().error(this, e.getMessage());
+                error(e.getMessage());
                 e.printStackTrace();
             }
         });
@@ -109,41 +112,41 @@ public abstract class Module {
     public void stop() {
         final OnStopEvent onStopEvent = (OnStopEvent) new OnStopEvent(this).setCancelableAction(() -> {
             try {
-                ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is stopping.");
+                info("Module \"" + getName() + "\" version \"" + getVersion() + "\" is stopping.");
+                super.stop();
                 this.onStop();
             } catch (Exception e) {
-                ModuloAPI.getLogger().error(this, e.getMessage());
+                error(e.getMessage());
                 e.printStackTrace();
             }
         });
         ModuloAPI.getEvent().getEventManager().emitEvent(this, onStopEvent);
-
     }
 
     /**
-     * Use the {@link Log} class to log an info message.
+     * Use the {@link Logger} class to log an info message.
      * @param message the message to log.
      */
     public void info(String message) {
-        final Log logger = ModuloAPI.getLogger();
+        final Logger logger = ModuloAPI.getLogger();
         logger.info(this, message);
     }
 
     /**
-     * Use the {@link Log} class to log a debug message.
+     * Use the {@link Logger} class to log a debug message.
      * @param message the message to log.
      */
     public void debug(String message) {
-        final Log logger = ModuloAPI.getLogger();
+        final Logger logger = ModuloAPI.getLogger();
         logger.debug(this, message);
     }
 
     /**
-     * Use the {@link Log} class to log an error message.
+     * Use the {@link Logger} class to log an error message.
      * @param message the message to log.
      */
     public void error(String message) {
-        final Log logger = ModuloAPI.getLogger();
+        final Logger logger = ModuloAPI.getLogger();
         logger.error(this, message);
     }
 

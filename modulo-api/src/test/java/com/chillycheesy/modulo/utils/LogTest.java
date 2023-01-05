@@ -6,12 +6,12 @@ public class LogTest {
 //
 //    @Mock private EventManager eventManager;
 //    @Mock private Module module;
-//    @Mock private Log log;
+//    @Mock private Logger log;
 //
 //    @BeforeEach
 //    public final void init() throws NoSuchFieldException {
 //        MockitoAnnotations.initMocks(this);
-//        FieldSetter.setField(log, Log.class.getDeclaredField("eventManager"), eventManager);
+//        FieldSetter.setField(log, Logger.class.getDeclaredField("eventManager"), eventManager);
 //        doNothing().when(eventManager).emitEvent(any(Module.class), any(Event.class));
 //    }
 //
