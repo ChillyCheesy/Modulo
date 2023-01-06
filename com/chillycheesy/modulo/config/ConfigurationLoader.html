@@ -74,7 +74,9 @@ loadScripts(document, 'script');</script>
 <h1 title="Class ConfigurationLoader" class="title">Class ConfigurationLoader</h1>
 </div>
 <div class="inheritance" title="Inheritance Tree"><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">java.lang.Object</a>
+<div class="inheritance"><a href="../modules/ModuleEntityAdapter.html" title="class in com.chillycheesy.modulo.modules">com.chillycheesy.modulo.modules.ModuleEntityAdapter</a>
 <div class="inheritance">com.chillycheesy.modulo.config.ConfigurationLoader</div>
+</div>
 </div>
 <section class="description">
 <dl class="notes">
@@ -87,8 +89,7 @@ loadScripts(document, 'script');</script>
 </dl>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ConfigurationLoader</span>
-<span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
-implements <a href="../modules/ModuloEntity.html" title="interface in com.chillycheesy.modulo.modules">ModuloEntity</a></span></div>
+<span class="extends-implements">extends <a href="../modules/ModuleEntityAdapter.html" title="class in com.chillycheesy.modulo.modules">ModuleEntityAdapter</a></span></div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -101,15 +102,18 @@ implements <a href="../modules/ModuloEntity.html" title="interface in com.chilly
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color"><code>protected <a href="ConfigurationFactory.html" title="interface in com.chillycheesy.modulo.config">ConfigurationFactory</a></code></div>
-<div class="col-second even-row-color"><code><span class="member-name-link"><a href="#configurationFactory">configurationFactory</a></span></code></div>
+<div class="col-first even-row-color"><code>protected boolean</code></div>
+<div class="col-second even-row-color"><code><span class="member-name-link"><a href="#autoSave">autoSave</a></span></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
-<div class="col-first odd-row-color"><code>protected <a href="Configuration.html" title="class in com.chillycheesy.modulo.config">Configuration</a></code></div>
-<div class="col-second odd-row-color"><code><span class="member-name-link"><a href="#defaultConfiguration">defaultConfiguration</a></span></code></div>
+<div class="col-first odd-row-color"><code>protected <a href="ConfigurationFactory.html" title="interface in com.chillycheesy.modulo.config">ConfigurationFactory</a></code></div>
+<div class="col-second odd-row-color"><code><span class="member-name-link"><a href="#configurationFactory">configurationFactory</a></span></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
-<div class="col-first even-row-color"><code>protected <a href="ConfigurationLoaderStrategy.html" title="interface in com.chillycheesy.modulo.config">ConfigurationLoaderStrategy</a></code></div>
-<div class="col-second even-row-color"><code><span class="member-name-link"><a href="#loaderStrategy">loaderStrategy</a></span></code></div>
+<div class="col-first even-row-color"><code>protected <a href="Configuration.html" title="class in com.chillycheesy.modulo.config">Configuration</a></code></div>
+<div class="col-second even-row-color"><code><span class="member-name-link"><a href="#defaultConfiguration">defaultConfiguration</a></span></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
+<div class="col-first odd-row-color"><code>protected <a href="ConfigurationLoaderStrategy.html" title="interface in com.chillycheesy.modulo.config">ConfigurationLoaderStrategy</a></code></div>
+<div class="col-second odd-row-color"><code><span class="member-name-link"><a href="#loaderStrategy">loaderStrategy</a></span></code></div>
+<div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
 </li>
@@ -149,14 +153,14 @@ implements <a href="../modules/ModuloEntity.html" title="interface in com.chilly
 <div class="table-header col-first">Modifier and Type</div>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="Configuration.html" title="class in com.chillycheesy.modulo.config">Configuration</a></code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getConfiguration()">getConfiguration</a></span>()</code></div>
+<div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#enableAutoSave(boolean)">enableAutoSave</a></span>&#8203;(boolean&nbsp;autoSave)</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
-<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#load(com.chillycheesy.modulo.modules.Module)">load</a></span>&#8203;(<a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a>&nbsp;module)</code></div>
+<div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><a href="Configuration.html" title="class in com.chillycheesy.modulo.config">Configuration</a></code></div>
+<div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#getConfiguration()">getConfiguration</a></span>()</code></div>
 <div class="col-last odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
 <div class="col-first even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
-<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#start()">start</a></span>()</code></div>
+<div class="col-second even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#load(com.chillycheesy.modulo.modules.Module)">load</a></span>&#8203;(<a href="../modules/Module.html" title="class in com.chillycheesy.modulo.modules">Module</a>&nbsp;module)</code></div>
 <div class="col-last even-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table">&nbsp;</div>
 <div class="col-first odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code>void</code></div>
 <div class="col-second odd-row-color method-summary-table-tab2 method-summary-table-tab4 method-summary-table"><code><span class="member-name-link"><a href="#stop()">stop</a></span>()</code></div>
@@ -167,6 +171,9 @@ implements <a href="../modules/ModuloEntity.html" title="interface in com.chilly
 </div>
 </div>
 </div>
+<div class="inherited-list">
+<h3 id="methods.inherited.from.class.com.chillycheesy.modulo.modules.ModuleEntityAdapter">Methods inherited from class&nbsp;com.chillycheesy.modulo.modules.<a href="../modules/ModuleEntityAdapter.html" title="class in com.chillycheesy.modulo.modules">ModuleEntityAdapter</a></h3>
+<code><a href="../modules/ModuleEntityAdapter.html#start()">start</a></code></div>
 <div class="inherited-list">
 <h3 id="methods.inherited.from.class.java.lang.Object">Methods inherited from class&nbsp;java.lang.<a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></h3>
 <code><a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#clone()" title="class or interface in java.lang" class="external-link">clone</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#equals(java.lang.Object)" title="class or interface in java.lang" class="external-link">equals</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#finalize()" title="class or interface in java.lang" class="external-link">finalize</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#getClass()" title="class or interface in java.lang" class="external-link">getClass</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#hashCode()" title="class or interface in java.lang" class="external-link">hashCode</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#notify()" title="class or interface in java.lang" class="external-link">notify</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#notifyAll()" title="class or interface in java.lang" class="external-link">notifyAll</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#toString()" title="class or interface in java.lang" class="external-link">toString</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#wait()" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#wait(long)" title="class or interface in java.lang" class="external-link">wait</a>, <a href="https://docs.oracle.com/en/java/javase/16/docs/api/java.base/java/lang/Object.html#wait(long,int)" title="class or interface in java.lang" class="external-link">wait</a></code></div>
@@ -197,6 +204,12 @@ implements <a href="../modules/ModuloEntity.html" title="interface in com.chilly
 <section class="detail" id="defaultConfiguration">
 <h3>defaultConfiguration</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="Configuration.html" title="class in com.chillycheesy.modulo.config">Configuration</a></span>&nbsp;<span class="element-name">defaultConfiguration</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="autoSave">
+<h3>autoSave</h3>
+<div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">autoSave</span></div>
 </section>
 </li>
 </ul>
@@ -256,16 +269,8 @@ implements <a href="../modules/ModuloEntity.html" title="interface in com.chilly
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../modules/ModuloEntity.html#load(com.chillycheesy.modulo.modules.Module)">load</a></code>&nbsp;in interface&nbsp;<code><a href="../modules/ModuloEntity.html" title="interface in com.chillycheesy.modulo.modules">ModuloEntity</a></code></dd>
-</dl>
-</section>
-</li>
-<li>
-<section class="detail" id="start()">
-<h3>start</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">start</span>()</div>
-<dl class="notes">
-<dt>Specified by:</dt>
-<dd><code><a href="../modules/ModuloEntity.html#start()">start</a></code>&nbsp;in interface&nbsp;<code><a href="../modules/ModuloEntity.html" title="interface in com.chillycheesy.modulo.modules">ModuloEntity</a></code></dd>
+<dt>Overrides:</dt>
+<dd><code><a href="../modules/ModuleEntityAdapter.html#load(com.chillycheesy.modulo.modules.Module)">load</a></code>&nbsp;in class&nbsp;<code><a href="../modules/ModuleEntityAdapter.html" title="class in com.chillycheesy.modulo.modules">ModuleEntityAdapter</a></code></dd>
 </dl>
 </section>
 </li>
@@ -276,6 +281,8 @@ implements <a href="../modules/ModuloEntity.html" title="interface in com.chilly
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="../modules/ModuloEntity.html#stop()">stop</a></code>&nbsp;in interface&nbsp;<code><a href="../modules/ModuloEntity.html" title="interface in com.chillycheesy.modulo.modules">ModuloEntity</a></code></dd>
+<dt>Overrides:</dt>
+<dd><code><a href="../modules/ModuleEntityAdapter.html#stop()">stop</a></code>&nbsp;in class&nbsp;<code><a href="../modules/ModuleEntityAdapter.html" title="class in com.chillycheesy.modulo.modules">ModuleEntityAdapter</a></code></dd>
 </dl>
 </section>
 </li>
@@ -283,6 +290,12 @@ implements <a href="../modules/ModuloEntity.html" title="interface in com.chilly
 <section class="detail" id="updateConfigurationLoader(com.chillycheesy.modulo.config.ConfigurationLoader)">
 <h3>updateConfigurationLoader</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">updateConfigurationLoader</span>&#8203;<span class="parameters">(<a href="ConfigurationLoader.html" title="class in com.chillycheesy.modulo.config">ConfigurationLoader</a>&nbsp;configLoader)</span></div>
+</section>
+</li>
+<li>
+<section class="detail" id="enableAutoSave(boolean)">
+<h3>enableAutoSave</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">enableAutoSave</span>&#8203;<span class="parameters">(boolean&nbsp;autoSave)</span></div>
 </section>
 </li>
 <li>
