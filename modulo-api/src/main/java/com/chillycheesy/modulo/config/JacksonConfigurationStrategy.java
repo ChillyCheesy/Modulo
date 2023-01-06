@@ -38,7 +38,7 @@ public class JacksonConfigurationStrategy implements ConfigurationLoaderStrategy
 
     private ObjectNode buildNode(Configuration configuration) {
         final Map<String, Object> map = configuration.getMergedProperties();
-        return buildNode(configuration, map, "");
+        return buildNode(configuration, map);
     }
 
     private ObjectNode buildNode(Configuration configuration, Map<String, Object> map) {

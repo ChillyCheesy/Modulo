@@ -64,17 +64,17 @@ What is modulo...
       
       @Override
       protected void onLoad() {
-          ModuloAPI.getLogger().info(this, "HelloModule is loaded");
+          info("HelloModule is loaded");
       }
   
       @Override
       protected void onStart() {
-          ModuloAPI.getLogger().info(this, "HelloModule is started");
+          info("HelloModule is started");
       }
       
       @Override
       protected void onStop() {
-          ModuloAPI.getLogger().info(this, "HelloModule is stopped");
+          info("HelloModule is stopped");
       }
   
   }
@@ -106,7 +106,7 @@ What is modulo...
 *If you use gradle, you can use the [ModuloGradleApplication](https://github.com/ChillyCheesy/ModuloGradleApplication).*
 
 ## 📕 How to use it <a id="HowToUseIt"></a>
-See the documentation page [here](https://chillycheesy.github.io/Modulo/).  
+See the Java documentation page [here](https://chillycheesy.github.io/Modulo/).  
 You can also check the [wiki](https://github.com/ChillyCheesy/Modulo/wiki).
 
 ## 🌶 🧀 See also <a id="SeeAlso"></a>

@@ -255,6 +255,25 @@ public class Configuration {
         return !properties.equals(defaultProperties);
     }
 
+    public void forEach(BiConsumer<String, String> setProperty) {
+        getMergedProperties().entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, e -> String.valueOf(e.getValue())))
+                .forEach(setProperty);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Configuration that = (Configuration) o;
+        return Objects.equals(properties, that.properties) && Objects.equals(defaultProperties, that.defaultProperties);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(properties, defaultProperties);
+    }
+
     @Override
     public String toString() {
         return "Configuration{" +
@@ -263,9 +282,5 @@ public class Configuration {
                 '}';
     }
 
-    public void forEach(BiConsumer<String, String> setProperty) {
-        getMergedProperties().entrySet().stream()
-            .collect(Collectors.toMap(Map.Entry::getKey, e -> String.valueOf(e.getValue())))
-            .forEach(setProperty);
-    }
+
 }

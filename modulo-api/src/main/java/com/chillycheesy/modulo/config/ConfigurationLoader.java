@@ -1,17 +1,19 @@
 package com.chillycheesy.modulo.config;
 
 import com.chillycheesy.modulo.modules.Module;
-import com.chillycheesy.modulo.modules.ModuloEntity;
+import com.chillycheesy.modulo.modules.ModuleEntityAdapter;
 
 import java.util.Objects;
 
-public class ConfigurationLoader implements ModuloEntity {
+public class ConfigurationLoader extends ModuleEntityAdapter {
 
     private static final String DEFAULT_CONFIG_PATH = "config.yml";
 
     protected ConfigurationFactory configurationFactory;
     protected ConfigurationLoaderStrategy loaderStrategy;
     protected Configuration defaultConfiguration;
+
+    protected boolean autoSave = true;
 
     public ConfigurationLoader(ConfigurationFactory configurationFactory, ConfigurationLoaderStrategy loaderStrategy) {
         this.configurationFactory = configurationFactory;
@@ -42,16 +44,18 @@ public class ConfigurationLoader implements ModuloEntity {
     }
 
     @Override
-    public void start() { }
-
-    @Override
     public void stop() {
-        configurationFactory.saveConfiguration(defaultConfiguration, loaderStrategy);
+        if (autoSave)
+            configurationFactory.saveConfiguration(defaultConfiguration, loaderStrategy);
     }
 
     public void updateConfigurationLoader(ConfigurationLoader configLoader) {
         this.configurationFactory = configLoader.configurationFactory;
         this.loaderStrategy = configLoader.loaderStrategy;
+    }
+
+    public void enableAutoSave(boolean autoSave) {
+        this.autoSave = autoSave;
     }
 
     public Configuration getConfiguration() {
