@@ -1,0 +1,30 @@
+plugins {
+    id 'com.chillycheesy.modulo-application' version '1.1.0'
+}
+
+group 'com.chillycheesy'
+version '1.0.0'
+sourceCompatibility = 16
+
+module {
+    moduleName = 'SandBox'
+    version = '1.0.0'
+    authors = ['ChillyCheesy']
+    main = 'com.chillycheesy.sandbox.SandBoxModule'
+}
+
+dependencies {
+    implementation project(':modulo-api')
+    implementation 'org.apache.tomcat.embed:tomcat-embed-websocket:9.0.39'
+}
+
+task deployToTestServer(type: Copy) {
+    dependsOn build
+    file("../modulo-server/modules/").mkdirs()
+    from "$buildDir/libs/"
+    into "../modulo-server/modules/"
+}
+
+compileJava.options.compilerArgs << '-parameters'
+compileTestJava.options.compilerArgs << '-parameters'
+

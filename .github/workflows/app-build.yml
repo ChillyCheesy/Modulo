@@ -1,4 +1,4 @@
-name: 🌶 App build
+name: App build 🌶
 
 on:
   push:
@@ -8,14 +8,14 @@ on:
 
 jobs:
   build_app:
-    name: Build app and deploy 🪶
+    name: 🪶 Build app and deploy
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v2
         with:
           distribution: 'zulu'
-          java-version: '11'
+          java-version: '16'
       - name: Setup properties SNAPSHOT
         if: github.ref == 'refs/heads/dev'
         run: |
@@ -62,15 +62,19 @@ jobs:
 
   deploy_javadoc:
     if: github.ref == 'refs/heads/dev'
-    name: Deploy javadoc 📄
+    name: 📄 Deploy javadoc
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '16'
       - name: Build javadoc
         run: |
           chmod +x gradlew
           ./gradlew clean :modulo-api:javadoc
-      - name: Deploy Javadoc 🚀
+      - name: 🚀 Deploy Javadoc
         uses: JamesIves/github-pages-deploy-action@v4.3.3
         with:
           branch: gh-pages

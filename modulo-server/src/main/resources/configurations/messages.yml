@@ -1,0 +1,10 @@
+loader:
+  load:
+    prepare: '-- Prepare to load modules. --'
+    done: '-- %d Modules loaded. --' # %d = number of modules loaded
+  start:
+    prepare: '-- Prepare to start modules. --'
+    done: '-- %d Modules started. --' # %d = number of modules started
+  stop:
+    prepare: '-- Prepare to stop modules. --'
+    done: '-- %d Modules stopped. --' # %d = number of modules stopped

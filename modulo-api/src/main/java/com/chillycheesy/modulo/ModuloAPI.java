@@ -1,11 +1,10 @@
 package com.chillycheesy.modulo;
 
-import com.chillycheesy.modulo.commands.CommandContainer;
 import com.chillycheesy.modulo.events.EventContainer;
 import com.chillycheesy.modulo.modules.ModuleContainer;
 import com.chillycheesy.modulo.pages.PageContainer;
 import com.chillycheesy.modulo.signals.SignalContainer;
-import com.chillycheesy.modulo.utils.Log;
+import com.chillycheesy.modulo.utils.Logger;
 
 /**
  * ModuloAPI was the Central Class of the API.
@@ -32,14 +31,9 @@ public class ModuloAPI {
      */
     private static PageContainer page;
     /**
-     * Log section.
+     * Logger section.
      */
-    private static Log logger;
-
-    /**
-     * Command Section
-     */
-    private static CommandContainer command;
+    private static Logger logger;
 
     /**
      * Getter for Module logic section.
@@ -82,17 +76,8 @@ public class ModuloAPI {
      *
      * @return The Logger section.
      */
-    public static Log getLogger() {
-        return logger = logger == null ? new Log(getEvent()) : logger;
-    }
-
-    /**
-     * Getter for Command logic section.
-     *
-     * @return The Command section.
-     */
-    public static CommandContainer getCommand() {
-        return command = command == null ? new CommandContainer() : command;
+    public static Logger getLogger() {
+        return logger = logger == null ? new Logger(getEvent()) : logger;
     }
 
 }

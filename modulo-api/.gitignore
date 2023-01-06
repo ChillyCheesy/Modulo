@@ -1,3 +1,2 @@
-src/main/resources/hometracker-ui
-src/main/resources/module.yml
+build
 gradle.properties

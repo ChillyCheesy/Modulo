@@ -4,7 +4,7 @@ import com.chillycheesy.modulo.modules.ModuleContainer;
 import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.modulo.modules.ModuleLoader;
 import com.chillycheesy.modulo.modules.ModuleManager;
-import com.chillycheesy.modulo.utils.Log;
+import com.chillycheesy.modulo.utils.Logger;
 import com.chillycheesy.modulo.utils.exception.FileIsNotAModuleDirectoryException;
 import com.chillycheesy.modulo.utils.exception.MissingDependenciesModuleException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class ModuleService {
 
     public static final String MODULES_FILE = "./modules";
 
-    @Autowired private Log logger;
+    @Autowired private Logger logger;
     @Autowired private ModuleContainer module;
 
     public void loadAndStartModule(Module module) throws MissingDependenciesModuleException {
@@ -38,9 +38,9 @@ public class ModuleService {
         return new ArrayList<>();
     }
 
-    public List<Module> startModules(List<Module> modules) throws MissingDependenciesModuleException {
+    public void startModules(List<Module> modules) throws MissingDependenciesModuleException {
         final ModuleLoader loader = module.getModuleLoader();
-        return loader.startModules(modules);
+        loader.startModules(modules);
     }
 
     public void stopModules(List<Module> modules) {

@@ -1,3 +1,9 @@
 src/main/resources/api
 src/main/resources/module.yml
+build
 gradle.properties
+
+# test server
+modules
+configs
+modulo.properties

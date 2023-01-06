@@ -23,7 +23,6 @@ public class ModuleConfig {
     private List<String> softDependencies = new ArrayList<>();
 
     private String main;
-    private String mainPageName;
 
 
     /**
@@ -35,18 +34,17 @@ public class ModuleConfig {
      * @param softDependencies the list of modules that your module can use to work with but without being an obligation (your module <b>can</b> load without them)
      * @param main             the main file of your jar (example: com.dev.MyAwesomeModule)
      */
-    public ModuleConfig(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main, String mainPageName) {
+    public ModuleConfig(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main) {
         this.name = name;
         this.version = version;
         this.authors = authors;
         this.dependencies = dependencies;
         this.softDependencies = softDependencies;
         this.main = main;
-        this.mainPageName = mainPageName;
     }
 
     public ModuleConfig(ModuleConfig config) {
-        this(config.getName(), config.getVersion(), config.getAuthors(), config.getDependencies(), config.getSoftDependencies(), config.getMain(), config.getMainPageName());
+        this(config.getName(), config.getVersion(), config.getAuthors(), config.getDependencies(), config.getSoftDependencies(), config.getMain());
     }
 
     public ModuleConfig() {
@@ -108,14 +106,6 @@ public class ModuleConfig {
         this.main = main;
     }
 
-    public String getMainPageName() {
-        return mainPageName == null ? DEFAULT_MAIN_PAGE_NAME : mainPageName;
-    }
-
-    public void setMainPageName(String mainPageName) {
-        this.mainPageName = mainPageName;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -126,7 +116,18 @@ public class ModuleConfig {
                 Objects.equals(authors, that.authors) &&
                 Objects.equals(dependencies, that.dependencies) &&
                 Objects.equals(softDependencies, that.softDependencies) &&
-                Objects.equals(main, that.main) &&
-                Objects.equals(mainPageName,that.mainPageName);
+                Objects.equals(main, that.main);
+    }
+
+    @Override
+    public String toString() {
+        return "ModuleConfig{" +
+                "name='" + name + '\'' +
+                ", version='" + version + '\'' +
+                ", authors=" + authors +
+                ", dependencies=" + dependencies +
+                ", softDependencies=" + softDependencies +
+                ", main='" + main + '\'' +
+                '}';
     }
 }

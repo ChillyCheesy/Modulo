@@ -9,7 +9,7 @@ public class ModuloAPITest {
         final ModuleContainer moduleContainer = ModuloAPI.getModule();
         final EventContainer eventContainer = ModuloAPI.getEvent();
         final SignalContainer signalContainer = ModuloAPI.getSignal();
-        final Log log = ModuloAPI.getLogger();
+        final Logger log = ModuloAPI.getLogger();
         final ModuloAPI moduloAPI = (ModuloAPI) ModuloAPI.getHTAPI();
 
         Assertions.assertEquals(moduleContainer, ModuloAPI.getModule());

@@ -1,9 +1,9 @@
 package com.chillycheesy.modulo.event;
 
-import com.chillycheesy.modulo.utils.Log;
+import com.chillycheesy.modulo.utils.Logger;
 
 /**
- * Event emitted when a warn log is emit by the {@link Log}.
+ * Event emitted when a warn log is emit by the {@link Logger}.
  * @see LogEvent
  * @author henouille
  */

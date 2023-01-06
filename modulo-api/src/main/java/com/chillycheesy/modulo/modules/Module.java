@@ -1,10 +1,13 @@
 package com.chillycheesy.modulo.modules;
 
 import com.chillycheesy.modulo.ModuloAPI;
+import com.chillycheesy.modulo.config.ConfigurationLoader;
 import com.chillycheesy.modulo.event.OnLoadEvent;
 import com.chillycheesy.modulo.event.OnStartEvent;
 import com.chillycheesy.modulo.event.OnStopEvent;
+import com.chillycheesy.modulo.utils.Logger;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Objects;
 import java.util.jar.JarFile;
@@ -17,7 +20,7 @@ import java.util.jar.JarFile;
  *
  * @author Geoffrey Vaniscotte
  */
-public abstract class Module {
+public abstract class Module extends ConfigurationLoader {
 
     private ModuleConfig config;
     private JarFile jarFile;
@@ -32,21 +35,7 @@ public abstract class Module {
      * @param main             the main file of your jar (example: com.dev.MyAwesomeModule).
      */
     public Module(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main) {
-        this(new ModuleConfig(name, version, authors, dependencies, softDependencies, main, null));
-    }
-
-    /**
-     * @param name             it's how your HTModule will be call by <i>HomeTracker</i><br>
-     *                         note that two HTModules can't have the same name (you won't be able to add it to the {@link ModuleManager}
-     * @param version          the actual version of your module.
-     * @param authors          the list of persons that works on your module.
-     * @param dependencies     the list of modules that your module name need to work, the dependencies will be loaded before your module get load by the {@link ModuleLoader} (your module <b>cannot</b> load without them).
-     * @param softDependencies the list of modules that your module name can use to work with but without being an obligation (your module <b>can</b> load without them).
-     * @param main             the main file of your jar (example: com.dev.MyAwesomeModule).
-     * @param mainPageName     the name of the main page by default it is "index".
-     */
-    public Module(String name, String version, List<String> authors, List<String> dependencies, List<String> softDependencies, String main, String mainPageName) {
-        this(new ModuleConfig(name, version, authors, dependencies, softDependencies, main, mainPageName));
+        this(new ModuleConfig(name, version, authors, dependencies, softDependencies, main));
     }
 
     /**
@@ -57,9 +46,10 @@ public abstract class Module {
         this.config = config;
     }
 
-    public Module() {
-        config = new ModuleConfig();
-    }
+    /**
+     * Init your module with an empty {@link ModuleConfig} object
+     */
+    public Module() { this(new ModuleConfig()); }
 
     /**
      * Method called when the {@link #load()} method is called
@@ -69,7 +59,7 @@ public abstract class Module {
     /**
      * Method called when the {@link #start()} method is called
      */
-    protected abstract <E extends Throwable> void onStart() throws E;
+    protected abstract <E extends Throwable> void onStart() throws E, IOException;
 
     /**
      * Method called when the {@link #stop()} method is called
@@ -84,10 +74,11 @@ public abstract class Module {
     public void load() {
         final OnLoadEvent onLoadEvent = (OnLoadEvent) new OnLoadEvent(this).setCancelableAction(() -> {
             try {
-                ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is loading.");
+                info("Module \"" + getName() + "\" version \"" + getVersion() + "\" is loading.");
+                super.load(this);
                 this.onLoad();
             } catch (Exception e) {
-                ModuloAPI.getLogger().error(this, e.getMessage());
+                error(e.getMessage());
                 e.printStackTrace();
             }
         });
@@ -101,10 +92,11 @@ public abstract class Module {
     public void start() {
         final OnStartEvent onStartEvent = (OnStartEvent) new OnStartEvent(this).setCancelableAction(() -> {
             try {
-                ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is starting.");
+                info("Module \"" + getName() + "\" version \"" + getVersion() + "\" is starting.");
+                super.start();
                 this.onStart();
             } catch (Exception e) {
-                ModuloAPI.getLogger().error(this, e.getMessage());
+                error(e.getMessage());
                 e.printStackTrace();
             }
         });
@@ -120,15 +112,42 @@ public abstract class Module {
     public void stop() {
         final OnStopEvent onStopEvent = (OnStopEvent) new OnStopEvent(this).setCancelableAction(() -> {
             try {
-                ModuloAPI.getLogger().info(this, "Module \"" + getName() + "\" version \"" + getVersion() + "\" is stopping.");
+                info("Module \"" + getName() + "\" version \"" + getVersion() + "\" is stopping.");
+                super.stop();
                 this.onStop();
             } catch (Exception e) {
-                ModuloAPI.getLogger().error(this, e.getMessage());
+                error(e.getMessage());
                 e.printStackTrace();
             }
         });
         ModuloAPI.getEvent().getEventManager().emitEvent(this, onStopEvent);
+    }
 
+    /**
+     * Use the {@link Logger} class to log an info message.
+     * @param message the message to log.
+     */
+    public void info(String message) {
+        final Logger logger = ModuloAPI.getLogger();
+        logger.info(this, message);
+    }
+
+    /**
+     * Use the {@link Logger} class to log a debug message.
+     * @param message the message to log.
+     */
+    public void debug(String message) {
+        final Logger logger = ModuloAPI.getLogger();
+        logger.debug(this, message);
+    }
+
+    /**
+     * Use the {@link Logger} class to log an error message.
+     * @param message the message to log.
+     */
+    public void error(String message) {
+        final Logger logger = ModuloAPI.getLogger();
+        logger.error(this, message);
     }
 
     public String getName() {
@@ -177,14 +196,6 @@ public abstract class Module {
 
     public void setMain(String main) {
         config.setMain(main);
-    }
-
-    public String getMainPage() {
-        return config.getMainPageName();
-    }
-
-    public void setMainPage(String mainPage) {
-        config.setMainPageName(mainPage);
     }
 
     public ModuleConfig getConfig() {

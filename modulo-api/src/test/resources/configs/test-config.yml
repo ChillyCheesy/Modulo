@@ -1,0 +1,9 @@
+characters:
+  - name: Wicket
+    age: 20
+  - name: Eeyore
+    age: 100
+  - name: Piglet
+    age: 5
+  - name: Tigger
+    age: 7
