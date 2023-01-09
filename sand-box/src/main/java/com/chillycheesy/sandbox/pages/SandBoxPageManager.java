@@ -1,18 +1,18 @@
 package com.chillycheesy.sandbox.pages;
 
 import com.chillycheesy.modulo.ModuloAPI;
-import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.modulo.modules.ModuloEntity;
 import com.chillycheesy.modulo.pages.PageContainer;
 import com.chillycheesy.modulo.pages.PageManager;
+import com.chillycheesy.sandbox.SandBoxModule;
 
-public class SandBoxPageManager implements ModuloEntity {
+public class SandBoxPageManager implements ModuloEntity<SandBoxModule> {
 
-    private Module module;
+    private SandBoxModule module;
     private PageManager pageManager;
 
     @Override
-    public void load(Module module) {
+    public void load(SandBoxModule module) {
         final PageContainer pageContainer = ModuloAPI.getPage();
         this.pageManager = pageContainer.getPageManager();
         this.module = module;

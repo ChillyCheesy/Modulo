@@ -43,13 +43,13 @@ What is modulo...
     <dependency>
       <groupId>com.chillycheesy</groupId>
       <artifactId>modulo-api</artifactId>
-      <version>0.1.2</version>
+      <version>BINKS-0.3.0</version>
     </dependency>
     ```
   * With Gradle add the following dependency to your build.gradle: *(recommended)*
     ```gradle
     dependencies {
-      implementation 'com.chillycheesy:modulo-api:0.1.2'
+      implementation 'com.chillycheesy:modulo-api:BINKS-0.3.0'
     }
     ```
 ### Step 2:<a id="GettingStarted-2"></a>

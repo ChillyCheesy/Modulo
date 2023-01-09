@@ -2,6 +2,7 @@ package com.chillycheesy.sandbox;
 
 import com.chillycheesy.modulo.modules.Module;
 import com.chillycheesy.sandbox.pages.SandBoxPageManager;
+import com.chillycheesy.butler.ButlerModule;
 
 public class SandBoxModule extends Module {
 
