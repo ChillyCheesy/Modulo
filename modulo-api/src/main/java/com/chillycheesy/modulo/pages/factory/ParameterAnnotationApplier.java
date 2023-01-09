@@ -9,4 +9,5 @@ public interface ParameterAnnotationApplier {
 
     void applyHttpParamAnnotation(HttpParam httpParam, Page page, HttpServletRequest request, HttpServletResponse response, ParameterBuilder builder);
 
+    void applyPathVariable(PathVariable pathVariable, Page page, HttpServletRequest request, HttpServletResponse response, ParameterBuilder builder);
 }
