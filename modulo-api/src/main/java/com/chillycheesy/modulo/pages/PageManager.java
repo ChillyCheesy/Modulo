@@ -63,9 +63,12 @@ public class PageManager extends Manager<Page> {
     public boolean response(HttpServletRequest request, HttpServletResponse response) throws IOException {
         final Queue<Page> pages = getMatchedPages(request);
         Page page;
-        while ((page = pages.poll()) != null)
-            if (page.response(request, response))
+        while ((page = pages.poll()) != null) {
+            System.out.println(page.getName());
+            if (page.response(request, response)) {
                 return true;
+            }
+        }
         return false;
     }
 

@@ -81,9 +81,10 @@ public class ParameterBuilder {
 
     private void applyAnnotation(Page page, HttpServletRequest request, HttpServletResponse response) {
         for (Annotation annotation : annotations) {
-            if (annotation instanceof HttpParam) {
+            if (annotation instanceof HttpParam)
                 parameterAnnotationApplier.applyHttpParamAnnotation((HttpParam) annotation, page, request, response, this);
-            }
+            if (annotation instanceof PathVariable)
+                parameterAnnotationApplier.applyPathVariable((PathVariable) annotation, page, request, response, this);
         }
     }
 }
