@@ -1,5 +1,7 @@
 package com.chillycheesy.modulo.controllers;
 
+import com.chillycheesy.modulo.config.Configuration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,7 +14,7 @@ public class SimpleController implements Controller {
     }
 
     @Override
-    public String apply(HttpServletRequest request, HttpServletResponse response) {
+    public Object apply(HttpServletRequest request, HttpServletResponse response, Configuration configuration) {
         return content;
     }
 

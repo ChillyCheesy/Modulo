@@ -1,5 +1,7 @@
 package com.chillycheesy.modulo.controllers;
 
+import com.chillycheesy.modulo.config.Configuration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -35,12 +37,13 @@ public class HttpPathController implements Controller {
      * If the path match with the target path then return the next controller result.
      * @param request the http request.
      * @param response the http response.
+     * @param configuration the configuration.
      * @return the response.
      */
     @Override
-    public String apply(HttpServletRequest request, HttpServletResponse response) {
+    public Object apply(HttpServletRequest request, HttpServletResponse response, Configuration configuration) throws Exception {
         if (request.getRequestURI().equals(path)) {
-            return controller.apply(request, response);
+            return controller.apply(request, response, configuration);
         }
         return null;
     }

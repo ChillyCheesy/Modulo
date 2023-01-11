@@ -1,5 +1,7 @@
 package com.chillycheesy.modulo.controllers;
 
+import com.chillycheesy.modulo.config.Configuration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -17,9 +19,10 @@ public interface Controller {
      *
      * @param request the http request.
      * @param response the http response.
+     * @param configuration the configuration.
      * @return the response.
      */
-    String apply(HttpServletRequest request, HttpServletResponse response);
+    Object apply(HttpServletRequest request, HttpServletResponse response, Configuration configuration) throws Exception;
 
     /**
      * Set the next controller.

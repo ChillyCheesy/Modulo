@@ -1,5 +1,7 @@
 package com.chillycheesy.modulo.controllers;
 
+import com.chillycheesy.modulo.config.Configuration;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -33,12 +35,13 @@ public class HttpMethodController implements Controller {
      * If the method match with the target method then return the next controller result.
      * @param request the http request.
      * @param response the http response.
+     * @param configuration the configuration.
      * @return the response.
      */
     @Override
-    public String apply(HttpServletRequest request, HttpServletResponse response) {
+    public Object apply(HttpServletRequest request, HttpServletResponse response, Configuration configuration) throws Exception {
         if (request.getMethod().equals(method) && controller != null) {
-            return controller.apply(request, response);
+            return controller.apply(request, response, configuration);
         }
         return null;
     }
