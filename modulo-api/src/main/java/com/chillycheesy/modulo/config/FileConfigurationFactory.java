@@ -65,7 +65,7 @@ public class FileConfigurationFactory implements ConfigurationFactory {
 
     private boolean deployDefaultConfigFile(File file) throws IOException {
         final File parentFile = file.getAbsoluteFile().getParentFile();
-        if (parentFile.exists() || parentFile.mkdirs() && sourceInputStream != null)
+        if (file.exists() && (parentFile.exists() || parentFile.mkdirs()) && sourceInputStream != null)
             return file.createNewFile() && copySourceFile(file);
         return true;
     }
@@ -83,14 +83,16 @@ public class FileConfigurationFactory implements ConfigurationFactory {
     }
 
     private Configuration applyLoaderStrategy(File file, ConfigurationLoaderStrategy loaderStrategy) {
-        try (
-            final FileInputStream fileInputStream = new FileInputStream(file);
-            final BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
-        ) {
-            return loaderStrategy.loadConfiguration(bufferedInputStream);
-        } catch (IOException e) {
-            module.error("Failed to load configuration file: " + file.getPath());
-            e.printStackTrace();
+        if (file.exists()) {
+            try (
+                final FileInputStream fileInputStream = new FileInputStream(file);
+                final BufferedInputStream bufferedInputStream = new BufferedInputStream(fileInputStream);
+            ) {
+                return loaderStrategy.loadConfiguration(bufferedInputStream);
+            } catch (IOException e) {
+                module.error("Failed to load configuration file: " + file.getPath());
+                e.printStackTrace();
+            }
         }
         return null;
     }

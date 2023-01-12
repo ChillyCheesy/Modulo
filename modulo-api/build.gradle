@@ -70,3 +70,5 @@ publishing {
         }
     }
 }
+
+compileTestJava.options.compilerArgs << '-parameters'

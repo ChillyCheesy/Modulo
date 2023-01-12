@@ -7,9 +7,9 @@ import javax.servlet.http.HttpServletResponse;
 
 public class SimpleController implements Controller {
 
-    private final String content;
+    private final Object content;
 
-    public SimpleController(String content) {
+    public SimpleController(Object content) {
         this.content = content;
     }
 

@@ -18,9 +18,9 @@ import java.util.regex.Pattern;
  *     <li>
  *         <code>{&lt;key&gt;}</code>: The path variable.
  *         The key is the name of the path variable.
- *         If the path match with the request path, the apply method register the key with the equivalent value inside the configuration.
+ *         If the path match with the request path, the apply method register the key inside a "path-variable" section with the equivalent value inside the configuration.
  *         <br>
- *         Exemple: <code>/{value}</code> match with <code>/test</code> and register the key <code>value</code> with the value <code>test</code>.
+ *         Exemple: <code>/{value}</code> match with <code>/test</code> and register the key <code>path-variable.value</code> with the value <code>test</code>.
  *     </li>
  *     <li>
  *         <code>*</code>: match any path but don't register it inside the configuration.
@@ -37,6 +37,8 @@ import java.util.regex.Pattern;
  * @author ChillyCheesy
  */
 public class HttpPathVariableController implements Controller {
+
+    public static final String PATH_VARIABLE_SECTION = "path-variable";
 
     /**
      * Target path.
@@ -115,7 +117,7 @@ public class HttpPathVariableController implements Controller {
     private boolean argMatch(String requestPath, String pathVariable, Configuration configuration) {
         if (pathVariable.startsWith("{") && pathVariable.endsWith("}")) {
             final String key = pathVariable.replaceAll("^\\{|}$", "");
-            configuration.set(key, requestPath);
+            configuration.set(String.format("%s.%s", PATH_VARIABLE_SECTION, key), requestPath);
             return true;
         } else return pathVariable.equals("*") || pathVariable.equals("**") || pathVariable.equals(requestPath);
     }

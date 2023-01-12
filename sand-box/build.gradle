@@ -18,11 +18,13 @@ dependencies {
     implementation 'org.apache.tomcat.embed:tomcat-embed-websocket:9.0.39'
 }
 
-task deployToTestServer(type: Copy) {
+tasks.register('deployToTestServer') {
     dependsOn build
     file("../modulo-server/modules/").mkdirs()
-    from "$buildDir/libs/"
-    into "../modulo-server/modules/"
+    copy {
+        from "$buildDir/libs/"
+        into "../modulo-server/modules/"
+    }
 }
 
 compileJava.options.compilerArgs << '-parameters'
