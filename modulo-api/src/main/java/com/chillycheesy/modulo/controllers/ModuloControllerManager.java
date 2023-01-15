@@ -16,7 +16,6 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 public class ModuloControllerManager extends Manager<ModuloController> {
 
@@ -41,7 +40,7 @@ public class ModuloControllerManager extends Manager<ModuloController> {
     public void apply(HttpServletRequest request, HttpServletResponse response) throws Exception {
         final EventManager eventManager = ModuloAPI.getEvent().getEventManager();
         final List<ModuloController> controllers = super.getAllItems().stream()
-            .sorted(Comparator.comparingInt(ModuloController::getPriority)).collect(Collectors.toList());
+            .sorted(Comparator.comparingInt(ModuloController::getPriority)).toList();
         for (ModuloController controller : controllers) {
             final Module module = super.getModuleByItem(controller);
             final ControllerAppliedEvent event = new ControllerAppliedEvent(controller);
