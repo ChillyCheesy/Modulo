@@ -9,8 +9,8 @@ sourceCompatibility = 16
 targetCompatibility = JavaVersion.VERSION_16
 
 dependencies {
-    implementation 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3'
-    implementation 'org.apache.tomcat.embed:tomcat-embed-websocket:9.0.39'
+    api 'com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:2.13.3'
+    compileOnlyApi 'org.apache.tomcat.embed:tomcat-embed-websocket:9.0.39'
 
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
     testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'

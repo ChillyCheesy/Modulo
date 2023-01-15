@@ -2,9 +2,9 @@ package com.chillycheesy.modulo.controllers;
 
 public class ControllerContainer {
 
-    private static ModuloControllerManager manager;
+    private ModuloControllerManager manager;
 
-    public static ModuloControllerManager getManager() {
+    public ModuloControllerManager getManager() {
         return manager = manager == null ? new ModuloControllerManager() : manager;
     }
 

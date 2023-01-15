@@ -41,6 +41,7 @@ public class ConfigurationLoader extends ModuleEntityAdapter {
             updateConfigurationLoader(configLoader);
         }
         defaultConfiguration = configurationFactory.createConfiguration(loaderStrategy);
+        System.out.println(defaultConfiguration);
     }
 
     @Override

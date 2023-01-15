@@ -1,7 +1,6 @@
 package com.chillycheesy.moduloserver.configurations;
 
 import com.chillycheesy.modulo.config.Configuration;
-import com.chillycheesy.moduloserver.ServerModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.server.ConfigurableWebServerFactory;
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
