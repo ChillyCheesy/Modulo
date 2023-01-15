@@ -31,6 +31,7 @@ import java.util.regex.Pattern;
  *         <code>/**</code>: match any additional path but don't register it inside the configuration. <strong>it should be place at the end of the path</strong>
  *         <br>
  *         Exemple: <code>/my/**</code> match with <code>/my/test</code> and <code>/my/test/test2</code> and <code>/my/test/test2/test3</code>.
+ *         Register the additional path inside the configuration at the key "additional-path".
  *     </li>
  * </ul>
  *
@@ -98,8 +99,12 @@ public class HttpPathVariableController implements Controller {
             final String requestPath = requestPathIterator.next();
             final String pathVariable = pathVariableIterator.next();
             if (argMatch(requestPath, pathVariable, configuration)) {
-                if (pathVariable.equals("**"))
+                if (pathVariable.equals("**")) {
+                    final StringBuilder additionalPath = new StringBuilder(requestPath);
+                    requestPathIterator.forEachRemaining(value -> additionalPath.append("/").append(value));
+                    configuration.set("additional-path", additionalPath.toString());
                     return true;
+                }
             } else {
                 return false;
             }

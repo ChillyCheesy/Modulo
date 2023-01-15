@@ -39,19 +39,16 @@ public class PageManager extends Manager<Page> {
 
     @Override
     public boolean registerItem(Module module, Page ...items) {
-        return Arrays.stream(items).allMatch(item -> this.registerItem(module, item));
-    }
-
-    @Override
-    public boolean registerItem(Module module, Page item) {
-        final Optional<Page> pageWithSameName = super.getAllItems().stream().filter(page -> page.getName().equals(item.getName())).findAny();
-        boolean success = true;
-        if (pageWithSameName.isPresent()) {
-            final Page findPage = pageWithSameName.get();
-            final Module findPageModule = super.getModuleByItem(findPage);
-            success = super.removeItem(findPageModule, findPage);
-        }
-        return success && super.registerItem(module, item);
+        return Arrays.stream(items).allMatch(item -> {
+            final Optional<Page> pageWithSameName = super.getAllItems().stream().filter(page -> page.getName().equals(item.getName())).findAny();
+            boolean success = true;
+            if (pageWithSameName.isPresent()) {
+                final Page findPage = pageWithSameName.get();
+                final Module findPageModule = super.getModuleByItem(findPage);
+                success = super.removeItem(findPageModule, findPage);
+            }
+            return success && super.registerItem(module, item);
+        });
     }
 
     /**

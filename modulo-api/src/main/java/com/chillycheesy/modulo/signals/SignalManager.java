@@ -71,25 +71,27 @@ public class SignalManager extends ListenerManager {
     /**
      * Register a signal listener which contains method decorated with {@link SignalHandler} decorator.
      * @param module which module is registering the listener.
-     * @param listener the listeners you want to register.
+     * @param listeners the listeners you want to register.
      * @return true if the listener has been correctly register.
      */
     @Override
-    public boolean registerItem(Module module, Listener listener) {
-        try {
-            final Method[] methods = listener.getClass().getMethods();
-            for (Method method : methods) {
-                final SignalHandler eventHandler = method.getDeclaredAnnotation(SignalHandler.class);
-                if (eventHandler != null) {
-                    if (method.getParameterCount() != 2 || !method.getParameterTypes()[0].equals(Module.class) || !method.getParameterTypes()[1].equals(String[].class))
-                        throw new InvalidParameterSignalHandlerException(module);
+    public boolean registerItem(Module module, Listener... listeners) {
+        return Arrays.stream(listeners).allMatch(item -> {
+            try {
+                final Method[] methods = item.getClass().getMethods();
+                for (Method method : methods) {
+                    final SignalHandler eventHandler = method.getDeclaredAnnotation(SignalHandler.class);
+                    if (eventHandler != null) {
+                        if (method.getParameterCount() != 2 || !method.getParameterTypes()[0].equals(Module.class) || !method.getParameterTypes()[1].equals(String[].class))
+                            throw new InvalidParameterSignalHandlerException(module);
+                    }
                 }
+                return super.registerItem(module, item);
+            } catch (InvalidParameterSignalHandlerException e) {
+                ModuloAPI.getLogger().error(module, e.getMessage());
+                return false;
             }
-            return super.registerItem(module, listener);
-        } catch (InvalidParameterSignalHandlerException e) {
-            ModuloAPI.getLogger().error(module, e.getMessage());
-            return false;
-        }
+        });
     }
 
 }

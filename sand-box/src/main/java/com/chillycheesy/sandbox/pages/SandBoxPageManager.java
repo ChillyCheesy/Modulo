@@ -20,7 +20,7 @@ public class SandBoxPageManager implements ModuloEntity {
 
     @Override
     public void start() {
-        pageManager.buildAndRegisterPage(module, new JokePage());
+        pageManager.buildAndRegisterPage(module, new JokePage(module));
     }
 
     @Override

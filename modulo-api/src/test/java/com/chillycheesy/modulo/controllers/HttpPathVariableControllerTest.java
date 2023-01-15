@@ -57,6 +57,7 @@ public class HttpPathVariableControllerTest {
         when(request.getRequestURI()).thenReturn("/test/path/more/more/and/more");
         final Object response = controller.apply(request, null, configuration);
         assertEquals("Ee chee wa maa", response);
+        assertEquals("path/more/more/and/more", configuration.get("additional-path"));
 
         final Configuration configuration2 = new Configuration();
         final HttpServletRequest request2 = mock(HttpServletRequest.class);
