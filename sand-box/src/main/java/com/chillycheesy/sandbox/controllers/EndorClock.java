@@ -5,10 +5,23 @@ import com.chillycheesy.modulo.controllers.factory.ServeResource;
 
 public class EndorClock {
 
-    @Request(path = "/endor/clock")
+    @Request(path = "/public/**")
     @ServeResource
     public String dial() {
+        return "public";
+    }
+
+    @Request(path = "/benoit/**")
+    @ServeResource
+    public String benoit() {
         return "benoit";
+    }
+
+
+    @Request(path = "/ewok/**")
+    @ServeResource
+    public String ewok() {
+        return "ewok";
     }
 
 }

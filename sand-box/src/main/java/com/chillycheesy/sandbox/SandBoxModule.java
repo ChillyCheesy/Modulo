@@ -15,8 +15,9 @@ public class SandBoxModule extends Module {
 
     @Override
     protected void onStart() {
+        info(defaultConfiguration.getString("message"));
         controllerInitializer.start();
-        /*info(defaultConfiguration.getString("message"));*/
+        error("This is an error message");
     }
 
     @Override

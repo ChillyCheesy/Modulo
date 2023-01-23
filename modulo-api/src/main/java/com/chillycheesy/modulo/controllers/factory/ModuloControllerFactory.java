@@ -27,14 +27,18 @@ public class ModuloControllerFactory {
     }
 
     public ModuloController[] createFromObject(Module module, Object object) throws Exception {
+        return createFromObject(module, object, 0);
+    }
+
+    public ModuloController[] createFromObject(Module module, Object object, int initialPriority) throws Exception {
         final Class<?> clazz = object.getClass();
         final Method[] methods = clazz.getDeclaredMethods();
         final ModuloController[] controllers = new ModuloController[methods.length];
         for (int i = 0; i < methods.length; i++) {
             final Method method = methods[i];
             final String name = method.getName();
-            final Annotation[] annotations = method.getAnnotations();
-            final ModuloController rootController = new ModuloController(name, i);
+            final Annotation[] annotations = method.getDeclaredAnnotations();
+            final ModuloController rootController = new ModuloController(name, initialPriority + i);
             final ControllerBuilder builder = new ControllerBuilder();
             for (Annotation annotation : annotations)
                 for (ControllerAnnotationBinder binder : binders)

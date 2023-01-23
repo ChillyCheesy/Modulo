@@ -11,11 +11,9 @@ public class ServeResourceControllerAnnotationBinder implements ControllerAnnota
 
     @Override
     public void bindControllerAnnotations(Annotation annotation, Module module, ControllerBuilder builder) throws Exception {
-        if (annotation instanceof ServeResource) {
-            final JarFile jarFile = module.getJarFile();
-            final InternalFileResourceController controller = new InternalFileResourceController(jarFile);
-            builder.add(controller);
-        }
+        final JarFile jarFile = module.getJarFile();
+        final InternalFileResourceController controller = new InternalFileResourceController(jarFile);
+        builder.add(controller);
     }
 
     public boolean match(Annotation annotation) {

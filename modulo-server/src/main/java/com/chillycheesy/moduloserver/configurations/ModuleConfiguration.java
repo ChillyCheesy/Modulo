@@ -1,5 +1,6 @@
 package com.chillycheesy.moduloserver.configurations;
 
+import com.chillycheesy.modulo.controllers.ControllerContainer;
 import com.chillycheesy.modulo.modules.ModuleContainer;
 import com.chillycheesy.modulo.pages.PageContainer;
 import com.chillycheesy.modulo.signals.SignalContainer;
@@ -38,6 +39,11 @@ public class ModuleConfiguration {
     @Bean
     public PageContainer page() {
         return ModuloAPI.getPage();
+    }
+
+    @Bean
+    public ControllerContainer controller() {
+        return ModuloAPI.getController();
     }
 
     @Bean

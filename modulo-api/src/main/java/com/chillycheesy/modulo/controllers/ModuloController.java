@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Controller that represent a root {@link Controller}.
  *
- *
  * @author ChillyCheesy
  */
 public class ModuloController implements Controller {

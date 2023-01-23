@@ -7,3 +7,4 @@ gradle.properties
 modules
 configs
 modulo.properties
+mime.types

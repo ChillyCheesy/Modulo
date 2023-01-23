@@ -1,12 +1,12 @@
- ____    ____               __          __
+${AnsiColor.YELLOW} ____    ____               __          __
 |_   \  /   _|             |  ]        [  |
   |   \/   |   .--.    .--.| | __   _   | |  .--.
   | |\  /| | / .'`\ \/ /'`\' |[  | | |  | |/ .'`\ \
  _| |_\/_| |_| \__. || \__/  | | \_/ |, | || \__. |
 |_____||_____|'.__.'  '.__.;__]'.__.'_/[___]'.__.'
-                                        ${application.version}
+${AnsiColor.BRIGHT_RED}${application.version}${AnsiColor.DEFAULT}
 
            Ooh mooey mooey I love you!
 ---------------------------------------------------
 
-Powered by Spring Boot ${spring-boot.version}
+Powered by ${AnsiColor.GREEN}Spring Boot ${spring-boot.version}${AnsiColor.DEFAULT}

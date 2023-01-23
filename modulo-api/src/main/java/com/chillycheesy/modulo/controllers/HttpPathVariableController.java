@@ -109,7 +109,7 @@ public class HttpPathVariableController implements Controller {
                 return false;
             }
         }
-        return !requestPathIterator.hasNext() && !pathVariableIterator.hasNext();
+        return true;
     }
 
     /**

@@ -1,11 +1,12 @@
 package com.chillycheesy.modulo.controllers;
 
 import com.chillycheesy.modulo.config.Configuration;
+import org.apache.tika.Tika;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.net.URLConnection;
+import java.util.Base64;
 import java.util.Objects;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
@@ -61,7 +62,9 @@ public class InternalFileResourceController implements Controller {
                 if (Objects.nonNull(entryContent)) {
                     final String contentType = getContentType(entryContent.getName(), jarFile.getInputStream(entryContent));
                     final String content = readEntry(entryContent);
-                    response.setContentType(contentType);
+                    if (Objects.nonNull(contentType))
+                        response.setContentType(contentType);
+                    configuration.set("base64", true);
                     return content;
                 }
             }
@@ -77,10 +80,8 @@ public class InternalFileResourceController implements Controller {
      * @throws IOException if an error occurs.
      */
     private String getContentType(String fileName, InputStream stream) throws IOException {
-        final String contentType = URLConnection.guessContentTypeFromStream(stream);
-        if (Objects.nonNull(contentType) && !contentType.isEmpty())
-            return contentType;
-        return URLConnection.guessContentTypeFromName(fileName);
+        final Tika tika = new Tika();
+        return tika.detect(stream, fileName);
     }
 
     /**
@@ -88,15 +89,14 @@ public class InternalFileResourceController implements Controller {
      * @param resourceFolder the resource folder.
      * @param additionalPath the additional path.
      * @return the entry content.
-     * @throws IOException if an error occurs.
      */
-    private JarEntry getInternalFileContent(String resourceFolder, String additionalPath) throws IOException {
-        final String internalFilePath = String.format("%s/%s", resourceFolder, additionalPath);
+    private JarEntry getInternalFileContent(String resourceFolder, String additionalPath) {
+        final String internalFilePath = String.format("%s/%s", resourceFolder, additionalPath.replaceAll("^/", ""));
         final JarEntry jarEntry = jarFile.getJarEntry(internalFilePath);
         if (Objects.nonNull(jarEntry) && !jarEntry.isDirectory())
             return jarEntry;
         final String newPath = reformatPath(additionalPath);
-        return !additionalPath.equals("") ? getInternalFileContent(resourceFolder, newPath) : null;
+        return !newPath.equals("") ? getInternalFileContent(resourceFolder, newPath) : null;
     }
 
     /**
@@ -106,13 +106,13 @@ public class InternalFileResourceController implements Controller {
      */
     private String reformatPath(String path) {
         if (path.endsWith("index.html"))
-            return path.replaceAll("([-a-zA-Z0-9@:%._+~#=]+/index\\.html)$", "");
+            return path.replaceAll("([-a-zA-Z0-9@:%._+~#=]+/index\\.html)$", "index.html");
         if (path.endsWith("/"))
-            return path.replaceAll("/$", "");
+            return path + "index.html";
         final Pattern pattern = Pattern.compile("[-a-zA-Z0-9@:%_+~#=]+\\.[-a-zA-Z0-9@:%_+~#=]+$");
         final Matcher matcher = pattern.matcher(path);
         if (matcher.find()) return "";
-        return path + "/index.html";
+        return path + "/";
     }
 
     /**
@@ -125,12 +125,11 @@ public class InternalFileResourceController implements Controller {
         try (
             final InputStream inputStream = jarFile.getInputStream(jarEntry);
             final BufferedInputStream bufferedInputStream = new BufferedInputStream(inputStream);
-            final InputStreamReader inputStreamReader = new InputStreamReader(bufferedInputStream);
-            final BufferedReader reader = new BufferedReader(inputStreamReader)
+            final ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(bufferedInputStream.readAllBytes());
         ) {
-            final StringBuilder builder = new StringBuilder();
-            reader.lines().forEach(builder::append);
-            return builder.toString();
+            final byte[] bytesContent = byteArrayInputStream.readAllBytes();
+            final Base64.Encoder encoder = Base64.getEncoder();
+            return encoder.encodeToString(bytesContent);
         }
     }
 

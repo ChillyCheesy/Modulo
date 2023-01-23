@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class FireConfigurationFactoryTest {
+public class FileConfigurationFactoryTest {
 
     private static class SimpleLoader implements ConfigurationLoaderStrategy {
 
@@ -41,7 +41,7 @@ public class FireConfigurationFactoryTest {
     private Module module;
 
     @BeforeEach
-    private void init() throws IOException {
+    public void init() throws IOException {
         module = mock(Module.class);
         final JarFile jarFile = mock(JarFile.class);
         final JarEntry entry = mock(JarEntry.class);
@@ -63,7 +63,7 @@ public class FireConfigurationFactoryTest {
     }
 
     @AfterEach
-    private void clean() {
+    public void clean() {
         final File file = new File("configs/EndorModule/test.txt");
         if (file.exists()) {
             file.delete();
