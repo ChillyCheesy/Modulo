@@ -15,7 +15,7 @@ public class ConfigurableEntity extends ModuleEntityAdapter {
 
     protected boolean autoSave = true;
 
-    public ConfigurableEntity(YamlConfigurationStrategy loaderStrategy) {
+    public ConfigurableEntity(ConfigurationLoaderStrategy loaderStrategy) {
         this.loaderStrategy = loaderStrategy;
     }
 
