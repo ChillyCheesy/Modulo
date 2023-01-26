@@ -1,6 +1,10 @@
 com.chillycheesy.modulo
 com.chillycheesy.modulo.config
+com.chillycheesy.modulo.controllers
+com.chillycheesy.modulo.controllers.annotations
+com.chillycheesy.modulo.controllers.factory
 com.chillycheesy.modulo.event
+com.chillycheesy.modulo.event.controllers
 com.chillycheesy.modulo.events
 com.chillycheesy.modulo.listener
 com.chillycheesy.modulo.modules
