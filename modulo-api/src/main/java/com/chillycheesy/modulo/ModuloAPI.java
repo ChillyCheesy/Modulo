@@ -1,5 +1,6 @@
 package com.chillycheesy.modulo;
 
+import com.chillycheesy.modulo.controllers.ControllerContainer;
 import com.chillycheesy.modulo.events.EventContainer;
 import com.chillycheesy.modulo.modules.ModuleContainer;
 import com.chillycheesy.modulo.pages.PageContainer;
@@ -30,6 +31,10 @@ public class ModuloAPI {
      * Page manager.
      */
     private static PageContainer page;
+    /**
+     * Controller container.
+     */
+    private static ControllerContainer controller;
     /**
      * Logger section.
      */
@@ -80,4 +85,12 @@ public class ModuloAPI {
         return logger = logger == null ? new Logger(getEvent()) : logger;
     }
 
+    /**
+     * Getter for Controller logic section.
+     *
+     * @return The Controller section.
+     */
+    public static ControllerContainer getController() {
+        return controller = controller == null ? new ControllerContainer() : controller;
+    }
 }

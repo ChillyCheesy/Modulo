@@ -1,5 +1,10 @@
-#              ..----.._    _
-#            .' .--.    "-.(O)_
-#'-.__.-'"'=:|  ,  _)_ \__ . c\'-..
-#            ''------'---''---'-"
-#            Despelette was here !
+#               ..----.._    _
+#             .' .--.    "-.(O)_
+# '-.__.-'"'=:|  ,  _)_ \__ . c\'-..
+#             ''------'---''---'-"
+#             Despelette was here !
+# ---------------------------------------------
+
+# Define System properties. You can add any property you want.
+# properties:
+#   property1: value1

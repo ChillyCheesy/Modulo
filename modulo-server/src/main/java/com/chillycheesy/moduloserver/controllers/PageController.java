@@ -1,6 +1,10 @@
 package com.chillycheesy.moduloserver.controllers;
 
 import com.chillycheesy.modulo.ModuloAPI;
+import com.chillycheesy.modulo.controllers.Controller;
+import com.chillycheesy.modulo.controllers.ControllerContainer;
+import com.chillycheesy.modulo.controllers.ModuloController;
+import com.chillycheesy.modulo.controllers.ModuloControllerManager;
 import com.chillycheesy.modulo.event.*;
 import com.chillycheesy.modulo.events.EventContainer;
 import com.chillycheesy.modulo.events.EventManager;
@@ -19,44 +23,38 @@ public class PageController {
 
     @Autowired private ServerModule serverModule;
     @Autowired private EventContainer eventContainer;
+    @Autowired private ControllerContainer controllerContainer;
 
     @GetMapping("/**")
-    public void getRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void getRedirect(HttpServletRequest request, HttpServletResponse response) throws Exception {
         final GetRequestEvent event = new GetRequestEvent(request, response);
         redirect(request, response, event);
     }
 
     @PostMapping("/**")
-    public void postRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void postRedirect(HttpServletRequest request, HttpServletResponse response) throws Exception {
         final PostRequestEvent event = new PostRequestEvent(request, response);
         redirect(request, response, event);
     }
 
     @PutMapping("/**")
-    public void putRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void putRedirect(HttpServletRequest request, HttpServletResponse response) throws Exception {
         final PutRequestEvent event = new PutRequestEvent(request, response);
         redirect(request, response, event);
     }
 
     @DeleteMapping("/**")
-    public void deleteRedirect(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public void deleteRedirect(HttpServletRequest request, HttpServletResponse response) throws Exception {
         final DeleteRequestEvent event = new DeleteRequestEvent(request, response);
         redirect(request, response, event);
     }
 
-    private void redirect(HttpServletRequest request, HttpServletResponse response, RequestEvent event) throws IOException {
+    private void redirect(HttpServletRequest request, HttpServletResponse response, RequestEvent event) throws Exception {
+        final ModuloControllerManager manager = controllerContainer.getManager();
         final EventManager eventManager = eventContainer.getEventManager();
-        final PageManager pageManager = ModuloAPI.getPage().getPageManager();
-        event.setCancelableAction(() -> {
-            try {
-                if(!pageManager.response(request, response))
-                    throw new No404SubPageException();
-            } catch (No404SubPageException e) {
-                ModuloAPI.getLogger().error(serverModule, "Http 404 error: " + request.getRequestURI());
-                response.sendError(404);
-            }
-        });
         eventManager.emitEvent(serverModule, event);
+        if (!event.isCanceled())
+            manager.apply(request, response);
     }
 
 }

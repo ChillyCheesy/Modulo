@@ -15,7 +15,7 @@ public class Manager<T> {
         this.managedItems = new HashMap<>();
     }
 
-    public boolean registerItem(Module module, T item) {
+    private boolean registerOneItem(Module module, T item) {
         if (item == null) return false;
         if (!managedItems.containsKey(module)) managedItems.put(module, new ArrayList<>());
         final List<T> moduleListeners = managedItems.get(module);
@@ -26,12 +26,12 @@ public class Manager<T> {
     public boolean registerItem(Module module, T... items) {
         boolean success = true;
         for (T item : items)
-            if (!registerItem(module, item))
+            if (!registerOneItem(module, item))
                 success = false;
         return success;
     }
 
-    public boolean removeItem(Module module, T item) {
+    private boolean removeOneItem(Module module, T item) {
         if (!managedItems.isEmpty()) {
             final List<T> items = managedItems.get(module);
             return items.remove(item);
@@ -39,10 +39,11 @@ public class Manager<T> {
         return false;
     }
 
-    public boolean removeItem(Module module, T...items) {
+    @SafeVarargs
+    public final boolean removeItem(Module module, T... items) {
         boolean success = true;
         for (T item : items)
-            if (!removeItem(module, item))
+            if (!removeOneItem(module, item))
                 success = false;
         return success;
     }
