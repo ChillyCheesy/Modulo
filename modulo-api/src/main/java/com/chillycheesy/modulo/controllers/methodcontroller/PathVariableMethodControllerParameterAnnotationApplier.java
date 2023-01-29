@@ -1,22 +1,22 @@
-package com.chillycheesy.modulo.controllers.annotations;
+package com.chillycheesy.modulo.controllers.methodcontroller;
+
 
 import com.chillycheesy.modulo.config.Configuration;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.BufferedReader;
-import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
+import static com.chillycheesy.modulo.controllers.HttpPathVariableController.PATH_VARIABLE_SECTION;
+
 /**
- * Apply the {@link RequestBody} decorator.
+ * Apply the {@link PathVariable} decorator.
  *
  * @author chillycheesy
  */
-public class RequestBodyMethodControllerParameterAnnotationApplier implements MethodControllerParameterAnnotationApplier {
+public class PathVariableMethodControllerParameterAnnotationApplier implements MethodControllerParameterAnnotationApplier {
 
     /**
      * Apply the annotation to the parameter and return the argument to pass to the method.
@@ -33,30 +33,19 @@ public class RequestBodyMethodControllerParameterAnnotationApplier implements Me
      */
     @Override
     public Object apply(Annotation annotation, HttpServletRequest request, HttpServletResponse response, Configuration configuration, Object instance, Method method, Parameter parameter, Object currentArgument) {
-        try (final BufferedReader reader = request.getReader()) {
-            final String content = contentAsString(reader);
-            if (parameter.getType().equals(String.class)) return content;
-            final ObjectMapper mapper = new ObjectMapper();
-            return mapper.readValue(content, parameter.getType());
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    private String contentAsString(BufferedReader reader) {
-        final StringBuilder builder = new StringBuilder();
-        reader.lines().forEach(builder::append);
-        return builder.toString();
+        final String annotationValue = ((PathVariable) annotation).value();
+        final String key = annotationValue.equals("?") ? parameter.getName() : annotationValue;
+        return configuration.getString(String.format("%s.%s", PATH_VARIABLE_SECTION, key), null);
     }
 
     /**
      * Check if the annotation is supported by this applier.
+     *
      * @param annotation The annotation to apply.
      * @return True if the annotation is supported by this applier.
      */
     @Override
     public boolean match(Annotation annotation) {
-        return annotation instanceof RequestBody;
+        return annotation instanceof PathVariable;
     }
-
 }

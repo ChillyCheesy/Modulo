@@ -1,10 +1,10 @@
 package com.chillycheesy.modulo.controllers;
 
 import com.chillycheesy.modulo.config.Configuration;
-import com.chillycheesy.modulo.controllers.annotations.HttpParamMethodControllerParameterAnnotationApplier;
-import com.chillycheesy.modulo.controllers.annotations.MethodControllerParameterAnnotationApplier;
-import com.chillycheesy.modulo.controllers.annotations.PathVariableMethodControllerParameterAnnotationApplier;
-import com.chillycheesy.modulo.controllers.annotations.RequestBodyMethodControllerParameterAnnotationApplier;
+import com.chillycheesy.modulo.controllers.methodcontroller.HttpParamMethodControllerParameterAnnotationApplier;
+import com.chillycheesy.modulo.controllers.methodcontroller.MethodControllerParameterAnnotationApplier;
+import com.chillycheesy.modulo.controllers.methodcontroller.PathVariableMethodControllerParameterAnnotationApplier;
+import com.chillycheesy.modulo.controllers.methodcontroller.RequestBodyMethodControllerParameterAnnotationApplier;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
