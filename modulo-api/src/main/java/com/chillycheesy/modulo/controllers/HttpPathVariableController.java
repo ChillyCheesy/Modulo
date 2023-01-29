@@ -99,17 +99,22 @@ public class HttpPathVariableController implements Controller {
             final String requestPath = requestPathIterator.next();
             final String pathVariable = pathVariableIterator.next();
             if (argMatch(requestPath, pathVariable, configuration)) {
-                if (pathVariable.equals("**")) {
-                    final StringBuilder additionalPath = new StringBuilder(requestPath);
-                    requestPathIterator.forEachRemaining(value -> additionalPath.append("/").append(value));
-                    configuration.set("additional-path", additionalPath.toString());
+                if (isAdditionalPath(requestPathIterator, requestPath, pathVariable, configuration))
                     return true;
-                }
-            } else {
-                return false;
-            }
+            } else return false;
         }
-        return true;
+        if (!requestPathIterator.hasNext() && !pathVariableIterator.hasNext()) return true;
+        else return pathVariableIterator.hasNext() && isAdditionalPath(requestPathIterator, "", pathVariableIterator.next(), configuration);
+    }
+
+    private boolean isAdditionalPath(Iterator<String> requestPathIterator, String base, String pathVariable, Configuration configuration) {
+        if (pathVariable.equals("**")) {
+            final StringBuilder additionalPath = new StringBuilder(base);
+            requestPathIterator.forEachRemaining(value -> additionalPath.append("/").append(value));
+            configuration.set("additional-path", additionalPath.toString());
+            return true;
+        }
+        return false;
     }
 
     /**

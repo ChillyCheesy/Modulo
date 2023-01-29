@@ -1,9 +1,9 @@
 package com.chillycheesy.modulo.controllers;
 
 import com.chillycheesy.modulo.config.Configuration;
-import com.chillycheesy.modulo.controllers.annotations.HttpParam;
-import com.chillycheesy.modulo.controllers.annotations.PathVariable;
-import com.chillycheesy.modulo.controllers.annotations.RequestBody;
+import com.chillycheesy.modulo.controllers.methodcontroller.HttpParam;
+import com.chillycheesy.modulo.controllers.methodcontroller.PathVariable;
+import com.chillycheesy.modulo.controllers.methodcontroller.RequestBody;
 import org.junit.jupiter.api.Test;
 
 import javax.servlet.http.HttpServletRequest;

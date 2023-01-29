@@ -1,5 +1,4 @@
-package com.chillycheesy.modulo.controllers.annotations;
-
+package com.chillycheesy.modulo.controllers.methodcontroller;
 
 import com.chillycheesy.modulo.config.Configuration;
 
@@ -9,14 +8,14 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 
-import static com.chillycheesy.modulo.controllers.HttpPathVariableController.PATH_VARIABLE_SECTION;
+import static com.chillycheesy.modulo.controllers.HttpParamVariableController.PARAM_VARIABLE_SECTION;
 
 /**
- * Apply the {@link PathVariable} decorator.
+ * Apply the {@link HttpParam} decorator.
  *
  * @author chillycheesy
  */
-public class PathVariableMethodControllerParameterAnnotationApplier implements MethodControllerParameterAnnotationApplier {
+public class HttpParamMethodControllerParameterAnnotationApplier implements MethodControllerParameterAnnotationApplier {
 
     /**
      * Apply the annotation to the parameter and return the argument to pass to the method.
@@ -33,19 +32,19 @@ public class PathVariableMethodControllerParameterAnnotationApplier implements M
      */
     @Override
     public Object apply(Annotation annotation, HttpServletRequest request, HttpServletResponse response, Configuration configuration, Object instance, Method method, Parameter parameter, Object currentArgument) {
-        final String annotationValue = ((PathVariable) annotation).value();
+        final String annotationValue = ((HttpParam) annotation).value();
         final String key = annotationValue.equals("?") ? parameter.getName() : annotationValue;
-        return configuration.getString(String.format("%s.%s", PATH_VARIABLE_SECTION, key), null);
+        return configuration.getString(String.format("%s.%s", PARAM_VARIABLE_SECTION, key), null);
     }
 
     /**
      * Check if the annotation is supported by this applier.
-     *
      * @param annotation The annotation to apply.
      * @return True if the annotation is supported by this applier.
      */
     @Override
     public boolean match(Annotation annotation) {
-        return annotation instanceof PathVariable;
+        return annotation instanceof HttpParam;
     }
+
 }

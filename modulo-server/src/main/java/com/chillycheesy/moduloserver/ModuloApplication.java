@@ -1,8 +1,6 @@
 package com.chillycheesy.moduloserver;
 
-import org.springframework.boot.Banner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.ansi.AnsiStyle;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication

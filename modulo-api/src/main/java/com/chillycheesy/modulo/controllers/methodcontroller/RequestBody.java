@@ -1,4 +1,4 @@
-package com.chillycheesy.modulo.controllers.annotations;
+package com.chillycheesy.modulo.controllers.methodcontroller;
 
 import java.lang.annotation.*;
 

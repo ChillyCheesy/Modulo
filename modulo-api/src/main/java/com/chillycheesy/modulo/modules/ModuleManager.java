@@ -1,6 +1,5 @@
 package com.chillycheesy.modulo.modules;
 
-import com.chillycheesy.modulo.signals.SignalManager;
 import com.chillycheesy.modulo.ModuloAPI;
 import com.chillycheesy.modulo.events.EventManager;
 import com.chillycheesy.modulo.utils.exception.HTModuleNotFoundException;
@@ -150,14 +149,11 @@ public class ModuleManager {
     }
 
     /**
-     * It stops a module, removes it from the {@link SignalManager} and the {@link EventManager} and the {@link ModuleManager}
+     * It stops a module, removes it from the {@link ModuleManager}
      * @param module module you want to stop
      */
     public void stopModule(Module module){
         module.stop();
-        ModuloAPI.getSignal().getSignalManager().removeAllItems(module);
-        ModuloAPI.getEvent().getEventManager().removeAllItems(module);
-        ModuloAPI.getPage().getPageManager().removeAllItems(module);
         removeModule(module);
     }
 

@@ -1,22 +1,16 @@
 package com.chillycheesy.moduloserver.controllers;
 
-import com.chillycheesy.modulo.ModuloAPI;
-import com.chillycheesy.modulo.controllers.Controller;
 import com.chillycheesy.modulo.controllers.ControllerContainer;
-import com.chillycheesy.modulo.controllers.ModuloController;
 import com.chillycheesy.modulo.controllers.ModuloControllerManager;
 import com.chillycheesy.modulo.event.*;
 import com.chillycheesy.modulo.events.EventContainer;
 import com.chillycheesy.modulo.events.EventManager;
-import com.chillycheesy.modulo.pages.PageManager;
-import com.chillycheesy.modulo.utils.exception.No404SubPageException;
 import com.chillycheesy.moduloserver.ServerModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.*;
 
 @RestController
 public class PageController {

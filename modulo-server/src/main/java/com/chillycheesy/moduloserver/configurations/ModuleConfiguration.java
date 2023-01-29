@@ -2,8 +2,6 @@ package com.chillycheesy.moduloserver.configurations;
 
 import com.chillycheesy.modulo.controllers.ControllerContainer;
 import com.chillycheesy.modulo.modules.ModuleContainer;
-import com.chillycheesy.modulo.pages.PageContainer;
-import com.chillycheesy.modulo.signals.SignalContainer;
 import com.chillycheesy.modulo.utils.Logger;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.chillycheesy.modulo.ModuloAPI;
@@ -37,18 +35,8 @@ public class ModuleConfiguration {
     }
 
     @Bean
-    public PageContainer page() {
-        return ModuloAPI.getPage();
-    }
-
-    @Bean
     public ControllerContainer controller() {
         return ModuloAPI.getController();
-    }
-
-    @Bean
-    public SignalContainer signal() {
-        return ModuloAPI.getSignal();
     }
 
     @Bean

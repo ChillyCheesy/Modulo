@@ -3,8 +3,6 @@ package com.chillycheesy.modulo;
 import com.chillycheesy.modulo.controllers.ControllerContainer;
 import com.chillycheesy.modulo.events.EventContainer;
 import com.chillycheesy.modulo.modules.ModuleContainer;
-import com.chillycheesy.modulo.pages.PageContainer;
-import com.chillycheesy.modulo.signals.SignalContainer;
 import com.chillycheesy.modulo.utils.Logger;
 
 /**
@@ -23,14 +21,6 @@ public class ModuloAPI {
      * Event section.
      */
     private static EventContainer event;
-    /**
-     * Signal section.
-     */
-    private static SignalContainer signal;
-    /**
-     * Page manager.
-     */
-    private static PageContainer page;
     /**
      * Controller container.
      */
@@ -56,24 +46,6 @@ public class ModuloAPI {
      */
     public static EventContainer getEvent() {
         return event = event == null ? new EventContainer() : event;
-    }
-
-    /**
-     * Getter for Signal logic section.
-     *
-     * @return The Signal section.
-     */
-    public static SignalContainer getSignal() {
-        return signal = signal == null ? new SignalContainer() : signal;
-    }
-
-    /**
-     * Getter for Signal logic section.
-     *
-     * @return The Signal section.
-     */
-    public static PageContainer getPage() {
-        return page = page == null ? new PageContainer() : page;
     }
 
     /**

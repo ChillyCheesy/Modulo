@@ -1,10 +1,10 @@
-package com.chillycheesy.modulo.controllers.annotations;
+package com.chillycheesy.modulo.controllers.methodcontroller;
 
 import java.lang.annotation.*;
 
 /**
  * This decorator is used inside a method interpreted by the {@link com.chillycheesy.modulo.controllers.MethodController} Object.
- * It is used to get the registered keys by the {@link com.chillycheesy.modulo.controllers.HttpPathVariableController}.
+ * It is used to get the registered keys by the {@link com.chillycheesy.modulo.controllers.HttpParamVariableController}.
  * The value of the annotation is the name of the key.
  *
  * @author ChillyCheesy
@@ -13,7 +13,7 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ElementType.PARAMETER})
 @Inherited
-public @interface PathVariable {
+public @interface HttpParam {
 
     /**
      * The value of the parameter key. By default, it assigns to "?".
