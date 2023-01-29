@@ -1,6 +1,5 @@
 package com.chillycheesy.modulo.controllers;
 
-import com.chillycheesy.modulo.controllers.factory.JsonResponse;
 import com.chillycheesy.modulo.controllers.factory.ModuloControllerFactory;
 import com.chillycheesy.modulo.controllers.factory.Request;
 import com.chillycheesy.modulo.modules.Module;
@@ -37,6 +36,7 @@ public class ModuloControllerFactoryTest {
 
         final HttpServletRequest request = mock(HttpServletRequest.class);
         when(request.getRequestURI()).thenReturn("/");
+        when(request.getMethod()).thenReturn("GET");
 
         final Object response = controller.apply(request, null, null);
         assertEquals("Hello", response);
