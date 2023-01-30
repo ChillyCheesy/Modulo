@@ -1,9 +1,8 @@
 package com.chillycheesy.modulo;
 
+import com.chillycheesy.modulo.controllers.ControllerContainer;
 import com.chillycheesy.modulo.events.EventContainer;
 import com.chillycheesy.modulo.modules.ModuleContainer;
-import com.chillycheesy.modulo.pages.PageContainer;
-import com.chillycheesy.modulo.signals.SignalContainer;
 import com.chillycheesy.modulo.utils.Logger;
 
 /**
@@ -23,13 +22,9 @@ public class ModuloAPI {
      */
     private static EventContainer event;
     /**
-     * Signal section.
+     * Controller container.
      */
-    private static SignalContainer signal;
-    /**
-     * Page manager.
-     */
-    private static PageContainer page;
+    private static ControllerContainer controller;
     /**
      * Logger section.
      */
@@ -54,24 +49,6 @@ public class ModuloAPI {
     }
 
     /**
-     * Getter for Signal logic section.
-     *
-     * @return The Signal section.
-     */
-    public static SignalContainer getSignal() {
-        return signal = signal == null ? new SignalContainer() : signal;
-    }
-
-    /**
-     * Getter for Signal logic section.
-     *
-     * @return The Signal section.
-     */
-    public static PageContainer getPage() {
-        return page = page == null ? new PageContainer() : page;
-    }
-
-    /**
      * Getter for Logger logic section.
      *
      * @return The Logger section.
@@ -80,4 +57,12 @@ public class ModuloAPI {
         return logger = logger == null ? new Logger(getEvent()) : logger;
     }
 
+    /**
+     * Getter for Controller logic section.
+     *
+     * @return The Controller section.
+     */
+    public static ControllerContainer getController() {
+        return controller = controller == null ? new ControllerContainer() : controller;
+    }
 }

@@ -14,6 +14,13 @@ public class Configuration {
         this.defaultProperties = defaultProperties;
     }
 
+    public Configuration(Configuration ...configurations) {
+        this();
+        for (Configuration configuration : configurations) {
+            merge(configuration);
+        }
+    }
+
     public Configuration() { this(new HashMap<>(), new HashMap<>()); }
 
     public Object get(String key) {
@@ -256,9 +263,14 @@ public class Configuration {
     }
 
     public void forEach(BiConsumer<String, String> setProperty) {
+        forEach("", setProperty);
+    }
+
+    public void forEach(String key, BiConsumer<String, String> setProperty) {
         getMergedProperties().entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, e -> String.valueOf(e.getValue())))
-                .forEach(setProperty);
+            .filter(entry -> entry.getKey().startsWith(key))
+            .collect(Collectors.toMap(keyEntry -> keyEntry.getKey().replaceFirst("properties\\.", ""), e -> String.valueOf(e.getValue())))
+            .forEach(setProperty);
     }
 
     @Override

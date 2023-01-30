@@ -57,20 +57,23 @@ public class EventManager extends ListenerManager {
     }
 
     @Override
-    public boolean registerItem(Module module, Listener item) {
-        try {
-            final Method[] methods = item.getClass().getMethods();
-            for (Method method : methods) {
-                final EventHandler eventHandler = method.getDeclaredAnnotation(EventHandler.class);
-                if (eventHandler != null && method.getParameterCount() != 1)
-                    throw new InvalidParameterEventHandlerException(module);
+    public boolean registerItem(Module module, Listener... items) {
+        for (Listener item : items) {
+            try {
+                final Method[] methods = item.getClass().getMethods();
+                for (Method method : methods) {
+                    final EventHandler eventHandler = method.getDeclaredAnnotation(EventHandler.class);
+                    if (eventHandler != null && method.getParameterCount() != 1)
+                        throw new InvalidParameterEventHandlerException(module);
+                }
+                if (!super.registerItem(module, item))
+                    return false;
+            } catch (InvalidParameterEventHandlerException e) {
+                ModuloAPI.getLogger().error(module, e.getMessage());
+                return false;
             }
-            return super.registerItem(module, item);
-        } catch (InvalidParameterEventHandlerException e) {
-            ModuloAPI.getLogger().error(module, e.getMessage());
-            return false;
         }
-
+        return true;
     }
 
     private Set<Method> getCompatibleMethods(Event event, Listener listener) {

@@ -1,7 +1,7 @@
 package com.chillycheesy.modulo.modules;
 
 import com.chillycheesy.modulo.ModuloAPI;
-import com.chillycheesy.modulo.config.ConfigurationLoader;
+import com.chillycheesy.modulo.config.ConfigurableEntity;
 import com.chillycheesy.modulo.event.OnLoadEvent;
 import com.chillycheesy.modulo.event.OnStartEvent;
 import com.chillycheesy.modulo.event.OnStopEvent;
@@ -20,7 +20,7 @@ import java.util.jar.JarFile;
  *
  * @author Geoffrey Vaniscotte
  */
-public abstract class Module extends ConfigurationLoader {
+public abstract class Module extends ConfigurableEntity {
 
     private ModuleConfig config;
     private JarFile jarFile;

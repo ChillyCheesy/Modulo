@@ -20,10 +20,13 @@ public class PropertiesConfiguration {
     @Bean
     public com.chillycheesy.modulo.config.Configuration moduloProperties() {
         final File configFile = new File("modulo.properties");
-        final InputStream sourceInputStream = getClass().getClassLoader().getResourceAsStream("configurations/modulo.properties");
+        final ClassLoader classLoader = getClass().getClassLoader();
+        final InputStream sourceInputStream = classLoader.getResourceAsStream("configurations/modulo.properties");
         final ConfigurationFactory factory = new FileConfigurationFactory(module, configFile, sourceInputStream);
         final PropertiesConfigurationStrategy strategy = new PropertiesConfigurationStrategy();
-        return factory.createConfiguration(strategy);
+        final com.chillycheesy.modulo.config.Configuration configuration = factory.createConfiguration(strategy);
+
+        return configuration;
     }
 
 }

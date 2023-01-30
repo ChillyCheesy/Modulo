@@ -1,3 +1,10 @@
-show-log:
-    # The log format
-    format: '%d{HH:mm:ss} %-5level - %msg%n'
+#               ..----.._    _
+#             .' .--.    "-.(O)_
+# '-.__.-'"'=:|  ,  _)_ \__ . c\'-..
+#             ''------'---''---'-"
+#             Despelette was here !
+# ---------------------------------------------
+
+# Define System properties. You can add any property you want.
+# properties:
+#   property1: value1

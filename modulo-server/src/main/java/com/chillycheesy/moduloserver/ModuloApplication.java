@@ -7,7 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ModuloApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ModuloApplication.class, args);
+		final SpringApplication springApplication = new SpringApplication(ModuloApplication.class);
+		springApplication.run(args);
 	}
 
 }
