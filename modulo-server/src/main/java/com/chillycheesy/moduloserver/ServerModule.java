@@ -5,7 +5,6 @@ import com.chillycheesy.moduloserver.services.ModuleService;
 import com.chillycheesy.modulo.utils.exception.FileIsNotAModuleDirectoryException;
 import com.chillycheesy.modulo.utils.exception.MissingDependenciesModuleException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ansi.AnsiColor;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;

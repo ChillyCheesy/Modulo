@@ -1,6 +1,9 @@
 <div align="center">
 
 # Modulo
+
+<img src="https:https://chillycheesy.com/ressources/modulo.png" width="200" height="200" />
+
 [![Build App](https://github.com/ChillyCheesy/Modulo/actions/workflows/app-build.yml/badge.svg?branch=master)](https://github.com/ChillyCheesy/Modulo/actions)
 [![maven-central](https://maven-badges.herokuapp.com/maven-central/com.chillycheesy/modulo-api/badge.svg?style=flat)](https://search.maven.org/artifact/com.chillycheesy/modulo-api)
 [![Release](https://img.shields.io/github/v/release/ChillyCheesy/modulo.svg)](https://github.com/ChillyCheesy/Modulo/releases)
